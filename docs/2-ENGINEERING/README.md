@@ -1,9 +1,3 @@
-<!-- LLM: This folder holds technical documentation that supports ../3-ARCHITECTURE.md and
-../4-TESTING.md — things like setup guides, operational runbooks, API references, and the
-Architecture Decision Records in ADRs/. Interview the user about what engineering docs exist
-or are needed. Create focused files per topic. Update the index as files are added. Remove
-LLM comments as you go. -->
-
 # Engineering
 
 This folder holds the deeper technical documentation behind
@@ -12,13 +6,14 @@ including the project's decision records.
 
 ## What lives here
 
-<!-- LLM: Create the documents that fit this project. Common ones: -->
+docgen is a small Rust CLI, so the core engineering detail is captured in the architecture
+and testing docs plus the project [`README`](../../README.md). The topics below are the
+natural homes for additional detail as it's needed:
 
-- **Development setup** — _how to get a working dev environment._
-- **Build & release** — _how the project is built, versioned, and shipped._
-- **Operations / runbook** — _how it's run, monitored, and recovered._
-- **API / interface reference** — _contracts other code depends on._
-- **[ADRs/](ADRs/)** — _Architecture Decision Records (one per significant decision)._
+- **Development setup** — `cargo build` / `cargo test` / `cargo clippy`; see the Development section of the project README.
+- **Build & release** — `cargo-dist` builds the binaries and Homebrew formula on a tagged release; see the Releasing section of the README and `.github/workflows/release.yml`.
+- **API / interface reference** — the CLI surface (`init`, `add`, `list`) is documented via `docgen --help`.
+- **[ADRs/](ADRs/)** — Architecture Decision Records (one per significant decision).
 
 ## Decision records
 
@@ -31,9 +26,5 @@ docgen add adr <short-slug>
 
 ## Index
 
-<!-- LLM: List the engineering documents in this folder with a one-line description each.
-Update whenever a file is added. -->
-
-| Document | Description |
-|---|---|
-| _filename.md_ | _what it covers_ |
+_No standalone engineering documents yet beyond the decision records in [`ADRs/`](ADRs/).
+Add focused files per topic above as the need arises, and list them here._

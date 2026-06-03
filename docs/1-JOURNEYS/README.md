@@ -1,9 +1,3 @@
-<!-- LLM: This folder holds the detailed user personas and journey maps that back the
-summaries in ../1-EXPERIENCES.md. Interview the user to build out personas and journeys.
-Create one file per persona and/or per major journey rather than cramming everything here.
-Keep the journeys aligned with the Given/When/Then experiences so they trace into testing.
-Update the index as files are added. Remove LLM comments as you go. -->
-
 # Journeys
 
 This folder expands on [`../1-EXPERIENCES.md`](../1-EXPERIENCES.md) with full user personas
@@ -11,34 +5,37 @@ and end-to-end journey maps.
 
 ## Personas
 
-<!-- LLM: For each primary/secondary user, capture a persona. Interview the user: goals,
-context, frustrations, level of expertise, what success looks like for them. One file per
-persona is recommended for anything substantial. Use the sketch below as a starting shape. -->
+### Team developer
 
-### _Persona name_
+- **Who:** an engineer on a team that wants consistent, in-repo project docs, typically working alongside an AI coding agent.
+- **Goals:** stand up documentation quickly, in a structure that's the same across their repos, without designing a doc system from scratch.
+- **Frustrations:** project intent is scattered across wikis, chat, and tickets; every project documents things differently; docs go stale or never get written.
+- **Success looks like:** one command produces a familiar tree, and their agent fills it in with real content that lives next to the code.
 
-- **Who:** _role / context_
-- **Goals:** _what they're trying to achieve_
-- **Frustrations:** _what gets in their way today_
-- **Success looks like:** _their definition of a good outcome_
+### AI coding agent
+
+- **Who:** the assistant working inside the repo (e.g. via the docgen skills), acting as both author and consumer of the docs.
+- **Goals:** understand the project's intent so it can act with full context; produce documentation that reflects what the team actually wants.
+- **Frustrations:** without recorded intent it has to guess from code; ad-hoc doc structures give it nothing reliable to read or write against.
+- **Success looks like:** clear inline guidance tells it what to ask and how to write each section, so it interviews the team and leaves a clean, complete document.
 
 ## Journeys
 
-<!-- LLM: For each important journey, map the steps the user takes from trigger to outcome,
-noting their goal, actions, and emotional state at each step, plus where the product helps or
-fails them. Tie each journey back to a key experience in ../1-EXPERIENCES.md. -->
+### Document a project from scratch
 
-### _Journey name_
+Traces to the "Scaffold the docs tree" and "Fill in a document with an agent" experiences in
+[`../1-EXPERIENCES.md`](../1-EXPERIENCES.md).
 
 | Step | User does | User feels | Opportunity |
 |---|---|---|---|
-| 1 | _action_ | _emotion_ | _where the product can help_ |
+| 1 | Runs `docgen init` in the repo | Curious, low commitment | Produce the full tree instantly, non-destructively |
+| 2 | Sees the numbered `docs/` tree appear | Oriented — the structure is obvious | Numbering signals the reading order |
+| 3 | Asks the agent to fill in `0-MISSION.md` | Slightly unsure what to write | Inline guidance turns it into a guided interview |
+| 4 | Answers the agent's focused questions | Engaged; thinking is being captured | Reflect answers back; write one tight section at a time |
+| 5 | Reviews the completed doc, commits it | Satisfied — real intent, in the repo | Clean output with no leftover guidance comments |
+| 6 | Moves down the chain to the next doc | Momentum | Each doc builds on the last, so context compounds |
 
 ## Index
 
-<!-- LLM: List the persona and journey files in this folder with a one-line description.
-Update whenever a file is added. -->
-
-| Document | Description |
-|---|---|
-| _filename.md_ | _what it covers_ |
+_No standalone persona or journey files yet. Add one file per substantial persona or major
+journey as the need arises, and list it here._

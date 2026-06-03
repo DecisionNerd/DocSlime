@@ -1,8 +1,3 @@
-<!-- LLM: This is the entry point to the project's documentation. Keep it short and
-navigational. Do NOT interview the user for this file first — fill it in last, once the
-other docs exist, so the descriptions match what was actually written. Remove LLM comments
-as you complete each section. -->
-
 # Documentation
 
 This folder holds the living documentation for this project. It is structured for

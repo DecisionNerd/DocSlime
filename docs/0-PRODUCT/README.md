@@ -1,9 +1,3 @@
-<!-- LLM: This folder holds product, market, and mission detail that is too deep for
-0-MISSION.md. Use it for things like market analysis, competitive landscape, positioning,
-pricing, roadmap, and detailed product requirements. Interview the user about which of these
-exist or are needed; create one focused file per topic rather than one giant file. Update the
-index below as files are added. Remove LLM comments as you go. -->
-
 # Product
 
 This folder expands on [`../0-MISSION.md`](../0-MISSION.md) with the product, market, and
@@ -11,20 +5,17 @@ mission detail that doesn't belong in the top-level mission statement.
 
 ## What lives here
 
-<!-- LLM: Suggest to the user the documents that commonly live here and create the ones that
-fit this project. Keep each in its own file. -->
+docgen is a small, single-purpose open-source developer tool, so most of the product topics
+below don't yet warrant their own document. They're listed as the natural homes for that
+detail if and when it's needed:
 
-- **Market & users** — _market context, segments, demand._
-- **Competitive landscape** — _alternatives and how this differs._
-- **Positioning & messaging** — _how the product is framed._
-- **Roadmap** — _sequencing of product bets over time._
-- **Pricing / business model** — _how it sustains itself (if relevant)._
+- **Market & users** — engineering teams adopting in-repo, behavior-driven docs; covered briefly in the mission.
+- **Competitive landscape** — alternatives (wikis, doc generators, ad-hoc `docs/` conventions) and how docgen differs by being agent-fillable and standardized.
+- **Positioning & messaging** — how docgen is framed; currently captured in the project [`README`](../../README.md).
+- **Roadmap** — sequencing of future bets (e.g. customizable layouts, a `--path` flag — see open questions in [`../2-REQUIREMENTS.md`](../2-REQUIREMENTS.md)).
+- **Pricing / business model** — not applicable; docgen is free and open source.
 
 ## Index
 
-<!-- LLM: Keep a list of the documents actually in this folder, with a one-line description
-each. Update it whenever a file is added. -->
-
-| Document | Description |
-|---|---|
-| _filename.md_ | _what it covers_ |
+_No detailed product documents yet. Add one focused file per topic above as the need arises,
+and list it here._
