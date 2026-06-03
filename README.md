@@ -71,6 +71,28 @@ After `docgen init`, point your coding agent at `docs/` and ask it to fill in a 
 questions to ask you and how to write the section; the agent removes those comments as it
 fills each part in.
 
+## Use with an AI agent (skills)
+
+docgen ships a set of [agent skills](.agents/skills) that teach Claude Code, Codex, Cursor,
+and other skill-aware tools how to drive the whole documentation lifecycle. Install them once
+per machine:
+
+```sh
+npx skills add DecisionNerd/docgen
+```
+
+Then invoke them from inside your AI tool:
+
+| Skill | What it does |
+|---|---|
+| `docgen-install` | Check the `docgen` binary is installed; install it if missing. |
+| `docgen-init`    | Scaffold the `docs/` tree into the current repo and orient on what to fill in. |
+| `docgen-fill`    | Interview you and fill in a document, following its inline `<!-- LLM: ... -->` guidance. |
+| `docgen-adr`     | Create the next-numbered ADR and fill it in by interviewing you about one decision. |
+
+A typical first run: `/docgen-install` → `/docgen-init` → `/docgen-fill` starting with
+`0-MISSION.md`.
+
 ## Development
 
 ```sh
