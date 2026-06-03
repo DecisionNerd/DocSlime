@@ -1,66 +1,52 @@
-<!-- LLM: This is the foundation document — every other doc derives from it. Interview the
-user before writing. Work through the sections in order, asking one focused question at a
-time and reflecting their answers back. Keep the final document tight: this is the north
-star, not a spec. Remove each LLM comment once its section is filled. -->
-
 # Mission
 
-<!-- LLM: Capture the single core reason this project exists, in 2-3 sentences. Ask the user:
-- In one sentence, what does this project do?
-- Who is it for, and what changes for them if it succeeds?
-- What becomes possible (or stops being painful) that wasn't before?
-Write it as a confident statement, not a list. -->
-
-_What is the one reason this project exists?_
+docgen scaffolds a standardized, behavior-driven documentation tree into any git repo, with
+templates written to be filled in by an AI coding agent in conversation with the team. It
+exists so that a project's mission, experiences, requirements, architecture, and decisions
+live in the repo itself — giving both people and coding agents full local context instead of
+scattering it across external tools.
 
 ## Problem
 
-<!-- LLM: Describe the problem being solved and why it matters now. Ask:
-- What is broken, missing, or painful today?
-- Who feels that pain, and how often?
-- Why is now the right time to solve it? What happens if it stays unsolved?
-Aim for a paragraph or a short, concrete list. -->
-
-_What problem are we solving, and for whom?_
+Project knowledge — why something exists, what it must do, and why past decisions were made —
+tends to live everywhere except where the work happens: in wikis, chat threads, tickets, and
+people's heads. Engineering teams feel this constantly, and AI coding agents feel it acutely:
+an agent in the repo has the code but not the intent, so it guesses. Every team also invents
+its own ad-hoc doc structure, so there's nothing consistent for an agent to read or write
+against. The result is documentation that's either missing, stale, or unfindable right when
+context matters most.
 
 ## Vision
 
-<!-- LLM: Paint the picture of the world once this project has succeeded. Ask:
-- If everything goes right over the next 1-3 years, what does the world look like?
-- What is true then that isn't true now?
-Keep it aspirational but believable. -->
-
-_Where are we headed?_
+docgen is the dependable, low-friction way for a team to stand up agent-ready project docs.
+A team runs `docgen init`, and within minutes an agent has interviewed them and produced a
+real mission, requirements, and architecture record — not empty boilerplate. The numbered
+tree becomes a familiar shape across the team's repos, so anyone (human or agent) opening a
+project knows exactly where the intent lives. It does this one thing well and stays small.
 
 ## Goals
 
-<!-- LLM: List the concrete outcomes that define success. Ask the user for 3-5 goals.
-Each should be an outcome, not a feature. Prefer measurable where possible. -->
-
-- _Goal 1_
-- _Goal 2_
-- _Goal 3_
+- Give every repo a consistent, behavior-driven doc structure that agents can both read and write.
+- Make the path from `docgen init` to a genuinely useful, filled-in document short and low-friction.
+- Ensure scaffolded docs actually get completed, not abandoned as empty templates.
+- Keep project intent — mission, requirements, decisions — local to the repo and version-controlled.
 
 ## Non-goals
 
-<!-- LLM: Explicitly list what this project will NOT do. This prevents scope creep and is
-often as valuable as the goals. Ask: "What might people assume this does that it deliberately
-won't?" -->
-
-- _Non-goal 1_
-- _Non-goal 2_
+- It is not a documentation hosting, publishing, or static-site tool — it only scaffolds and structures files.
+- It does not generate documentation content on its own; an agent and the team fill the templates in.
+- It is not a wiki, knowledge base, or replacement for external product/issue trackers.
+- It does not lock teams into one rigid format — the tree is a sensible default, not a mandate.
 
 ## Success metrics
 
-<!-- LLM: How will we know the mission is being fulfilled? Ask for the few signals or metrics
-that would tell the team it's working. Tie each back to a goal above where possible. -->
-
-- _Metric 1_
-- _Metric 2_
+- **Docs get filled:** scaffolded documents are completed (no leftover `<!-- LLM: -->` guidance), not left as empty templates.
+- **Adoption:** number of repos using docgen, plus Homebrew and `npx skills` installs.
+- **Agent context quality:** agents give better, less speculative answers because mission, requirements, and ADRs live in the repo.
+- **Low friction:** short time from `docgen init` to a first useful, filled-in document.
 
 ## Stakeholders
 
-<!-- LLM: Who cares about this project and in what role (owner, users, sponsors, dependents)?
-Keep it brief. Remove this section if the user says it's not relevant. -->
-
-- _Role — who / why_
+- **Maintainer (DecisionNerd)** — owns docgen's direction and the templates.
+- **Engineering teams** — primary users; adopt the tree across their repos to standardize docs.
+- **AI coding agents** — the intended authors and consumers of the filled-in docs.
