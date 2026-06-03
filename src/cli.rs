@@ -24,16 +24,35 @@ pub enum Command {
     },
 
     /// Add a single document, or create the next-numbered ADR.
-    ///
-    /// Examples:
-    ///   docgen add 0-MISSION
-    ///   docgen add 3-ARCHITECTURE.md
-    ///   docgen add adr my-decision-slug
+    #[command(long_about = "\
+Add a single document, or create the next-numbered ADR.
+
+Two modes, chosen by the DOC argument:
+
+  Single template — pass a template name to scaffold just that one
+  document (the name is matched leniently, with or without the .md
+  extension). Run `docgen list` to see every name.
+
+      docgen add 0-MISSION
+      docgen add 3-ARCHITECTURE.md
+
+  ADR — pass the literal `adr` plus a slug to create an Architecture
+  Decision Record. The file is written to docs/2-ENGINEERING/ADRs/ as
+  NNNN-<slug>.md, where NNNN is the next number after the highest
+  existing record (0001 if there are none yet). The slug is lower-cased
+  and hyphenated, so `\"My First Decision\"` becomes `my-first-decision`.
+
+      docgen add adr my-decision-slug    -> 0001-my-decision-slug.md
+      docgen add adr \"Use Postgres\"      -> 0002-use-postgres.md
+
+Existing files are skipped unless --force is given.")]
     Add {
         /// Template name (e.g. `0-MISSION`, `3-ARCHITECTURE`), or the literal `adr`.
         doc: String,
 
-        /// When `doc` is `adr`: the short slug for the new record's filename.
+        /// Slug for the new ADR's filename (only used with `add adr <slug>`).
+        ///
+        /// Lower-cased and hyphenated automatically; ignored for non-ADR templates.
         slug: Option<String>,
 
         /// Overwrite the file if it already exists instead of skipping it.
