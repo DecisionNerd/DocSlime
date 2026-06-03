@@ -1,0 +1,46 @@
+[package]
+name = "docgen"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.74"
+description = "Scaffold a standardized, BDD-oriented docs/ tree into a git repo, with templates designed for AI agents to fill in."
+license = "MIT"
+repository = "https://github.com/DecisionNerd/docgen"
+readme = "README.md"
+
+[[bin]]
+name = "docgen"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+include_dir = "0.7"
+anyhow = "1"
+thiserror = "1"
+owo-colors = "4"
+
+[dev-dependencies]
+assert_cmd = "2"
+predicates = "3"
+tempfile = "3"
+
+[profile.release]
+strip = true
+lto = true
+codegen-units = 1
+
+# Distribution config for cargo-dist (`dist`). Run `dist init` to regenerate the
+# release workflow after editing. Produces Homebrew + shell installers for macOS/Linux.
+[workspace.metadata.dist]
+cargo-dist-version = "0.28.0"
+ci = ["github"]
+installers = ["homebrew", "shell"]
+targets = [
+    "aarch64-apple-darwin",
+    "x86_64-apple-darwin",
+    "x86_64-unknown-linux-gnu",
+    "aarch64-unknown-linux-gnu",
+]
+# Push the generated Homebrew formula to a dedicated tap repo (create it once on GitHub).
+tap = "DecisionNerd/homebrew-tap"
+publish-jobs = ["homebrew"]
