@@ -1,78 +1,90 @@
-<!-- LLM: This document explains how the system is designed to meet the requirements
-(2-REQUIREMENTS.md). Read the prior docs first so the architecture clearly serves the
-requirements and experiences. Interview the user about the actual or intended design — don't
-invent components. Where a significant choice was made between alternatives, record it as an
-ADR in 2-ENGINEERING/ADRs/ and link to it here rather than arguing the decision inline.
-Remove LLM comments as you fill each section. -->
-
 # Architecture
 
-<!-- LLM: One-paragraph overview of the system shape (e.g. "a single-binary CLI", "a web app
-with a Postgres backend"). Give the reader the mental model before the detail. -->
-
-_What kind of system is this, in one paragraph?_
+docgen is a single self-contained command-line binary written in Rust. It has no server, no
+database, and no runtime dependencies: the entire template tree is compiled into the binary,
+and every command operates directly on the filesystem relative to the current directory. The
+design is deliberately small — parse a command, resolve a template, write files without
+clobbering existing ones.
 
 ## Context diagram
 
-<!-- LLM: Show the system in its environment — its users and the external systems it talks to.
-A simple ASCII/Mermaid diagram or a bullet list of "actor → system → external service" is
-fine. Ask the user what's inside the boundary vs. outside it. -->
+```
+developer ─┐
+           ├─→ [ docgen CLI ] ─→ ./docs/ (files in the git repo)
+AI agent  ─┘        │
+                    └─ embedded templates (compiled in; no network, no external files)
+```
 
-```
-_actor_ → [ this system ] → _external service_
-```
+Inside the boundary: argument parsing, template resolution, and file writing. Outside: the
+git repo's filesystem (the only thing docgen touches) and the AI agent that later fills the
+files in.
 
 ## Components
 
-<!-- LLM: Break the system into its major parts. For each, state its single responsibility and
-what it depends on. Ask the user to walk through the pieces; capture one row per component.
-Keep responsibilities crisp — if a component does "everything", probe to split it. -->
-
 | Component | Responsibility | Depends on |
 |---|---|---|
-| _Name_ | _What it owns_ | _Other components / services_ |
+| `cli` | Define the command surface (`init`, `add`, `list`) and arguments via clap derive. | clap |
+| `main` | Parse args, resolve the working directory, dispatch to a command, map errors to an exit code. | cli, commands |
+| `commands::init` | Scaffold the full template tree into `docs/`, skipping existing files. | templates, scaffold |
+| `commands::add` | Resolve a single template by name, or create the next-numbered ADR with a normalized slug. | templates, scaffold |
+| `commands::list` | List every template and whether it already exists on disk. | templates, scaffold |
+| `templates` | Hold the compile-time-embedded template tree and ADR template; resolve `add` names leniently. | include_dir |
+| `scaffold` | Compute output paths and write files non-destructively (honoring `--force`); track outcomes. | std::fs |
 
 ## Data model
 
-<!-- LLM: Describe the key entities and their relationships, or the main data structures /
-state. Link to a schema file if one exists. Ask: "What are the nouns the system stores or
-passes around, and how do they relate?" Remove if the system is essentially stateless. -->
+docgen is essentially stateless — it stores nothing of its own. The only persistent artifacts
+are:
 
-_Key entities and relationships._
+- **Embedded templates** — a read-only directory tree (`templates/`) plus the standalone ADR
+  template (`assets/adr.md`), baked into the binary at build time.
+- **The output `docs/` tree** — plain Markdown files written into the user's repo.
+
+The one piece of derived state computed at runtime is the **next ADR number**, obtained by
+scanning the ADR directory for the highest `NNNN-*` prefix.
 
 ## Key flows
 
-<!-- LLM: Trace 1-3 important paths through the system end-to-end (e.g. the main request, the
-main command). Number the steps and name the components involved. These should line up with
-the key experiences in 1-EXPERIENCES.md. -->
+### `docgen init` (scaffold the tree)
 
-### _Flow name_
+1. `main` resolves the current working directory as the root — `main`
+2. Dispatch to the init command — `commands::init`
+3. Enumerate every embedded template in the tree — `templates`
+4. For each, compute `docs/<relative-path>` and write it unless it exists (or `--force`) — `scaffold`
+5. Report a summary of created vs. skipped files — `commands::init`
 
-1. _Step — which component_
-2. _Step — which component_
+### `docgen add adr <slug>` (create an ADR)
+
+1. Dispatch to the add command; detect the literal `adr` — `commands::add`
+2. Normalize the slug to `[a-z0-9-]`; reject if empty — `commands::add`
+3. Scan `docs/2-ENGINEERING/ADRs/` for the highest `NNNN` prefix and add one — `commands::add`
+4. Write `NNNN-<slug>.md` from the embedded ADR template, non-destructively — `scaffold`
+
+These line up with the "Scaffold the docs tree" and "Record an architecture decision"
+experiences in [`1-EXPERIENCES.md`](1-EXPERIENCES.md).
 
 ## Cross-cutting concerns
 
-<!-- LLM: How the design handles concerns that span components: error handling, logging,
-configuration, auth/security, performance, observability. Ask the user which of these apply
-and how they're addressed. Drop the ones that don't apply. -->
-
-- **Error handling:** _…_
-- **Configuration:** _…_
-- **Security:** _…_
-- **Observability:** _…_
+- **Error handling:** `anyhow` propagates errors up to `main`, which prints `error: …` and
+  returns a non-zero `ExitCode`. Unknown template names produce a helpful error listing valid
+  names (FR-8).
+- **Configuration:** none — behavior is fixed by the embedded templates and a small set of
+  flags (`--force`). No config file (see open questions in [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md)).
+- **Security:** docgen only writes within `docs/` under the current directory and never
+  overwrites without `--force` (NFR-4). No network access.
+- **Observability:** plain stdout/stderr; `list` uses `owo-colors` for readable status output.
 
 ## Decisions
 
-<!-- LLM: List the significant architectural decisions, each linking to its ADR. Do not
-re-argue them here. If no ADRs exist yet, prompt the user: "What were the big either/or
-choices? Each deserves an ADR." Use `docgen add adr <slug>` to create one. -->
-
-- _[ADR-0001 — short title](2-ENGINEERING/ADRs/0001-*.md)_
+- [Embed templates in the binary at compile time](2-ENGINEERING/ADRs/0001-embed-templates-in-binary.md) — keeps docgen a zero-dependency single binary.
 
 ## Risks & trade-offs
 
-<!-- LLM: Capture where the design is knowingly weak or where a trade-off was accepted, and
-why. Honest risk-listing here saves pain later. -->
-
-- _Risk / trade-off — mitigation or rationale_
+- **Editing a template requires a rebuild.** Because templates are embedded via `include_dir`,
+  content changes only ship with a new binary. Accepted: it's the price of a no-dependency
+  single binary, and templates change rarely.
+- **Fixed tree layout.** docgen doesn't accept a custom structure, which keeps it simple but
+  limits teams that want a different shape. Tracked as an open question in the requirements.
+- **Current-directory assumption.** All commands act on the current directory; running from
+  the wrong place scaffolds in the wrong place. Mitigation: the `docgen-init` skill confirms
+  the working directory first.
