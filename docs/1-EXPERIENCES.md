@@ -1,57 +1,83 @@
-<!-- LLM: This document describes the intended user experience — the behaviors the product
-must deliver, framed from the user's point of view. It is the bridge between the mission and
-the requirements. Read 0-MISSION.md first so experiences trace back to goals. Interview the
-user section by section. Detailed personas and full journey maps belong in 1-JOURNEYS/ —
-keep this file to the primary experiences and link out for depth. Remove LLM comments as you
-go. -->
-
 # Experiences
 
-<!-- LLM: One-paragraph overview of what using this product is like at its best. Ask:
-"If a user described this product to a friend after a great session, what would they say?" -->
-
-_What is it like to use this, when it works well?_
+At its best, docgen feels like it gets out of the way. A developer runs one command, a full
+documentation tree appears in the repo, and their AI agent immediately knows how to fill it
+in — asking the right questions instead of guessing. The docs end up written and committed
+alongside the code, and nobody had to invent a structure or fight a tool to get there.
 
 ## Primary users
 
-<!-- LLM: Summarize the main user types here (1-2 sentences each) and link to full personas
-in 1-JOURNEYS/. Ask the user who the product is primarily for, and whether there are distinct
-secondary users. Don't build full personas here — that's 1-JOURNEYS/. -->
-
-- **_User type_** — _who they are, what they want._ See [`1-JOURNEYS/`](1-JOURNEYS/).
+- **Engineering team member** — a developer (often working with an AI coding agent) who wants
+  consistent, in-repo project docs without designing a doc system from scratch. See [`1-JOURNEYS/`](1-JOURNEYS/).
+- **AI coding agent** — the intended author and reader of the filled-in docs; it follows the
+  inline guidance to interview the team and write each section. See [`1-JOURNEYS/`](1-JOURNEYS/).
 
 ## Key experiences
 
-<!-- LLM: This is the core of the document. For each important thing a user does, write it as
-a behavior-driven scenario. Interview the user for the handful of experiences that matter
-most. Use Given/When/Then so they map cleanly onto behavior tests in 4-TESTING.md. Ask for
-each: "What does the user want to accomplish? What's the happy path? What should NOT happen?"
-Duplicate the block below per experience. -->
+### Scaffold the docs tree
 
-### _Experience name_
+> **As a** developer starting documentation on a repo
+> **I want** to drop a standardized docs tree into the project with one command
+> **So that** I have a consistent structure to fill in, without inventing one
 
-> **As a** _user type_
-> **I want** _capability_
-> **So that** _benefit_
+- **Given** a git repo with no `docs/` directory
+- **When** I run `docgen init`
+- **Then** the full numbered `docs/` tree is created, each file carrying inline `<!-- LLM: -->` guidance
 
-- **Given** _starting context_
-- **When** _the user acts_
-- **Then** _the expected, observable outcome_
+Must not happen: an existing file is silently overwritten. `init` skips anything already on
+disk unless `--force` is passed.
 
-<!-- LLM: Add edge cases / things that must not happen for this experience. -->
+### Add a single document
+
+> **As a** developer with a partial docs tree
+> **I want** to add just one missing document by name
+> **So that** I can fill gaps without re-running the whole scaffold
+
+- **Given** a repo that already has some docs
+- **When** I run `docgen add 3-ARCHITECTURE` (name matched leniently, with or without `.md`)
+- **Then** only that document is created from its template, and existing files are untouched
+
+Must not happen: an unknown name fails silently. docgen reports the error and lists the
+valid template names.
+
+### Record an architecture decision
+
+> **As a** team making a significant technical choice
+> **I want** to create the next-numbered ADR with a memorable slug
+> **So that** the decision and its reasoning are captured immutably in the repo
+
+- **Given** an ADR directory with records up to `0003-*`
+- **When** I run `docgen add adr use-postgres`
+- **Then** `docs/2-ENGINEERING/ADRs/0004-use-postgres.md` is created from the ADR template
+
+Must not happen: numbering collides or restarts. docgen always picks the next number after
+the highest existing record (`0001` if there are none).
+
+### Fill in a document with an agent
+
+> **As a** developer with a scaffolded but empty doc
+> **I want** my AI agent to interview me and write the document
+> **So that** the doc reflects real project intent rather than boilerplate
+
+- **Given** a scaffolded document containing `<!-- LLM: -->` guidance comments
+- **When** I ask my agent to fill it in (via the `docgen-fill` skill)
+- **Then** the agent asks focused questions, writes each section, and removes the guidance
+  comments as it goes — leaving a clean, completed document
+
+Must not happen: the agent fabricates facts or leaves guidance comments behind. A finished
+doc has no `LLM:` comments and no leftover placeholder prompts.
 
 ## Experience principles
 
-<!-- LLM: Capture the cross-cutting qualities the experience must have (e.g. fast, forgiving,
-keyboard-first, works offline). Ask: "What should always be true of how this feels, across
-every screen or command?" -->
-
-- _Principle 1_
-- _Principle 2_
+- **Non-destructive by default** — existing files are never overwritten without an explicit `--force`.
+- **Forgiving input** — document names and ADR slugs are matched and normalized leniently.
+- **Self-explaining** — every template tells the agent (and the human) what to do; no external manual required.
+- **Fast and local** — commands run instantly against the filesystem, and the output lives in the repo.
+- **Small surface** — three commands (`init`, `add`, `list`) cover the whole tool.
 
 ## Out of scope
 
-<!-- LLM: Experiences explicitly NOT being designed for, at least for now. Keep this honest;
-it pairs with the mission's non-goals. -->
-
-- _Out-of-scope experience_
+- Rendering, hosting, or publishing the docs as a website.
+- Generating documentation content automatically without a human-in-the-loop interview.
+- Editing or migrating docs that have already been filled in (docgen only scaffolds).
+- Enforcing a single rigid format — the tree is a default, and teams may diverge.
