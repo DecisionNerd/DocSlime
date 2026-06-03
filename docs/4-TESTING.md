@@ -1,67 +1,70 @@
-<!-- LLM: This document explains how we prove the system fulfills its mission, experiences,
-and requirements. It closes the BDD loop: the experiences in 1-EXPERIENCES.md and the
-requirements in 2-REQUIREMENTS.md should each map to something verified here. Interview the
-user about how they actually test (or intend to). Remove LLM comments as you complete each
-section. -->
-
 # Testing
 
-<!-- LLM: One-paragraph summary of the testing philosophy. Ask: "How do you decide something
-is correct and shippable?" Capture the spirit (e.g. "behavior-first, fast feedback"). -->
-
-_How do we know the system works?_
+docgen is verified behavior-first: the things a user actually does — scaffold a tree, add a
+document, create an ADR, list templates — are exercised end-to-end by running the real
+compiled binary against throwaway directories and asserting on the files it produces. Small,
+fiddly logic (slug normalization, ADR numbering) is covered by fast unit tests. The bar for
+shippable is simple: the full suite is green and the binary's observable behavior matches the
+experiences and requirements.
 
 ## Strategy
 
-<!-- LLM: Describe the layers of testing and what each is responsible for. Ask the user which
-layers they use and where the emphasis is. Adjust the rows to reality — don't list layers
-they don't have. -->
-
 | Layer | What it verifies | Tools |
 |---|---|---|
-| Unit | _Smallest units of logic_ | _…_ |
-| Integration | _Components working together_ | _…_ |
-| End-to-end / behavior | _User-visible behavior from 1-EXPERIENCES.md_ | _…_ |
+| Unit | Pure logic in isolation — slug normalization, next-ADR-number computation, filename prefix parsing. | Rust `#[test]` in `src/` |
+| End-to-end / behavior | User-visible CLI behavior from [`1-EXPERIENCES.md`](1-EXPERIENCES.md) — running the actual binary and asserting on exit codes, output, and files written. | `assert_cmd`, `predicates`, `tempfile` |
+
+There is no separate integration layer: the codebase is small and the components are best
+verified together through the CLI, so the black-box tests double as integration coverage.
 
 ## Behavior coverage
 
-<!-- LLM: This is the BDD heart of the doc. Map each key experience / requirement to the
-test(s) that prove it. Reuse the Given/When/Then scenarios from 1-EXPERIENCES.md and the
-requirement IDs from 2-REQUIREMENTS.md. Ask the user to confirm each important behavior has a
-test (or flag it as a gap). -->
-
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
 |---|---|---|
-| _Experience name / FR-1_ | _Given … When … Then …_ | _path/to/test_ |
+| Scaffold the docs tree / FR-1 | Given an empty dir, When `init`, Then the full 10-file tree exists | `tests/cli.rs::init_creates_full_tree` |
+| Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
+| Non-destructive by default / FR-2 | Given an edited file, When `init` re-runs, Then the file is left untouched | `tests/cli.rs::init_skips_existing_files` |
+| Force overwrite / FR-2 | Given an edited file, When `init --force`, Then the template is restored | `tests/cli.rs::init_force_overwrites` |
+| Add a single document / FR-3 | Given an empty dir, When `add <shorthand>`, Then the matching template is created | `tests/cli.rs::add_resolves_shorthand_name` |
+| Unknown name errors / FR-8 | Given an unknown name, When `add`, Then it fails with a helpful error | `tests/cli.rs::add_unknown_template_fails` |
+| Record an architecture decision / FR-4 | Given existing ADRs, When `add adr <slug>`, Then the next number is used | `tests/cli.rs::add_adr_numbers_sequentially` |
+| ADR numbering from scratch / FR-4 | Given no ADR dir, When `add adr <slug>`, Then it starts at `0001` | `tests/cli.rs::add_adr_starts_at_one_without_init` |
+| ADR slug required / FR-5 | Given no slug, When `add adr`, Then it fails | `tests/cli.rs::add_adr_requires_slug` |
+| List templates / FR-6 | When `list`, Then every template is shown | `tests/cli.rs::list_shows_every_template` |
+| List reflects disk state / FR-6 | Given some files exist, When `list`, Then status reflects what's on disk | `tests/cli.rs::list_reflects_on_disk_status` |
+| Slug normalization / FR-5 | Mixed-case/spaced input normalizes to `[a-z0-9-]`; empty rejected | `src/commands/add.rs::normalize_slug_lowercases_and_hyphenates` |
+| ADR numbering helper / FR-4 | Missing dir → `1`; filename prefix parsed correctly | `src/commands/add.rs::next_adr_number_is_one_when_dir_missing`, `leading_number_parses_prefix` |
 
 ## Evaluation against the mission
 
-<!-- LLM: Beyond pass/fail tests, how do we evaluate that the system fulfills its MISSION and
-success metrics (from 0-MISSION.md)? This may include metrics, manual evaluation, user
-feedback, or LLM/qualitative evals. Ask the user how they judge mission-level success, not
-just code correctness. -->
+Tests prove correctness; they don't prove the mission. The mission-level signals from
+[`0-MISSION.md`](0-MISSION.md) are evaluated qualitatively:
 
-- _Metric / eval — how it's measured and what "good" looks like_
+- **Docs get filled** — judged by whether scaffolded docs in real repos end up complete (no
+  leftover `<!-- LLM: -->` guidance), rather than abandoned as templates. docgen dogfoods this
+  by filling in its own `docs/` tree.
+- **Low friction** — judged by the time and number of steps from `docgen init` to a first
+  useful, filled-in document.
+- **Agent context quality** — judged by whether agents working in a docgen'd repo give less
+  speculative answers because mission, requirements, and ADRs are present.
+- **Adoption** — tracked via Homebrew and `npx skills` installs and repos using the tree.
 
 ## Running the tests
 
-<!-- LLM: Give the exact commands to run the suite locally and the expectation (e.g. all green,
-coverage threshold). Ask the user for the real commands. -->
-
-```
-_command to run the tests_
+```sh
+cargo test                  # unit + integration suite (expected: all green)
+cargo clippy --all-targets  # lint (expected: no warnings)
 ```
 
 ## Continuous integration
 
-<!-- LLM: Describe when tests run automatically and what gates merges/releases. Reference the
-CI config file. Remove if there is no CI yet, but suggest adding it. -->
-
-_What runs in CI, and what must pass before merge/release?_
+The release pipeline (`.github/workflows/release.yml`, generated by `cargo-dist`) builds and
+packages the binary for all target platforms on a tagged release. Day-to-day, `cargo test`
+and `cargo clippy` are the gates that must pass before changes are considered shippable. A
+dedicated CI workflow that runs the test suite on every push is a sensible future addition.
 
 ## Test data & environments
 
-<!-- LLM: How test data and environments are managed (fixtures, seeds, sandboxes, throwaway
-dirs). Remove if not applicable. -->
-
-_How are test data and environments set up and torn down?_
+End-to-end tests run the real binary inside a fresh `tempfile::TempDir` per test, so each one
+gets an isolated throwaway directory that is cleaned up automatically — no shared state, no
+fixtures to seed, and no risk of touching the working repo.
