@@ -1,57 +1,52 @@
-<!-- LLM: This document turns the experiences (1-EXPERIENCES.md) into concrete, checkable
-requirements. Read 0-MISSION.md and 1-EXPERIENCES.md first so every requirement traces back
-to an experience or goal. Interview the user to elicit requirements, then write each as a
-testable statement. Give every requirement a stable ID so 4-TESTING.md and ADRs can reference
-it. Remove LLM comments as you complete each section. -->
-
 # Requirements
 
-<!-- LLM: One-paragraph summary of the scope these requirements cover. -->
-
-_What must the system do, at a high level?_
+docgen must scaffold a fixed, standardized `docs/` tree into a git repo, add individual
+documents (including auto-numbered ADRs) on demand, and report what exists — all without
+ever destroying existing work. The templates it writes must carry the inline guidance that
+lets an AI agent fill them in. The tool ships as a single self-contained binary for macOS
+and Linux.
 
 ## Functional requirements
 
-<!-- LLM: The behaviors the system must exhibit. Interview the user, then write each as a
-single testable "the system shall..." statement with a stable ID. Group by area if helpful.
-Link each back to the experience it serves. Ask probing questions: inputs, outputs, edge
-cases, error handling, permissions. -->
-
 | ID | Requirement | Traces to |
 |---|---|---|
-| FR-1 | _The system shall …_ | _Experience / goal_ |
-| FR-2 | _The system shall …_ | _Experience / goal_ |
+| FR-1 | The system shall create the full standardized `docs/` tree (numbered docs plus `0-PRODUCT/`, `1-JOURNEYS/`, `2-ENGINEERING/`, and `2-ENGINEERING/ADRs/`) in the current directory via `docgen init`. | Scaffold the docs tree |
+| FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
+| FR-3 | The system shall add a single named document via `docgen add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
+| FR-4 | The system shall create the next-numbered ADR via `docgen add adr <slug>`, where the number is one greater than the highest existing `NNNN-*` record in the ADR directory (`0001` if none). | Record an architecture decision |
+| FR-5 | The system shall normalize an ADR slug to lowercase, hyphen-separated `[a-z0-9-]`, and reject a slug with no alphanumeric characters. | Record an architecture decision |
+| FR-6 | The system shall list every available template and whether it already exists on disk via `docgen list`, including the `adr` entry. | Add a single document |
+| FR-7 | The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime. | Fast and local |
+| FR-8 | The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero. | Add a single document |
+| FR-9 | The system shall provide installable agent skills (`docgen-install`, `docgen-init`, `docgen-fill`, `docgen-adr`) that drive the documentation lifecycle. | Fill in a document with an agent |
 
 ## Non-functional requirements
 
-<!-- LLM: Qualities and constraints rather than behaviors — performance, reliability,
-security, accessibility, portability, cost. Ask the user for concrete targets where possible
-("responds within Xms", "runs offline", "supports macOS and Linux"). -->
-
 | ID | Requirement | Target / constraint |
 |---|---|---|
-| NFR-1 | _Performance / reliability / security / …_ | _Measurable target_ |
-| NFR-2 | _…_ | _…_ |
+| NFR-1 | Portability | Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies. |
+| NFR-2 | Performance | Commands complete near-instantly (well under a second) on a typical repo. |
+| NFR-3 | Distribution | Installable via Homebrew tap, shell installer script, and `cargo install`. |
+| NFR-4 | Safety | No command destroys user data without an explicit `--force`. |
+| NFR-5 | Maintainability | Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required). |
+| NFR-6 | Toolchain | Builds with Rust 1.74+ (2021 edition). |
 
 ## Constraints & assumptions
 
-<!-- LLM: Capture fixed constraints (tech, regulatory, timeline, budget) and assumptions the
-requirements rely on. Ask: "What is non-negotiable? What are we taking for granted that, if
-wrong, would change these requirements?" -->
-
-- **Constraint:** _…_
-- **Assumption:** _…_
+- **Constraint:** Editing a template requires recompiling the binary, since templates are embedded via `include_dir`.
+- **Constraint:** The tree structure is fixed in the templates; docgen does not take a user-supplied layout.
+- **Assumption:** docgen is run at the root of the target git repo; the tree is created relative to the current directory.
+- **Assumption:** An AI coding agent (not docgen itself) writes the document content by following the inline guidance.
 
 ## Dependencies
 
-<!-- LLM: External systems, services, libraries, or teams this depends on. Note anything that
-could block delivery. Remove if none. -->
-
-- _Dependency — why it matters_
+- **`clap`** — command-line argument parsing (derive API).
+- **`include_dir`** — embeds the template tree into the binary at compile time.
+- **`anyhow` / `thiserror`** — error handling and reporting.
+- **`owo-colors`** — colored terminal output for `list`.
+- **`cargo-dist`** — generates the release workflow and Homebrew formula (build/release time only).
 
 ## Open questions
 
-<!-- LLM: Track unresolved requirement questions here rather than guessing. Each should name
-who needs to answer it. Clear them as they're resolved. -->
-
-- _Question — owner_
+- Should docgen support a config file or flags to customize the tree layout, or stay fixed? — maintainer
+- Should `list` / `add` operate on a non-current directory via a `--path` flag? — maintainer
