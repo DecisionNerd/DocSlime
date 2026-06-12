@@ -127,15 +127,27 @@ binary at compile time via [`include_dir`], so editing a template requires a reb
 ## Releasing
 
 Distribution is configured for [`cargo-dist`] in `Cargo.toml` (`[workspace.metadata.dist]`).
-First-time setup:
+The release workflow runs when a SemVer tag such as `v0.2.0` is pushed. It builds the
+macOS/Linux binaries, publishes a GitHub Release with the install script, and pushes the
+Homebrew formula to `DecisionNerd/homebrew-tap` using `HOMEBREW_TAP_TOKEN`.
 
-1. Create a `homebrew-tap` repo on GitHub (matches the `tap` field in `Cargo.toml`).
-2. Run `dist init` to generate `.github/workflows/release.yml`.
-3. Tag a release — CI builds the macOS/Linux binaries, publishes a GitHub Release with the
-   install script, and pushes the Homebrew formula to the tap:
+Release checklist:
+
+1. Update the package version in `Cargo.toml` and `Cargo.lock`.
+2. Run the local gates:
 
    ```sh
-   git tag v0.1.0 && git push --tags
+   cargo fmt --check
+   cargo test
+   cargo clippy --all-targets
+   ```
+
+3. Commit the version bump, then create and push the matching tag:
+
+   ```sh
+   git tag v0.2.0
+   git push origin main
+   git push origin v0.2.0
    ```
 
 [`include_dir`]: https://crates.io/crates/include_dir
