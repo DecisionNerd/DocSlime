@@ -57,7 +57,7 @@ scanning the ADR directory for the highest `NNNN-*` prefix.
 
 1. Dispatch to the add command; detect the literal `adr` — `commands::add`
 2. Normalize the slug to `[a-z0-9-]`; reject if empty — `commands::add`
-3. Scan `docs/2-ENGINEERING/ADRs/` for the highest `NNNN` prefix and add one — `commands::add`
+3. Scan `docs/3-ENGINEERING/ADRs/` for the highest `NNNN` prefix and add one — `commands::add`
 4. Write `NNNN-<slug>.md` from the embedded ADR template, non-destructively — `scaffold`
 
 These line up with the "Scaffold the docs tree" and "Record an architecture decision"
@@ -76,7 +76,7 @@ experiences in [`1-EXPERIENCES.md`](1-EXPERIENCES.md).
 
 ## Decisions
 
-- [Embed templates in the binary at compile time](2-ENGINEERING/ADRs/0001-embed-templates-in-binary.md) — keeps docgen a zero-dependency single binary.
+- [Embed templates in the binary at compile time](3-ENGINEERING/ADRs/0001-embed-templates-in-binary.md) — keeps docgen a zero-dependency single binary.
 
 ## Risks & trade-offs
 

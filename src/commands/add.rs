@@ -8,7 +8,7 @@ use crate::scaffold;
 use crate::templates::{self, FindError};
 
 /// Relative location of the ADR directory within the docs tree.
-const ADR_DIR: &str = "2-ENGINEERING/ADRs";
+const ADR_DIR: &str = "3-ENGINEERING/ADRs";
 
 /// Dispatch `add`: the literal `adr` triggers numbered-ADR creation; anything else resolves
 /// to a single embedded template.
@@ -31,7 +31,7 @@ pub fn run(root: &Path, doc: &str, slug: Option<&str>, force: bool) -> Result<()
     }
 }
 
-/// Create `docs/2-ENGINEERING/ADRs/NNNN-<slug>.md` from the ADR template, where `NNNN` is the
+/// Create `docs/3-ENGINEERING/ADRs/NNNN-<slug>.md` from the ADR template, where `NNNN` is the
 /// next number after the highest existing record.
 fn add_adr(root: &Path, slug: Option<&str>, force: bool) -> Result<()> {
     let slug = slug.context("`add adr` requires a slug, e.g. `docgen add adr my-decision`")?;
@@ -57,8 +57,7 @@ fn next_adr_number(adr_dir: &Path) -> Result<u32> {
         Ok(read) => read,
         Err(e) if e.kind() == std::io::ErrorKind::NotFound => return Ok(1),
         Err(e) => {
-            return Err(e)
-                .with_context(|| format!("failed to read {}", adr_dir.display()));
+            return Err(e).with_context(|| format!("failed to read {}", adr_dir.display()));
         }
     };
 

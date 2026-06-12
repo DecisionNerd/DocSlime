@@ -1,12 +1,13 @@
 ---
 name: docgen-init
-description: Scaffold the standardized, BDD-oriented docs/ tree into the current repo using docgen, then orient on what to fill in next.
+description: Scaffolds the standardized docgen docs tree with docgen init. Use when setting up project docs, initializing docs in a repo, or safely adding missing default docs.
 ---
 
 # docgen Init
 
 Scaffold the full `docs/` tree into the current git repo so the project's mission,
-experiences, requirements, architecture, and decisions live alongside the code.
+experiences, requirements, design guidance, architecture, and decisions live alongside the
+code.
 
 ## When to Use
 
@@ -49,7 +50,9 @@ docs/
 ├── 4-TESTING.md        # how we prove it works
 ├── 0-PRODUCT/          # product / market / mission detail
 ├── 1-JOURNEYS/         # personas and user journeys
-└── 2-ENGINEERING/      # technical docs
+├── 2-DESIGN/           # product design / style / accessibility guidance
+│   └── style-guide.md  # default style guide
+└── 3-ENGINEERING/      # technical docs
     └── ADRs/           # Architecture Decision Records
 ```
 

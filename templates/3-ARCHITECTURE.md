@@ -2,7 +2,7 @@
 (2-REQUIREMENTS.md). Read the prior docs first so the architecture clearly serves the
 requirements and experiences. Interview the user about the actual or intended design — don't
 invent components. Where a significant choice was made between alternatives, record it as an
-ADR in 2-ENGINEERING/ADRs/ and link to it here rather than arguing the decision inline.
+ADR in 3-ENGINEERING/ADRs/ and link to it here rather than arguing the decision inline.
 Remove LLM comments as you fill each section. -->
 
 # Architecture
@@ -68,7 +68,7 @@ and how they're addressed. Drop the ones that don't apply. -->
 re-argue them here. If no ADRs exist yet, prompt the user: "What were the big either/or
 choices? Each deserves an ADR." Use `docgen add adr <slug>` to create one. -->
 
-- _[ADR-0001 — short title](2-ENGINEERING/ADRs/0001-*.md)_
+- _[ADR-0001 — short title](3-ENGINEERING/ADRs/0001-*.md)_
 
 ## Risks & trade-offs
 

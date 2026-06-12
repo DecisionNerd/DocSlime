@@ -69,8 +69,7 @@ pub fn write_file(path: &Path, contents: &[u8], force: bool) -> Result<Outcome> 
         return Ok(Outcome::Skipped);
     }
 
-    fs::write(path, contents)
-        .with_context(|| format!("failed to write {}", path.display()))?;
+    fs::write(path, contents).with_context(|| format!("failed to write {}", path.display()))?;
 
     let outcome = if exists {
         Outcome::Overwritten

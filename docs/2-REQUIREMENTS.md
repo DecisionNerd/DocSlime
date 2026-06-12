@@ -10,7 +10,7 @@ and Linux.
 
 | ID | Requirement | Traces to |
 |---|---|---|
-| FR-1 | The system shall create the full standardized `docs/` tree (numbered docs plus `0-PRODUCT/`, `1-JOURNEYS/`, `2-ENGINEERING/`, and `2-ENGINEERING/ADRs/`) in the current directory via `docgen init`. | Scaffold the docs tree |
+| FR-1 | The system shall create the full standardized `docs/` tree (numbered docs plus `0-PRODUCT/`, `1-JOURNEYS/`, `2-DESIGN/style-guide.md`, `3-ENGINEERING/`, and `3-ENGINEERING/ADRs/`) in the current directory via `docgen init`. | Scaffold the docs tree |
 | FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
 | FR-3 | The system shall add a single named document via `docgen add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
 | FR-4 | The system shall create the next-numbered ADR via `docgen add adr <slug>`, where the number is one greater than the highest existing `NNNN-*` record in the ADR directory (`0001` if none). | Record an architecture decision |
@@ -18,7 +18,8 @@ and Linux.
 | FR-6 | The system shall list every available template and whether it already exists on disk via `docgen list`, including the `adr` entry. | Add a single document |
 | FR-7 | The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime. | Fast and local |
 | FR-8 | The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero. | Add a single document |
-| FR-9 | The system shall provide installable agent skills (`docgen-install`, `docgen-init`, `docgen-fill`, `docgen-adr`) that drive the documentation lifecycle. | Fill in a document with an agent |
+| FR-9 | The system shall provide installable agent skills (`docgen-install`, `docgen-init`, `docgen-fill`, `docgen-adr`, `docgen-kiss`) that drive the documentation lifecycle. | Fill in and improve documents with an agent |
+| FR-10 | The `docgen-kiss` skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content. | Tighten docs after filling |
 
 ## Non-functional requirements
 

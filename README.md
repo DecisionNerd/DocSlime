@@ -5,9 +5,9 @@ git repo. The templates are written to be filled in by an AI coding agent in con
 with you — each document carries inline `<!-- LLM: ... -->` guidance telling the agent what to
 interview you about and how to write each section.
 
-The point is to keep a project's **mission, experiences, requirements, architecture, and
-decisions in the repo itself**, so both people and coding agents have full context locally
-instead of reaching for an external source.
+The point is to keep a project's **mission, experiences, requirements, design guidance,
+architecture, and decisions in the repo itself**, so both people and coding agents have full
+context locally instead of reaching for an external source.
 
 ## The tree it creates
 
@@ -23,7 +23,10 @@ docs/
 │   └── README.md
 ├── 1-JOURNEYS/         # user personas, user journeys, and other experience detail
 │   └── README.md
-└── 2-ENGINEERING/      # technical documentation including testing docs
+├── 2-DESIGN/           # product design, style, and accessibility guidance
+│   ├── README.md
+│   └── style-guide.md
+└── 3-ENGINEERING/      # technical documentation including testing docs
     ├── README.md
     └── ADRs/           # Architecture Decision Records
         └── README.md
@@ -73,13 +76,27 @@ fills each part in.
 
 ## Use with an AI agent (skills)
 
-docgen ships a set of [agent skills](.agents/skills) that teach Claude Code, Codex, Cursor,
-and other skill-aware tools how to drive the whole documentation lifecycle. Install them once
-per machine:
+docgen ships a set of [agent skills](.agents/skills) that teach Codex, Claude Code, ChatGPT,
+and other skill-aware tools how to drive the whole documentation lifecycle. They are plain
+`SKILL.md` folders with `name` / `description` frontmatter, plus `agents/openai.yaml`
+metadata for OpenAI/Codex-style interfaces.
+
+Install them with the Skills CLI:
 
 ```sh
 npx skills add DecisionNerd/docgen
 ```
+
+For a specific coding agent:
+
+```sh
+npx skills add DecisionNerd/docgen --agent codex
+npx skills add DecisionNerd/docgen --agent claude-code
+```
+
+ChatGPT and Claude Desktop use their own Skills UI / import flows rather than sharing local
+project installs automatically, but the same skill folders follow the open Agent Skills
+shape and can be reused there.
 
 Then invoke them from inside your AI tool:
 
@@ -89,9 +106,10 @@ Then invoke them from inside your AI tool:
 | `docgen-init`    | Scaffold the `docs/` tree into the current repo and orient on what to fill in. |
 | `docgen-fill`    | Interview you and fill in a document, following its inline `<!-- LLM: ... -->` guidance. |
 | `docgen-adr`     | Create the next-numbered ADR and fill it in by interviewing you about one decision. |
+| `docgen-kiss`    | Review docs for bloat, AI slop, weak traceability, and best-practice cleanup. |
 
 A typical first run: `/docgen-install` → `/docgen-init` → `/docgen-fill` starting with
-`0-MISSION.md`.
+`0-MISSION.md`, then `/docgen-kiss` once docs are filled enough to tighten.
 
 ## Development
 

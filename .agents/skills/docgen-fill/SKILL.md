@@ -1,6 +1,6 @@
 ---
 name: docgen-fill
-description: Fill in a docgen document by interviewing the user and following the inline LLM guidance comments, removing each comment as its section is completed.
+description: Fills scaffolded docgen documents by interviewing the user and removing inline LLM guidance. Use when writing mission, experiences, requirements, design, architecture, testing docs, or resolving placeholders.
 ---
 
 # docgen Fill
@@ -33,7 +33,8 @@ reference earlier ones:
 4. `3-ARCHITECTURE.md` — how it's designed (decisions captured as ADRs — see **docgen-adr**)
 5. `4-TESTING.md` — how we prove it fulfills the mission
 
-`0-PRODUCT/` and `2-ENGINEERING/` hold deeper detail beyond the top-level docs.
+`0-PRODUCT/`, `1-JOURNEYS/`, `2-DESIGN/`, and `3-ENGINEERING/` hold deeper detail beyond
+the top-level docs.
 
 ## Steps
 
@@ -78,5 +79,6 @@ grep -rn "LLM:" docs/
 ```
 
 Anything still listed is unfinished. When the target doc is clean, summarize what you wrote
-and offer to move to the next document in the chain (or to record an architecture decision
-with the **docgen-adr** skill).
+and offer to move to the next document in the chain, record an architecture decision with
+the **docgen-adr** skill, or run **docgen-kiss** once enough docs exist to tighten bloat and
+generic AI prose.

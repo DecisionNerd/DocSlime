@@ -21,7 +21,7 @@ verified together through the CLI, so the black-box tests double as integration 
 
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
 |---|---|---|
-| Scaffold the docs tree / FR-1 | Given an empty dir, When `init`, Then the full 10-file tree exists | `tests/cli.rs::init_creates_full_tree` |
+| Scaffold the docs tree / FR-1 | Given an empty dir, When `init`, Then the full 12-file tree exists | `tests/cli.rs::init_creates_full_tree` |
 | Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
 | Non-destructive by default / FR-2 | Given an edited file, When `init` re-runs, Then the file is left untouched | `tests/cli.rs::init_skips_existing_files` |
 | Force overwrite / FR-2 | Given an edited file, When `init --force`, Then the template is restored | `tests/cli.rs::init_force_overwrites` |
@@ -32,6 +32,7 @@ verified together through the CLI, so the black-box tests double as integration 
 | ADR slug required / FR-5 | Given no slug, When `add adr`, Then it fails | `tests/cli.rs::add_adr_requires_slug` |
 | List templates / FR-6 | When `list`, Then every template is shown | `tests/cli.rs::list_shows_every_template` |
 | List reflects disk state / FR-6 | Given some files exist, When `list`, Then status reflects what's on disk | `tests/cli.rs::list_reflects_on_disk_status` |
+| Agent skill structure / FR-9, FR-10 | Given the bundled docgen skills, When validated, Then their frontmatter and metadata are well-formed | `skill-creator/scripts/quick_validate.py .agents/skills/<skill>` |
 | Slug normalization / FR-5 | Mixed-case/spaced input normalizes to `[a-z0-9-]`; empty rejected | `src/commands/add.rs::normalize_slug_lowercases_and_hyphenates` |
 | ADR numbering helper / FR-4 | Missing dir → `1`; filename prefix parsed correctly | `src/commands/add.rs::next_adr_number_is_one_when_dir_missing`, `leading_number_parses_prefix` |
 

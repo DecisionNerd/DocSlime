@@ -5,8 +5,8 @@ use clap::{Parser, Subcommand};
 /// Scaffold a standardized, BDD-oriented `docs/` tree into a repo.
 ///
 /// The templates are designed to be filled in by an AI coding agent in conversation with
-/// the user, keeping the project's mission, experiences, requirements, architecture, and
-/// decisions in the repo itself.
+/// the user, keeping the project's mission, experiences, requirements, design guidance,
+/// architecture, and decisions in the repo itself.
 #[derive(Debug, Parser)]
 #[command(name = "docgen", version, about, long_about = None)]
 pub struct Cli {
@@ -37,7 +37,7 @@ Two modes, chosen by the DOC argument:
       docgen add 3-ARCHITECTURE.md
 
   ADR — pass the literal `adr` plus a slug to create an Architecture
-  Decision Record. The file is written to docs/2-ENGINEERING/ADRs/ as
+  Decision Record. The file is written to docs/3-ENGINEERING/ADRs/ as
   NNNN-<slug>.md, where NNNN is the next number after the highest
   existing record (0001 if there are none yet). The slug is lower-cased
   and hyphenated, so `\"My First Decision\"` becomes `my-first-decision`.

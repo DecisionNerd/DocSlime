@@ -2,9 +2,9 @@
 
 docgen scaffolds a standardized, behavior-driven documentation tree into any git repo, with
 templates written to be filled in by an AI coding agent in conversation with the team. It
-exists so that a project's mission, experiences, requirements, architecture, and decisions
-live in the repo itself — giving both people and coding agents full local context instead of
-scattering it across external tools.
+exists so that a project's mission, experiences, requirements, design guidance, architecture,
+and decisions live in the repo itself — giving both people and coding agents full local
+context instead of scattering it across external tools.
 
 ## Problem
 
@@ -20,16 +20,17 @@ context matters most.
 
 docgen is the dependable, low-friction way for a team to stand up agent-ready project docs.
 A team runs `docgen init`, and within minutes an agent has interviewed them and produced a
-real mission, requirements, and architecture record — not empty boilerplate. The numbered
-tree becomes a familiar shape across the team's repos, so anyone (human or agent) opening a
-project knows exactly where the intent lives. It does this one thing well and stays small.
+real mission, requirements, design, and architecture record — not empty boilerplate. The
+numbered tree becomes a familiar shape across the team's repos, so anyone (human or agent)
+opening a project knows exactly where the intent lives. It does this one thing well and stays
+small.
 
 ## Goals
 
 - Give every repo a consistent, behavior-driven doc structure that agents can both read and write.
 - Make the path from `docgen init` to a genuinely useful, filled-in document short and low-friction.
 - Ensure scaffolded docs actually get completed, not abandoned as empty templates.
-- Keep project intent — mission, requirements, decisions — local to the repo and version-controlled.
+- Keep project intent — mission, requirements, design guidance, decisions — local to the repo and version-controlled.
 
 ## Non-goals
 
@@ -42,7 +43,7 @@ project knows exactly where the intent lives. It does this one thing well and st
 
 - **Docs get filled:** scaffolded documents are completed (no leftover `<!-- LLM: -->` guidance), not left as empty templates.
 - **Adoption:** number of repos using docgen, plus Homebrew and `npx skills` installs.
-- **Agent context quality:** agents give better, less speculative answers because mission, requirements, and ADRs live in the repo.
+- **Agent context quality:** agents give better, less speculative answers because mission, requirements, design guidance, and ADRs live in the repo.
 - **Low friction:** short time from `docgen init` to a first useful, filled-in document.
 
 ## Stakeholders

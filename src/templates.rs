@@ -40,7 +40,7 @@ pub fn relative_paths() -> Vec<&'static str> {
 /// Resolve a user-supplied `add <doc>` argument to a single template file.
 ///
 /// Resolution is tried in order:
-/// 1. exact relative-path match (`2-ENGINEERING/ADRs/README.md`)
+/// 1. exact relative-path match (`3-ENGINEERING/ADRs/README.md`)
 /// 2. relative path with the `.md` extension optional (`0-MISSION` -> `0-MISSION.md`)
 /// 3. unambiguous case-insensitive basename match (`MISSION` -> `0-MISSION.md`)
 ///
@@ -55,7 +55,10 @@ pub fn find(name: &str) -> Result<&'static File<'static>, FindError> {
 
     // 2. relative path with optional `.md`
     let with_md = format!("{name}.md");
-    if let Some(f) = files.iter().find(|f| f.path().to_str() == Some(with_md.as_str())) {
+    if let Some(f) = files
+        .iter()
+        .find(|f| f.path().to_str() == Some(with_md.as_str()))
+    {
         return Ok(f);
     }
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "docgen Install"
+  short_description: "Install and verify the docgen CLI"
+  default_prompt: "Use $docgen-install to verify docgen is installed and get it ready for this repo."

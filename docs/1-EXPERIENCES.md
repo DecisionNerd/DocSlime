@@ -48,7 +48,7 @@ valid template names.
 
 - **Given** an ADR directory with records up to `0003-*`
 - **When** I run `docgen add adr use-postgres`
-- **Then** `docs/2-ENGINEERING/ADRs/0004-use-postgres.md` is created from the ADR template
+- **Then** `docs/3-ENGINEERING/ADRs/0004-use-postgres.md` is created from the ADR template
 
 Must not happen: numbering collides or restarts. docgen always picks the next number after
 the highest existing record (`0001` if there are none).
@@ -67,11 +67,26 @@ the highest existing record (`0001` if there are none).
 Must not happen: the agent fabricates facts or leaves guidance comments behind. A finished
 doc has no `LLM:` comments and no leftover placeholder prompts.
 
+### Tighten docs after filling
+
+> **As a** developer with filled-in docs
+> **I want** my agent to challenge whether they are bloated, generic, or full of AI slop
+> **So that** the docs stay useful, truthful, and easy to maintain
+
+- **Given** a filled or partially filled docgen tree
+- **When** I ask the agent to run the `docgen-kiss` skill
+- **Then** it gives a clear KISS verdict, flags concrete bloat with file references, and
+  recommends the smallest best-practice cleanup
+
+Must not happen: the review rewards longer docs just because they sound polished. The skill
+should prefer cutting or tightening filler over rewriting it into prettier filler.
+
 ## Experience principles
 
 - **Non-destructive by default** — existing files are never overwritten without an explicit `--force`.
 - **Forgiving input** — document names and ADR slugs are matched and normalized leniently.
 - **Self-explaining** — every template tells the agent (and the human) what to do; no external manual required.
+- **KISS after filling** — filled docs should be challenged for bloat, generic prose, and weak traceability.
 - **Fast and local** — commands run instantly against the filesystem, and the output lives in the repo.
 - **Small surface** — three commands (`init`, `add`, `list`) cover the whole tool.
 

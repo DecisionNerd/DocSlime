@@ -1,6 +1,6 @@
 ---
 name: docgen-adr
-description: Create the next-numbered Architecture Decision Record with docgen and fill it in by interviewing the user about one decision, then update the decision log.
+description: Creates and fills the next-numbered docgen Architecture Decision Record. Use when recording a significant product or technical decision, documenting why an option was chosen, or adding an ADR.
 ---
 
 # docgen ADR
@@ -19,7 +19,7 @@ its consequences — so the reasoning lives in the repo alongside the code.
 ## Prerequisites
 
 The `docs/` tree must exist (run **docgen-init** if not) and `docgen` must be installed (run
-**docgen-install** if not). ADRs live in `docs/2-ENGINEERING/ADRs/`.
+**docgen-install** if not). ADRs live in `docs/3-ENGINEERING/ADRs/`.
 
 ## Steps
 
@@ -30,7 +30,7 @@ docgen add adr <short-slug>
 ```
 
 `<slug>` is a short kebab name for the decision, e.g. `use-postgres`. docgen writes
-`docs/2-ENGINEERING/ADRs/NNNN-<slug>.md`, where `NNNN` is the next number after the highest
+`docs/3-ENGINEERING/ADRs/NNNN-<slug>.md`, where `NNNN` is the next number after the highest
 existing record (`0001` if there are none). The slug is lower-cased and hyphenated
 automatically, so `docgen add adr "Use Postgres"` produces `0002-use-postgres.md`.
 
@@ -55,7 +55,7 @@ comment and replace each `_italic prompt_` as you complete its section.
 
 ### 3 — Update the decision log
 
-Add a row for this ADR to the table in `docs/2-ENGINEERING/ADRs/README.md`:
+Add a row for this ADR to the table in `docs/3-ENGINEERING/ADRs/README.md`:
 
 ```
 | 0002 | Use Postgres | Accepted | 2026-06-02 |
@@ -71,7 +71,7 @@ that supersedes it, and set the old one's status to `Superseded by ADR-NNNN`.
 ### 5 — Verify and report
 
 ```bash
-grep -rn "LLM:" docs/2-ENGINEERING/ADRs/
+grep -rn "LLM:" docs/3-ENGINEERING/ADRs/
 ```
 
 When the new ADR and the log are clean, summarize the decision and the record's number.

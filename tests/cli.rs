@@ -7,7 +7,7 @@ use assert_cmd::Command;
 use predicates::prelude::*;
 use tempfile::TempDir;
 
-/// The 10 files `init` is expected to create, relative to `docs/`.
+/// The 12 files `init` is expected to create, relative to `docs/`.
 const EXPECTED: &[&str] = &[
     "README.md",
     "0-MISSION.md",
@@ -17,8 +17,10 @@ const EXPECTED: &[&str] = &[
     "4-TESTING.md",
     "0-PRODUCT/README.md",
     "1-JOURNEYS/README.md",
-    "2-ENGINEERING/README.md",
-    "2-ENGINEERING/ADRs/README.md",
+    "2-DESIGN/README.md",
+    "2-DESIGN/style-guide.md",
+    "3-ENGINEERING/README.md",
+    "3-ENGINEERING/ADRs/README.md",
 ];
 
 fn docgen(dir: &Path) -> Command {
@@ -123,7 +125,7 @@ fn add_adr_numbers_sequentially() {
         .assert()
         .success();
 
-    let adr_dir = tmp.path().join("docs/2-ENGINEERING/ADRs");
+    let adr_dir = tmp.path().join("docs/3-ENGINEERING/ADRs");
     assert!(adr_dir.join("0001-my-first-decision.md").is_file());
     assert!(adr_dir.join("0002-second-one.md").is_file());
 }
@@ -138,7 +140,7 @@ fn add_adr_starts_at_one_without_init() {
 
     assert!(tmp
         .path()
-        .join("docs/2-ENGINEERING/ADRs/0001-first.md")
+        .join("docs/3-ENGINEERING/ADRs/0001-first.md")
         .is_file());
 }
 

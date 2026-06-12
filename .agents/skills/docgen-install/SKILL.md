@@ -1,6 +1,6 @@
 ---
 name: docgen-install
-description: Check whether the docgen CLI is installed and install it if missing, so the docs-scaffolding skills can run.
+description: Verifies and installs the docgen CLI. Use when setting up docgen, after installing the skill pack with npx skills, or when a docgen command is missing.
 ---
 
 # docgen Install
