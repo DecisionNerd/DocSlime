@@ -1,4 +1,34 @@
 (function () {
+  function buildBrandLogo() {
+    var logo = document.createElement('img');
+    logo.className = 'docslime-brand-logo';
+    logo.src = '/assets/favicon.svg';
+    logo.alt = '';
+    logo.decoding = 'async';
+    logo.setAttribute('aria-hidden', 'true');
+    return logo;
+  }
+
+  function enhanceBrandLabel(target) {
+    if (!target || target.dataset.docslimeBrandEnhanced === 'true') {
+      return;
+    }
+
+    var label = target.textContent.trim() || 'DocSlime';
+    var wordmark = document.createElement('span');
+    wordmark.className = 'docslime-brand-wordmark';
+    wordmark.textContent = label;
+
+    target.dataset.docslimeBrandEnhanced = 'true';
+    target.textContent = '';
+    target.appendChild(buildBrandLogo());
+    target.appendChild(wordmark);
+  }
+
+  function enhanceBranding() {
+    enhanceBrandLabel(document.querySelector('.sidebar-header h1 > a'));
+  }
+
   function enhanceMobileMenu() {
     var control = document.querySelector('.sidebar-menu-button');
     var sidebar = document.querySelector('.sidebar');
@@ -42,12 +72,19 @@
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', enhanceMobileMenu);
+    document.addEventListener('DOMContentLoaded', function () {
+      enhanceBranding();
+      enhanceMobileMenu();
+    });
   } else {
+    enhanceBranding();
     enhanceMobileMenu();
   }
 
-  new MutationObserver(enhanceMobileMenu).observe(document.documentElement, {
+  new MutationObserver(function () {
+    enhanceBranding();
+    enhanceMobileMenu();
+  }).observe(document.documentElement, {
     childList: true,
     subtree: true
   });

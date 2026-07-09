@@ -114,6 +114,35 @@ a:hover {
   color: var(--text-heading);
 }
 
+.sidebar h1 a {
+  align-items: center;
+  display: inline-flex;
+  gap: 0.55rem;
+  letter-spacing: 0;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.sidebar h1 a:hover {
+  text-decoration: none;
+}
+
+.docslime-brand-logo {
+  display: block;
+  flex: 0 0 auto;
+  height: 1.85rem;
+  width: 1.85rem;
+}
+
+.sidebar-header .docslime-brand-logo {
+  height: 2rem;
+  width: 2rem;
+}
+
+.docslime-brand-wordmark {
+  min-width: 0;
+}
+
 .sidebar nav li a,
 .docmd-options-menu .theme-toggle-button,
 .docmd-options-menu .docmd-search-trigger {
