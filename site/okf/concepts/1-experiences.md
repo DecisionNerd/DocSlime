@@ -1,12 +1,12 @@
 ---
 type: concept
 title: Experiences
-source: /1-EXPERIENCES/
+source: "https://www.docslime.dev/1-EXPERIENCES/"
 path: /1-EXPERIENCES/
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.224Z"
+  generated_at: "2026-07-09T20:10:32.448Z"
 ---
 # Experiences
 

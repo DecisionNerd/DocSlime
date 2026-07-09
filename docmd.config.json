@@ -1,6 +1,6 @@
 {
-  "title": "My Documentation",
-  "url": "https://docs.myproject.com",
+  "title": "DocSlime",
+  "url": "https://www.docslime.dev",
   "src": "docs",
   "out": "site",
   "engine": "js",
@@ -22,7 +22,7 @@
     },
     "footer": {
       "style": "minimal",
-      "content": "© 2026 My Project.",
+      "content": "© 2026 DecisionNerd. DocSlime documentation.",
       "branding": true
     }
   },
@@ -36,20 +36,24 @@
   "copyCode": true,
   "pageNavigation": true,
   "navigation": [
-    { "title": "Quick Start", "path": "/", "icon": "zap" },
-    { "title": "Agent Skills", "path": "/skills/", "icon": "brain-circuit" }
+    { "title": "Overview", "path": "/", "icon": "zap" },
+    { "title": "Product", "path": "/PRODUCT/", "icon": "target" },
+    { "title": "Experiences", "path": "/1-EXPERIENCES/", "icon": "route" },
+    { "title": "Requirements", "path": "/2-REQUIREMENTS/", "icon": "list-checks" },
+    { "title": "Design", "path": "/DESIGN/", "icon": "palette" },
+    { "title": "Architecture", "path": "/3-ARCHITECTURE/", "icon": "boxes" },
+    { "title": "Testing", "path": "/4-TESTING/", "icon": "flask-conical" },
+    { "title": "Agent Skills", "path": "/skills/", "icon": "brain-circuit" },
     {
-      "title": "Quick Guide",
-      "icon": "book-open",
+      "title": "Engineering",
+      "icon": "wrench",
       "collapsible": false,
       "children": [
-        { "title": "Install", "path": "https://docs.docmd.io/getting-started/installation/", "icon": "download", "external": true },
-        { "title": "Configure", "path": "https://docs.docmd.io/configuration/overview/", "icon": "settings", "external": true },
-        { "title": "Migrate", "path": "https://docs.docmd.io/migration/overview/", "icon": "arrow-left-right", "external": true },
-        { "title": "Deploy", "path": "https://docs.docmd.io/deployment/", "icon": "rocket", "external": true }
+        { "title": "Engineering Notes", "path": "/3-ENGINEERING/", "icon": "file-code" },
+        { "title": "ADRs", "path": "/3-ENGINEERING/ADRs/", "icon": "scroll-text" }
       ]
     },
-    { "title": "GitHub", "path": "https://github.com/docmd-io/docmd", "icon": "github", "external": true }
+    { "title": "GitHub", "path": "https://github.com/DecisionNerd/DocSlime", "icon": "github", "external": true }
   ],
   "plugins": {
     "git": {
@@ -57,7 +61,10 @@
       "maxCommits": 5
     },
     "seo": {
-      "defaultDescription": "Documentation built with docmd."
+      "defaultDescription": "DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo."
+    },
+    "okf": {
+      "warnOnMissingType": false
     }
   }
 }

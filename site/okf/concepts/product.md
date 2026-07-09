@@ -1,12 +1,12 @@
 ---
 type: concept
 title: Product
-source: /PRODUCT/
+source: "https://www.docslime.dev/PRODUCT/"
 path: /PRODUCT/
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.229Z"
+  generated_at: "2026-07-09T20:10:32.450Z"
 ---
 # Product
 
