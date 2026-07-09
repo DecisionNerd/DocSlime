@@ -1,4 +1,0 @@
-interface:
-  display_name: "docgen KISS"
-  short_description: "Trim bloated docs into useful shape"
-  default_prompt: "Use $docgen-kiss to review this docs tree for bloat, AI slop, and best-practice fixes."

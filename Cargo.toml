@@ -1,16 +1,16 @@
 [package]
-name = "docgen"
-version = "0.2.0"
+name = "docslime"
+version = "0.3.0"
 edition = "2021"
 rust-version = "1.74"
-description = "Scaffold a standardized, BDD-oriented docs/ tree for AI agents to fill in"
+description = "Opinionated DocSlime docs scaffolding for AI agents, TDD+BDD, DDD, and ADRs"
 license = "MIT"
-homepage = "https://github.com/DecisionNerd/docgen"
-repository = "https://github.com/DecisionNerd/docgen"
+homepage = "https://docmd.io"
+repository = "https://github.com/DecisionNerd/DocSlime"
 readme = "README.md"
 
 [[bin]]
-name = "docgen"
+name = "docslime"
 path = "src/main.rs"
 
 [dependencies]

@@ -66,7 +66,7 @@ and how they're addressed. Drop the ones that don't apply. -->
 
 <!-- LLM: List the significant architectural decisions, each linking to its ADR. Do not
 re-argue them here. If no ADRs exist yet, prompt the user: "What were the big either/or
-choices? Each deserves an ADR." Use `docgen add adr <slug>` to create one. -->
+choices? Each deserves an ADR." Use `docslime add adr <slug>` to create one. -->
 
 - _[ADR-0001 — short title](3-ENGINEERING/ADRs/0001-*.md)_
 

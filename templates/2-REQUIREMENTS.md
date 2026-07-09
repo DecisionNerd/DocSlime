@@ -1,5 +1,5 @@
 <!-- LLM: This document turns the experiences (1-EXPERIENCES.md) into concrete, checkable
-requirements. Read 0-MISSION.md and 1-EXPERIENCES.md first so every requirement traces back
+requirements. Read PRODUCT.md and 1-EXPERIENCES.md first so every requirement traces back
 to an experience or goal. Interview the user to elicit requirements, then write each as a
 testable statement. Give every requirement a stable ID so 4-TESTING.md and ADRs can reference
 it. Remove LLM comments as you complete each section. -->

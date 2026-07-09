@@ -10,7 +10,7 @@ use include_dir::{include_dir, Dir, File};
 /// The full `docs/` template tree, embedded at compile time.
 static TEMPLATES: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/templates");
 
-/// The single-record ADR template, used by `docgen add adr <slug>`.
+/// The single-record ADR template, used by `docslime add adr <slug>`.
 pub const ADR_TEMPLATE: &str = include_str!("../assets/adr.md");
 
 /// Every template file in the tree, in a stable (sorted-by-path) order.
@@ -41,8 +41,8 @@ pub fn relative_paths() -> Vec<&'static str> {
 ///
 /// Resolution is tried in order:
 /// 1. exact relative-path match (`3-ENGINEERING/ADRs/README.md`)
-/// 2. relative path with the `.md` extension optional (`0-MISSION` -> `0-MISSION.md`)
-/// 3. unambiguous case-insensitive basename match (`MISSION` -> `0-MISSION.md`)
+/// 2. relative path with the `.md` extension optional (`PRODUCT` -> `PRODUCT.md`)
+/// 3. unambiguous case-insensitive basename match (`PRODUCT` -> `PRODUCT.md`)
 ///
 /// Returns `Err` with the list of candidate paths when the name is unknown or ambiguous.
 pub fn find(name: &str) -> Result<&'static File<'static>, FindError> {

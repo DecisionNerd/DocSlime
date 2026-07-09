@@ -26,7 +26,7 @@ Significant engineering and product decisions are recorded as ADRs in [`ADRs/`](
 Create the next one with:
 
 ```
-docgen add adr <short-slug>
+docslime add adr <short-slug>
 ```
 
 ## Index

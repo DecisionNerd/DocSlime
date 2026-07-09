@@ -1,0 +1,4 @@
+interface:
+  display_name: "DocSlime KISS"
+  short_description: "Trim bloated docs into useful shape"
+  default_prompt: "Use $docslime-kiss to review this docs tree for bloat, AI slop, and best-practice fixes."

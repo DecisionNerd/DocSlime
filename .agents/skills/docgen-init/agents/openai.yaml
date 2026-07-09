@@ -1,4 +1,0 @@
-interface:
-  display_name: "docgen Init"
-  short_description: "Scaffold the standard docs tree"
-  default_prompt: "Use $docgen-init to scaffold the docgen docs tree in this repository."

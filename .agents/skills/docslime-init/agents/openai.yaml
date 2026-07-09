@@ -1,0 +1,4 @@
+interface:
+  display_name: "DocSlime Init"
+  short_description: "Scaffold the standard docs tree"
+  default_prompt: "Use $docslime-init to scaffold the DocSlime docs tree in this repository."

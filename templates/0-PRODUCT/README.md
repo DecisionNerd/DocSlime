@@ -1,13 +1,13 @@
-<!-- LLM: This folder holds product, market, and mission detail that is too deep for
-0-MISSION.md. Use it for things like market analysis, competitive landscape, positioning,
+<!-- LLM: This folder holds product, market, positioning, and publication detail that is too deep for
+PRODUCT.md. Use it for things like market analysis, competitive landscape, positioning,
 pricing, roadmap, and detailed product requirements. Interview the user about which of these
 exist or are needed; create one focused file per topic rather than one giant file. Update the
 index below as files are added. Remove LLM comments as you go. -->
 
 # Product
 
-This folder expands on [`../0-MISSION.md`](../0-MISSION.md) with the product, market, and
-mission detail that doesn't belong in the top-level mission statement.
+This folder expands on [`../PRODUCT.md`](../PRODUCT.md) with product, market, positioning,
+and publication detail that doesn't belong in the compact top-level product context.
 
 ## What lives here
 

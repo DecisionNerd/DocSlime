@@ -1,4 +1,4 @@
-//! `docgen list` — show available templates and whether each exists on disk.
+//! `docslime list` — show available templates and whether each exists on disk.
 
 use std::path::Path;
 
@@ -24,7 +24,7 @@ pub fn run(root: &Path) -> Result<()> {
     }
 
     println!(
-        "\n  {}  create the next-numbered ADR via `docgen add adr <slug>`",
+        "\n  {}  create the next-numbered ADR via `docslime add adr <slug>`",
         "adr".cyan()
     );
     Ok(())

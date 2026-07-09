@@ -1,9 +1,9 @@
 ---
-name: docgen-adr
-description: Creates and fills the next-numbered docgen Architecture Decision Record. Use when recording a significant product or technical decision, documenting why an option was chosen, or adding an ADR.
+name: docslime-adr
+description: Creates and fills the next-numbered DocSlime Architecture Decision Record. Use when recording a significant product or technical decision, documenting why an option was chosen, or adding an ADR.
 ---
 
-# docgen ADR
+# DocSlime ADR
 
 Record a single architecture decision as an ADR — the context, the options, the choice, and
 its consequences — so the reasoning lives in the repo alongside the code.
@@ -18,21 +18,21 @@ its consequences — so the reasoning lives in the repo alongside the code.
 
 ## Prerequisites
 
-The `docs/` tree must exist (run **docgen-init** if not) and `docgen` must be installed (run
-**docgen-install** if not). ADRs live in `docs/3-ENGINEERING/ADRs/`.
+The `docs/` tree must exist (run **docslime-init** if not) and `docslime` must be installed (run
+**docslime-install** if not). ADRs live in `docs/3-ENGINEERING/ADRs/`.
 
 ## Steps
 
 ### 1 — Create the next-numbered record
 
 ```bash
-docgen add adr <short-slug>
+docslime add adr <short-slug>
 ```
 
-`<slug>` is a short kebab name for the decision, e.g. `use-postgres`. docgen writes
+`<slug>` is a short kebab name for the decision, e.g. `use-postgres`. `docslime` writes
 `docs/3-ENGINEERING/ADRs/NNNN-<slug>.md`, where `NNNN` is the next number after the highest
 existing record (`0001` if there are none). The slug is lower-cased and hyphenated
-automatically, so `docgen add adr "Use Postgres"` produces `0002-use-postgres.md`.
+automatically, so `docslime add adr "Use Postgres"` produces `0002-use-postgres.md`.
 
 If you don't know the slug yet, ask the user for a 2–4 word name for the decision first.
 

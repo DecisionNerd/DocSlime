@@ -1,0 +1,4 @@
+interface:
+  display_name: "DocSlime Install"
+  short_description: "Install and verify the docslime CLI"
+  default_prompt: "Use $docslime-install to verify DocSlime is installed and get it ready for this repo."

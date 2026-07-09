@@ -6,7 +6,7 @@
 
 ## Context
 
-docgen's job is to write a tree of Markdown templates into a user's repo. Those templates
+DocSlime's job is to write a tree of Markdown templates into a user's repo. Those templates
 have to reach the user's machine somehow. The tool's requirements call for a portable,
 zero-runtime-dependency binary that works offline (NFR-1, FR-7) and installs cleanly via
 Homebrew, a shell script, or `cargo install` (NFR-3). Whatever mechanism delivers the
@@ -35,13 +35,13 @@ network access, at runtime.
 ## Decision
 
 We will embed the entire template tree in the binary at compile time, using `include_dir!`
-for the `init` tree and `include_str!` for the standalone ADR template. This makes docgen a
+for the `init` tree and `include_str!` for the standalone ADR template. This makes DocSlime a
 single self-contained binary with no runtime dependencies, satisfying the portability,
 offline, and distribution requirements directly.
 
 ## Consequences
 
-- **Positive:** docgen ships as one artifact that runs anywhere with no setup, no network,
+- **Positive:** DocSlime ships as one artifact that runs anywhere with no setup, no network,
   and nothing to locate at runtime — which keeps installation and usage friction low.
 - **Negative:** Any template change requires recompiling and cutting a new release; users
   cannot customize the templates without rebuilding from source.

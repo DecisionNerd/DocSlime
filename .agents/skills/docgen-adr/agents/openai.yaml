@@ -1,4 +1,0 @@
-interface:
-  display_name: "docgen ADR"
-  short_description: "Record one architecture decision"
-  default_prompt: "Use $docgen-adr to create and fill an ADR for this decision."

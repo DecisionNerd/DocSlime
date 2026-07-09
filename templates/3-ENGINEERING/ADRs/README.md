@@ -11,7 +11,7 @@ code. Decisions are immutable once accepted: to change one, add a new ADR that s
 ## Creating an ADR
 
 ```
-docgen add adr <short-slug>
+docslime add adr <short-slug>
 ```
 
 This creates the next-numbered record, e.g. `0001-<short-slug>.md`. Fill it in (the file
