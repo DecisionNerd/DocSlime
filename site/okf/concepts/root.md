@@ -1,46 +1,86 @@
 ---
 type: concept
-title: Documentation
-source: /
+title: DocSlime
+description: "Opinionated docs scaffolding and agent skills for services and user-facing products."
+source: "https://www.docslime.dev/"
 path: /
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.229Z"
+  generated_at: "2026-07-09T20:10:32.450Z"
 ---
-# Documentation
+---
+title: "DocSlime"
+description: "Opinionated docs scaffolding and agent skills for services and user-facing products."
+---
 
-This folder holds the living documentation for DocSlime. It is structured for
-**behavior-driven development**: product and design context lead into experiences,
-requirements, architecture, testing, and ADRs. The docs stay in-repo so both people and AI
-coding agents have full context without reaching for an external source.
+# DocSlime
 
-## How the docs are organized
+DocSlime turns a repo into a living, agent-ready documentation workspace. It gives teams a
+small `docslime` CLI, a standardized `docs/` tree, and agent skills that help fill, review,
+and maintain product context, requirements, design, architecture, testing notes, and ADRs.
 
-Read the top-level docs in this order:
+The system is built for both services and user-facing products. It is intentionally
+opinionated: TDD+BDD quality, Domain Driven Design where it clarifies the system,
+explicit decisions, and plain Markdown that can publish through `docmd.io`.
 
-| Document | Question it answers |
-|---|---|
-| [`PRODUCT.md`](PRODUCT.md) | What is this product, who is it for, and why does it exist? |
-| [`1-EXPERIENCES.md`](1-EXPERIENCES.md) | What should it feel like to use? |
-| [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md) | What must the system do? |
-| [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and CLI experience? |
-| [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
-| [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
+## Install
 
-Supporting detail lives in subfolders:
+```sh
+brew install DecisionNerd/tap/docslime
+```
 
-| Folder | Contents |
-|---|---|
-| [`0-PRODUCT/`](0-PRODUCT/) | Product, market, and positioning detail beyond `PRODUCT.md`. |
-| [`1-JOURNEYS/`](1-JOURNEYS/) | User personas, journeys, and experience detail. |
-| [`3-ENGINEERING/`](3-ENGINEERING/) | Technical documentation, including testing and decision records. |
-| [`3-ENGINEERING/ADRs/`](3-ENGINEERING/ADRs/) | Architecture Decision Records. |
+Other install paths:
 
-## Conventions
+- Shell installer: `curl -LsSf https://github.com/DecisionNerd/DocSlime/releases/latest/download/docslime-installer.sh | sh`
+- Source build: `cargo install --git https://github.com/DecisionNerd/DocSlime --bins`
 
-- **Keep docs current.** When behavior changes, update the doc in the same change.
-- **Link, don't duplicate.** Reference detail in subfolders rather than copying it.
-- **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
-- **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so tools like
-  `impeccable` can load them without duplicate root files.
+## Use the CLI
+
+```sh
+docslime init
+docslime list
+docslime add PRODUCT
+docslime add adr choose-storage-boundary
+```
+
+`init` creates the full tree without overwriting existing files. `add` creates one missing
+document or the next-numbered ADR. `list` shows every available template and whether it
+already exists in the current repo.
+
+## What DocSlime Creates
+
+```text
+docs/
+├── PRODUCT.md
+├── 1-EXPERIENCES.md
+├── 2-REQUIREMENTS.md
+├── DESIGN.md
+├── 3-ARCHITECTURE.md
+├── 4-TESTING.md
+├── 0-PRODUCT/
+├── 1-JOURNEYS/
+└── 3-ENGINEERING/ADRs/
+```
+
+`docs/PRODUCT.md` and `docs/DESIGN.md` are deliberately discoverable from the docs tree so
+tools like `impeccable` can load product and design context without duplicate root files.
+
+## Agent Skills
+
+Install the bundled skills into a skill-aware agent:
+
+```sh
+npx skills add DecisionNerd/DocSlime
+```
+
+The skill pack includes `docslime-install`, `docslime-init`, `docslime-fill`,
+`docslime-adr`, and `docslime-kiss`.
+
+## Read Next
+
+- [Product](PRODUCT/) explains what DocSlime is for.
+- [Experiences](1-EXPERIENCES/) describes the user and agent workflows.
+- [Requirements](2-REQUIREMENTS/) defines the behavior DocSlime must preserve.
+- [Design](DESIGN/) captures the product and docs experience rules.
+- [Agent Skills](skills/) shows how agents use the DocSlime lifecycle.

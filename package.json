@@ -1,6 +1,6 @@
 {
-  "name": "my-docs",
-  "version": "0.0.1",
+  "name": "docslime-docs",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "scripts": {

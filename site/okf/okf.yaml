@@ -1,18 +1,18 @@
 okf_version: 0.8.10
 bundle:
-  name: bundle
-  title: .
+  name: docslime
+  title: DocSlime
   description: ""
-  url: ""
+  url: "https://www.docslime.dev"
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.229Z"
+  generated_at: "2026-07-09T20:10:32.450Z"
   default_type: concept
 stats:
-  concepts: 12
+  concepts: 14
   by_type:
-    concept: 12
-  locales: 
-  versions: 
+    concept: 14
+  locales:
+  versions:
 concepts:
   - id: 0-product
     type: concept
@@ -21,7 +21,7 @@ concepts:
     file: concepts/0-product.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 1-experiences
     type: concept
     title: Experiences
@@ -29,7 +29,7 @@ concepts:
     file: concepts/1-experiences.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 1-journeys
     type: concept
     title: Journeys
@@ -37,7 +37,7 @@ concepts:
     file: concepts/1-journeys.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 2-requirements
     type: concept
     title: Requirements
@@ -45,7 +45,7 @@ concepts:
     file: concepts/2-requirements.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 3-architecture
     type: concept
     title: Architecture
@@ -53,7 +53,7 @@ concepts:
     file: concepts/3-architecture.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 3-engineering-adrs-0001-embed-templates-in-binary
     type: concept
     title: "ADR-0001: Embed templates in the binary at compile time"
@@ -61,7 +61,7 @@ concepts:
     file: concepts/3-engineering-adrs-0001-embed-templates-in-binary.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 3-engineering-adrs
     type: concept
     title: "Architecture Decision Records"
@@ -69,7 +69,7 @@ concepts:
     file: concepts/3-engineering-adrs.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 3-engineering
     type: concept
     title: Engineering
@@ -77,7 +77,7 @@ concepts:
     file: concepts/3-engineering.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: 4-testing
     type: concept
     title: Testing
@@ -85,7 +85,7 @@ concepts:
     file: concepts/4-testing.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: design
     type: concept
     title: Design
@@ -93,7 +93,7 @@ concepts:
     file: concepts/design.md
     locale: ""
     version: ""
-    tags: 
+    tags:
   - id: product
     type: concept
     title: Product
@@ -101,12 +101,28 @@ concepts:
     file: concepts/product.md
     locale: ""
     version: ""
-    tags: 
-  - id: root
+    tags:
+  - id: readme
     type: concept
     title: Documentation
+    path: /README/
+    file: concepts/readme.md
+    locale: ""
+    version: ""
+    tags:
+  - id: root
+    type: concept
+    title: DocSlime
     path: /
     file: concepts/root.md
     locale: ""
     version: ""
-    tags: 
+    tags:
+  - id: skills
+    type: concept
+    title: "Agent Skills"
+    path: /skills/
+    file: concepts/skills.md
+    locale: ""
+    version: ""
+    tags:

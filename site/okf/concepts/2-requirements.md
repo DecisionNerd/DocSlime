@@ -1,12 +1,12 @@
 ---
 type: concept
 title: Requirements
-source: /2-REQUIREMENTS/
+source: "https://www.docslime.dev/2-REQUIREMENTS/"
 path: /2-REQUIREMENTS/
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.225Z"
+  generated_at: "2026-07-09T20:10:32.448Z"
 ---
 # Requirements
 
