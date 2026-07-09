@@ -1,0 +1,1219 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.8.10">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+    
+    <script>
+      var root = "../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <title>
+      Experiences : .
+    </title>
+
+    <base href="/">
+    
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrdx827j">
+    
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrdx827j" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrdx827j" id="hljs-dark" disabled>
+    
+    
+<meta name="description" content="">
+<link rel="canonical" href="/1-EXPERIENCES/">
+<meta property="og:title" content="Experiences - .">
+<meta property="og:description" content="">
+<meta property="og:url" content="/1-EXPERIENCES/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Experiences - .">
+<meta name="twitter:description" content="">
+
+
+
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrdx827j" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrdx827j" >
+
+    
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/1-EXPERIENCES.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    
+    
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          
+            <h1><a href="../">
+                .
+              </a></h1>
+          
+          <span class="mobile-view sidebar-menu-button float-right">
+            
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+          
+          
+          
+          
+        </div>
+        
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+    
+      <li class="" >
+      
+        <a href="../" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Documentation
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../3-ARCHITECTURE/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Architecture
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../DESIGN/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Design
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="active" >
+      
+        <a href="../1-EXPERIENCES/" class="active "
+          >
+          
+          <span class="nav-item-title">
+            Experiences
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../PRODUCT/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Product
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../2-REQUIREMENTS/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Requirements
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../4-TESTING/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Testing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            0 PRODUCT
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../0-PRODUCT/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Product
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            1 JOURNEYS
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../1-JOURNEYS/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Journeys
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            3 ENGINEERING
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../3-ENGINEERING/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Engineering
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="collapsible nav-group"  aria-expanded="false" >
+      
+        <span class="nav-label nav-group">
+          
+          <span class="nav-item-title">
+            ADRs
+          </span>
+          
+            <span class="collapse-icon-wrapper">
+<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m9 18 6-6-6-6" />
+</svg>
+</span>
+          
+        </span>
+        
+
+        
+          <ul class="submenu">
+            
+      <li class="" >
+      
+        <a href="../3-ENGINEERING/ADRs/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            Architecture Decision Records
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+      <li class="" >
+      
+        <a href="../3-ENGINEERING/ADRs/0001-embed-templates-in-binary/" class=" "
+          >
+          
+          <span class="nav-item-title">
+            ADR-0001: Embed templates in the binary at compile time
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+          </ul>
+        
+      </li>
+    
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+          
+          
+          
+          
+        </div>
+      </aside>
+      
+      
+      
+      <div class="main-content-wrapper">
+        
+        
+          <header class="page-header">
+            <div class="header-left">
+              
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+                  
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+              
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  Experiences
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+              
+                
+
+
+<div class="docmd-options-menu">
+    
+    <button class="docmd-search-trigger" aria-label="Search">
+        
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+    
+
+    
+
+    
+
+    
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+        
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+ 
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+    
+
+    
+</div>
+
+              
+            </div>
+          </header>
+        
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="%23%20Experiences%0A%0AAt%20its%20best%2C%20DocSlime%20feels%20like%20a%20project%20suddenly%20has%20a%20nervous%20system.%20A%20developer%20runs%0Aone%20command%2C%20a%20full%20documentation%20tree%20appears%20in%20the%20repo%2C%20and%20their%20AI%20agent%20immediately%0Aknows%20how%20to%20fill%20it%20in%20by%20asking%20the%20right%20questions%20instead%20of%20guessing.%20The%20docs%20end%20up%0Awritten%20and%20committed%20alongside%20the%20code%2C%20ready%20for%20agents%2C%20design%20tools%2C%20ADR%20review%2C%20tests%2C%0Aand%20eventual%20%60docmd.io%60%20publication.%0A%0A%23%23%20Primary%20users%0A%0A-%20**Engineering%20team%20member**%20%E2%80%94%20a%20developer%20(often%20working%20with%20an%20AI%20coding%20agent)%20who%20wants%0A%20%20consistent%2C%20in-repo%20project%20docs%20without%20designing%20a%20doc%20system%20from%20scratch.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A-%20**Product%20or%20design%20collaborator**%20%E2%80%94%20someone%20shaping%20a%20service%20or%20user-facing%20product%20who%0A%20%20needs%20product%20and%20design%20context%20discoverable%20by%20tools%20like%20%60impeccable%60.%0A-%20**AI%20coding%20agent**%20%E2%80%94%20the%20intended%20author%20and%20reader%20of%20the%20filled-in%20docs%3B%20it%20follows%20the%0A%20%20inline%20guidance%20to%20interview%20the%20team%20and%20write%20each%20section.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A%0A%23%23%20Key%20experiences%0A%0A%23%23%23%20Scaffold%20the%20docs%20tree%0A%0A%3E%20**As%20a**%20developer%20starting%20documentation%20on%20a%20repo%0A%3E%20**I%20want**%20to%20drop%20a%20standardized%20docs%20tree%20into%20the%20project%20with%20one%20command%0A%3E%20**So%20that**%20I%20have%20a%20consistent%20structure%20to%20fill%20in%2C%20without%20inventing%20one%0A%0A-%20**Given**%20a%20git%20repo%20with%20no%20%60docs%2F%60%20directory%0A-%20**When**%20I%20run%20%60docslime%20init%60%0A-%20**Then**%20the%20full%20%60docs%2F%60%20tree%20is%20created%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%2C%20with%20each%0A%20%20template%20carrying%20inline%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%0A%0AMust%20not%20happen%3A%20an%20existing%20file%20is%20silently%20overwritten.%20%60init%60%20skips%20anything%20already%20on%0Adisk%20unless%20%60--force%60%20is%20passed.%0A%0A%23%23%23%20Add%20a%20single%20document%0A%0A%3E%20**As%20a**%20developer%20with%20a%20partial%20docs%20tree%0A%3E%20**I%20want**%20to%20add%20just%20one%20missing%20document%20by%20name%0A%3E%20**So%20that**%20I%20can%20fill%20gaps%20without%20re-running%20the%20whole%20scaffold%0A%0A-%20**Given**%20a%20repo%20that%20already%20has%20some%20docs%0A-%20**When**%20I%20run%20%60docslime%20add%203-ARCHITECTURE%60%20(name%20matched%20leniently%2C%20with%20or%20without%20%60.md%60)%0A-%20**Then**%20only%20that%20document%20is%20created%20from%20its%20template%2C%20and%20existing%20files%20are%20untouched%0A%0AMust%20not%20happen%3A%20an%20unknown%20name%20fails%20silently.%20DocSlime%20reports%20the%20error%20and%20lists%20the%0Avalid%20template%20names.%0A%0A%23%23%23%20Record%20an%20architecture%20decision%0A%0A%3E%20**As%20a**%20team%20making%20a%20significant%20technical%20choice%0A%3E%20**I%20want**%20to%20create%20the%20next-numbered%20ADR%20with%20a%20memorable%20slug%0A%3E%20**So%20that**%20the%20decision%20and%20its%20reasoning%20are%20captured%20immutably%20in%20the%20repo%0A%0A-%20**Given**%20an%20ADR%20directory%20with%20records%20up%20to%20%600003-*%60%0A-%20**When**%20I%20run%20%60docslime%20add%20adr%20use-postgres%60%0A-%20**Then**%20%60docs%2F3-ENGINEERING%2FADRs%2F0004-use-postgres.md%60%20is%20created%20from%20the%20ADR%20template%0A%0AMust%20not%20happen%3A%20numbering%20collides%20or%20restarts.%20DocSlime%20always%20picks%20the%20next%20number%20after%0Athe%20highest%20existing%20record%20(%600001%60%20if%20there%20are%20none).%0A%0A%23%23%23%20Fill%20in%20a%20document%20with%20an%20agent%0A%0A%3E%20**As%20a**%20developer%20with%20a%20scaffolded%20but%20empty%20doc%0A%3E%20**I%20want**%20my%20AI%20agent%20to%20interview%20me%20and%20write%20the%20document%0A%3E%20**So%20that**%20the%20doc%20reflects%20real%20project%20intent%20rather%20than%20boilerplate%0A%0A-%20**Given**%20a%20scaffolded%20document%20containing%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%20comments%0A-%20**When**%20I%20ask%20my%20agent%20to%20fill%20it%20in%20(via%20the%20%60docslime-fill%60%20skill)%0A-%20**Then**%20the%20agent%20asks%20focused%20questions%2C%20writes%20each%20section%2C%20and%20removes%20the%20guidance%0A%20%20comments%20as%20it%20goes%20%E2%80%94%20leaving%20a%20clean%2C%20completed%20document%0A%0AMust%20not%20happen%3A%20the%20agent%20fabricates%20facts%20or%20leaves%20guidance%20comments%20behind.%20A%20finished%0Adoc%20has%20no%20%60LLM%3A%60%20comments%20and%20no%20leftover%20placeholder%20prompts.%0A%0A%23%23%23%20Tighten%20docs%20after%20filling%0A%0A%3E%20**As%20a**%20developer%20with%20filled-in%20docs%0A%3E%20**I%20want**%20my%20agent%20to%20challenge%20whether%20they%20are%20bloated%2C%20generic%2C%20or%20full%20of%20AI%20slop%0A%3E%20**So%20that**%20the%20docs%20stay%20useful%2C%20truthful%2C%20and%20easy%20to%20maintain%0A%0A-%20**Given**%20a%20filled%20or%20partially%20filled%20docslime%20tree%0A-%20**When**%20I%20ask%20the%20agent%20to%20run%20the%20%60docslime-kiss%60%20skill%0A-%20**Then**%20it%20gives%20a%20clear%20KISS%20verdict%2C%20flags%20concrete%20bloat%20with%20file%20references%2C%20and%0A%20%20recommends%20the%20smallest%20best-practice%20cleanup%0A%0AMust%20not%20happen%3A%20the%20review%20rewards%20longer%20docs%20just%20because%20they%20sound%20polished.%20The%20skill%0Ashould%20prefer%20cutting%20or%20tightening%20filler%20over%20rewriting%20it%20into%20prettier%20filler.%0A%0A%23%23%23%20Load%20product%20and%20design%20context%20in%20impeccable%0A%0A%3E%20**As%20a**%20product%20or%20design%20agent%0A%3E%20**I%20want**%20the%20docs%20tree%20to%20expose%20recognizable%20product%20and%20design%20context%20files%0A%3E%20**So%20that**%20I%20can%20shape%20product%20work%20without%20asking%20the%20user%20to%20duplicate%20context%20elsewhere%0A%0A-%20**Given**%20a%20repo%20initialized%20by%20DocSlime%0A-%20**When**%20%60impeccable%60%20resolves%20context%0A-%20**Then**%20it%20can%20load%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%0A%0AMust%20not%20happen%3A%20the%20repo%20maintains%20separate%20root-level%20context%20files%20that%20drift%20from%20the%0Acanonical%20docs%20tree.%0A%0A%23%23%20Experience%20principles%0A%0A-%20**Non-destructive%20by%20default**%20%E2%80%94%20existing%20files%20are%20never%20overwritten%20without%20an%20explicit%20%60--force%60.%0A-%20**Forgiving%20input**%20%E2%80%94%20document%20names%20and%20ADR%20slugs%20are%20matched%20and%20normalized%20leniently.%0A-%20**Self-explaining**%20%E2%80%94%20every%20template%20tells%20the%20agent%20(and%20the%20human)%20what%20to%20do%3B%20no%20external%20manual%20required.%0A-%20**KISS%20after%20filling**%20%E2%80%94%20filled%20docs%20should%20be%20challenged%20for%20bloat%2C%20generic%20prose%2C%20and%20weak%20traceability.%0A-%20**Context%20tools%20fit%20the%20tree**%20%E2%80%94%20product%2Fdesign%20tools%20should%20discover%20context%20from%20%60docs%2F%60%0A%20%20instead%20of%20requiring%20duplicate%20files.%0A-%20**Publishable%20Markdown**%20%E2%80%94%20docs%20should%20stay%20clean%20enough%20to%20flow%20into%20%60docmd.io%60.%0A-%20**Fast%20and%20local**%20%E2%80%94%20commands%20run%20instantly%20against%20the%20filesystem%2C%20and%20the%20output%20lives%20in%20the%20repo.%0A-%20**Small%20surface**%20%E2%80%94%20three%20commands%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20cover%20the%20whole%20tool.%0A%0A%23%23%20Out%20of%20scope%0A%0A-%20Hosting%20or%20rendering%20docs%20directly%20inside%20the%20CLI%3B%20publishing%20belongs%20to%20%60docmd.io%60.%0A-%20Generating%20documentation%20content%20automatically%20without%20a%20human-in-the-loop%20interview.%0A-%20Editing%20or%20migrating%20docs%20that%20have%20already%20been%20filled%20in%20(the%20CLI%20only%20scaffolds%3B%20skills%0A%20%20help%20with%20review%20and%20filling).%0A-%20Enforcing%20a%20single%20rigid%20format%20%E2%80%94%20the%20tree%20is%20a%20default%2C%20and%20teams%20may%20diverge.%0A" style="display: none;"></div>
+                  
+                    <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
+                      <ol>
+                        
+                        
+                          <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
+                            
+                              <span>Experiences</span>
+                            
+                            
+                          </li>
+                        
+                      </ol>
+                    </nav>
+                  
+
+                  
+                    <div class="docmd-copy-widgets">
+                      
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+                      
+                      
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+                      
+                    </div>
+                  
+                </div>
+                
+                <h1 id="experiences" class="docmd-heading"><a href="#experiences" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Experiences</h1>
+<p>At its best, DocSlime feels like a project suddenly has a nervous system. A developer runs<br>
+one command, a full documentation tree appears in the repo, and their AI agent immediately<br>
+knows how to fill it in by asking the right questions instead of guessing. The docs end up<br>
+written and committed alongside the code, ready for agents, design tools, ADR review, tests,<br>
+and eventual <code>docmd.io</code> publication.</p>
+<h2 id="experiences-primary-users" class="docmd-heading"><a href="#experiences-primary-users" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Primary users</h2>
+<ul>
+<li><strong>Engineering team member</strong> — a developer (often working with an AI coding agent) who wants<br>
+consistent, in-repo project docs without designing a doc system from scratch. See <a href="../1-JOURNEYS/"><code>1-JOURNEYS/</code></a>.</li>
+<li><strong>Product or design collaborator</strong> — someone shaping a service or user-facing product who<br>
+needs product and design context discoverable by tools like <code>impeccable</code>.</li>
+<li><strong>AI coding agent</strong> — the intended author and reader of the filled-in docs; it follows the<br>
+inline guidance to interview the team and write each section. See <a href="../1-JOURNEYS/"><code>1-JOURNEYS/</code></a>.</li>
+</ul>
+<h2 id="experiences-key-experiences" class="docmd-heading"><a href="#experiences-key-experiences" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Key experiences</h2>
+<h3 id="experiences-key-experiences-scaffold-the-docs-tree" class="docmd-heading"><a href="#experiences-key-experiences-scaffold-the-docs-tree" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Scaffold the docs tree</h3>
+<blockquote>
+<p><strong>As a</strong> developer starting documentation on a repo<br>
+<strong>I want</strong> to drop a standardized docs tree into the project with one command<br>
+<strong>So that</strong> I have a consistent structure to fill in, without inventing one</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a git repo with no <code>docs/</code> directory</li>
+<li><strong>When</strong> I run <code>docslime init</code></li>
+<li><strong>Then</strong> the full <code>docs/</code> tree is created, including <code>PRODUCT.md</code> and <code>DESIGN.md</code>, with each<br>
+template carrying inline <code>&lt;!-- LLM: --&gt;</code> guidance</li>
+</ul>
+<p>Must not happen: an existing file is silently overwritten. <code>init</code> skips anything already on<br>
+disk unless <code>--force</code> is passed.</p>
+<h3 id="experiences-key-experiences-add-a-single-document" class="docmd-heading"><a href="#experiences-key-experiences-add-a-single-document" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Add a single document</h3>
+<blockquote>
+<p><strong>As a</strong> developer with a partial docs tree<br>
+<strong>I want</strong> to add just one missing document by name<br>
+<strong>So that</strong> I can fill gaps without re-running the whole scaffold</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a repo that already has some docs</li>
+<li><strong>When</strong> I run <code>docslime add 3-ARCHITECTURE</code> (name matched leniently, with or without <code>.md</code>)</li>
+<li><strong>Then</strong> only that document is created from its template, and existing files are untouched</li>
+</ul>
+<p>Must not happen: an unknown name fails silently. DocSlime reports the error and lists the<br>
+valid template names.</p>
+<h3 id="experiences-key-experiences-record-an-architecture-decision" class="docmd-heading"><a href="#experiences-key-experiences-record-an-architecture-decision" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Record an architecture decision</h3>
+<blockquote>
+<p><strong>As a</strong> team making a significant technical choice<br>
+<strong>I want</strong> to create the next-numbered ADR with a memorable slug<br>
+<strong>So that</strong> the decision and its reasoning are captured immutably in the repo</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> an ADR directory with records up to <code>0003-*</code></li>
+<li><strong>When</strong> I run <code>docslime add adr use-postgres</code></li>
+<li><strong>Then</strong> <code>docs/3-ENGINEERING/ADRs/0004-use-postgres.md</code> is created from the ADR template</li>
+</ul>
+<p>Must not happen: numbering collides or restarts. DocSlime always picks the next number after<br>
+the highest existing record (<code>0001</code> if there are none).</p>
+<h3 id="experiences-key-experiences-fill-in-a-document-with-an-agent" class="docmd-heading"><a href="#experiences-key-experiences-fill-in-a-document-with-an-agent" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Fill in a document with an agent</h3>
+<blockquote>
+<p><strong>As a</strong> developer with a scaffolded but empty doc<br>
+<strong>I want</strong> my AI agent to interview me and write the document<br>
+<strong>So that</strong> the doc reflects real project intent rather than boilerplate</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a scaffolded document containing <code>&lt;!-- LLM: --&gt;</code> guidance comments</li>
+<li><strong>When</strong> I ask my agent to fill it in (via the <code>docslime-fill</code> skill)</li>
+<li><strong>Then</strong> the agent asks focused questions, writes each section, and removes the guidance<br>
+comments as it goes — leaving a clean, completed document</li>
+</ul>
+<p>Must not happen: the agent fabricates facts or leaves guidance comments behind. A finished<br>
+doc has no <code>LLM:</code> comments and no leftover placeholder prompts.</p>
+<h3 id="experiences-key-experiences-tighten-docs-after-filling" class="docmd-heading"><a href="#experiences-key-experiences-tighten-docs-after-filling" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Tighten docs after filling</h3>
+<blockquote>
+<p><strong>As a</strong> developer with filled-in docs<br>
+<strong>I want</strong> my agent to challenge whether they are bloated, generic, or full of AI slop<br>
+<strong>So that</strong> the docs stay useful, truthful, and easy to maintain</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a filled or partially filled docslime tree</li>
+<li><strong>When</strong> I ask the agent to run the <code>docslime-kiss</code> skill</li>
+<li><strong>Then</strong> it gives a clear KISS verdict, flags concrete bloat with file references, and<br>
+recommends the smallest best-practice cleanup</li>
+</ul>
+<p>Must not happen: the review rewards longer docs just because they sound polished. The skill<br>
+should prefer cutting or tightening filler over rewriting it into prettier filler.</p>
+<h3 id="experiences-key-experiences-load-product-and-design-context-in-impeccable" class="docmd-heading"><a href="#experiences-key-experiences-load-product-and-design-context-in-impeccable" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Load product and design context in impeccable</h3>
+<blockquote>
+<p><strong>As a</strong> product or design agent<br>
+<strong>I want</strong> the docs tree to expose recognizable product and design context files<br>
+<strong>So that</strong> I can shape product work without asking the user to duplicate context elsewhere</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a repo initialized by DocSlime</li>
+<li><strong>When</strong> <code>impeccable</code> resolves context</li>
+<li><strong>Then</strong> it can load <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code></li>
+</ul>
+<p>Must not happen: the repo maintains separate root-level context files that drift from the<br>
+canonical docs tree.</p>
+<h2 id="experiences-experience-principles" class="docmd-heading"><a href="#experiences-experience-principles" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Experience principles</h2>
+<ul>
+<li><strong>Non-destructive by default</strong> — existing files are never overwritten without an explicit <code>--force</code>.</li>
+<li><strong>Forgiving input</strong> — document names and ADR slugs are matched and normalized leniently.</li>
+<li><strong>Self-explaining</strong> — every template tells the agent (and the human) what to do; no external manual required.</li>
+<li><strong>KISS after filling</strong> — filled docs should be challenged for bloat, generic prose, and weak traceability.</li>
+<li><strong>Context tools fit the tree</strong> — product/design tools should discover context from <code>docs/</code><br>
+instead of requiring duplicate files.</li>
+<li><strong>Publishable Markdown</strong> — docs should stay clean enough to flow into <code>docmd.io</code>.</li>
+<li><strong>Fast and local</strong> — commands run instantly against the filesystem, and the output lives in the repo.</li>
+<li><strong>Small surface</strong> — three commands (<code>init</code>, <code>add</code>, <code>list</code>) cover the whole tool.</li>
+</ul>
+<h2 id="experiences-out-of-scope" class="docmd-heading"><a href="#experiences-out-of-scope" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Out of scope</h2>
+<ul>
+<li>Hosting or rendering docs directly inside the CLI; publishing belongs to <code>docmd.io</code>.</li>
+<li>Generating documentation content automatically without a human-in-the-loop interview.</li>
+<li>Editing or migrating docs that have already been filled in (the CLI only scaffolds; skills<br>
+help with review and filling).</li>
+<li>Enforcing a single rigid format — the tree is a default, and teams may diverge.</li>
+</ul>
+
+                
+                  <div class="page-navigation">
+                    
+                      <a href="../DESIGN/" class="prev-page">
+                        
+<svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" />
+</svg>
+
+                        <span><small>Previous</small><strong>
+                            Design
+                          </strong></span>
+                      </a>
+                    
+                    
+                      <a href="../PRODUCT/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Product
+                          </strong></span>
+                        
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+                    
+                  </div>
+                
+              </div>
+              <div class="toc-sidebar">
+                
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+      
+        <li class="toc-item toc-level-1">
+          <a href="#experiences" class="toc-link">Experiences</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#experiences-primary-users" class="toc-link">Primary users</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#experiences-key-experiences" class="toc-link">Key experiences</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-scaffold-the-docs-tree" class="toc-link">Scaffold the docs tree</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-add-a-single-document" class="toc-link">Add a single document</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-record-an-architecture-decision" class="toc-link">Record an architecture decision</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-fill-in-a-document-with-an-agent" class="toc-link">Fill in a document with an agent</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-tighten-docs-after-filling" class="toc-link">Tighten docs after filling</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-load-product-and-design-context-in-impeccable" class="toc-link">Load product and design context in impeccable</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#experiences-experience-principles" class="toc-link">Experience principles</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#experiences-out-of-scope" class="toc-link">Out of scope</a>
+        </li>
+      
+    </ul>
+  </div>
+
+              </div>
+            </div>
+            <div class="page-footer-actions">
+              
+              
+                <span class="git-last-updated" data-timestamp="1783617758000">
+                  <svg class="git-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span class="git-label">Last updated:</span>
+                  <span class="git-time" data-timestamp="1783617758000"></span>
+                  
+                  <div class="git-commit-tooltip" role="tooltip">
+                    <div class="git-tooltip-title">Recent commits</div>
+                    <ul class="git-commit-list">
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="David Spencer">
+                            
+                              <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Rename product to DocSlime">Rename product to DocSlime</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">David Spencer</span>
+                              <span class="git-commit-date" data-timestamp="1783617758000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="David Spencer">
+                            
+                              <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Update docgen docs to reflect new design section">Update docgen docs to reflect new des...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">David Spencer</span>
+                              <span class="git-commit-date" data-timestamp="1781289308000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="David Spencer">
+                            
+                              <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Fill in docs/1-EXPERIENCES.md">Fill in docs/1-EXPERIENCES.md</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">David Spencer</span>
+                              <span class="git-commit-date" data-timestamp="1780455274000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="David Spencer">
+                            
+                              <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Add agent skills for docgen">Add agent skills for docgen</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">David Spencer</span>
+                              <span class="git-commit-date" data-timestamp="1780455032000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                        <li class="git-commit-item">
+                          <div class="git-commit-avatar" title="David Spencer">
+                            
+                              <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
+                            
+                          </div>
+                          <div class="git-commit-details">
+                            <div class="git-commit-message" title="Implement docgen CLI with templates and release config">Implement docgen CLI with templates a...</div>
+                            <div class="git-commit-meta">
+                              <span class="git-commit-author">David Spencer</span>
+                              <span class="git-commit-date" data-timestamp="1780450473000"></span>
+                            </div>
+                          </div>
+                        </li>
+                      
+                    </ul>
+                  </div>
+                  
+                </span>
+              
+              <span class="git-spacer"></span>
+              
+            </div>
+          </main>
+          
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026</div>
+    
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+    
+  </div>
+</footer>
+
+        </div>
+      </div>
+      
+      <script src="../assets/js/docmd-main.js?v=mrdx827j"></script>
+      
+      <script src="../assets/js/docmd-git.js?v=mrdx827j"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrdx827j" ></script>
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
+<script src="../assets/js/docmd-search.js?v=mrdx827j" ></script>
+<script src="../assets/js/docmd-git.js?v=mrdx827j" type="module"></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+          
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+          
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+        
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+            
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+        
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+      
+      
+      
+  </body>
+</html>
