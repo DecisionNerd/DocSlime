@@ -26,7 +26,7 @@
     if (format === 'iso') {
       return dateObj.toISOString();
     }
-
+    
     if (format === 'locale-aware') {
       return dateObj.toLocaleString(document.documentElement.lang || 'en');
     }

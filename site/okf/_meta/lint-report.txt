@@ -1,1 +1,2 @@
 [WARN] orphan-concept root  (no inbound links)
+[WARN] orphan-concept skills  (no inbound links)

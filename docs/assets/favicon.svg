@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="DocSlime">
+  <rect width="64" height="64" rx="14" fill="oklch(0.145 0.034 224)" />
+  <path d="M32 9c11 0 20 8 20 19 0 13-9 27-20 27S12 41 12 28C12 17 21 9 32 9Z" fill="oklch(0.764 0.166 150)" />
+  <path d="M21 31c3 5 7 8 11 8s8-3 11-8" fill="none" stroke="oklch(0.145 0.034 224)" stroke-width="5" stroke-linecap="round" />
+  <circle cx="24" cy="25" r="3" fill="oklch(0.145 0.034 224)" />
+  <circle cx="40" cy="25" r="3" fill="oklch(0.145 0.034 224)" />
+</svg>
