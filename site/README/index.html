@@ -99,7 +99,7 @@
       window.DOCMD_DEFAULT_LOCALE = "";
     </script>
     <title>
-      Requirements : DocSlime
+      Documentation : DocSlime
     </title>
 
     <base href="/">
@@ -111,13 +111,13 @@
 
 
 <meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
-<link rel="canonical" href="https://www.docslime.dev/2-REQUIREMENTS/">
-<meta property="og:title" content="Requirements - DocSlime">
+<link rel="canonical" href="https://www.docslime.dev/README/">
+<meta property="og:title" content="Documentation - DocSlime">
 <meta property="og:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
-<meta property="og:url" content="https://www.docslime.dev/2-REQUIREMENTS/">
+<meta property="og:url" content="https://www.docslime.dev/README/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Requirements - DocSlime">
+<meta name="twitter:title" content="Documentation - DocSlime">
 <meta name="twitter:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
 
 
@@ -196,7 +196,7 @@
   <body
     class="sidebar-collapsible"
     data-default-collapsed="false"
-    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/2-REQUIREMENTS.md">
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/README.md">
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -423,9 +423,9 @@
 
       </li>
 
-      <li class="active" >
+      <li class="" >
 
-        <a href="../2-REQUIREMENTS/" class="active "
+        <a href="../2-REQUIREMENTS/" class=" "
           >
 
 <svg class="lucide-icon icon-list-checks " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -811,7 +811,7 @@
 
               <div class="header-titles-wrapper">
                 <span class="header-title">
-                  Requirements
+                  Documentation
                 </span>
               </div>
             </div>
@@ -825,7 +825,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="%23%20Requirements%0A%0ADocSlime%20must%20scaffold%20a%20fixed%2C%20standardized%20%60docs%2F%60%20tree%20into%20a%20git%20repo%2C%20add%20individual%0Adocuments%20(including%20auto-numbered%20ADRs)%20on%20demand%2C%20and%20report%20what%20exists%20without%0Adestroying%20existing%20work.%20The%20templates%20must%20carry%20the%20inline%20guidance%20that%20lets%20an%20AI%20agent%0Afill%20them%20in%2C%20while%20the%20tree%20stays%20plain%20Markdown%20for%20%60impeccable%60%20context%20loading%20and%0A%60docmd.io%60%20publication.%0A%0A%23%23%20Functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Traces%20to%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20FR-1%20%7C%20The%20system%20shall%20create%20the%20full%20standardized%20%60docs%2F%60%20tree%20(%60PRODUCT.md%60%2C%20numbered%20docs%2C%20%60DESIGN.md%60%2C%20%600-PRODUCT%2F%60%2C%20%601-JOURNEYS%2F%60%2C%20%603-ENGINEERING%2F%60%2C%20and%20%603-ENGINEERING%2FADRs%2F%60)%20in%20the%20current%20directory%20via%20%60docslime%20init%60.%20%7C%20Scaffold%20the%20docs%20tree%20%7C%0A%7C%20FR-2%20%7C%20The%20system%20shall%20skip%20any%20file%20that%20already%20exists%20during%20%60init%60%20and%20%60add%60%2C%20and%20overwrite%20only%20when%20%60--force%60%20is%20given.%20%7C%20Non-destructive%20by%20default%20%7C%0A%7C%20FR-3%20%7C%20The%20system%20shall%20add%20a%20single%20named%20document%20via%20%60docslime%20add%20%3Cname%3E%60%2C%20resolving%20the%20name%20leniently%20(case-insensitive%2C%20with%20or%20without%20the%20%60.md%60%20extension).%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-4%20%7C%20The%20system%20shall%20create%20the%20next-numbered%20ADR%20via%20%60docslime%20add%20adr%20%3Cslug%3E%60%2C%20where%20the%20number%20is%20one%20greater%20than%20the%20highest%20existing%20%60NNNN-*%60%20record%20in%20the%20ADR%20directory%20(%600001%60%20if%20none).%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-5%20%7C%20The%20system%20shall%20normalize%20an%20ADR%20slug%20to%20lowercase%2C%20hyphen-separated%20%60%5Ba-z0-9-%5D%60%2C%20and%20reject%20a%20slug%20with%20no%20alphanumeric%20characters.%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-6%20%7C%20The%20system%20shall%20list%20every%20available%20template%20and%20whether%20it%20already%20exists%20on%20disk%20via%20%60docslime%20list%60%2C%20including%20the%20%60adr%60%20entry.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-7%20%7C%20The%20system%20shall%20embed%20all%20templates%20in%20the%20binary%20at%20compile%20time%2C%20requiring%20no%20network%20access%20or%20external%20files%20at%20runtime.%20%7C%20Fast%20and%20local%20%7C%0A%7C%20FR-8%20%7C%20The%20system%20shall%20report%20a%20clear%20error%20and%20list%20valid%20template%20names%20when%20given%20an%20unknown%20document%20name%2C%20and%20exit%20non-zero.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-9%20%7C%20The%20system%20shall%20provide%20installable%20agent%20skills%20(%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20%60docslime-kiss%60)%20that%20drive%20the%20documentation%20lifecycle.%20%7C%20Fill%20in%20and%20improve%20documents%20with%20an%20agent%20%7C%0A%7C%20FR-10%20%7C%20The%20%60docslime-kiss%60%20skill%20shall%20review%20filled%20docs%20for%20bloat%2C%20generic%20AI%20prose%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20non-actionable%20requirements%2C%20architecture%2C%20design%2C%20or%20testing%20content.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-11%20%7C%20The%20generated%20tree%20shall%20include%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20so%20%60impeccable%60%20can%20discover%20product%20and%20design%20context%20from%20the%20docs%20directory%20without%20duplicate%20root%20files.%20%7C%20Integrate%20with%20impeccable%20%7C%0A%7C%20FR-12%20%7C%20KISS%20review%20shall%20remain%20an%20agent%20skill%20rather%20than%20a%20%60docslime%60%20CLI%20subcommand.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%0A%23%23%20Non-functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Target%20%2F%20constraint%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20NFR-1%20%7C%20Portability%20%7C%20Runs%20on%20macOS%20(arm64%2C%20x86_64)%20and%20Linux%20(arm64%2C%20x86_64)%3B%20no%20runtime%20dependencies.%20%7C%0A%7C%20NFR-2%20%7C%20Performance%20%7C%20Commands%20complete%20near-instantly%20(well%20under%20a%20second)%20on%20a%20typical%20repo.%20%7C%0A%7C%20NFR-3%20%7C%20Distribution%20%7C%20Installable%20via%20Homebrew%20tap%2C%20shell%20installer%20script%2C%20and%20%60cargo%20install%60.%20%7C%0A%7C%20NFR-4%20%7C%20Safety%20%7C%20No%20command%20destroys%20user%20data%20without%20an%20explicit%20%60--force%60.%20%7C%0A%7C%20NFR-5%20%7C%20Maintainability%20%7C%20Templates%20are%20plain%20Markdown%20files%20in%20the%20repo%2C%20editable%20without%20touching%20Rust%20logic%20(rebuild%20required).%20%7C%0A%7C%20NFR-6%20%7C%20Toolchain%20%7C%20Builds%20with%20Rust%201.74%2B%20(2021%20edition).%20%7C%0A%7C%20NFR-7%20%7C%20Publication%20%7C%20Generated%20docs%20remain%20plain%20Markdown%20suitable%20for%20the%20%60docmd.io%60%20publishing%20system.%20%7C%0A%7C%20NFR-8%20%7C%20Quality%20stance%20%7C%20Docs%20support%20TDD%2BBDD%20traceability%2C%20Domain%20Driven%20Design%20framing%20where%20useful%2C%20and%20ADR-backed%20decisions.%20%7C%0A%0A%23%23%20Constraints%20%26%20assumptions%0A%0A-%20**Constraint%3A**%20Editing%20a%20template%20requires%20recompiling%20the%20binary%2C%20since%20templates%20are%20embedded%20via%20%60include_dir%60.%0A-%20**Constraint%3A**%20The%20tree%20structure%20is%20fixed%20in%20the%20templates%3B%20DocSlime%20does%20not%20take%20a%20user-supplied%20layout.%0A-%20**Constraint%3A**%20%60docslime-kiss%60%20is%20a%20skill%2C%20not%20a%20CLI%20command.%0A-%20**Assumption%3A**%20%60docslime%60%20is%20run%20at%20the%20root%20of%20the%20target%20git%20repo%3B%20the%20tree%20is%20created%20relative%20to%20the%20current%20directory.%0A-%20**Assumption%3A**%20An%20AI%20coding%20agent%20(not%20the%20CLI%20itself)%20writes%20the%20document%20content%20by%20following%20the%20inline%20guidance.%0A%0A%23%23%20Dependencies%0A%0A-%20**%60clap%60**%20%E2%80%94%20command-line%20argument%20parsing%20(derive%20API).%0A-%20**%60include_dir%60**%20%E2%80%94%20embeds%20the%20template%20tree%20into%20the%20binary%20at%20compile%20time.%0A-%20**%60anyhow%60%20%2F%20%60thiserror%60**%20%E2%80%94%20error%20handling%20and%20reporting.%0A-%20**%60owo-colors%60**%20%E2%80%94%20colored%20terminal%20output%20for%20%60list%60.%0A-%20**%60cargo-dist%60**%20%E2%80%94%20generates%20the%20release%20workflow%20and%20Homebrew%20formula%20(build%2Frelease%20time%20only).%0A%0A%23%23%20Open%20questions%0A%0A-%20Should%20DocSlime%20support%20a%20config%20file%20or%20flags%20to%20customize%20the%20tree%20layout%2C%20or%20stay%20fixed%3F%20%E2%80%94%20maintainer%0A-%20Should%20%60list%60%20%2F%20%60add%60%20operate%20on%20a%20non-current%20directory%20via%20a%20%60--path%60%20flag%3F%20%E2%80%94%20maintainer%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="%23%20Documentation%0A%0AThis%20folder%20holds%20the%20living%20documentation%20for%20DocSlime.%20It%20is%20structured%20for%0A**behavior-driven%20development**%3A%20product%20and%20design%20context%20lead%20into%20experiences%2C%0Arequirements%2C%20architecture%2C%20testing%2C%20and%20ADRs.%20The%20docs%20stay%20in-repo%20so%20both%20people%20and%20AI%0Acoding%20agents%20have%20full%20context%20without%20reaching%20for%20an%20external%20source.%0A%0A%23%23%20How%20the%20docs%20are%20organized%0A%0ARead%20the%20top-level%20docs%20in%20this%20order%3A%0A%0A%7C%20Document%20%7C%20Question%20it%20answers%20%7C%0A%7C---%7C---%7C%0A%7C%20%5B%60PRODUCT.md%60%5D(PRODUCT.md)%20%7C%20What%20is%20this%20product%2C%20who%20is%20it%20for%2C%20and%20why%20does%20it%20exist%3F%20%7C%0A%7C%20%5B%601-EXPERIENCES.md%60%5D(1-EXPERIENCES.md)%20%7C%20What%20should%20it%20feel%20like%20to%20use%3F%20%7C%0A%7C%20%5B%602-REQUIREMENTS.md%60%5D(2-REQUIREMENTS.md)%20%7C%20What%20must%20the%20system%20do%3F%20%7C%0A%7C%20%5B%60DESIGN.md%60%5D(DESIGN.md)%20%7C%20What%20should%20stay%20consistent%20in%20product%2C%20docs%2C%20and%20CLI%20experience%3F%20%7C%0A%7C%20%5B%603-ARCHITECTURE.md%60%5D(3-ARCHITECTURE.md)%20%7C%20How%20is%20the%20system%20built%3F%20%7C%0A%7C%20%5B%604-TESTING.md%60%5D(4-TESTING.md)%20%7C%20How%20do%20we%20prove%20it%20works%3F%20%7C%0A%0ASupporting%20detail%20lives%20in%20subfolders%3A%0A%0A%7C%20Folder%20%7C%20Contents%20%7C%0A%7C---%7C---%7C%0A%7C%20%5B%600-PRODUCT%2F%60%5D(0-PRODUCT%2F)%20%7C%20Product%2C%20market%2C%20and%20positioning%20detail%20beyond%20%60PRODUCT.md%60.%20%7C%0A%7C%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F)%20%7C%20User%20personas%2C%20journeys%2C%20and%20experience%20detail.%20%7C%0A%7C%20%5B%603-ENGINEERING%2F%60%5D(3-ENGINEERING%2F)%20%7C%20Technical%20documentation%2C%20including%20testing%20and%20decision%20records.%20%7C%0A%7C%20%5B%603-ENGINEERING%2FADRs%2F%60%5D(3-ENGINEERING%2FADRs%2F)%20%7C%20Architecture%20Decision%20Records.%20%7C%0A%0A%23%23%20Conventions%0A%0A-%20**Keep%20docs%20current.**%20When%20behavior%20changes%2C%20update%20the%20doc%20in%20the%20same%20change.%0A-%20**Link%2C%20don&#039;t%20duplicate.**%20Reference%20detail%20in%20subfolders%20rather%20than%20copying%20it.%0A-%20**Decisions%20are%20recorded.**%20Significant%20choices%20get%20an%20ADR%20(see%20%603-ENGINEERING%2FADRs%2F%60).%0A-%20**Keep%20context%20discoverable.**%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20stay%20in%20%60docs%2F%60%20so%20tools%20like%0A%20%20%60impeccable%60%20can%20load%20them%20without%20duplicate%20root%20files.%0A" style="display: none;"></div>
 
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -833,7 +833,7 @@
 
                           <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
 
-                              <span>Requirements</span>
+                              <span>Overview</span>
 
 
                           </li>
@@ -890,189 +890,94 @@
 
                 </div>
 
-                <h1 id="requirements" class="docmd-heading"><a href="#requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Requirements</h1>
-<p>DocSlime must scaffold a fixed, standardized <code>docs/</code> tree into a git repo, add individual<br>
-documents (including auto-numbered ADRs) on demand, and report what exists without<br>
-destroying existing work. The templates must carry the inline guidance that lets an AI agent<br>
-fill them in, while the tree stays plain Markdown for <code>impeccable</code> context loading and<br>
-<code>docmd.io</code> publication.</p>
-<h2 id="requirements-functional-requirements" class="docmd-heading"><a href="#requirements-functional-requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Functional requirements</h2>
+                <h1 id="documentation" class="docmd-heading"><a href="#documentation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Documentation</h1>
+<p>This folder holds the living documentation for DocSlime. It is structured for<br>
+<strong>behavior-driven development</strong>: product and design context lead into experiences,<br>
+requirements, architecture, testing, and ADRs. The docs stay in-repo so both people and AI<br>
+coding agents have full context without reaching for an external source.</p>
+<h2 id="documentation-how-the-docs-are-organized" class="docmd-heading"><a href="#documentation-how-the-docs-are-organized" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>How the docs are organized</h2>
+<p>Read the top-level docs in this order:</p>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Requirement</th>
-<th>Traces to</th>
+<th>Document</th>
+<th>Question it answers</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>FR-1</td>
-<td>The system shall create the full standardized <code>docs/</code> tree (<code>PRODUCT.md</code>, numbered docs, <code>DESIGN.md</code>, <code>0-PRODUCT/</code>, <code>1-JOURNEYS/</code>, <code>3-ENGINEERING/</code>, and <code>3-ENGINEERING/ADRs/</code>) in the current directory via <code>docslime init</code>.</td>
-<td>Scaffold the docs tree</td>
+<td><a href="../PRODUCT/"><code>PRODUCT.md</code></a></td>
+<td>What is this product, who is it for, and why does it exist?</td>
 </tr>
 <tr>
-<td>FR-2</td>
-<td>The system shall skip any file that already exists during <code>init</code> and <code>add</code>, and overwrite only when <code>--force</code> is given.</td>
-<td>Non-destructive by default</td>
+<td><a href="../1-EXPERIENCES/"><code>1-EXPERIENCES.md</code></a></td>
+<td>What should it feel like to use?</td>
 </tr>
 <tr>
-<td>FR-3</td>
-<td>The system shall add a single named document via <code>docslime add &lt;name&gt;</code>, resolving the name leniently (case-insensitive, with or without the <code>.md</code> extension).</td>
-<td>Add a single document</td>
+<td><a href="../2-REQUIREMENTS/"><code>2-REQUIREMENTS.md</code></a></td>
+<td>What must the system do?</td>
 </tr>
 <tr>
-<td>FR-4</td>
-<td>The system shall create the next-numbered ADR via <code>docslime add adr &lt;slug&gt;</code>, where the number is one greater than the highest existing <code>NNNN-*</code> record in the ADR directory (<code>0001</code> if none).</td>
-<td>Record an architecture decision</td>
+<td><a href="../DESIGN/"><code>DESIGN.md</code></a></td>
+<td>What should stay consistent in product, docs, and CLI experience?</td>
 </tr>
 <tr>
-<td>FR-5</td>
-<td>The system shall normalize an ADR slug to lowercase, hyphen-separated <code>[a-z0-9-]</code>, and reject a slug with no alphanumeric characters.</td>
-<td>Record an architecture decision</td>
+<td><a href="../3-ARCHITECTURE/"><code>3-ARCHITECTURE.md</code></a></td>
+<td>How is the system built?</td>
 </tr>
 <tr>
-<td>FR-6</td>
-<td>The system shall list every available template and whether it already exists on disk via <code>docslime list</code>, including the <code>adr</code> entry.</td>
-<td>Add a single document</td>
-</tr>
-<tr>
-<td>FR-7</td>
-<td>The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime.</td>
-<td>Fast and local</td>
-</tr>
-<tr>
-<td>FR-8</td>
-<td>The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero.</td>
-<td>Add a single document</td>
-</tr>
-<tr>
-<td>FR-9</td>
-<td>The system shall provide installable agent skills (<code>docslime-install</code>, <code>docslime-init</code>, <code>docslime-fill</code>, <code>docslime-adr</code>, <code>docslime-kiss</code>) that drive the documentation lifecycle.</td>
-<td>Fill in and improve documents with an agent</td>
-</tr>
-<tr>
-<td>FR-10</td>
-<td>The <code>docslime-kiss</code> skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content.</td>
-<td>Tighten docs after filling</td>
-</tr>
-<tr>
-<td>FR-11</td>
-<td>The generated tree shall include <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> so <code>impeccable</code> can discover product and design context from the docs directory without duplicate root files.</td>
-<td>Integrate with impeccable</td>
-</tr>
-<tr>
-<td>FR-12</td>
-<td>KISS review shall remain an agent skill rather than a <code>docslime</code> CLI subcommand.</td>
-<td>Tighten docs after filling</td>
+<td><a href="../4-TESTING/"><code>4-TESTING.md</code></a></td>
+<td>How do we prove it works?</td>
 </tr>
 </tbody>
 </table>
-</div><h2 id="requirements-non-functional-requirements" class="docmd-heading"><a href="#requirements-non-functional-requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Non-functional requirements</h2>
+</div><p>Supporting detail lives in subfolders:</p>
 <div class="table-wrapper"><table>
 <thead>
 <tr>
-<th>ID</th>
-<th>Requirement</th>
-<th>Target / constraint</th>
+<th>Folder</th>
+<th>Contents</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>NFR-1</td>
-<td>Portability</td>
-<td>Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies.</td>
+<td><a href="../0-PRODUCT/"><code>0-PRODUCT/</code></a></td>
+<td>Product, market, and positioning detail beyond <code>PRODUCT.md</code>.</td>
 </tr>
 <tr>
-<td>NFR-2</td>
-<td>Performance</td>
-<td>Commands complete near-instantly (well under a second) on a typical repo.</td>
+<td><a href="../1-JOURNEYS/"><code>1-JOURNEYS/</code></a></td>
+<td>User personas, journeys, and experience detail.</td>
 </tr>
 <tr>
-<td>NFR-3</td>
-<td>Distribution</td>
-<td>Installable via Homebrew tap, shell installer script, and <code>cargo install</code>.</td>
+<td><a href="../3-ENGINEERING/"><code>3-ENGINEERING/</code></a></td>
+<td>Technical documentation, including testing and decision records.</td>
 </tr>
 <tr>
-<td>NFR-4</td>
-<td>Safety</td>
-<td>No command destroys user data without an explicit <code>--force</code>.</td>
-</tr>
-<tr>
-<td>NFR-5</td>
-<td>Maintainability</td>
-<td>Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required).</td>
-</tr>
-<tr>
-<td>NFR-6</td>
-<td>Toolchain</td>
-<td>Builds with Rust 1.74+ (2021 edition).</td>
-</tr>
-<tr>
-<td>NFR-7</td>
-<td>Publication</td>
-<td>Generated docs remain plain Markdown suitable for the <code>docmd.io</code> publishing system.</td>
-</tr>
-<tr>
-<td>NFR-8</td>
-<td>Quality stance</td>
-<td>Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions.</td>
+<td><a href="../3-ENGINEERING/ADRs/"><code>3-ENGINEERING/ADRs/</code></a></td>
+<td>Architecture Decision Records.</td>
 </tr>
 </tbody>
 </table>
-</div><h2 id="requirements-constraints-assumptions" class="docmd-heading"><a href="#requirements-constraints-assumptions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Constraints &amp; assumptions</h2>
+</div><h2 id="documentation-conventions" class="docmd-heading"><a href="#documentation-conventions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Conventions</h2>
 <ul>
-<li><strong>Constraint:</strong> Editing a template requires recompiling the binary, since templates are embedded via <code>include_dir</code>.</li>
-<li><strong>Constraint:</strong> The tree structure is fixed in the templates; DocSlime does not take a user-supplied layout.</li>
-<li><strong>Constraint:</strong> <code>docslime-kiss</code> is a skill, not a CLI command.</li>
-<li><strong>Assumption:</strong> <code>docslime</code> is run at the root of the target git repo; the tree is created relative to the current directory.</li>
-<li><strong>Assumption:</strong> An AI coding agent (not the CLI itself) writes the document content by following the inline guidance.</li>
-</ul>
-<h2 id="requirements-dependencies" class="docmd-heading"><a href="#requirements-dependencies" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Dependencies</h2>
-<ul>
-<li><strong><code>clap</code></strong> — command-line argument parsing (derive API).</li>
-<li><strong><code>include_dir</code></strong> — embeds the template tree into the binary at compile time.</li>
-<li><strong><code>anyhow</code> / <code>thiserror</code></strong> — error handling and reporting.</li>
-<li><strong><code>owo-colors</code></strong> — colored terminal output for <code>list</code>.</li>
-<li><strong><code>cargo-dist</code></strong> — generates the release workflow and Homebrew formula (build/release time only).</li>
-</ul>
-<h2 id="requirements-open-questions" class="docmd-heading"><a href="#requirements-open-questions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Open questions</h2>
-<ul>
-<li>Should DocSlime support a config file or flags to customize the tree layout, or stay fixed? — maintainer</li>
-<li>Should <code>list</code> / <code>add</code> operate on a non-current directory via a <code>--path</code> flag? — maintainer</li>
+<li><strong>Keep docs current.</strong> When behavior changes, update the doc in the same change.</li>
+<li><strong>Link, don’t duplicate.</strong> Reference detail in subfolders rather than copying it.</li>
+<li><strong>Decisions are recorded.</strong> Significant choices get an ADR (see <code>3-ENGINEERING/ADRs/</code>).</li>
+<li><strong>Keep context discoverable.</strong> <code>PRODUCT.md</code> and <code>DESIGN.md</code> stay in <code>docs/</code> so tools like<br>
+<code>impeccable</code> can load them without duplicate root files.</li>
 </ul>
 
 
                   <div class="page-navigation">
 
-                      <a href="../1-EXPERIENCES/" class="prev-page">
-
-<svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-arrow-left"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m12 19-7-7 7-7" />
-  <path d="M19 12H5" />
-</svg>
-
-                        <span><small>Previous</small><strong>
-                            Experiences
-                          </strong></span>
-                      </a>
+                      <div class="prev-page-placeholder">
+                      </div>
 
 
-                      <a href="../DESIGN/" class="next-page">
+                      <a href="../PRODUCT/" class="next-page">
                         <span><small>Next</small>
                           <strong>
-                            Design
+                            Product
                           </strong></span>
 
 <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -1120,27 +1025,15 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
     <ul class="toc-list">
 
         <li class="toc-item toc-level-1">
-          <a href="#requirements" class="toc-link">Requirements</a>
+          <a href="#documentation" class="toc-link">Documentation</a>
         </li>
 
         <li class="toc-item toc-level-2">
-          <a href="#requirements-functional-requirements" class="toc-link">Functional requirements</a>
+          <a href="#documentation-how-the-docs-are-organized" class="toc-link">How the docs are organized</a>
         </li>
 
         <li class="toc-item toc-level-2">
-          <a href="#requirements-non-functional-requirements" class="toc-link">Non-functional requirements</a>
-        </li>
-
-        <li class="toc-item toc-level-2">
-          <a href="#requirements-constraints-assumptions" class="toc-link">Constraints &amp; assumptions</a>
-        </li>
-
-        <li class="toc-item toc-level-2">
-          <a href="#requirements-dependencies" class="toc-link">Dependencies</a>
-        </li>
-
-        <li class="toc-item toc-level-2">
-          <a href="#requirements-open-questions" class="toc-link">Open questions</a>
+          <a href="#documentation-conventions" class="toc-link">Conventions</a>
         </li>
 
     </ul>
@@ -1200,10 +1093,10 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
 
                           </div>
                           <div class="git-commit-details">
-                            <div class="git-commit-message" title="Fill in docs/2-REQUIREMENTS.md">Fill in docs/2-REQUIREMENTS.md</div>
+                            <div class="git-commit-message" title="Fill in directory README indexes">Fill in directory README indexes</div>
                             <div class="git-commit-meta">
                               <span class="git-commit-author">David Spencer</span>
-                              <span class="git-commit-date" data-timestamp="1780455317000"></span>
+                              <span class="git-commit-date" data-timestamp="1780455590000"></span>
                             </div>
                           </div>
                         </li>

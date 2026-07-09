@@ -1,18 +1,18 @@
 {
   "okf_version": "0.8.10",
   "bundle": {
-    "name": "bundle",
-    "title": ".",
+    "name": "docslime",
+    "title": "DocSlime",
     "description": "",
-    "url": "",
+    "url": "https://www.docslime.dev",
     "generated_by": "@docmd/plugin-okf",
-    "generated_at": "2026-07-09T19:49:58.229Z",
+    "generated_at": "2026-07-09T20:10:32.450Z",
     "default_type": "concept"
   },
   "stats": {
-    "concepts": 12,
+    "concepts": 14,
     "by_type": {
-      "concept": 12
+      "concept": 14
     },
     "locales": [],
     "versions": []
@@ -129,11 +129,31 @@
       "tags": []
     },
     {
-      "id": "root",
+      "id": "readme",
       "type": "concept",
       "title": "Documentation",
+      "path": "/README/",
+      "file": "concepts/readme.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "root",
+      "type": "concept",
+      "title": "DocSlime",
       "path": "/",
       "file": "concepts/root.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "skills",
+      "type": "concept",
+      "title": "Agent Skills",
+      "path": "/skills/",
+      "file": "concepts/skills.md",
       "locale": "",
       "version": "",
       "tags": []

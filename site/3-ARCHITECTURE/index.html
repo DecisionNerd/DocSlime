@@ -83,7 +83,7 @@
         visibility: hidden;
       }
     </style>
-    
+
     <script>
       var root = "../";
       if (root && !root.endsWith('/')) root += '/';
@@ -99,33 +99,33 @@
       window.DOCMD_DEFAULT_LOCALE = "";
     </script>
     <title>
-      Architecture : .
+      Architecture : DocSlime
     </title>
 
     <base href="/">
-    
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrdx827j">
-    
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrdx827j" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrdx827j" id="hljs-dark" disabled>
-    
-    
-<meta name="description" content="">
-<link rel="canonical" href="/3-ARCHITECTURE/">
-<meta property="og:title" content="Architecture - .">
-<meta property="og:description" content="">
-<meta property="og:url" content="/3-ARCHITECTURE/">
+
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrdxyjff">
+
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrdxyjff" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrdxyjff" id="hljs-dark" disabled>
+
+
+<meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
+<link rel="canonical" href="https://www.docslime.dev/3-ARCHITECTURE/">
+<meta property="og:title" content="Architecture - DocSlime">
+<meta property="og:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
+<meta property="og:url" content="https://www.docslime.dev/3-ARCHITECTURE/">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Architecture - .">
-<meta name="twitter:description" content="">
+<meta name="twitter:title" content="Architecture - DocSlime">
+<meta name="twitter:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrdx827j" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrdx827j" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrdxyjff" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrdxyjff" >
 
-    
+
     <script>/**
  * --------------------------------------------------------------------
  * docmd : the zero-config documentation engine.
@@ -200,17 +200,17 @@
 
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    
-    
+
+
       <aside class="sidebar">
         <div class="sidebar-header">
-          
+
             <h1><a href="../">
-                .
+                DocSlime
               </a></h1>
-          
+
           <span class="mobile-view sidebar-menu-button float-right">
-            
+
 <svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-menu"
   xmlns="http://www.w3.org/2000/svg"
@@ -231,401 +231,16 @@
           </span>
         </div>
         <div class="sidebar-top-group">
-          
-          
-          
-          
-        </div>
-        
 
-<nav class="sidebar-nav" aria-label="Main Navigation">
-  <ul>
-    
-      <li class="" >
-      
-        <a href="../" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Documentation
-            </span>
-          
-          
-        </a>
-        
 
-        
-      </li>
-    
-      <li class="active" >
-      
-        <a href="../3-ARCHITECTURE/" class="active "
-          >
-          
-          <span class="nav-item-title">
-            Architecture
-            </span>
-          
-          
-        </a>
-        
+            <div class="sidebar-options-wrapper">
 
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../DESIGN/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Design
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../1-EXPERIENCES/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Experiences
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../PRODUCT/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Product
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../2-REQUIREMENTS/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Requirements
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../4-TESTING/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Testing
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="collapsible nav-group"  aria-expanded="false" >
-      
-        <span class="nav-label nav-group">
-          
-          <span class="nav-item-title">
-            0 PRODUCT
-          </span>
-          
-            <span class="collapse-icon-wrapper">
-<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-chevron-right"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m9 18 6-6-6-6" />
-</svg>
-</span>
-          
-        </span>
-        
-
-        
-          <ul class="submenu">
-            
-      <li class="" >
-      
-        <a href="../0-PRODUCT/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Product
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-          </ul>
-        
-      </li>
-    
-      <li class="collapsible nav-group"  aria-expanded="false" >
-      
-        <span class="nav-label nav-group">
-          
-          <span class="nav-item-title">
-            1 JOURNEYS
-          </span>
-          
-            <span class="collapse-icon-wrapper">
-<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-chevron-right"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m9 18 6-6-6-6" />
-</svg>
-</span>
-          
-        </span>
-        
-
-        
-          <ul class="submenu">
-            
-      <li class="" >
-      
-        <a href="../1-JOURNEYS/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Journeys
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-          </ul>
-        
-      </li>
-    
-      <li class="collapsible nav-group"  aria-expanded="false" >
-      
-        <span class="nav-label nav-group">
-          
-          <span class="nav-item-title">
-            3 ENGINEERING
-          </span>
-          
-            <span class="collapse-icon-wrapper">
-<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-chevron-right"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m9 18 6-6-6-6" />
-</svg>
-</span>
-          
-        </span>
-        
-
-        
-          <ul class="submenu">
-            
-      <li class="" >
-      
-        <a href="../3-ENGINEERING/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Engineering
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="collapsible nav-group"  aria-expanded="false" >
-      
-        <span class="nav-label nav-group">
-          
-          <span class="nav-item-title">
-            ADRs
-          </span>
-          
-            <span class="collapse-icon-wrapper">
-<svg class="lucide-icon icon-chevron-right collapse-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-chevron-right"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m9 18 6-6-6-6" />
-</svg>
-</span>
-          
-        </span>
-        
-
-        
-          <ul class="submenu">
-            
-      <li class="" >
-      
-        <a href="../3-ENGINEERING/ADRs/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            Architecture Decision Records
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-      <li class="" >
-      
-        <a href="../3-ENGINEERING/ADRs/0001-embed-templates-in-binary/" class=" "
-          >
-          
-          <span class="nav-item-title">
-            ADR-0001: Embed templates in the binary at compile time
-            </span>
-          
-          
-        </a>
-        
-
-        
-      </li>
-    
-          </ul>
-        
-      </li>
-    
-          </ul>
-        
-      </li>
-    
-  </ul>
-</nav>
-        <div class="sidebar-bottom-group mt-auto">
-          
-          
-          
-          
-        </div>
-      </aside>
-      
-      
-      
-      <div class="main-content-wrapper">
-        
-        
-          <header class="page-header">
-            <div class="header-left">
-              
-                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
-                  aria-label="Toggle Sidebar">
-                  
-<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
-  class="lucide lucide-chevron-left"
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  stroke-width="2"
-  stroke-linecap="round"
-  stroke-linejoin="round"
->
-  <path d="m15 18-6-6 6-6" />
-</svg>
-
-                </button>
-              
-              <div class="header-titles-wrapper">
-                <span class="header-title">
-                  Architecture
-                </span>
-              </div>
-            </div>
-            <div class="header-right">
-              
-                
 
 
 <div class="docmd-options-menu">
-    
+
     <button class="docmd-search-trigger" aria-label="Search">
-        
+
 <svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-search"
   xmlns="http://www.w3.org/2000/svg"
@@ -645,15 +260,15 @@
         <span class="search-label">Search</span>
         <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
     </button>
-    
 
-    
 
-    
 
-    
+
+
+
+
     <button class="theme-toggle-button" aria-label="Toggle theme">
-        
+
 <svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-sun"
   xmlns="http://www.w3.org/2000/svg"
@@ -676,7 +291,7 @@
   <path d="m6.34 17.66-1.41 1.41" />
   <path d="m19.07 4.93-1.41 1.41" />
 </svg>
- 
+
 <svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-moon"
   xmlns="http://www.w3.org/2000/svg"
@@ -693,40 +308,543 @@
 </svg>
 
     </button>
-    
 
-    
+
+
 </div>
 
-              
+            </div>
+
+
+
+        </div>
+
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+
+      <li class="" >
+
+        <a href="../" class=" "
+          >
+
+<svg class="lucide-icon icon-zap " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-zap"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Overview
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../PRODUCT/" class=" "
+          >
+
+<svg class="lucide-icon icon-target " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-target"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Product
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../1-EXPERIENCES/" class=" "
+          >
+
+<svg class="lucide-icon icon-route " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-route"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Experiences
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../2-REQUIREMENTS/" class=" "
+          >
+
+<svg class="lucide-icon icon-list-checks " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-list-checks"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Requirements
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../DESIGN/" class=" "
+          >
+
+<svg class="lucide-icon icon-palette " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-palette"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Design
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="active" >
+
+        <a href="../3-ARCHITECTURE/" class="active "
+          >
+
+<svg class="lucide-icon icon-boxes " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-boxes"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Architecture
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../4-TESTING/" class=" "
+          >
+
+<svg class="lucide-icon icon-flask-conical " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-flask-conical"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+  <path d="M6.453 15h11.094" />
+  <path d="M8.5 2h7" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Testing
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../skills/" class=" "
+          >
+
+<svg class="lucide-icon icon-brain-circuit " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-brain-circuit"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M9 13a4.5 4.5 0 0 0 3-4" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M12 13h4" />
+  <path d="M12 18h6a2 2 0 0 1 2 2v1" />
+  <path d="M12 8h8" />
+  <path d="M16 8V5a2 2 0 0 1 2-2" />
+  <circle cx="16" cy="13" r=".5" />
+  <circle cx="18" cy="3" r=".5" />
+  <circle cx="20" cy="21" r=".5" />
+  <circle cx="20" cy="8" r=".5" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Agent Skills
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="expanded nav-group" >
+
+        <span class="nav-label nav-group">
+
+<svg class="lucide-icon icon-wrench " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-wrench"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Engineering
+          </span>
+
+        </span>
+
+
+
+          <ul class="submenu">
+
+      <li class="" >
+
+        <a href="../3-ENGINEERING/" class=" "
+          >
+
+<svg class="lucide-icon icon-file-code " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-file-code"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Engineering
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../3-ENGINEERING/ADRs/" class=" "
+          >
+
+<svg class="lucide-icon icon-scroll-text " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-scroll-text"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 12h-5" />
+  <path d="M15 8h-5" />
+  <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+  <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+</svg>
+
+
+          <span class="nav-item-title">
+            ADRs
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+          </ul>
+
+      </li>
+
+      <li class="" >
+
+        <a href="https://github.com/DecisionNerd/DocSlime" class=" "
+          target=&quot;_blank&quot; rel=&quot;noopener&quot;>
+
+<svg class="lucide-icon icon-github " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-github"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+  <path d="M9 18c-4.51 2-5-2-7-2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            GitHub
+            </span>
+
+
+<svg class="lucide-icon icon-external-link nav-external-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-external-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+</svg>
+
+
+        </a>
+
+
+
+      </li>
+
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+
+
+
+
+        </div>
+      </aside>
+
+
+
+      <div class="main-content-wrapper">
+
+
+          <header class="page-header">
+            <div class="header-left">
+
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  Architecture
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+
             </div>
           </header>
-        
+
         <div class="content-theme-cover">
           <main class="content-area" id="main-content">
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
                   <div id="docmd-raw-markdown" data-content="%23%20Architecture%0A%0ADocSlime%20is%20a%20single%20self-contained%20command-line%20binary%20written%20in%20Rust%20plus%20a%20bundled%20set%0Aof%20agent%20skills.%20It%20has%20no%20server%2C%20no%20database%2C%20and%20no%20runtime%20dependencies%3A%20the%20entire%0Atemplate%20tree%20is%20compiled%20into%20the%20binary%2C%20and%20every%20CLI%20command%20operates%20directly%20on%20the%0Afilesystem%20relative%20to%20the%20current%20directory.%0A%0AThe%20design%20is%20deliberately%20small%3A%20parse%20a%20command%2C%20resolve%20a%20template%2C%20write%20files%20without%0Aclobbering%20existing%20ones%2C%20and%20leave%20judgment-heavy%20work%20to%20skills.%20%60docs%2FPRODUCT.md%60%20and%0A%60docs%2FDESIGN.md%60%20are%20part%20of%20the%20generated%20tree%20so%20tools%20like%20%60impeccable%60%20can%20discover%0Acontext%20from%20%60docs%2F%60%3B%20publication%20remains%20outside%20the%20binary%20in%20the%20%60docmd.io%60%20system.%0A%0A%23%23%20Context%20diagram%0A%0A%60%60%60%0Adeveloper%20%E2%94%80%E2%94%90%0A%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20%5B%20docslime%20CLI%20%5D%20%E2%94%80%E2%86%92%20.%2Fdocs%2F%20(PRODUCT.md%2C%20DESIGN.md%2C%20ADRs%2C%20tests)%0AAI%20agent%20%20%E2%94%80%E2%94%98%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20impeccable%20reads%20docs%2FPRODUCT.md%20%2B%20docs%2FDESIGN.md%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%86%92%20docmd.io%20publishes%20Markdown%20later%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%20embedded%20templates%20(compiled%20in%3B%20no%20network%2C%20no%20external%20files)%0A%60%60%60%0A%0AInside%20the%20CLI%20boundary%3A%20argument%20parsing%2C%20template%20resolution%2C%20and%20file%20writing.%20Outside%3A%0Athe%20git%20repo&#039;s%20filesystem%2C%20the%20AI%20agent%20skills%20that%20fill%20and%20review%20docs%2C%20%60impeccable%60%0Acontext%20loading%2C%20and%20%60docmd.io%60%20publication.%0A%0A%23%23%20Components%0A%0A%7C%20Component%20%7C%20Responsibility%20%7C%20Depends%20on%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20%60cli%60%20%7C%20Define%20the%20command%20surface%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20and%20arguments%20via%20clap%20derive.%20KISS%20is%20intentionally%20not%20a%20CLI%20subcommand.%20%7C%20clap%20%7C%0A%7C%20%60main%60%20%7C%20Parse%20args%2C%20resolve%20the%20working%20directory%2C%20dispatch%20to%20a%20command%2C%20map%20errors%20to%20an%20exit%20code.%20%7C%20cli%2C%20commands%20%7C%0A%7C%20%60commands%3A%3Ainit%60%20%7C%20Scaffold%20the%20full%20template%20tree%20into%20%60docs%2F%60%2C%20skipping%20existing%20files.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Aadd%60%20%7C%20Resolve%20a%20single%20template%20by%20name%2C%20or%20create%20the%20next-numbered%20ADR%20with%20a%20normalized%20slug.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Alist%60%20%7C%20List%20every%20template%20and%20whether%20it%20already%20exists%20on%20disk.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60templates%60%20%7C%20Hold%20the%20compile-time-embedded%20template%20tree%20and%20ADR%20template%3B%20resolve%20%60add%60%20names%20leniently.%20%7C%20include_dir%20%7C%0A%7C%20%60scaffold%60%20%7C%20Compute%20output%20paths%20and%20write%20files%20non-destructively%20(honoring%20%60--force%60)%3B%20track%20outcomes.%20%7C%20std%3A%3Afs%20%7C%0A%0A%23%23%20Data%20model%0A%0ADocSlime%20is%20essentially%20stateless%20%E2%80%94%20it%20stores%20nothing%20of%20its%20own.%20The%20only%20persistent%20artifacts%0Aare%3A%0A%0A-%20**Embedded%20templates**%20%E2%80%94%20a%20read-only%20directory%20tree%20(%60templates%2F%60)%20plus%20the%20standalone%20ADR%0A%20%20template%20(%60assets%2Fadr.md%60)%2C%20baked%20into%20the%20binary%20at%20build%20time.%0A-%20**The%20output%20%60docs%2F%60%20tree**%20%E2%80%94%20plain%20Markdown%20files%20written%20into%20the%20user&#039;s%20repo%2C%20including%0A%20%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20for%20product%2Fdesign%20context%20discovery.%0A%0AThe%20one%20piece%20of%20derived%20state%20computed%20at%20runtime%20is%20the%20**next%20ADR%20number**%2C%20obtained%20by%0Ascanning%20the%20ADR%20directory%20for%20the%20highest%20%60NNNN-*%60%20prefix.%0A%0A%23%23%20Key%20flows%0A%0A%23%23%23%20%60docslime%20init%60%20(scaffold%20the%20tree)%0A%0A1.%20%60main%60%20resolves%20the%20current%20working%20directory%20as%20the%20root%20%E2%80%94%20%60main%60%0A2.%20Dispatch%20to%20the%20init%20command%20%E2%80%94%20%60commands%3A%3Ainit%60%0A3.%20Enumerate%20every%20embedded%20template%20in%20the%20tree%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20%E2%80%94%20%60templates%60%0A4.%20For%20each%2C%20compute%20%60docs%2F%3Crelative-path%3E%60%20and%20write%20it%20unless%20it%20exists%20(or%20%60--force%60)%20%E2%80%94%20%60scaffold%60%0A5.%20Report%20a%20summary%20of%20created%20vs.%20skipped%20files%20%E2%80%94%20%60commands%3A%3Ainit%60%0A%0A%23%23%23%20%60docslime%20add%20adr%20%3Cslug%3E%60%20(create%20an%20ADR)%0A%0A1.%20Dispatch%20to%20the%20add%20command%3B%20detect%20the%20literal%20%60adr%60%20%E2%80%94%20%60commands%3A%3Aadd%60%0A2.%20Normalize%20the%20slug%20to%20%60%5Ba-z0-9-%5D%60%3B%20reject%20if%20empty%20%E2%80%94%20%60commands%3A%3Aadd%60%0A3.%20Scan%20%60docs%2F3-ENGINEERING%2FADRs%2F%60%20for%20the%20highest%20%60NNNN%60%20prefix%20and%20add%20one%20%E2%80%94%20%60commands%3A%3Aadd%60%0A4.%20Write%20%60NNNN-%3Cslug%3E.md%60%20from%20the%20embedded%20ADR%20template%2C%20non-destructively%20%E2%80%94%20%60scaffold%60%0A%0AThese%20line%20up%20with%20the%20%22Scaffold%20the%20docs%20tree%22%20and%20%22Record%20an%20architecture%20decision%22%0Aexperiences%20in%20%5B%601-EXPERIENCES.md%60%5D(1-EXPERIENCES.md).%0A%0A%23%23%20Cross-cutting%20concerns%0A%0A-%20**Error%20handling%3A**%20%60anyhow%60%20propagates%20errors%20up%20to%20%60main%60%2C%20which%20prints%20%60error%3A%20%E2%80%A6%60%20and%0A%20%20returns%20a%20non-zero%20%60ExitCode%60.%20Unknown%20template%20names%20produce%20a%20helpful%20error%20listing%20valid%0A%20%20names%20(FR-8).%0A-%20**Configuration%3A**%20none%20%E2%80%94%20behavior%20is%20fixed%20by%20the%20embedded%20templates%20and%20a%20small%20set%20of%0A%20%20flags%20(%60--force%60).%20No%20config%20file%20(see%20open%20questions%20in%20%5B%602-REQUIREMENTS.md%60%5D(2-REQUIREMENTS.md)).%0A-%20**Security%3A**%20%60docslime%60%20only%20writes%20within%20%60docs%2F%60%20under%20the%20current%20directory%20and%20never%0A%20%20overwrites%20without%20%60--force%60%20(NFR-4).%20No%20network%20access.%0A-%20**Observability%3A**%20plain%20stdout%2Fstderr%3B%20%60list%60%20uses%20%60owo-colors%60%20for%20readable%20status%20output.%0A-%20**External%20tools%3A**%20%60impeccable%60%20and%20%60docmd.io%60%20consume%20the%20Markdown%20tree%3B%20they%20are%20not%0A%20%20runtime%20dependencies%20of%20the%20CLI.%0A%0A%23%23%20Decisions%0A%0A-%20%5BEmbed%20templates%20in%20the%20binary%20at%20compile%20time%5D(3-ENGINEERING%2FADRs%2F0001-embed-templates-in-binary.md)%20%E2%80%94%20keeps%20DocSlime%20a%20zero-dependency%20single%20binary.%0A%0A%23%23%20Risks%20%26%20trade-offs%0A%0A-%20**Editing%20a%20template%20requires%20a%20rebuild.**%20Because%20templates%20are%20embedded%20via%20%60include_dir%60%2C%0A%20%20content%20changes%20only%20ship%20with%20a%20new%20binary.%20Accepted%3A%20it&#039;s%20the%20price%20of%20a%20no-dependency%0A%20%20single%20binary%2C%20and%20templates%20change%20rarely.%0A-%20**Fixed%20tree%20layout.**%20DocSlime%20doesn&#039;t%20accept%20a%20custom%20structure%2C%20which%20keeps%20it%20simple%20but%0A%20%20limits%20teams%20that%20want%20a%20different%20shape.%20Tracked%20as%20an%20open%20question%20in%20the%20requirements.%0A-%20**Current-directory%20assumption.**%20All%20commands%20act%20on%20the%20current%20directory%3B%20running%20from%0A%20%20the%20wrong%20place%20scaffolds%20in%20the%20wrong%20place.%20Mitigation%3A%20the%20%60docslime-init%60%20skill%20confirms%0A%20%20the%20working%20directory%20first.%0A" style="display: none;"></div>
-                  
+
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
-                        
-                        
+
+
                           <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
-                            
+
                               <span>Architecture</span>
-                            
-                            
+
+
                           </li>
-                        
+
                       </ol>
                     </nav>
-                  
 
-                  
+
+
                     <div class="docmd-copy-widgets">
-                      
+
                         <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
                           <span class="docmd-btn-icon">
 <svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -746,8 +864,8 @@
 </svg>
 </span>
                         </button>
-                      
-                      
+
+
                         <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
                           <span class="docmd-btn-icon">
 <svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -767,11 +885,11 @@
 </span>
                           <span class="docmd-btn-text">Copy Context</span>
                         </button>
-                      
+
                     </div>
-                  
+
                 </div>
-                
+
                 <h1 id="architecture" class="docmd-heading"><a href="#architecture" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Architecture</h1>
 <p>DocSlime is a single self-contained command-line binary written in Rust plus a bundled set<br>
 of agent skills. It has no server, no database, and no runtime dependencies: the entire<br>
@@ -897,11 +1015,11 @@ the wrong place scaffolds in the wrong place. Mitigation: the <code>docslime-ini
 the working directory first.</li>
 </ul>
 
-                
+
                   <div class="page-navigation">
-                    
-                      <a href="../" class="prev-page">
-                        
+
+                      <a href="../DESIGN/" class="prev-page">
+
 <svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-arrow-left"
   xmlns="http://www.w3.org/2000/svg"
@@ -919,17 +1037,17 @@ the working directory first.</li>
 </svg>
 
                         <span><small>Previous</small><strong>
-                            Documentation
-                          </strong></span>
-                      </a>
-                    
-                    
-                      <a href="../DESIGN/" class="next-page">
-                        <span><small>Next</small>
-                          <strong>
                             Design
                           </strong></span>
-                        
+                      </a>
+
+
+                      <a href="../4-TESTING/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Testing
+                          </strong></span>
+
 <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
   class="lucide lucide-arrow-right"
   xmlns="http://www.w3.org/2000/svg"
@@ -947,12 +1065,12 @@ the working directory first.</li>
 </svg>
 
                       </a>
-                    
+
                   </div>
-                
+
               </div>
               <div class="toc-sidebar">
-                
+
 
 
   <div class="toc-container">
@@ -973,55 +1091,55 @@ the working directory first.</li>
 </svg>
 </span></h2>
     <ul class="toc-list">
-      
+
         <li class="toc-item toc-level-1">
           <a href="#architecture" class="toc-link">Architecture</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-context-diagram" class="toc-link">Context diagram</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-components" class="toc-link">Components</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-data-model" class="toc-link">Data model</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-key-flows" class="toc-link">Key flows</a>
         </li>
-      
+
         <li class="toc-item toc-level-3">
           <a href="#architecture-key-flows-docslime-init-scaffold-the-tree" class="toc-link">docslime init (scaffold the tree)</a>
         </li>
-      
+
         <li class="toc-item toc-level-3">
           <a href="#architecture-key-flows-docslime-add-adr-slug-create-an-adr" class="toc-link">docslime add adr  (create an ADR)</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-cross-cutting-concerns" class="toc-link">Cross-cutting concerns</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-decisions" class="toc-link">Decisions</a>
         </li>
-      
+
         <li class="toc-item toc-level-2">
           <a href="#architecture-risks-trade-offs" class="toc-link">Risks &amp; trade-offs</a>
         </li>
-      
+
     </ul>
   </div>
 
               </div>
             </div>
             <div class="page-footer-actions">
-              
-              
+
+
                 <span class="git-last-updated" data-timestamp="1783617758000">
                   <svg class="git-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <circle cx="12" cy="12" r="10"></circle>
@@ -1029,16 +1147,16 @@ the working directory first.</li>
                   </svg>
                   <span class="git-label">Last updated:</span>
                   <span class="git-time" data-timestamp="1783617758000"></span>
-                  
+
                   <div class="git-commit-tooltip" role="tooltip">
                     <div class="git-tooltip-title">Recent commits</div>
                     <ul class="git-commit-list">
-                      
+
                         <li class="git-commit-item">
                           <div class="git-commit-avatar" title="David Spencer">
-                            
+
                               <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
-                            
+
                           </div>
                           <div class="git-commit-details">
                             <div class="git-commit-message" title="Rename product to DocSlime">Rename product to DocSlime</div>
@@ -1048,12 +1166,12 @@ the working directory first.</li>
                             </div>
                           </div>
                         </li>
-                      
+
                         <li class="git-commit-item">
                           <div class="git-commit-avatar" title="David Spencer">
-                            
+
                               <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
-                            
+
                           </div>
                           <div class="git-commit-details">
                             <div class="git-commit-message" title="Update docgen docs to reflect new design section">Update docgen docs to reflect new des...</div>
@@ -1063,12 +1181,12 @@ the working directory first.</li>
                             </div>
                           </div>
                         </li>
-                      
+
                         <li class="git-commit-item">
                           <div class="git-commit-avatar" title="David Spencer">
-                            
+
                               <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
-                            
+
                           </div>
                           <div class="git-commit-details">
                             <div class="git-commit-message" title="Fill in docs/3-ARCHITECTURE.md and ADR-0001">Fill in docs/3-ARCHITECTURE.md and AD...</div>
@@ -1078,12 +1196,12 @@ the working directory first.</li>
                             </div>
                           </div>
                         </li>
-                      
+
                         <li class="git-commit-item">
                           <div class="git-commit-avatar" title="David Spencer">
-                            
+
                               <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
-                            
+
                           </div>
                           <div class="git-commit-details">
                             <div class="git-commit-message" title="Add agent skills for docgen">Add agent skills for docgen</div>
@@ -1093,12 +1211,12 @@ the working directory first.</li>
                             </div>
                           </div>
                         </li>
-                      
+
                         <li class="git-commit-item">
                           <div class="git-commit-avatar" title="David Spencer">
-                            
+
                               <img src="https://www.gravatar.com/avatar/e2e972c293fca3ab0dbedba35cd31caf?d=mp&amp;s=64" alt="David Spencer">
-                            
+
                           </div>
                           <div class="git-commit-details">
                             <div class="git-commit-message" title="Implement docgen CLI with templates and release config">Implement docgen CLI with templates a...</div>
@@ -1108,40 +1226,40 @@ the working directory first.</li>
                             </div>
                           </div>
                         </li>
-                      
+
                     </ul>
                   </div>
-                  
+
                 </span>
-              
+
               <span class="git-spacer"></span>
-              
+
             </div>
           </main>
-          
+
 
 
 <footer class="page-footer">
   <div class="footer-content">
-    <div class="user-footer">© 2026</div>
-    
+    <div class="user-footer">© 2026 DecisionNerd. DocSlime documentation.</div>
+
       <div class="branding-footer">
         Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
       </div>
-    
+
   </div>
 </footer>
 
         </div>
       </div>
-      
-      <script src="../assets/js/docmd-main.js?v=mrdx827j"></script>
-      
-      <script src="../assets/js/docmd-git.js?v=mrdx827j"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mrdx827j" ></script>
+
+      <script src="../assets/js/docmd-main.js?v=mrdxyjff"></script>
+
+      <script src="../assets/js/docmd-git.js?v=mrdxyjff"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrdxyjff" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mrdx827j" ></script>
-<script src="../assets/js/docmd-git.js?v=mrdx827j" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mrdxyjff" ></script>
+<script src="../assets/js/docmd-git.js?v=mrdxyjff" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1174,12 +1292,12 @@ the working directory first.</li>
         document.addEventListener('click', function(e) {
           var link = e.target.closest('a');
           if (!link || !window.gtag) return;
-          
+
           var url = link.href;
           var hostname = window.location.hostname;
           var isExternal = link.hostname && link.hostname !== hostname;
           var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
-          
+
           if (isExternal) {
             gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
           } else if (isDownload) {
@@ -1197,26 +1315,26 @@ the working directory first.</li>
           }
         });
 
-        
+
         // Search Keyword Tracking
         document.addEventListener('input', function(e) {
           if (e.target.id === 'docmd-search-input' && window.gtag) {
             var query = e.target.value.trim();
             if (query.length < 3) return;
-            
+
             clearTimeout(searchDebounceTimer);
             searchDebounceTimer = setTimeout(function() {
               gtag('event', 'search', { 'search_term': query });
             }, 1000);
           }
         });
-        
+
       })();
     </script>
 
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
-      
-      
-      
+
+
+
   </body>
 </html>

@@ -1,12 +1,12 @@
 ---
 type: concept
 title: Design
-source: /DESIGN/
+source: "https://www.docslime.dev/DESIGN/"
 path: /DESIGN/
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T19:49:58.228Z"
+  generated_at: "2026-07-09T20:10:32.449Z"
 ---
 # Design
 

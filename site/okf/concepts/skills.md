@@ -1,4 +1,15 @@
 ---
+type: concept
+title: "Agent Skills"
+description: "Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs."
+source: "https://www.docslime.dev/skills/"
+path: /skills/
+updated: 2026-07-09
+okf:
+  generated_by: "@docmd/plugin-okf"
+  generated_at: "2026-07-09T20:10:32.450Z"
+---
+---
 title: "Agent Skills"
 description: "Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs."
 ---

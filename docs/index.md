@@ -1,93 +1,75 @@
 ---
-title: "Quick Start"
-description: "Welcome to your new documentation site."
+title: "DocSlime"
+description: "Opinionated docs scaffolding and agent skills for services and user-facing products."
 ---
 
-# Quick Start Your Docs 🚀
+# DocSlime
 
-This is the home page of your new **docmd** project. You're currently viewing `docs/index.md` — edit it, and your site updates.
+DocSlime turns a repo into a living, agent-ready documentation workspace. It gives teams a
+small `docslime` CLI, a standardized `docs/` tree, and agent skills that help fill, review,
+and maintain product context, requirements, design, architecture, testing notes, and ADRs.
 
-## Run the dev server
+The system is built for both services and user-facing products. It is intentionally
+opinionated: TDD+BDD quality, Domain Driven Design where it clarifies the system,
+explicit decisions, and plain Markdown that can publish through `docmd.io`.
 
-```bash
-npx @docmd/core dev
+## Install
+
+```sh
+brew install DecisionNerd/tap/docslime
 ```
 
-Open `http://localhost:3000` — the page auto-reloads as you edit.
+Other install paths:
 
-## Build for production
+- Shell installer: `curl -LsSf https://github.com/DecisionNerd/DocSlime/releases/latest/download/docslime-installer.sh | sh`
+- Source build: `cargo install --git https://github.com/DecisionNerd/DocSlime --bins`
 
-```bash
-npx @docmd/core build
+## Use the CLI
+
+```sh
+docslime init
+docslime list
+docslime add PRODUCT
+docslime add adr choose-storage-boundary
 ```
 
-Output goes to `site/`. Deploy that folder anywhere that serves static files.
+`init` creates the full tree without overwriting existing files. `add` creates one missing
+document or the next-numbered ADR. `list` shows every available template and whether it
+already exists in the current repo.
 
-## Project structure
+## What DocSlime Creates
 
 ```text
-.
-├── docs/                  # Your markdown content
-│   └── index.md           # You are here
-├── assets/                # Custom CSS, JS, and images
-├── docmd.config.json      # Site configuration
-└── package.json           # Node dependencies + scripts
+docs/
+├── PRODUCT.md
+├── 1-EXPERIENCES.md
+├── 2-REQUIREMENTS.md
+├── DESIGN.md
+├── 3-ARCHITECTURE.md
+├── 4-TESTING.md
+├── 0-PRODUCT/
+├── 1-JOURNEYS/
+└── 3-ENGINEERING/ADRs/
 ```
 
-## Features
+`docs/PRODUCT.md` and `docs/DESIGN.md` are deliberately discoverable from the docs tree so
+tools like `impeccable` can load product and design context without duplicate root files.
 
-### 1. Smart containers
+## Agent Skills
 
-```markdown
-::: callout tip "Did you know?"
-You can nest containers, add titles, and use icons.
-:::
+Install the bundled skills into a skill-aware agent:
 
-::: card "Flexible" icon:layout-grid
-Organise content with cards.
-
-[View the docs →](https://docs.docmd.io){.docmd-button}
-:::
+```sh
+npx skills add DecisionNerd/DocSlime
 ```
 
-Renders as a styled callout and a card with a button.
+The skill pack includes `docslime-install`, `docslime-init`, `docslime-fill`,
+`docslime-adr`, and `docslime-kiss`.
 
-### 2. Tabs and code
+## Read Next
 
-````markdown
-::: tabs
-== tab "JavaScript" icon:braces
-```javascript
-console.log('Hello World');
-```
-
-== tab "Python" icon:code
-```python
-print('Hello World')
-```
-:::
-````
-
-### 3. Built-in plugins
-
-docmd ships with these plugins enabled by default — no install needed:
-
-- **Search** — full-text + semantic search (optional)
-- **Sitemap** + **SEO** meta tags
-- **LLMs context** — `llms.txt` and `llms.json` for AI agents
-- **OKF** — Open Knowledge Format bundle at `site/okf/`
-- **Mermaid** diagrams
-- **Git** last-modified timestamps
-- **Math** (KaTeX) — enable with `docmd add math`
-
-See the [full plugin list](https://docs.docmd.io/plugins/usage/).
-
-## Next steps
-
-- **[Install docmd](https://docs.docmd.io/getting-started/installation/)**
-- **[Configure your site](https://docs.docmd.io/configuration/overview/)**
-- **[Browse templates](https://docs.docmd.io/theming/templates/)**
-- **[Deploy to production](https://docs.docmd.io/deployment/)**
-- **[GitHub repo](https://github.com/docmd-io/docmd/)**
-
-Happy documenting! 🎉
+- [Product](PRODUCT/) explains what DocSlime is for.
+- [Experiences](1-EXPERIENCES/) describes the user and agent workflows.
+- [Requirements](2-REQUIREMENTS/) defines the behavior DocSlime must preserve.
+- [Design](DESIGN/) captures the product and docs experience rules.
+- [Agent Skills](skills/) shows how agents use the DocSlime lifecycle.
