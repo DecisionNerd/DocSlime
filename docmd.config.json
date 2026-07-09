@@ -1,9 +1,13 @@
 {
   "title": "DocSlime",
   "url": "https://www.docslime.dev",
+  "favicon": "/assets/favicon.svg",
   "src": "docs",
   "out": "site",
   "engine": "js",
+  "customJs": [
+    "/assets/js/docslime-nav.js"
+  ],
   "layout": {
     "spa": true,
     "header": {
@@ -29,7 +33,10 @@
   "theme": {
     "name": "default",
     "appearance": "system",
-    "codeHighlight": true
+    "codeHighlight": true,
+    "customCss": [
+      "/assets/css/docslime-brand.css"
+    ]
   },
   "minify": true,
   "autoTitleFromH1": true,

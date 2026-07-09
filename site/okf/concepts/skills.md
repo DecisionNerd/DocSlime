@@ -7,7 +7,7 @@ path: /skills/
 updated: 2026-07-09
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T20:10:32.450Z"
+  generated_at: "2026-07-09T22:02:20.694Z"
 ---
 ---
 title: "Agent Skills"
