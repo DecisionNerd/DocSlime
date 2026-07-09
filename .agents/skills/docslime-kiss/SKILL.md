@@ -1,11 +1,11 @@
 ---
-name: docgen-kiss
-description: Reviews a docgen docs tree for KISS violations, bloat, generic AI slop, weak requirements, overbuilt architecture, stale contradictions, and non-actionable design or testing docs. Use when tightening docs or applying best-practice cleanup.
+name: docslime-kiss
+description: Reviews a DocSlime docs tree for KISS violations, bloat, generic AI slop, weak requirements, overbuilt architecture, stale contradictions, and non-actionable design or testing docs. Use when tightening docs or applying best-practice cleanup.
 ---
 
-# docgen KISS
+# DocSlime KISS
 
-Audit a docgen documentation tree for whether it is useful, lean, truthful, and traceable.
+Audit a DocSlime documentation tree for whether it is useful, lean, truthful, and traceable.
 Use this when the user asks whether docs, requirements, architecture, design guidance, ADRs,
 or testing docs are bloated, generic, "AI slop", overcomplicated, or not conforming to best
 practice.
@@ -22,17 +22,17 @@ Answer with evidence from the files, not vibes.
 
 ## Workflow
 
-1. Read the docs tree before judging: `docs/README.md`, `0-MISSION.md`,
-   `1-EXPERIENCES.md`, `2-REQUIREMENTS.md`, `2-DESIGN/`, `3-ARCHITECTURE.md`,
+1. Read the docs tree before judging: `docs/README.md`, `PRODUCT.md`,
+   `1-EXPERIENCES.md`, `2-REQUIREMENTS.md`, `DESIGN.md`, `3-ARCHITECTURE.md`,
    `3-ENGINEERING/`, `4-TESTING.md`, and relevant ADRs.
-2. Check the trace: mission -> experiences -> requirements -> design/architecture -> tests.
+2. Check the trace: product -> experiences -> requirements -> design/architecture -> tests.
 3. Identify bloat and slop with concrete file/line references.
 4. Recommend the smallest change that makes the docs honest and useful.
 5. If the user asked for edits, patch the docs directly and preserve real decisions.
 
 ## KISS Bar
 
-Good docgen docs are:
+Good DocSlime docs are:
 
 - **Specific:** describe this project, not a generic software product.
 - **Short enough to maintain:** no filler sections kept only because the template had them.

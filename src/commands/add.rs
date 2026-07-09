@@ -1,4 +1,4 @@
-//! `docgen add <doc>` — add a single document, or create the next-numbered ADR.
+//! `docslime add <doc>` — add a single document, or create the next-numbered ADR.
 
 use std::path::Path;
 
@@ -34,7 +34,7 @@ pub fn run(root: &Path, doc: &str, slug: Option<&str>, force: bool) -> Result<()
 /// Create `docs/3-ENGINEERING/ADRs/NNNN-<slug>.md` from the ADR template, where `NNNN` is the
 /// next number after the highest existing record.
 fn add_adr(root: &Path, slug: Option<&str>, force: bool) -> Result<()> {
-    let slug = slug.context("`add adr` requires a slug, e.g. `docgen add adr my-decision`")?;
+    let slug = slug.context("`add adr` requires a slug, e.g. `docslime add adr my-decision`")?;
     let slug = normalize_slug(slug);
     if slug.is_empty() {
         bail!("the ADR slug must contain at least one alphanumeric character");
@@ -123,7 +123,7 @@ mod tests {
 
     #[test]
     fn next_adr_number_is_one_when_dir_missing() {
-        let tmp = std::env::temp_dir().join("docgen-no-such-dir-xyz");
+        let tmp = std::env::temp_dir().join("docslime-no-such-dir-xyz");
         assert_eq!(next_adr_number(&tmp).unwrap(), 1);
     }
 

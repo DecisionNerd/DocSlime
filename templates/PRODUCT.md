@@ -1,17 +1,18 @@
-<!-- LLM: This is the foundation document — every other doc derives from it. Interview the
-user before writing. Work through the sections in order, asking one focused question at a
-time and reflecting their answers back. Keep the final document tight: this is the north
-star, not a spec. Remove each LLM comment once its section is filled. -->
+<!-- LLM: This is the foundation product-context document. It is also discoverable by tools
+that look for PRODUCT.md. Interview the user before writing. Work through the sections in
+order, asking one focused question at a time and reflecting their answers back. Keep the
+final document tight: this is the source of product truth, not a feature backlog. Remove each
+LLM comment once its section is filled. -->
 
-# Mission
+# Product
 
-<!-- LLM: Capture the single core reason this project exists, in 2-3 sentences. Ask the user:
+<!-- LLM: Capture the single core reason this project exists, in 2-3 sentences. Ask:
 - In one sentence, what does this project do?
 - Who is it for, and what changes for them if it succeeds?
-- What becomes possible (or stops being painful) that wasn't before?
+- Is this primarily a service, a user-facing product, an internal tool, a platform, or a mix?
 Write it as a confident statement, not a list. -->
 
-_What is the one reason this project exists?_
+_What is this product, and why does it exist?_
 
 ## Problem
 
@@ -22,6 +23,14 @@ _What is the one reason this project exists?_
 Aim for a paragraph or a short, concrete list. -->
 
 _What problem are we solving, and for whom?_
+
+## Audience
+
+<!-- LLM: Identify primary and secondary users, buyers, operators, admins, integrators, or
+dependent teams. For each, capture what they need from the product and what "good" feels
+like to them. Link to 1-JOURNEYS/ when fuller personas or journeys exist. -->
+
+- _Audience / role - need_
 
 ## Vision
 
@@ -50,10 +59,10 @@ won't?" -->
 - _Non-goal 1_
 - _Non-goal 2_
 
-## Success metrics
+## Success Metrics
 
-<!-- LLM: How will we know the mission is being fulfilled? Ask for the few signals or metrics
-that would tell the team it's working. Tie each back to a goal above where possible. -->
+<!-- LLM: How will we know the product is fulfilling its mission? Ask for the few signals or
+metrics that would tell the team it's working. Tie each back to a goal above where possible. -->
 
 - _Metric 1_
 - _Metric 2_
@@ -63,4 +72,4 @@ that would tell the team it's working. Tie each back to a goal above where possi
 <!-- LLM: Who cares about this project and in what role (owner, users, sponsors, dependents)?
 Keep it brief. Remove this section if the user says it's not relevant. -->
 
-- _Role — who / why_
+- _Role - who / why_

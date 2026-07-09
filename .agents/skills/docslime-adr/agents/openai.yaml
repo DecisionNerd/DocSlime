@@ -1,0 +1,4 @@
+interface:
+  display_name: "DocSlime ADR"
+  short_description: "Record one architecture decision"
+  default_prompt: "Use $docslime-adr to create and fill an ADR for this decision."

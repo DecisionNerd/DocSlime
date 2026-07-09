@@ -1,4 +1,4 @@
-//! `docgen` — scaffold a standardized, BDD-oriented `docs/` tree into a repo.
+//! `docslime` — scaffold a standardized, BDD-oriented `docs/` tree into a repo.
 
 mod cli;
 mod commands;

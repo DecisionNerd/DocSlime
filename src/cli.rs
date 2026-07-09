@@ -5,10 +5,10 @@ use clap::{Parser, Subcommand};
 /// Scaffold a standardized, BDD-oriented `docs/` tree into a repo.
 ///
 /// The templates are designed to be filled in by an AI coding agent in conversation with
-/// the user, keeping the project's mission, experiences, requirements, design guidance,
+/// the user, keeping the project's product context, experiences, requirements, design guidance,
 /// architecture, and decisions in the repo itself.
 #[derive(Debug, Parser)]
-#[command(name = "docgen", version, about, long_about = None)]
+#[command(name = "docslime", version, about, long_about = None)]
 pub struct Cli {
     #[command(subcommand)]
     pub command: Command,
@@ -31,10 +31,10 @@ Two modes, chosen by the DOC argument:
 
   Single template — pass a template name to scaffold just that one
   document (the name is matched leniently, with or without the .md
-  extension). Run `docgen list` to see every name.
+  extension). Run `docslime list` to see every name.
 
-      docgen add 0-MISSION
-      docgen add 3-ARCHITECTURE.md
+      docslime add PRODUCT
+      docslime add 3-ARCHITECTURE.md
 
   ADR — pass the literal `adr` plus a slug to create an Architecture
   Decision Record. The file is written to docs/3-ENGINEERING/ADRs/ as
@@ -42,12 +42,12 @@ Two modes, chosen by the DOC argument:
   existing record (0001 if there are none yet). The slug is lower-cased
   and hyphenated, so `\"My First Decision\"` becomes `my-first-decision`.
 
-      docgen add adr my-decision-slug    -> 0001-my-decision-slug.md
-      docgen add adr \"Use Postgres\"      -> 0002-use-postgres.md
+      docslime add adr my-decision-slug    -> 0001-my-decision-slug.md
+      docslime add adr \"Use Postgres\"      -> 0002-use-postgres.md
 
 Existing files are skipped unless --force is given.")]
     Add {
-        /// Template name (e.g. `0-MISSION`, `3-ARCHITECTURE`), or the literal `adr`.
+        /// Template name (e.g. `PRODUCT`, `3-ARCHITECTURE`), or the literal `adr`.
         doc: String,
 
         /// Slug for the new ADR's filename (only used with `add adr <slug>`).

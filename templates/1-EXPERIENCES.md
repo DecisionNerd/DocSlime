@@ -1,6 +1,6 @@
 <!-- LLM: This document describes the intended user experience — the behaviors the product
-must deliver, framed from the user's point of view. It is the bridge between the mission and
-the requirements. Read 0-MISSION.md first so experiences trace back to goals. Interview the
+must deliver, framed from the user's point of view. It is the bridge between product context and
+the requirements. Read PRODUCT.md first so experiences trace back to goals. Interview the
 user section by section. Detailed personas and full journey maps belong in 1-JOURNEYS/ —
 keep this file to the primary experiences and link out for depth. Remove LLM comments as you
 go. -->
@@ -52,6 +52,6 @@ every screen or command?" -->
 ## Out of scope
 
 <!-- LLM: Experiences explicitly NOT being designed for, at least for now. Keep this honest;
-it pairs with the mission's non-goals. -->
+it pairs with PRODUCT.md's non-goals. -->
 
 - _Out-of-scope experience_

@@ -1,0 +1,4 @@
+interface:
+  display_name: "DocSlime Fill"
+  short_description: "Interview and fill DocSlime docs"
+  default_prompt: "Use $docslime-fill to interview me and fill in a DocSlime document."

@@ -1,4 +1,4 @@
-//! `docgen init` — scaffold the entire docs/ tree.
+//! `docslime init` — scaffold the entire docs/ tree.
 
 use std::path::Path;
 

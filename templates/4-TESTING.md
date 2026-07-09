@@ -1,4 +1,4 @@
-<!-- LLM: This document explains how we prove the system fulfills its mission, experiences,
+<!-- LLM: This document explains how we prove the system fulfills its product goals, experiences,
 and requirements. It closes the BDD loop: the experiences in 1-EXPERIENCES.md and the
 requirements in 2-REQUIREMENTS.md should each map to something verified here. Interview the
 user about how they actually test (or intend to). Remove LLM comments as you complete each
@@ -34,11 +34,11 @@ test (or flag it as a gap). -->
 |---|---|---|
 | _Experience name / FR-1_ | _Given … When … Then …_ | _path/to/test_ |
 
-## Evaluation against the mission
+## Evaluation against product goals
 
-<!-- LLM: Beyond pass/fail tests, how do we evaluate that the system fulfills its MISSION and
-success metrics (from 0-MISSION.md)? This may include metrics, manual evaluation, user
-feedback, or LLM/qualitative evals. Ask the user how they judge mission-level success, not
+<!-- LLM: Beyond pass/fail tests, how do we evaluate that the system fulfills the product goals and
+success metrics (from PRODUCT.md)? This may include metrics, manual evaluation, user
+feedback, or LLM/qualitative evals. Ask the user how they judge product-level success, not
 just code correctness. -->
 
 - _Metric / eval — how it's measured and what "good" looks like_

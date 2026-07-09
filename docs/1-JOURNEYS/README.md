@@ -14,7 +14,7 @@ and end-to-end journey maps.
 
 ### AI coding agent
 
-- **Who:** the assistant working inside the repo (e.g. via the docgen skills), acting as both author and consumer of the docs.
+- **Who:** the assistant working inside the repo (e.g. via the DocSlime skills), acting as both author and consumer of the docs.
 - **Goals:** understand the project's intent so it can act with full context; produce documentation that reflects what the team actually wants.
 - **Frustrations:** without recorded intent it has to guess from code; ad-hoc doc structures give it nothing reliable to read or write against.
 - **Success looks like:** clear inline guidance tells it what to ask and how to write each section, so it interviews the team and leaves a clean, complete document.
@@ -28,9 +28,9 @@ Traces to the "Scaffold the docs tree" and "Fill in a document with an agent" ex
 
 | Step | User does | User feels | Opportunity |
 |---|---|---|---|
-| 1 | Runs `docgen init` in the repo | Curious, low commitment | Produce the full tree instantly, non-destructively |
+| 1 | Runs `docslime init` in the repo | Curious, low commitment | Produce the full tree instantly, non-destructively |
 | 2 | Sees the numbered `docs/` tree appear | Oriented — the structure is obvious | Numbering signals the reading order |
-| 3 | Asks the agent to fill in `0-MISSION.md` | Slightly unsure what to write | Inline guidance turns it into a guided interview |
+| 3 | Asks the agent to fill in `PRODUCT.md` | Slightly unsure what to write | Inline guidance turns it into a guided product interview |
 | 4 | Answers the agent's focused questions | Engaged; thinking is being captured | Reflect answers back; write one tight section at a time |
 | 5 | Reviews the completed doc, commits it | Satisfied — real intent, in the repo | Clean output with no leftover guidance comments |
 | 6 | Moves down the chain to the next doc | Momentum | Each doc builds on the last, so context compounds |
