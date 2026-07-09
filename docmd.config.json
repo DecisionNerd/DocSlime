@@ -49,7 +49,7 @@
       "icon": "wrench",
       "collapsible": false,
       "children": [
-        { "title": "Engineering Notes", "path": "/3-ENGINEERING/", "icon": "file-code" },
+        { "title": "Engineering", "path": "/3-ENGINEERING/", "icon": "file-code" },
         { "title": "ADRs", "path": "/3-ENGINEERING/ADRs/", "icon": "scroll-text" }
       ]
     },
