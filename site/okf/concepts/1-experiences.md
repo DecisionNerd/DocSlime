@@ -6,7 +6,7 @@ path: /1-EXPERIENCES/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T03:43:47.633Z"
+  generated_at: "2026-07-10T03:52:27.056Z"
 ---
 # Experiences
 
