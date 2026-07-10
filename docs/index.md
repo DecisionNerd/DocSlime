@@ -11,7 +11,6 @@ architecture, tests, and decisions into one local docs body that humans and agen
 
 ```sh
 brew install DecisionNerd/tap/docslime
-docslime init
 ```
 
 [Install details](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button .docmd-button-secondary} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button .docmd-button-ghost}

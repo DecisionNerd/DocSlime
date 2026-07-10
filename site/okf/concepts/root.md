@@ -7,7 +7,7 @@ path: /
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T02:57:05.448Z"
+  generated_at: "2026-07-10T03:11:12.358Z"
 ---
 ---
 title: "DocSlime"
@@ -22,7 +22,6 @@ architecture, tests, and decisions into one local docs body that humans and agen
 
 ```sh
 brew install DecisionNerd/tap/docslime
-docslime init
 ```
 
 [Install details](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button .docmd-button-secondary} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button .docmd-button-ghost}
