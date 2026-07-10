@@ -6,7 +6,7 @@ path: /1-JOURNEYS/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T02:57:05.444Z"
+  generated_at: "2026-07-10T03:11:12.357Z"
 ---
 # Journeys
 
