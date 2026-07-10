@@ -91,63 +91,6 @@
     syncExpanded();
   }
 
-  function buildHeroMascot() {
-    var mascot = document.createElement('div');
-    mascot.className = 'docslime-hero-mascot';
-    mascot.setAttribute('aria-hidden', 'true');
-
-    var logo = buildBrandLogo();
-    logo.className = '';
-
-    var page = document.createElement('div');
-    page.className = 'docslime-hero-page';
-
-    var title = document.createElement('strong');
-    title.textContent = 'PRODUCT.md';
-
-    var section = document.createElement('span');
-    section.textContent = '# Vision';
-
-    page.appendChild(title);
-    page.appendChild(section);
-    page.appendChild(document.createElement('i'));
-    page.appendChild(document.createElement('i'));
-    page.appendChild(document.createElement('i'));
-
-    mascot.appendChild(logo);
-    mascot.appendChild(page);
-    return mascot;
-  }
-
-  function enhanceHeroArt() {
-    var side = document.querySelector('body[data-source-file="docs/index.md"] .hero-side');
-
-    if (!side || side.dataset.docslimeHeroEnhanced === 'true') {
-      return;
-    }
-
-    var pre = side.querySelector('pre');
-    if (!pre) {
-      return;
-    }
-
-    var wrapper = document.createElement('div');
-    wrapper.className = 'docslime-hero-art';
-    wrapper.setAttribute('aria-label', 'DocSlime repo tree and blue slime mascot');
-
-    pre.classList.add('docslime-hero-tree');
-    pre.parentNode.insertBefore(wrapper, pre);
-    wrapper.appendChild(pre);
-    wrapper.appendChild(buildHeroMascot());
-
-    var badge = document.createElement('p');
-    badge.className = 'docslime-hero-badge';
-    badge.textContent = 'Structured. Actionable. Agent-ready.';
-    wrapper.appendChild(badge);
-
-    side.dataset.docslimeHeroEnhanced = 'true';
-  }
-
   function findNearestHeading(element) {
     var current = element;
 
@@ -205,7 +148,6 @@
   function enhanceDocSlime() {
     enhanceBranding();
     enhanceMobileMenu();
-    enhanceHeroArt();
     enhanceScrollableRegions();
   }
 
