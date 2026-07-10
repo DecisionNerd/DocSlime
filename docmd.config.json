@@ -48,7 +48,10 @@
       "maxCommits": 5
     },
     "seo": {
-      "defaultDescription": "DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo."
+      "defaultDescription": "DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.",
+      "openGraph": {
+        "defaultImage": "/assets/images/docslime-hero.png"
+      }
     },
     "okf": {
       "warnOnMissingType": false
