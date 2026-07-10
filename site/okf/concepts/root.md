@@ -7,7 +7,7 @@ path: /
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T03:11:12.358Z"
+  generated_at: "2026-07-10T03:52:27.059Z"
 ---
 ---
 title: "DocSlime"
@@ -24,25 +24,11 @@ architecture, tests, and decisions into one local docs body that humans and agen
 brew install DecisionNerd/tap/docslime
 ```
 
-[Install details](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button .docmd-button-secondary} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button .docmd-button-ghost}
+[Install DocSlime](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button}
 
 == side
 
-```text
-repo/
-|-- docs/
-|   |-- PRODUCT.md
-|   |-- DESIGN.md
-|   |-- 2-REQUIREMENTS.md
-|   |-- 3-ARCHITECTURE.md
-|   |-- 4-TESTING.md
-|   |-- publishing.md
-|   `-- 3-ENGINEERING/ADRs/
-`-- .agents/skills/
-    |-- docslime-fill
-    |-- docslime-adr
-    `-- docslime-kiss
-```
+![DocSlime: make repo knowledge stick. A docs tree with PRODUCT.md, DESIGN.md, requirements, architecture, and agent skills.](/assets/images/docslime-hero.png)
 
 :::
 
@@ -192,31 +178,31 @@ CLI subcommand.
 ::: grids
 ::: grid
 ::: card "Product" icon:target
-[Understand the product model](PRODUCT/){.docmd-button .docmd-button-secondary}
+[Understand the product model](PRODUCT/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Experiences" icon:route
-[See the core workflows](1-EXPERIENCES/){.docmd-button .docmd-button-secondary}
+[See the core workflows](1-EXPERIENCES/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Requirements" icon:list-checks
-[Review the behavior contract](2-REQUIREMENTS/){.docmd-button .docmd-button-secondary}
+[Review the behavior contract](2-REQUIREMENTS/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Design" icon:palette
-[Open the design context](DESIGN/){.docmd-button .docmd-button-secondary}
+[Open the design context](DESIGN/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Publishing" icon:upload-cloud
-[Ship through docmd.io](publishing/){.docmd-button .docmd-button-secondary}
+[Ship through docmd.io](publishing/){.docmd-button}
 :::
 :::
 :::
