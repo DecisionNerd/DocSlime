@@ -6,7 +6,7 @@ path: /DESIGN/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T01:49:44.534Z"
+  generated_at: "2026-07-10T02:05:24.382Z"
 ---
 # Design
 

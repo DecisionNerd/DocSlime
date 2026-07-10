@@ -85,5 +85,7 @@ cargo test
 ```
 
 The repository tests inspect the bundled skills for required sections, so skill robustness
-stays part of the normal test loop. When working in a harness that ships the Agent Skills
-validator, also run `quick_validate.py .agents/skills/<skill>` for each changed skill.
+stays part of the normal test loop. CI also has a dedicated `Agent skills` job that checks
+every bundled `docslime-*` skill for frontmatter, OpenAI metadata, guardrails, verification,
+and failure handling. When working in a harness that ships the Agent Skills validator, also
+run `quick_validate.py .agents/skills/<skill>` for each changed skill.

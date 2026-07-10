@@ -7,7 +7,7 @@ path: /publishing/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T01:49:44.536Z"
+  generated_at: "2026-07-10T02:05:24.383Z"
 ---
 ---
 title: "Publishing"

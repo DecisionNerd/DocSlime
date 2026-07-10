@@ -1,0 +1,160 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - staging
+      - main
+  push:
+    branches:
+      - staging
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  branch-policy:
+    name: Branch policy
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Enforce promotion path
+        shell: bash
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          BASE_REF: ${{ github.base_ref }}
+          HEAD_REF: ${{ github.head_ref }}
+        run: |
+          if [[ "$EVENT_NAME" != "pull_request" ]]; then
+            echo "Branch policy check is only enforced for pull requests."
+            exit 0
+          fi
+
+          if [[ "$BASE_REF" == "main" && "$HEAD_REF" != "staging" ]]; then
+            echo "::error::Only staging can open pull requests to main."
+            exit 1
+          fi
+
+          if [[ "$BASE_REF" == "staging" ]]; then
+            echo "Feature branch pull request targets staging."
+            exit 0
+          fi
+
+          if [[ "$BASE_REF" == "main" ]]; then
+            echo "Staging promotion pull request targets main."
+            exit 0
+          fi
+
+          echo "::error::DocSlime pull requests must target staging, except staging can target main."
+          exit 1
+
+  cli:
+    name: CLI
+    needs: branch-policy
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: rustfmt, clippy
+      - name: Format
+        run: cargo fmt --check
+      - name: Test
+        run: cargo test
+      - name: Lint
+        run: cargo clippy --all-targets -- -D warnings
+
+  site:
+    name: Site
+    needs: branch-policy
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+
+  agent-skills:
+    name: Agent skills
+    needs: branch-policy
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+      - name: Validate bundled skills
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import sys
+
+          required_sections = [
+              "## When to Use",
+              "## Prerequisites",
+              "## Guardrails",
+              "## Verification",
+              "## Failure Handling",
+          ]
+          skills = sorted(Path(".agents/skills").glob("docslime-*"))
+          errors = []
+
+          if not skills:
+              errors.append("No bundled docslime skills found under .agents/skills.")
+
+          for skill in skills:
+              skill_md = skill / "SKILL.md"
+              metadata = skill / "agents" / "openai.yaml"
+
+              if not skill_md.is_file():
+                  errors.append(f"{skill}: missing SKILL.md")
+                  continue
+
+              text = skill_md.read_text(encoding="utf-8")
+              frontmatter = ""
+              if not text.startswith("---\n"):
+                  errors.append(f"{skill_md}: missing frontmatter")
+              else:
+                  parts = text.split("---", 2)
+                  if len(parts) >= 3:
+                      frontmatter = parts[1]
+                  else:
+                      errors.append(f"{skill_md}: frontmatter is not closed")
+              if "\nname:" not in frontmatter:
+                  errors.append(f"{skill_md}: frontmatter missing name")
+              if "\ndescription:" not in frontmatter:
+                  errors.append(f"{skill_md}: frontmatter missing description")
+              for section in required_sections:
+                  if section not in text:
+                      errors.append(f"{skill_md}: missing {section}")
+
+              if not metadata.is_file():
+                  errors.append(f"{skill}: missing agents/openai.yaml")
+                  continue
+
+              metadata_text = metadata.read_text(encoding="utf-8")
+              for field in ("name:", "description:"):
+                  if field not in metadata_text:
+                      errors.append(f"{metadata}: missing {field}")
+
+          if errors:
+              for error in errors:
+                  print(f"::error::{error}")
+              sys.exit(1)
+
+          print(f"Validated {len(skills)} bundled DocSlime skills.")
+          PY

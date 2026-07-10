@@ -1,9 +1,10 @@
 # Architecture
 
-DocSlime is a single self-contained command-line binary written in Rust plus a bundled set
-of agent skills. It has no server, no database, and no runtime dependencies: the entire
-template tree is compiled into the binary, and every CLI command operates directly on the
-filesystem relative to the current directory.
+DocSlime is a small monorepo with three shippable surfaces: a self-contained Rust CLI, a
+`docmd.io`-built documentation site, and a bundled set of agent skills. The CLI has no
+server, no database, and no runtime dependencies: the entire template tree is compiled into
+the binary, and every command operates directly on the filesystem relative to the current
+directory.
 
 The design is deliberately small: parse a command, resolve a template, write files without
 clobbering existing ones, and leave judgment-heavy work to skills. `docs/PRODUCT.md` and
@@ -36,6 +37,8 @@ context loading, and `docmd.io` publication.
 | `commands::list` | List every template and whether it already exists on disk. | templates, scaffold |
 | `templates` | Hold the compile-time-embedded template tree and ADR template; resolve `add` names leniently. | include_dir |
 | `scaffold` | Compute output paths and write files non-destructively (honoring `--force`); track outcomes. | std::fs |
+| `docs site` | Publish the product docs and homepage from `docs/` with `docmd build`. | `@docmd/core`, `docmd.config.json` |
+| `agent skills` | Teach compatible AI agents how to install, initialize, fill, review, and maintain DocSlime docs. | `.agents/skills`, `agents/openai.yaml` |
 
 ## Data model
 
@@ -71,6 +74,8 @@ The main bounded contexts are:
 - **Agent skill context:** interview, fill, critique, and record decisions with human input.
 - **Publishing context:** build and deploy with `docmd.io`; DocSlime only prepares the source
   Markdown and points to official publishing docs.
+- **Site context:** render this repository's docs and homepage from the same Markdown source
+  users receive from the CLI templates.
 
 ## Key flows
 

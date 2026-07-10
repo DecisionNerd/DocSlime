@@ -118,12 +118,18 @@ A typical first run: `/docslime-install` → `/docslime-init` → `/docslime-fil
 cargo build            # debug build
 cargo test             # unit + integration tests
 cargo clippy --all-targets
+npm run build          # build the docmd site from docs/
 cargo build --release  # optimized binary at target/release/docslime
 ```
 
 The templates live in [`templates/`](templates/) (the `init` tree) and
 [`assets/adr.md`](assets/adr.md) (the single-record ADR template). They are embedded into the
 binary at compile time via [`include_dir`], so editing a template requires a rebuild.
+
+This repo is a small monorepo: the Rust CLI, the `docmd.io` site, and the bundled agent
+skills ship from the same checkout. `.github/workflows/ci.yml` keeps those surfaces explicit
+with `CLI`, `Site`, and `Agent skills` jobs, plus a branch-policy check that allows only
+`staging` to open pull requests to `main`; feature branches target `staging`.
 
 ## Releasing
 

@@ -7,7 +7,7 @@ path: /skills/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T01:49:44.538Z"
+  generated_at: "2026-07-10T02:05:24.383Z"
 ---
 ---
 title: "Agent Skills"
@@ -96,5 +96,7 @@ cargo test
 ```
 
 The repository tests inspect the bundled skills for required sections, so skill robustness
-stays part of the normal test loop. When working in a harness that ships the Agent Skills
-validator, also run `quick_validate.py .agents/skills/<skill>` for each changed skill.
+stays part of the normal test loop. CI also has a dedicated `Agent skills` job that checks
+every bundled `docslime-*` skill for frontmatter, OpenAI metadata, guardrails, verification,
+and failure handling. When working in a harness that ships the Agent Skills validator, also
+run `quick_validate.py .agents/skills/<skill>` for each changed skill.
