@@ -6,7 +6,7 @@ path: /3-ENGINEERING/ADRs/0001-embed-templates-in-binary/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T02:05:24.381Z"
+  generated_at: "2026-07-10T02:57:05.445Z"
 ---
 # ADR-0001: Embed templates in the binary at compile time
 

@@ -6,7 +6,7 @@ path: /0-PRODUCT/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T02:05:24.380Z"
+  generated_at: "2026-07-10T02:57:05.443Z"
 ---
 # Product
 
