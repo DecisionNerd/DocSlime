@@ -15,12 +15,22 @@ pub fn run(root: &Path) -> Result<()> {
     for file in templates::all() {
         let rel = file.path();
         let on_disk = scaffold::output_path(root, rel).exists();
+        let legacy = templates::legacy_paths(rel)
+            .iter()
+            .map(|relative| scaffold::output_path(root, Path::new(relative)))
+            .find(|path| path.exists());
         let status = if on_disk {
             "exists ".green().to_string()
+        } else if legacy.is_some() {
+            "legacy ".yellow().to_string()
         } else {
             "missing".dimmed().to_string()
         };
-        println!("  {status}  {}", rel.display());
+        if let Some(legacy) = legacy.filter(|_| !on_disk) {
+            println!("  {status}  {} ({})", rel.display(), legacy.display());
+        } else {
+            println!("  {status}  {}", rel.display());
+        }
     }
 
     println!(

@@ -11,16 +11,16 @@ use tempfile::TempDir;
 const EXPECTED: &[&str] = &[
     "README.md",
     "PRODUCT.md",
-    "1-EXPERIENCES.md",
-    "2-REQUIREMENTS.md",
     "DESIGN.md",
-    "3-ARCHITECTURE.md",
-    "4-TESTING.md",
-    "publishing.md",
-    "0-PRODUCT/README.md",
-    "1-JOURNEYS/README.md",
-    "3-ENGINEERING/README.md",
-    "3-ENGINEERING/ADRs/README.md",
+    "REQUIREMENTS.md",
+    "strategy/README.md",
+    "experience/README.md",
+    "engineering/README.md",
+    "engineering/ARCHITECTURE.md",
+    "engineering/TESTING.md",
+    "engineering/PUBLISHING.md",
+    "engineering/OBSERVABILITY.md",
+    "engineering/adrs/README.md",
 ];
 
 fn docslime(dir: &Path) -> Command {
@@ -94,11 +94,61 @@ fn init_force_overwrites() {
 fn add_resolves_shorthand_name() {
     let tmp = TempDir::new().unwrap();
     docslime(tmp.path())
+        .args(["add", "ARCHITECTURE"])
+        .assert()
+        .success();
+
+    assert!(tmp
+        .path()
+        .join("docs/engineering/ARCHITECTURE.md")
+        .is_file());
+}
+
+#[test]
+fn add_resolves_legacy_shorthand_name() {
+    let tmp = TempDir::new().unwrap();
+    docslime(tmp.path())
         .args(["add", "3-ARCHITECTURE"])
         .assert()
         .success();
 
-    assert!(tmp.path().join("docs/3-ARCHITECTURE.md").is_file());
+    assert!(tmp
+        .path()
+        .join("docs/engineering/ARCHITECTURE.md")
+        .is_file());
+}
+
+#[test]
+fn init_recognizes_legacy_paths() {
+    let tmp = TempDir::new().unwrap();
+    let legacy = tmp.path().join("docs/3-ARCHITECTURE.md");
+    fs::create_dir_all(legacy.parent().unwrap()).unwrap();
+    fs::write(&legacy, "USER ARCHITECTURE").unwrap();
+
+    docslime(tmp.path())
+        .arg("init")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("legacy:"));
+
+    assert_eq!(fs::read_to_string(&legacy).unwrap(), "USER ARCHITECTURE");
+    assert!(!tmp.path().join("docs/engineering/ARCHITECTURE.md").exists());
+}
+
+#[test]
+fn list_recognizes_legacy_paths() {
+    let tmp = TempDir::new().unwrap();
+    let legacy = tmp.path().join("docs/4-TESTING.md");
+    fs::create_dir_all(legacy.parent().unwrap()).unwrap();
+    fs::write(legacy, "USER TESTING").unwrap();
+
+    docslime(tmp.path())
+        .arg("list")
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("legacy"))
+        .stdout(predicate::str::contains("engineering/TESTING.md"))
+        .stdout(predicate::str::contains("4-TESTING.md"));
 }
 
 #[test]
@@ -125,7 +175,7 @@ fn add_adr_numbers_sequentially() {
         .assert()
         .success();
 
-    let adr_dir = tmp.path().join("docs/3-ENGINEERING/ADRs");
+    let adr_dir = tmp.path().join("docs/engineering/adrs");
     assert!(adr_dir.join("0001-my-first-decision.md").is_file());
     assert!(adr_dir.join("0002-second-one.md").is_file());
 }
@@ -140,8 +190,24 @@ fn add_adr_starts_at_one_without_init() {
 
     assert!(tmp
         .path()
-        .join("docs/3-ENGINEERING/ADRs/0001-first.md")
+        .join("docs/engineering/adrs/0001-first.md")
         .is_file());
+}
+
+#[test]
+fn add_adr_continues_in_legacy_directory() {
+    let tmp = TempDir::new().unwrap();
+    let legacy_dir = tmp.path().join("docs/3-ENGINEERING/ADRs");
+    fs::create_dir_all(&legacy_dir).unwrap();
+    fs::write(legacy_dir.join("0004-existing.md"), "EXISTING").unwrap();
+
+    docslime(tmp.path())
+        .args(["add", "adr", "next"])
+        .assert()
+        .success();
+
+    assert!(legacy_dir.join("0005-next.md").is_file());
+    assert!(!tmp.path().join("docs/engineering/adrs").exists());
 }
 
 #[test]

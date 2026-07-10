@@ -1,0 +1,1413 @@
+<!--
+  ---------------------------------------------------------------
+  docmd : the zero-config documentation engine.
+  @website https://docmd.io
+  [docmd-source] - Please do not remove this header.
+  ---------------------------------------------------------------
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="generator" content="docmd v0.8.10">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+    <style>
+      html {
+        visibility: hidden;
+      }
+    </style>
+
+    <script>
+      var root = "../";
+      if (root && !root.endsWith('/')) root += '/';
+      if (root === '') root = './';
+      window.DOCMD_ROOT = root;
+
+      window.DOCMD_SITE_ROOT = "/";
+
+      window.DOCMD_APPEARANCE = "system";
+      window.DOCMD_VERSION_ROOT = "/";
+      window.DOCMD_BASE = "/";
+      window.DOCMD_LOCALE = "";
+      window.DOCMD_DEFAULT_LOCALE = "";
+    </script>
+    <title>
+      Requirements : DocSlime
+    </title>
+
+    <base href="/">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mrfetb8w">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrfetb8w">
+
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrfetb8w" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrfetb8w" id="hljs-dark" disabled>
+
+
+<meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
+<link rel="canonical" href="https://www.docslime.dev/REQUIREMENTS/">
+<meta property="og:title" content="Requirements - DocSlime">
+<meta property="og:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
+<meta property="og:url" content="https://www.docslime.dev/REQUIREMENTS/">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.docslime.dev/assets/images/docslime-hero.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Requirements - DocSlime">
+<meta name="twitter:description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
+<meta name="twitter:image" content="https://www.docslime.dev/assets/images/docslime-hero.png">
+
+
+
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrfetb8w" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrfetb8w" >
+
+
+    <script>/**
+ * --------------------------------------------------------------------
+ * docmd : the zero-config documentation engine.
+ *
+ * @package     @docmd/core (and ecosystem)
+ * @website     https://docmd.io
+ * @repository  https://github.com/docmd-io/docmd
+ * @license     MIT
+ * @copyright   Copyright (c) 2025-present docmd.io
+ *
+ * [docmd-source] - Please do not remove this header.
+ * --------------------------------------------------------------------
+ */
+
+(function () {
+  try {
+    // 1. Determine Theme
+    //
+    // Resolve from three sources, in priority order:
+    //   1. localStorage explicit user choice (light / dark)
+    //   2. window.DOCMD_APPEARANCE  (current canonical name, set by EJS templates)
+    //   3. window.DOCMD_DEFAULT_MODE (legacy alias kept for pre-0.8.7 outputs)
+    //   4. 'light' as the final fallback
+    //
+    // Note: localStorage is only honoured when it holds an explicit
+    // 'light' or 'dark' value. A stored 'system' value (from a prior
+    // session where the user picked "follow system") must NOT win over
+    // a freshly resolved config value — the resolved value will itself
+    // be 'system' in that case and the OS preference check below takes
+    // over, so this is a no-op for the in-session behaviour but keeps
+    // any future storage migration simple.
+    var localValue = localStorage.getItem('docmd-theme');
+    var configValue = window.DOCMD_APPEARANCE
+      || window.DOCMD_DEFAULT_MODE
+      || 'light';
+    var theme = (localValue === 'light' || localValue === 'dark')
+      ? localValue
+      : configValue;
+
+    if (theme === 'system') {
+      theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    // 2. Apply to Root
+    document.documentElement.setAttribute('data-theme', theme);
+
+    // 3. Highlight.js Toggle Strategy
+    var lightLink = document.getElementById('hljs-light');
+    var darkLink = document.getElementById('hljs-dark');
+
+    if (lightLink && darkLink) {
+      if (theme === 'dark') {
+        lightLink.disabled = true;
+        darkLink.disabled = false;
+      } else {
+        lightLink.disabled = false;
+        darkLink.disabled = true;
+      }
+    }
+
+    document.documentElement.style.visibility = "visible";
+  } catch (e) {
+    document.documentElement.style.visibility = "visible";
+    console.error('Theme init failed', e);
+  }
+})();</script>
+  </head>
+  <body
+    class="sidebar-collapsible"
+    data-default-collapsed="false"
+    data-copy-code-enabled="true" data-spa-enabled="true" data-source-file="docs/REQUIREMENTS.md">
+
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+
+
+      <aside class="sidebar">
+        <div class="sidebar-header">
+
+            <h1><a href="../">
+                DocSlime
+              </a></h1>
+
+          <span class="mobile-view sidebar-menu-button float-right">
+
+<svg class="lucide-icon icon-menu " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-menu"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 5h16" />
+  <path d="M4 12h16" />
+  <path d="M4 19h16" />
+</svg>
+
+          </span>
+        </div>
+        <div class="sidebar-top-group">
+
+
+
+
+        </div>
+
+
+<nav class="sidebar-nav" aria-label="Main Navigation">
+  <ul>
+
+      <li class="" >
+
+        <a href="../" class=" "
+          >
+
+<svg class="lucide-icon icon-zap " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-zap"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Overview
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../PRODUCT/" class=" "
+          >
+
+<svg class="lucide-icon icon-target " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-target"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="10" />
+  <circle cx="12" cy="12" r="6" />
+  <circle cx="12" cy="12" r="2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Product
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../DESIGN/" class=" "
+          >
+
+<svg class="lucide-icon icon-palette " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-palette"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 22a1 1 0 0 1 0-20 10 9 0 0 1 10 9 5 5 0 0 1-5 5h-2.25a1.75 1.75 0 0 0-1.4 2.8l.3.4a1.75 1.75 0 0 1-1.4 2.8z" />
+  <circle cx="13.5" cy="6.5" r=".5" fill="currentColor" />
+  <circle cx="17.5" cy="10.5" r=".5" fill="currentColor" />
+  <circle cx="6.5" cy="12.5" r=".5" fill="currentColor" />
+  <circle cx="8.5" cy="7.5" r=".5" fill="currentColor" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Design
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../strategy/" class=" "
+          >
+
+<svg class="lucide-icon icon-telescope " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-telescope"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m10.065 12.493-6.18 1.318a.934.934 0 0 1-1.108-.702l-.537-2.15a1.07 1.07 0 0 1 .691-1.265l13.504-4.44" />
+  <path d="m13.56 11.747 4.332-.924" />
+  <path d="m16 21-3.105-6.21" />
+  <path d="M16.485 5.94a2 2 0 0 1 1.455-2.425l1.09-.272a1 1 0 0 1 1.212.727l1.515 6.06a1 1 0 0 1-.727 1.213l-1.09.272a2 2 0 0 1-2.425-1.455z" />
+  <path d="m6.158 8.633 1.114 4.456" />
+  <path d="m8 21 3.105-6.21" />
+  <circle cx="12" cy="13" r="2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Strategy
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../experience/" class=" "
+          >
+
+<svg class="lucide-icon icon-route " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-route"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="6" cy="19" r="3" />
+  <path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15" />
+  <circle cx="18" cy="5" r="3" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Experience
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="active" >
+
+        <a href="../REQUIREMENTS/" class="active "
+          >
+
+<svg class="lucide-icon icon-list-checks " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-list-checks"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M13 5h8" />
+  <path d="M13 12h8" />
+  <path d="M13 19h8" />
+  <path d="m3 17 2 2 4-4" />
+  <path d="m3 7 2 2 4-4" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Requirements
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../skills/" class=" "
+          >
+
+<svg class="lucide-icon icon-brain-circuit " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-brain-circuit"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z" />
+  <path d="M9 13a4.5 4.5 0 0 0 3-4" />
+  <path d="M6.003 5.125A3 3 0 0 0 6.401 6.5" />
+  <path d="M3.477 10.896a4 4 0 0 1 .585-.396" />
+  <path d="M6 18a4 4 0 0 1-1.967-.516" />
+  <path d="M12 13h4" />
+  <path d="M12 18h6a2 2 0 0 1 2 2v1" />
+  <path d="M12 8h8" />
+  <path d="M16 8V5a2 2 0 0 1 2-2" />
+  <circle cx="16" cy="13" r=".5" />
+  <circle cx="18" cy="3" r=".5" />
+  <circle cx="20" cy="21" r=".5" />
+  <circle cx="20" cy="8" r=".5" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Agent Skills
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="expanded nav-group" >
+
+        <span class="nav-label nav-group">
+
+<svg class="lucide-icon icon-wrench " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-wrench"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.106-3.105c.32-.322.863-.22.983.218a6 6 0 0 1-8.259 7.057l-7.91 7.91a1 1 0 0 1-2.999-3l7.91-7.91a6 6 0 0 1 7.057-8.259c.438.12.54.662.219.984z" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Engineering
+          </span>
+
+        </span>
+
+
+
+          <ul class="submenu">
+
+      <li class="" >
+
+        <a href="../engineering/" class=" "
+          >
+
+<svg class="lucide-icon icon-file-code " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-file-code"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" />
+  <path d="M14 2v5a1 1 0 0 0 1 1h5" />
+  <path d="M10 12.5 8 15l2 2.5" />
+  <path d="m14 12.5 2 2.5-2 2.5" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Engineering
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../engineering/ARCHITECTURE/" class=" "
+          >
+
+<svg class="lucide-icon icon-boxes " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-boxes"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z" />
+  <path d="m7 16.5-4.74-2.85" />
+  <path d="m7 16.5 5-3" />
+  <path d="M7 16.5v5.17" />
+  <path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z" />
+  <path d="m17 16.5-5-3" />
+  <path d="m17 16.5 4.74-2.85" />
+  <path d="M17 16.5v5.17" />
+  <path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z" />
+  <path d="M12 8 7.26 5.15" />
+  <path d="m12 8 4.74-2.85" />
+  <path d="M12 13.5V8" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Architecture
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../engineering/TESTING/" class=" "
+          >
+
+<svg class="lucide-icon icon-flask-conical " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-flask-conical"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2" />
+  <path d="M6.453 15h11.094" />
+  <path d="M8.5 2h7" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Testing
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../engineering/PUBLISHING/" class=" "
+          >
+
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Publishing
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../engineering/OBSERVABILITY/" class=" "
+          >
+
+<svg class="lucide-icon icon-activity " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-activity"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            Observability
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+      <li class="" >
+
+        <a href="../engineering/adrs/" class=" "
+          >
+
+<svg class="lucide-icon icon-scroll-text " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-scroll-text"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 12h-5" />
+  <path d="M15 8h-5" />
+  <path d="M19 17V5a2 2 0 0 0-2-2H4" />
+  <path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3" />
+</svg>
+
+
+          <span class="nav-item-title">
+            ADRs
+            </span>
+
+
+        </a>
+
+
+
+      </li>
+
+          </ul>
+
+      </li>
+
+      <li class="" >
+
+        <a href="https://github.com/DecisionNerd/DocSlime" class=" "
+          target=&quot;_blank&quot; rel=&quot;noopener&quot;>
+
+<svg class="lucide-icon icon-github " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-github"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+  <path d="M9 18c-4.51 2-5-2-7-2" />
+</svg>
+
+
+          <span class="nav-item-title">
+            GitHub
+            </span>
+
+
+<svg class="lucide-icon icon-external-link nav-external-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-external-link"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M15 3h6v6" />
+  <path d="M10 14 21 3" />
+  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+</svg>
+
+
+        </a>
+
+
+
+      </li>
+
+  </ul>
+</nav>
+        <div class="sidebar-bottom-group mt-auto">
+
+
+
+
+        </div>
+      </aside>
+
+
+
+      <div class="main-content-wrapper">
+
+
+          <header class="page-header">
+            <div class="header-left">
+
+                <button id="sidebar-toggle-button" class="sidebar-toggle-button"
+                  aria-label="Toggle Sidebar">
+
+<svg class="lucide-icon icon-chevron-left " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m15 18-6-6 6-6" />
+</svg>
+
+                </button>
+
+              <div class="header-titles-wrapper">
+                <span class="header-title">
+                  Requirements
+                </span>
+              </div>
+            </div>
+            <div class="header-right">
+
+
+
+
+<div class="docmd-options-menu">
+
+    <button class="docmd-search-trigger" aria-label="Search">
+
+<svg class="lucide-icon icon-search " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-search"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m21 21-4.34-4.34" />
+  <circle cx="11" cy="11" r="8" />
+</svg>
+
+        <span class="search-label">Search</span>
+        <span class="search-keys"><kbd class="docmd-kbd">⌘</kbd><kbd class="docmd-kbd">K</kbd></span>
+    </button>
+
+
+
+
+
+
+
+    <button class="theme-toggle-button" aria-label="Toggle theme">
+
+<svg class="lucide-icon icon-sun icon-sun" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-sun"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <circle cx="12" cy="12" r="4" />
+  <path d="M12 2v2" />
+  <path d="M12 20v2" />
+  <path d="m4.93 4.93 1.41 1.41" />
+  <path d="m17.66 17.66 1.41 1.41" />
+  <path d="M2 12h2" />
+  <path d="M20 12h2" />
+  <path d="m6.34 17.66-1.41 1.41" />
+  <path d="m19.07 4.93-1.41 1.41" />
+</svg>
+
+<svg class="lucide-icon icon-moon icon-moon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-moon"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401" />
+</svg>
+
+    </button>
+
+
+
+</div>
+
+
+            </div>
+          </header>
+
+        <div class="content-theme-cover">
+          <main class="content-area" id="main-content">
+            <div class="content-layout">
+              <div class="main-content">
+                <div class="docmd-breadcrumbs-row">
+                  <div id="docmd-raw-markdown" data-content="%23%20Requirements%0A%0ADocSlime%20must%20scaffold%20a%20fixed%2C%20standardized%20%60docs%2F%60%20tree%20into%20a%20git%20repo%2C%20add%20individual%0Adocuments%20(including%20auto-numbered%20ADRs)%20on%20demand%2C%20and%20report%20what%20exists%20without%0Adestroying%20existing%20work.%20The%20templates%20must%20carry%20the%20inline%20guidance%20that%20lets%20an%20AI%20agent%0Afill%20them%20in%2C%20while%20the%20tree%20stays%20plain%20Markdown%20for%20design-context%20loading%2C%20continuous%0Adiscovery%2C%20delivery%2C%20publication%2C%20and%20production%20learning.%0A%0A%23%23%20Functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Traces%20to%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20FR-1%20%7C%20The%20system%20shall%20create%20the%20full%20standardized%20%60docs%2F%60%20tree%20with%20%60README.md%60%2C%20%60PRODUCT.md%60%2C%20%60DESIGN.md%60%2C%20%60REQUIREMENTS.md%60%2C%20%60strategy%2F%60%2C%20%60experience%2F%60%2C%20and%20engineering%20architecture%2C%20testing%2C%20publishing%2C%20observability%2C%20and%20ADR%20docs%20via%20%60docslime%20init%60.%20%7C%20Scaffold%20the%20docs%20tree%20%7C%0A%7C%20FR-2%20%7C%20The%20system%20shall%20skip%20any%20file%20that%20already%20exists%20during%20%60init%60%20and%20%60add%60%2C%20and%20overwrite%20only%20when%20%60--force%60%20is%20given.%20%7C%20Non-destructive%20by%20default%20%7C%0A%7C%20FR-3%20%7C%20The%20system%20shall%20add%20a%20single%20named%20document%20via%20%60docslime%20add%20%3Cname%3E%60%2C%20resolving%20the%20name%20leniently%20(case-insensitive%2C%20with%20or%20without%20the%20%60.md%60%20extension).%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-4%20%7C%20The%20system%20shall%20create%20the%20next-numbered%20ADR%20via%20%60docslime%20add%20adr%20%3Cslug%3E%60%2C%20where%20the%20number%20is%20one%20greater%20than%20the%20highest%20existing%20%60NNNN-*%60%20record%20in%20the%20ADR%20directory%20(%600001%60%20if%20none).%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-5%20%7C%20The%20system%20shall%20normalize%20an%20ADR%20slug%20to%20lowercase%2C%20hyphen-separated%20%60%5Ba-z0-9-%5D%60%2C%20and%20reject%20a%20slug%20with%20no%20alphanumeric%20characters.%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-6%20%7C%20The%20system%20shall%20list%20every%20available%20template%20and%20whether%20it%20already%20exists%20on%20disk%20via%20%60docslime%20list%60%2C%20including%20the%20%60adr%60%20entry.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-7%20%7C%20The%20system%20shall%20embed%20all%20templates%20in%20the%20binary%20at%20compile%20time%2C%20requiring%20no%20network%20access%20or%20external%20files%20at%20runtime.%20%7C%20Fast%20and%20local%20%7C%0A%7C%20FR-8%20%7C%20The%20system%20shall%20report%20a%20clear%20error%20and%20list%20valid%20template%20names%20when%20given%20an%20unknown%20document%20name%2C%20and%20exit%20non-zero.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-9%20%7C%20The%20system%20shall%20provide%20installable%20agent%20skills%20(%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20%60docslime-kiss%60)%20that%20drive%20the%20documentation%20lifecycle.%20%7C%20Fill%20in%20and%20improve%20documents%20with%20an%20agent%20%7C%0A%7C%20FR-10%20%7C%20The%20%60docslime-kiss%60%20skill%20shall%20review%20filled%20docs%20for%20bloat%2C%20generic%20AI%20prose%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20non-actionable%20requirements%2C%20architecture%2C%20design%2C%20or%20testing%20content.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-11%20%7C%20The%20generated%20tree%20shall%20include%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20so%20%60impeccable%60%20can%20discover%20product%20and%20design%20context%20from%20the%20docs%20directory%20without%20duplicate%20root%20files.%20%7C%20Integrate%20with%20impeccable%20%7C%0A%7C%20FR-12%20%7C%20KISS%20review%20shall%20remain%20an%20agent%20skill%20rather%20than%20a%20%60docslime%60%20CLI%20subcommand.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-13%20%7C%20Documentation%20guidance%20shall%20make%20the%20lifecycle%20trace%20explicit%3A%20strategy%20-%3E%20product%2Fdesign%20-%3E%20discovery%20-%3E%20requirement%20-%3E%20architecture%20-%3E%20test%20-%3E%20publish%20-%3E%20observe%20-%3E%20discovery%2C%20with%20ADRs%20linked%20when%20a%20durable%20decision%20explains%20the%20design.%20%7C%20Trace%20intent%20through%20production%20%7C%0A%7C%20FR-14%20%7C%20Architecture%20guidance%20shall%20ask%20for%20domain%20language%20and%20boundaries%20when%20useful%2C%20without%20forcing%20heavyweight%20Domain%20Driven%20Design%20ceremony%20on%20small%20projects.%20%7C%20Domain%20Driven%20Design%20%7C%0A%7C%20FR-15%20%7C%20Publishing%20guidance%20shall%20cover%20artifacts%2C%20versioning%2C%20CI%20gates%2C%20promotion%2C%20deployment%20verification%2C%20rollback%2C%20and%20official%20platform%20references%20without%20copying%20volatile%20provider%20instructions.%20%7C%20Publish%20verified%20artifacts%20%7C%0A%7C%20FR-16%20%7C%20Each%20bundled%20DocSlime%20skill%20shall%20include%20clear%20prerequisites%2C%20steps%2C%20guardrails%2C%20verification%2C%20and%20failure%20handling.%20%7C%20Robust%20agent%20skills%20%7C%0A%7C%20FR-17%20%7C%20When%20a%20legacy%20numbered%20path%20exists%2C%20%60init%60%20and%20%60list%60%20shall%20recognize%20it%20as%20satisfying%20the%20corresponding%20current%20template%20and%20shall%20not%20create%20a%20duplicate%20renamed%20file%20unless%20%60--force%60%20is%20explicit.%20%7C%20Preserve%20existing%20documentation%20during%20upgrades%20%7C%0A%7C%20FR-18%20%7C%20Experience%20guidance%20shall%20define%20a%20continuous-discovery%20practice%20and%20connect%20evidence%2C%20journeys%2C%20opportunities%2C%20hypotheses%2C%20behavior%20scenarios%2C%20and%20success%20signals%20to%20requirements.%20%7C%20Learn%20from%20users%20continuously%20%7C%0A%7C%20FR-19%20%7C%20Observability%20guidance%20shall%20connect%20production%20system%20health%20and%20user-outcome%20signals%20to%20requirements%20and%20discovery%20while%20covering%20telemetry%2C%20SLOs%2C%20alerts%2C%20ownership%2C%20and%20privacy.%20%7C%20Close%20the%20product-learning%20loop%20%7C%0A%0A%23%23%20Non-functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Target%20%2F%20constraint%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20NFR-1%20%7C%20Portability%20%7C%20Runs%20on%20macOS%20(arm64%2C%20x86_64)%20and%20Linux%20(arm64%2C%20x86_64)%3B%20no%20runtime%20dependencies.%20%7C%0A%7C%20NFR-2%20%7C%20Performance%20%7C%20Commands%20complete%20near-instantly%20(well%20under%20a%20second)%20on%20a%20typical%20repo.%20%7C%0A%7C%20NFR-3%20%7C%20Distribution%20%7C%20Installable%20via%20Homebrew%20tap%2C%20shell%20installer%20script%2C%20and%20%60cargo%20install%60.%20%7C%0A%7C%20NFR-4%20%7C%20Safety%20%7C%20No%20command%20destroys%20user%20data%20without%20an%20explicit%20%60--force%60.%20%7C%0A%7C%20NFR-5%20%7C%20Maintainability%20%7C%20Templates%20are%20plain%20Markdown%20files%20in%20the%20repo%2C%20editable%20without%20touching%20Rust%20logic%20(rebuild%20required).%20%7C%0A%7C%20NFR-6%20%7C%20Toolchain%20%7C%20Builds%20with%20Rust%201.74%2B%20(2021%20edition).%20%7C%0A%7C%20NFR-7%20%7C%20Publication%20%7C%20Generated%20docs%20remain%20plain%20Markdown%20suitable%20for%20the%20%60docmd.io%60%20publishing%20system.%20%7C%0A%7C%20NFR-8%20%7C%20Quality%20stance%20%7C%20Docs%20support%20TDD%2BBDD%20traceability%2C%20Domain%20Driven%20Design%20framing%20where%20useful%2C%20and%20ADR-backed%20decisions.%20%7C%0A%7C%20NFR-9%20%7C%20Skill%20maintainability%20%7C%20Skill%20instructions%20stay%20compact%20enough%20for%20agents%20to%20follow%20while%20still%20naming%20setup%2C%20verification%2C%20and%20blocked-state%20behavior.%20%7C%0A%7C%20NFR-10%20%7C%20Design%20context%20%7C%20%60impeccable%60%20context%20loading%20should%20be%20verified%20from%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20whenever%20homepage%20or%20design%20docs%20change.%20%7C%0A%7C%20NFR-11%20%7C%20Privacy%20%7C%20The%20default%20observability%20guidance%20must%20not%20normalize%20collecting%20sensitive%20repository%20or%20user%20data%20without%20an%20explicit%20decision%2C%20consent%2C%20and%20controls.%20%7C%0A%0A%23%23%20Constraints%20%26%20assumptions%0A%0A-%20**Constraint%3A**%20Editing%20a%20template%20requires%20recompiling%20the%20binary%2C%20since%20templates%20are%20embedded%20via%20%60include_dir%60.%0A-%20**Constraint%3A**%20The%20tree%20structure%20is%20fixed%20in%20the%20templates%3B%20DocSlime%20does%20not%20take%20a%20user-supplied%20layout.%0A-%20**Constraint%3A**%20%60docslime-kiss%60%20is%20a%20skill%2C%20not%20a%20CLI%20command.%0A-%20**Assumption%3A**%20%60docslime%60%20is%20run%20at%20the%20root%20of%20the%20target%20git%20repo%3B%20the%20tree%20is%20created%20relative%20to%20the%20current%20directory.%0A-%20**Assumption%3A**%20An%20AI%20coding%20agent%20(not%20the%20CLI%20itself)%20writes%20the%20document%20content%20by%20following%20the%20inline%20guidance.%0A%0A%23%23%20Dependencies%0A%0A-%20**%60clap%60**%20%E2%80%94%20command-line%20argument%20parsing%20(derive%20API).%0A-%20**%60include_dir%60**%20%E2%80%94%20embeds%20the%20template%20tree%20into%20the%20binary%20at%20compile%20time.%0A-%20**%60anyhow%60%20%2F%20%60thiserror%60**%20%E2%80%94%20error%20handling%20and%20reporting.%0A-%20**%60owo-colors%60**%20%E2%80%94%20colored%20terminal%20output%20for%20%60list%60.%0A-%20**%60cargo-dist%60**%20%E2%80%94%20generates%20the%20release%20workflow%20and%20Homebrew%20formula%20(build%2Frelease%20time%20only).%0A%0A%23%23%20Open%20questions%0A%0A-%20Should%20DocSlime%20support%20a%20config%20file%20or%20flags%20to%20customize%20the%20tree%20layout%2C%20or%20stay%20fixed%3F%20%E2%80%94%20maintainer%0A-%20Should%20%60list%60%20%2F%20%60add%60%20operate%20on%20a%20non-current%20directory%20via%20a%20%60--path%60%20flag%3F%20%E2%80%94%20maintainer%0A" style="display: none;"></div>
+
+                    <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
+                      <ol>
+
+
+                          <li class="breadcrumb-item active" aria-current=&quot;page&quot;>
+
+                              <span>Requirements</span>
+
+
+                          </li>
+
+                      </ol>
+                    </nav>
+
+
+
+                    <div class="docmd-copy-widgets">
+
+                        <button class="docmd-copy-btn docmd-copy-raw-btn" data-copied="Copied!" title="Copy Markdown" aria-label="Copy Markdown">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-copy " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-copy"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <rect width="14" height="14" x="8" y="8" rx="2" ry="2" />
+  <path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2" />
+</svg>
+</span>
+                        </button>
+
+
+                        <button class="docmd-copy-btn docmd-copy-context-btn" data-copied="Copied!" title="Copy Context">
+                          <span class="docmd-btn-icon">
+<svg class="lucide-icon icon-message-square " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-message-square"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z" />
+</svg>
+</span>
+                          <span class="docmd-btn-text">Copy Context</span>
+                        </button>
+
+                    </div>
+
+                </div>
+
+                <h1 id="requirements" class="docmd-heading"><a href="#requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Requirements</h1>
+<p>DocSlime must scaffold a fixed, standardized <code>docs/</code> tree into a git repo, add individual<br>
+documents (including auto-numbered ADRs) on demand, and report what exists without<br>
+destroying existing work. The templates must carry the inline guidance that lets an AI agent<br>
+fill them in, while the tree stays plain Markdown for design-context loading, continuous<br>
+discovery, delivery, publication, and production learning.</p>
+<h2 id="requirements-functional-requirements" class="docmd-heading"><a href="#requirements-functional-requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Functional requirements</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Traces to</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FR-1</td>
+<td>The system shall create the full standardized <code>docs/</code> tree with <code>README.md</code>, <code>PRODUCT.md</code>, <code>DESIGN.md</code>, <code>REQUIREMENTS.md</code>, <code>strategy/</code>, <code>experience/</code>, and engineering architecture, testing, publishing, observability, and ADR docs via <code>docslime init</code>.</td>
+<td>Scaffold the docs tree</td>
+</tr>
+<tr>
+<td>FR-2</td>
+<td>The system shall skip any file that already exists during <code>init</code> and <code>add</code>, and overwrite only when <code>--force</code> is given.</td>
+<td>Non-destructive by default</td>
+</tr>
+<tr>
+<td>FR-3</td>
+<td>The system shall add a single named document via <code>docslime add &lt;name&gt;</code>, resolving the name leniently (case-insensitive, with or without the <code>.md</code> extension).</td>
+<td>Add a single document</td>
+</tr>
+<tr>
+<td>FR-4</td>
+<td>The system shall create the next-numbered ADR via <code>docslime add adr &lt;slug&gt;</code>, where the number is one greater than the highest existing <code>NNNN-*</code> record in the ADR directory (<code>0001</code> if none).</td>
+<td>Record an architecture decision</td>
+</tr>
+<tr>
+<td>FR-5</td>
+<td>The system shall normalize an ADR slug to lowercase, hyphen-separated <code>[a-z0-9-]</code>, and reject a slug with no alphanumeric characters.</td>
+<td>Record an architecture decision</td>
+</tr>
+<tr>
+<td>FR-6</td>
+<td>The system shall list every available template and whether it already exists on disk via <code>docslime list</code>, including the <code>adr</code> entry.</td>
+<td>Add a single document</td>
+</tr>
+<tr>
+<td>FR-7</td>
+<td>The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime.</td>
+<td>Fast and local</td>
+</tr>
+<tr>
+<td>FR-8</td>
+<td>The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero.</td>
+<td>Add a single document</td>
+</tr>
+<tr>
+<td>FR-9</td>
+<td>The system shall provide installable agent skills (<code>docslime-install</code>, <code>docslime-init</code>, <code>docslime-fill</code>, <code>docslime-adr</code>, <code>docslime-kiss</code>) that drive the documentation lifecycle.</td>
+<td>Fill in and improve documents with an agent</td>
+</tr>
+<tr>
+<td>FR-10</td>
+<td>The <code>docslime-kiss</code> skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content.</td>
+<td>Tighten docs after filling</td>
+</tr>
+<tr>
+<td>FR-11</td>
+<td>The generated tree shall include <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> so <code>impeccable</code> can discover product and design context from the docs directory without duplicate root files.</td>
+<td>Integrate with impeccable</td>
+</tr>
+<tr>
+<td>FR-12</td>
+<td>KISS review shall remain an agent skill rather than a <code>docslime</code> CLI subcommand.</td>
+<td>Tighten docs after filling</td>
+</tr>
+<tr>
+<td>FR-13</td>
+<td>Documentation guidance shall make the lifecycle trace explicit: strategy -&gt; product/design -&gt; discovery -&gt; requirement -&gt; architecture -&gt; test -&gt; publish -&gt; observe -&gt; discovery, with ADRs linked when a durable decision explains the design.</td>
+<td>Trace intent through production</td>
+</tr>
+<tr>
+<td>FR-14</td>
+<td>Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects.</td>
+<td>Domain Driven Design</td>
+</tr>
+<tr>
+<td>FR-15</td>
+<td>Publishing guidance shall cover artifacts, versioning, CI gates, promotion, deployment verification, rollback, and official platform references without copying volatile provider instructions.</td>
+<td>Publish verified artifacts</td>
+</tr>
+<tr>
+<td>FR-16</td>
+<td>Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling.</td>
+<td>Robust agent skills</td>
+</tr>
+<tr>
+<td>FR-17</td>
+<td>When a legacy numbered path exists, <code>init</code> and <code>list</code> shall recognize it as satisfying the corresponding current template and shall not create a duplicate renamed file unless <code>--force</code> is explicit.</td>
+<td>Preserve existing documentation during upgrades</td>
+</tr>
+<tr>
+<td>FR-18</td>
+<td>Experience guidance shall define a continuous-discovery practice and connect evidence, journeys, opportunities, hypotheses, behavior scenarios, and success signals to requirements.</td>
+<td>Learn from users continuously</td>
+</tr>
+<tr>
+<td>FR-19</td>
+<td>Observability guidance shall connect production system health and user-outcome signals to requirements and discovery while covering telemetry, SLOs, alerts, ownership, and privacy.</td>
+<td>Close the product-learning loop</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="requirements-non-functional-requirements" class="docmd-heading"><a href="#requirements-non-functional-requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Non-functional requirements</h2>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Requirement</th>
+<th>Target / constraint</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NFR-1</td>
+<td>Portability</td>
+<td>Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies.</td>
+</tr>
+<tr>
+<td>NFR-2</td>
+<td>Performance</td>
+<td>Commands complete near-instantly (well under a second) on a typical repo.</td>
+</tr>
+<tr>
+<td>NFR-3</td>
+<td>Distribution</td>
+<td>Installable via Homebrew tap, shell installer script, and <code>cargo install</code>.</td>
+</tr>
+<tr>
+<td>NFR-4</td>
+<td>Safety</td>
+<td>No command destroys user data without an explicit <code>--force</code>.</td>
+</tr>
+<tr>
+<td>NFR-5</td>
+<td>Maintainability</td>
+<td>Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required).</td>
+</tr>
+<tr>
+<td>NFR-6</td>
+<td>Toolchain</td>
+<td>Builds with Rust 1.74+ (2021 edition).</td>
+</tr>
+<tr>
+<td>NFR-7</td>
+<td>Publication</td>
+<td>Generated docs remain plain Markdown suitable for the <code>docmd.io</code> publishing system.</td>
+</tr>
+<tr>
+<td>NFR-8</td>
+<td>Quality stance</td>
+<td>Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions.</td>
+</tr>
+<tr>
+<td>NFR-9</td>
+<td>Skill maintainability</td>
+<td>Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior.</td>
+</tr>
+<tr>
+<td>NFR-10</td>
+<td>Design context</td>
+<td><code>impeccable</code> context loading should be verified from <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> whenever homepage or design docs change.</td>
+</tr>
+<tr>
+<td>NFR-11</td>
+<td>Privacy</td>
+<td>The default observability guidance must not normalize collecting sensitive repository or user data without an explicit decision, consent, and controls.</td>
+</tr>
+</tbody>
+</table>
+</div><h2 id="requirements-constraints-assumptions" class="docmd-heading"><a href="#requirements-constraints-assumptions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Constraints &amp; assumptions</h2>
+<ul>
+<li><strong>Constraint:</strong> Editing a template requires recompiling the binary, since templates are embedded via <code>include_dir</code>.</li>
+<li><strong>Constraint:</strong> The tree structure is fixed in the templates; DocSlime does not take a user-supplied layout.</li>
+<li><strong>Constraint:</strong> <code>docslime-kiss</code> is a skill, not a CLI command.</li>
+<li><strong>Assumption:</strong> <code>docslime</code> is run at the root of the target git repo; the tree is created relative to the current directory.</li>
+<li><strong>Assumption:</strong> An AI coding agent (not the CLI itself) writes the document content by following the inline guidance.</li>
+</ul>
+<h2 id="requirements-dependencies" class="docmd-heading"><a href="#requirements-dependencies" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Dependencies</h2>
+<ul>
+<li><strong><code>clap</code></strong> — command-line argument parsing (derive API).</li>
+<li><strong><code>include_dir</code></strong> — embeds the template tree into the binary at compile time.</li>
+<li><strong><code>anyhow</code> / <code>thiserror</code></strong> — error handling and reporting.</li>
+<li><strong><code>owo-colors</code></strong> — colored terminal output for <code>list</code>.</li>
+<li><strong><code>cargo-dist</code></strong> — generates the release workflow and Homebrew formula (build/release time only).</li>
+</ul>
+<h2 id="requirements-open-questions" class="docmd-heading"><a href="#requirements-open-questions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Open questions</h2>
+<ul>
+<li>Should DocSlime support a config file or flags to customize the tree layout, or stay fixed? — maintainer</li>
+<li>Should <code>list</code> / <code>add</code> operate on a non-current directory via a <code>--path</code> flag? — maintainer</li>
+</ul>
+
+
+                  <div class="page-navigation">
+
+                      <a href="../experience/" class="prev-page">
+
+<svg class="lucide-icon icon-arrow-left page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-left"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m12 19-7-7 7-7" />
+  <path d="M19 12H5" />
+</svg>
+
+                        <span><small>Previous</small><strong>
+                            Experience
+                          </strong></span>
+                      </a>
+
+
+                      <a href="../skills/" class="next-page">
+                        <span><small>Next</small>
+                          <strong>
+                            Agent Skills
+                          </strong></span>
+
+<svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-arrow-right"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M5 12h14" />
+  <path d="m12 5 7 7-7 7" />
+</svg>
+
+                      </a>
+
+                  </div>
+
+              </div>
+              <div class="toc-sidebar">
+
+
+
+  <div class="toc-container">
+    <h2 class="toc-title">On This Page<span class="mobile-view toc-menu-button float-right">
+<svg class="lucide-icon icon-chevron-down " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-chevron-down"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="m6 9 6 6 6-6" />
+</svg>
+</span></h2>
+    <ul class="toc-list">
+
+        <li class="toc-item toc-level-1">
+          <a href="#requirements" class="toc-link">Requirements</a>
+        </li>
+
+        <li class="toc-item toc-level-2">
+          <a href="#requirements-functional-requirements" class="toc-link">Functional requirements</a>
+        </li>
+
+        <li class="toc-item toc-level-2">
+          <a href="#requirements-non-functional-requirements" class="toc-link">Non-functional requirements</a>
+        </li>
+
+        <li class="toc-item toc-level-2">
+          <a href="#requirements-constraints-assumptions" class="toc-link">Constraints &amp; assumptions</a>
+        </li>
+
+        <li class="toc-item toc-level-2">
+          <a href="#requirements-dependencies" class="toc-link">Dependencies</a>
+        </li>
+
+        <li class="toc-item toc-level-2">
+          <a href="#requirements-open-questions" class="toc-link">Open questions</a>
+        </li>
+
+    </ul>
+  </div>
+
+              </div>
+            </div>
+            <div class="page-footer-actions">
+
+
+              <span class="git-spacer"></span>
+
+            </div>
+          </main>
+
+
+
+<footer class="page-footer">
+  <div class="footer-content">
+    <div class="user-footer">© 2026 DecisionNerd. DocSlime documentation.</div>
+
+      <div class="branding-footer">
+        Built with <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path><path d="M12 5 9.04 7.96a2.17 2.17 0 0 0 0 3.08c.82.82 2.13.85 3 .07l2.07-1.9a2.82 2.82 0 0 1 3.79 0l2.96 2.66"></path><path d="m18 15-2-2"></path><path d="m15 18-2-2"></path></svg> <a href="https://docmd.io" target="_blank" rel="noopener">docmd.</a>
+      </div>
+
+  </div>
+</footer>
+
+        </div>
+      </div>
+
+      <script src="../assets/js/docmd-main.js?v=mrfetb8w"></script>
+
+      <script src="../assets/js/docmd-git.js?v=mrfetb8w"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrfetb8w" ></script>
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
+<script src="../assets/js/docmd-search.js?v=mrfetb8w" ></script>
+<script src="../assets/js/docmd-git.js?v=mrfetb8w" type="module"></script>
+
+  <!-- Search Modal (Injected by @docmd/plugin-search) -->
+  <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
+       data-search-placeholder="Search documentation..."
+       data-search-no-results="No results found."
+       data-search-error="Failed to load search index."
+       data-search-initial="Type to start searching..."
+       data-search-navigate="to navigate"
+       data-search-escape="to close">
+      <div class="docmd-search-box">
+          <div class="docmd-search-header">
+              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-search"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
+              <input type="text" id="docmd-search-input" placeholder="Search documentation..." autocomplete="off" spellcheck="false">
+              <button onclick="window.closeDocmdSearch()" class="docmd-search-close" aria-label="Close search">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-icon icon-x"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+              </button>
+          </div>
+          <div id="docmd-search-results" class="docmd-search-results"></div>
+          <div class="docmd-search-footer">
+              <span><kbd class="docmd-kbd">↑</kbd> <kbd class="docmd-kbd">↓</kbd> to navigate</span>
+              <span><kbd class="docmd-kbd">ESC</kbd> to close</span>
+          </div>
+      </div>
+  </div>
+
+    <script>
+      (function() {
+        var searchDebounceTimer;
+
+        document.addEventListener('click', function(e) {
+          var link = e.target.closest('a');
+          if (!link || !window.gtag) return;
+
+          var url = link.href;
+          var hostname = window.location.hostname;
+          var isExternal = link.hostname && link.hostname !== hostname;
+          var isDownload = link.hasAttribute('download') || url.match(/\.(pdf|zip|tar|gz|exe|pkg)$/i);
+
+          if (isExternal) {
+            gtag('event', 'click_external', { 'url': url, 'link_text': link.innerText.trim() });
+          } else if (isDownload) {
+            gtag('event', 'download', { 'file_name': url.split('/').pop(), 'url': url });
+          }
+
+          // TOC tracking
+          if (link.classList.contains('toc-link')) {
+            gtag('event', 'toc_click', { 'target_id': link.getAttribute('href'), 'title': link.innerText.trim() });
+          }
+
+          // Permalink tracking
+          if (link.classList.contains('heading-anchor')) {
+            gtag('event', 'permalink_click', { 'url': url });
+          }
+        });
+
+
+        // Search Keyword Tracking
+        document.addEventListener('input', function(e) {
+          if (e.target.id === 'docmd-search-input' && window.gtag) {
+            var query = e.target.value.trim();
+            if (query.length < 3) return;
+
+            clearTimeout(searchDebounceTimer);
+            searchDebounceTimer = setTimeout(function() {
+              gtag('event', 'search', { 'search_term': query });
+            }, 1000);
+          }
+        });
+
+      })();
+    </script>
+
+<script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
+
+
+
+  </body>
+</html>

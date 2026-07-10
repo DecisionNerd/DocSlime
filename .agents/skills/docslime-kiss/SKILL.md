@@ -46,10 +46,10 @@ Answer with evidence from the files, not vibes.
 
 ## Workflow
 
-1. Read the docs tree before judging: `docs/README.md`, `PRODUCT.md`,
-   `1-EXPERIENCES.md`, `2-REQUIREMENTS.md`, `DESIGN.md`, `3-ARCHITECTURE.md`,
-   `3-ENGINEERING/`, `4-TESTING.md`, and relevant ADRs.
-2. Check the trace: product -> experiences -> requirements -> design/architecture -> tests.
+1. Read the docs tree before judging: `docs/README.md`, `PRODUCT.md`, `DESIGN.md`,
+   `strategy/`, `experience/`, `REQUIREMENTS.md`, `engineering/`, and relevant ADRs.
+2. Check the loop: strategy -> product/design -> discovery -> requirements -> architecture ->
+   testing -> publishing -> observability -> discovery.
 3. Identify bloat and slop with concrete file/line references.
 4. Recommend the smallest change that makes the docs honest and useful.
 5. If the user asked for edits, patch the docs directly and preserve real decisions.
@@ -60,7 +60,9 @@ Good DocSlime docs are:
 
 - **Specific:** describe this project, not a generic software product.
 - **Short enough to maintain:** no filler sections kept only because the template had them.
-- **Traceable:** requirements serve experiences; architecture serves requirements; tests prove behavior.
+- **Traceable:** requirements serve evidence; architecture serves requirements; tests prove
+  behavior; publishing delivers verified artifacts; observability feeds production evidence
+  back into discovery.
 - **Checkable:** requirements and testing claims can be verified.
 - **Current-state honest:** distinguish implemented behavior from target architecture or future ideas.
 - **Decision-light:** major durable choices live in ADRs; ordinary implementation detail does not.
@@ -78,6 +80,9 @@ Flag content when it has one or more of these smells:
 - Long lists of technologies, risks, personas, or principles with no consequence.
 - Design guidance that names vibes but gives no usable rules.
 - Testing docs that list commands but do not map back to behavior.
+- Publishing docs that conflate built, deployed, and verified state or omit rollback.
+- Observability docs that list generic logs and metrics without user outcomes, ownership, or
+  a discovery feedback path.
 - Leftover `LLM:` comments, italic placeholders, or obviously templated prose.
 - ADRs that relitigate the whole system instead of one decision.
 
@@ -113,7 +118,8 @@ grep -rn "LLM:" docs/
 
 For review-only runs, verify the report cites concrete files and names the smallest useful
 cleanup. For edit runs, re-run the relevant search/checks and confirm the changed docs still
-trace product -> experiences -> requirements -> architecture/testing -> ADRs.
+trace product/design -> discovery -> requirements -> architecture/testing -> publishing ->
+observability -> discovery, with ADRs for durable choices.
 
 ## Failure Handling
 

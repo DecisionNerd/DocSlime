@@ -7,8 +7,9 @@ image: /assets/images/docslime-hero.png
 ::: hero glow:true
 # Turn your repo into living docs.
 
-DocSlime makes repo knowledge stick. It absorbs product intent, requirements, design,
-architecture, tests, and decisions into one local docs body that humans and agents can use.
+DocSlime makes repo knowledge stick. It connects product intent and continuous discovery to
+requirements, architecture, tests, delivery, observability, and decisions in one local docs
+body that humans and agents can use.
 
 ```sh
 brew install DecisionNerd/tap/docslime
@@ -26,23 +27,24 @@ better context for the next change.
 ## Why It Sticks
 
 ```text
-product intent  -> PRODUCT.md + DESIGN.md
-behavior        -> REQUIREMENTS.md + TESTING.md
-system shape    -> ARCHITECTURE.md + ADRs
-maintenance     -> docslime-fill + docslime-adr + docslime-kiss
-publication     -> docmd.io
+strategy -> product/design -> discovery -> requirements -> architecture -> testing
+    ^                                                               |
+    +----------- observation <- publishing <- verified build <------+
 ```
 
 - **Product and design context** flows into `PRODUCT.md` and `DESIGN.md`, so agents stop
   guessing what the code is for.
-- **Requirements and behavior** flow into `2-REQUIREMENTS.md` and `4-TESTING.md`, so TDD+BDD
-  work can trace back to intent.
-- **Domain shape and tradeoffs** flow into `3-ARCHITECTURE.md` and `3-ENGINEERING/ADRs/`, so
+- **Continuous discovery** lives in `experience/`, where evidence and journeys become
+  solution-neutral requirements rather than an untraceable feature backlog.
+- **Requirements and behavior** flow into `REQUIREMENTS.md` and `engineering/TESTING.md`, so
+  TDD+BDD work can trace back to evidence.
+- **Domain shape and tradeoffs** flow into `engineering/ARCHITECTURE.md` and `engineering/adrs/`, so
   Domain Driven Design language stays close to decisions.
 - **Human judgment** flows through `docslime-fill`, `docslime-adr`, and `docslime-kiss`, so
   docs get filled, decisions get recorded, and bloat gets cut.
-- **Publishing stays thin**: DocSlime keeps the Markdown clean, then hands static-site build
-  and hosting choices to the [`docmd.io` docs](publishing/).
+- **Delivery and observation close the loop**: `engineering/PUBLISHING.md` defines promotion,
+  verification, and rollback; `engineering/OBSERVABILITY.md` connects production health and
+  user outcomes back to discovery.
 
 ## Install DocSlime
 
@@ -120,30 +122,34 @@ pack, fill `docs/PRODUCT.md`, then use `docslime-kiss` once the first useful con
 
 ```text
 docs/
+|-- README.md
 |-- PRODUCT.md
-|-- 1-EXPERIENCES.md
-|-- 2-REQUIREMENTS.md
 |-- DESIGN.md
-|-- 3-ARCHITECTURE.md
-|-- 4-TESTING.md
-|-- publishing.md
-|-- 0-PRODUCT/
-|-- 1-JOURNEYS/
-`-- 3-ENGINEERING/ADRs/
+|-- REQUIREMENTS.md
+|-- strategy/README.md
+|-- experience/README.md
+`-- engineering/
+    |-- README.md
+    |-- ARCHITECTURE.md
+    |-- TESTING.md
+    |-- PUBLISHING.md
+    |-- OBSERVABILITY.md
+    `-- adrs/README.md
 ```
 
 `docs/PRODUCT.md` and `docs/DESIGN.md` are deliberately discoverable from the docs tree so
 tools like `impeccable` can load product and design context without duplicate root files.
 
-- **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `0-PRODUCT/` capture purpose,
+- **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `strategy/` capture purpose,
   voice, principles, and success measures.
-- **Experiences + requirements:** `1-EXPERIENCES.md`, `1-JOURNEYS/`, and
-  `2-REQUIREMENTS.md` map human and agent journeys to testable behavior.
-- **Architecture + ADRs:** `3-ARCHITECTURE.md` and `3-ENGINEERING/ADRs/` keep domain
+- **Experience + requirements:** `experience/` captures evidence, opportunities, journeys,
+  and hypotheses; `REQUIREMENTS.md` translates them into a testable build contract.
+- **Architecture + ADRs:** `engineering/ARCHITECTURE.md` and `engineering/adrs/` keep domain
   boundaries and decisions explicit.
-- **Testing:** `4-TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
-- **Publishing:** [`publishing.md`](publishing/) points to the official `docmd.io` build and
-  deployment docs instead of copying that system into DocSlime.
+- **Testing:** `engineering/TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
+- **Publishing + observability:** [`engineering/PUBLISHING.md`](engineering/PUBLISHING/) and
+  [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY/) carry verified artifacts to
+  users and feed production evidence back into discovery.
 
 ## Agent Skills
 
@@ -169,14 +175,14 @@ CLI subcommand.
 :::
 
 ::: grid
-::: card "Experiences" icon:route
-[See the core workflows](1-EXPERIENCES/){.docmd-button}
+::: card "Experience" icon:route
+[See continuous discovery](experience/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Requirements" icon:list-checks
-[Review the behavior contract](2-REQUIREMENTS/){.docmd-button}
+[Review the behavior contract](REQUIREMENTS/){.docmd-button}
 :::
 :::
 
@@ -187,8 +193,8 @@ CLI subcommand.
 :::
 
 ::: grid
-::: card "Publishing" icon:upload-cloud
-[Ship through docmd.io](publishing/){.docmd-button}
+::: card "Engineering" icon:wrench
+[Follow the engineering lifecycle](engineering/){.docmd-button}
 :::
 :::
 :::

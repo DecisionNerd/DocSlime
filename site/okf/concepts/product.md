@@ -6,7 +6,7 @@ path: /PRODUCT/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T04:25:52.803Z"
+  generated_at: "2026-07-10T20:50:08.947Z"
 ---
 # Product
 
@@ -14,10 +14,10 @@ DocSlime is an opinionated documentation system for codebases. It gives a repo a
 `docs/` tree, a `docslime` CLI, and agent skills that help teams turn product intent into
 filled-in, version-controlled Markdown.
 
-It exists so services and user-facing products can carry their product context, experiences,
-requirements, design guidance, architecture, tests, and decisions next to the code. Agents
-working in the repo can read that context directly instead of guessing from implementation
-details alone.
+It exists so services and user-facing products can carry product context, continuous
+discovery, requirements, design guidance, architecture, tests, delivery, observability, and
+decisions next to the code. Agents working in the repo can read that context directly
+instead of guessing from implementation details alone.
 
 ## Problem
 
@@ -47,8 +47,12 @@ context is complete, local, and testable.
 - **Impeccable integration:** `docs/PRODUCT.md` and `docs/DESIGN.md` are discoverable product
   and design context files without needing root-level duplicates, so `impeccable` can critique
   and polish product surfaces from the same docs tree agents use.
-- **Publishing path:** the docs stay plain Markdown and are intended to publish through the
-  `docmd.io` system; DocSlime links to that system instead of reimplementing it.
+- **Lifecycle:** discovery evidence becomes requirements, architecture and tests implement
+  the contract, publishing carries verified artifacts to users, and observability closes the
+  learning loop.
+- **Publishing path:** the docs stay plain Markdown and can publish through `docmd.io`; the
+  engineering publishing template also covers software artifacts, promotion, deployment,
+  verification, and rollback.
 - **Quality stance:** requirements should trace to BDD scenarios and tests, architecture
   should use Domain Driven Design language where it clarifies the system, and significant
   choices should become ADRs.
@@ -58,7 +62,9 @@ context is complete, local, and testable.
 DocSlime's quality method is a trace, not a ceremony:
 
 ```text
-product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a choice matters
+strategy -> product/design -> discovery -> requirement -> architecture -> test -> publish
+     ^                                                                    |
+     +-------------------------- observe ----------------------------------+
 ```
 
 - **TDD+BDD:** requirements get stable IDs, behavior is written in Given/When/Then language,
@@ -66,14 +72,17 @@ product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a 
 - **Domain Driven Design:** architecture docs name the domain concepts, boundaries, and
   language that matter for the project; small projects can stay light, but they should still
   know their core nouns and responsibilities.
-- **ADRs:** durable choices live in `3-ENGINEERING/ADRs/` so future humans and agents can see
+- **ADRs:** durable choices live in `engineering/adrs/` so future humans and agents can see
   why the current shape exists.
+- **Observability:** production health and user-outcome signals trace back to requirements
+  and discovery, so learning continues after release.
 
 ## Goals
 
 - Give every repo a consistent, agent-readable documentation structure.
 - Make first-run value fast: `docslime init` should create useful next steps immediately.
-- Keep product, design, engineering, testing, and ADR context local and version-controlled.
+- Keep product, design, discovery, requirements, engineering, delivery, observability, and
+  ADR context local and version-controlled.
 - Support both services and user-facing products without splitting into separate doc systems.
 - Make docs easier to fill, review, tighten, and publish than to let drift.
 
@@ -92,6 +101,8 @@ product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a 
 - **Docs get filled:** scaffolded documents are completed, with no leftover `LLM:` guidance.
 - **Traceability improves:** requirements, behavior scenarios, tests, and ADRs point to each
   other clearly enough for a future agent to act.
+- **The loop closes:** published artifacts carry verification steps, and observability links
+  production signals back to product outcomes and experience hypotheses.
 - **Design context improves:** `impeccable` resolves `docs/PRODUCT.md` and `docs/DESIGN.md`
   as the current product/design source without bridge files that can drift.
 - **Low friction:** short time from `docslime init` to a useful first filled document.

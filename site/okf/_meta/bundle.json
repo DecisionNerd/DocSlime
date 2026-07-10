@@ -6,7 +6,7 @@
     "description": "",
     "url": "https://www.docslime.dev",
     "generated_by": "@docmd/plugin-okf",
-    "generated_at": "2026-07-10T04:25:52.804Z",
+    "generated_at": "2026-07-10T20:50:08.954Z",
     "default_type": "concept"
   },
   "stats": {
@@ -18,96 +18,6 @@
     "versions": []
   },
   "concepts": [
-    {
-      "id": "0-product",
-      "type": "concept",
-      "title": "Product",
-      "path": "/0-PRODUCT/",
-      "file": "concepts/0-product.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "1-experiences",
-      "type": "concept",
-      "title": "Experiences",
-      "path": "/1-EXPERIENCES/",
-      "file": "concepts/1-experiences.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "1-journeys",
-      "type": "concept",
-      "title": "Journeys",
-      "path": "/1-JOURNEYS/",
-      "file": "concepts/1-journeys.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "2-requirements",
-      "type": "concept",
-      "title": "Requirements",
-      "path": "/2-REQUIREMENTS/",
-      "file": "concepts/2-requirements.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "3-architecture",
-      "type": "concept",
-      "title": "Architecture",
-      "path": "/3-ARCHITECTURE/",
-      "file": "concepts/3-architecture.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "3-engineering-adrs-0001-embed-templates-in-binary",
-      "type": "concept",
-      "title": "ADR-0001: Embed templates in the binary at compile time",
-      "path": "/3-ENGINEERING/ADRs/0001-embed-templates-in-binary/",
-      "file": "concepts/3-engineering-adrs-0001-embed-templates-in-binary.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "3-engineering-adrs",
-      "type": "concept",
-      "title": "Architecture Decision Records",
-      "path": "/3-ENGINEERING/ADRs/",
-      "file": "concepts/3-engineering-adrs.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "3-engineering",
-      "type": "concept",
-      "title": "Engineering",
-      "path": "/3-ENGINEERING/",
-      "file": "concepts/3-engineering.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
-      "id": "4-testing",
-      "type": "concept",
-      "title": "Testing",
-      "path": "/4-TESTING/",
-      "file": "concepts/4-testing.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
     {
       "id": "design",
       "type": "concept",
@@ -139,6 +49,96 @@
       "tags": []
     },
     {
+      "id": "requirements",
+      "type": "concept",
+      "title": "Requirements",
+      "path": "/REQUIREMENTS/",
+      "file": "concepts/requirements.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-architecture",
+      "type": "concept",
+      "title": "Architecture",
+      "path": "/engineering/ARCHITECTURE/",
+      "file": "concepts/engineering-architecture.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-observability",
+      "type": "concept",
+      "title": "Observability",
+      "path": "/engineering/OBSERVABILITY/",
+      "file": "concepts/engineering-observability.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-publishing",
+      "type": "concept",
+      "title": "Publishing",
+      "path": "/engineering/PUBLISHING/",
+      "file": "concepts/engineering-publishing.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering",
+      "type": "concept",
+      "title": "Engineering",
+      "path": "/engineering/",
+      "file": "concepts/engineering.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-testing",
+      "type": "concept",
+      "title": "Testing",
+      "path": "/engineering/TESTING/",
+      "file": "concepts/engineering-testing.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-adrs-0001-embed-templates-in-binary",
+      "type": "concept",
+      "title": "ADR-0001: Embed templates in the binary at compile time",
+      "path": "/engineering/adrs/0001-embed-templates-in-binary/",
+      "file": "concepts/engineering-adrs-0001-embed-templates-in-binary.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "engineering-adrs",
+      "type": "concept",
+      "title": "Architecture Decision Records",
+      "path": "/engineering/adrs/",
+      "file": "concepts/engineering-adrs.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "experience",
+      "type": "concept",
+      "title": "Experience",
+      "path": "/experience/",
+      "file": "concepts/experience.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
       "id": "root",
       "type": "concept",
       "title": "DocSlime",
@@ -149,21 +149,21 @@
       "tags": []
     },
     {
-      "id": "publishing",
-      "type": "concept",
-      "title": "Publishing",
-      "path": "/publishing/",
-      "file": "concepts/publishing.md",
-      "locale": "",
-      "version": "",
-      "tags": []
-    },
-    {
       "id": "skills",
       "type": "concept",
       "title": "Agent Skills",
       "path": "/skills/",
       "file": "concepts/skills.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "strategy",
+      "type": "concept",
+      "title": "Strategy",
+      "path": "/strategy/",
+      "file": "concepts/strategy.md",
       "locale": "",
       "version": "",
       "tags": []

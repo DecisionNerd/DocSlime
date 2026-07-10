@@ -8,7 +8,8 @@ use crate::scaffold;
 use crate::templates::{self, FindError};
 
 /// Relative location of the ADR directory within the docs tree.
-const ADR_DIR: &str = "3-ENGINEERING/ADRs";
+const ADR_DIR: &str = "engineering/adrs";
+const LEGACY_ADR_DIR: &str = "3-ENGINEERING/ADRs";
 
 /// Dispatch `add`: the literal `adr` triggers numbered-ADR creation; anything else resolves
 /// to a single embedded template.
@@ -31,7 +32,7 @@ pub fn run(root: &Path, doc: &str, slug: Option<&str>, force: bool) -> Result<()
     }
 }
 
-/// Create `docs/3-ENGINEERING/ADRs/NNNN-<slug>.md` from the ADR template, where `NNNN` is the
+/// Create `docs/engineering/adrs/NNNN-<slug>.md` from the ADR template, where `NNNN` is the
 /// next number after the highest existing record.
 fn add_adr(root: &Path, slug: Option<&str>, force: bool) -> Result<()> {
     let slug = slug.context("`add adr` requires a slug, e.g. `docslime add adr my-decision`")?;
@@ -40,7 +41,14 @@ fn add_adr(root: &Path, slug: Option<&str>, force: bool) -> Result<()> {
         bail!("the ADR slug must contain at least one alphanumeric character");
     }
 
-    let adr_dir = root.join(scaffold::DOCS_DIR).join(ADR_DIR);
+    let docs_dir = root.join(scaffold::DOCS_DIR);
+    let current_adr_dir = docs_dir.join(ADR_DIR);
+    let legacy_adr_dir = docs_dir.join(LEGACY_ADR_DIR);
+    let adr_dir = if current_adr_dir.exists() || !legacy_adr_dir.exists() {
+        current_adr_dir
+    } else {
+        legacy_adr_dir
+    };
     let next = next_adr_number(&adr_dir)?;
     let filename = format!("{next:04}-{slug}.md");
     let dest = adr_dir.join(&filename);

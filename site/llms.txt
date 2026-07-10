@@ -4,21 +4,21 @@
 
 ## Documentation Files
 
-- [Product](https://www.docslime.dev/0-PRODUCT/)
-- [Experiences](https://www.docslime.dev/1-EXPERIENCES/)
-- [Journeys](https://www.docslime.dev/1-JOURNEYS/)
-- [Requirements](https://www.docslime.dev/2-REQUIREMENTS/)
-- [Architecture](https://www.docslime.dev/3-ARCHITECTURE/)
-- [ADR-0001: Embed templates in the binary at compile time](https://www.docslime.dev/3-ENGINEERING/ADRs/0001-embed-templates-in-binary/)
-- [Architecture Decision Records](https://www.docslime.dev/3-ENGINEERING/ADRs/)
-- [Engineering](https://www.docslime.dev/3-ENGINEERING/)
-- [Testing](https://www.docslime.dev/4-TESTING/)
 - [Design](https://www.docslime.dev/DESIGN/)
+- [ADR-0001: Embed templates in the binary at compile time](https://www.docslime.dev/engineering/adrs/0001-embed-templates-in-binary/)
+- [Architecture Decision Records](https://www.docslime.dev/engineering/adrs/)
+- [Architecture](https://www.docslime.dev/engineering/ARCHITECTURE/)
+- [Engineering](https://www.docslime.dev/engineering/)
+- [Observability](https://www.docslime.dev/engineering/OBSERVABILITY/)
+- [Publishing](https://www.docslime.dev/engineering/PUBLISHING/)
+  How verified DocSlime CLI, skill, and documentation artifacts reach users safely.
+- [Testing](https://www.docslime.dev/engineering/TESTING/)
+- [Experience](https://www.docslime.dev/experience/)
 - [DocSlime](https://www.docslime.dev/)
   Opinionated docs scaffolding and agent skills for services and user-facing products.
 - [Product](https://www.docslime.dev/PRODUCT/)
-- [Publishing](https://www.docslime.dev/publishing/)
-  How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host.
 - [Documentation](https://www.docslime.dev/README/)
+- [Requirements](https://www.docslime.dev/REQUIREMENTS/)
 - [Agent Skills](https://www.docslime.dev/skills/)
   Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs.
+- [Strategy](https://www.docslime.dev/strategy/)

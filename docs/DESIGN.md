@@ -15,6 +15,8 @@ generated Markdown, the agent skills, and the way those docs later publish throu
   human feel like they are reading internal machinery.
 - **Traceable by design:** requirements, BDD scenarios, tests, architecture, and ADRs should
   naturally point at each other.
+- **Learning continues in production:** user outcomes and system health should be observable,
+  not assumed once a release deploys.
 - **Small command surface:** CLI commands stay memorable; judgment-heavy work belongs in
   skills.
 
@@ -50,8 +52,8 @@ For the homepage, the desired direction is:
 
 - `docs/PRODUCT.md` and `docs/DESIGN.md` are top-level context files so design and coding
   agents can discover them from the docs directory.
-- Numbered docs keep the reading path obvious after product/design context:
-  experiences, requirements, architecture, and testing.
+- Semantic folders separate strategy, continuous discovery, and engineering while
+  `docs/README.md` keeps the lifecycle explicit without encoding navigation into filenames.
 - Tables are useful for traceability, requirements, component lists, and ADR logs; prose
   should stay short enough to scan.
 - Templates may contain `<!-- LLM: ... -->` guidance, but filled docs should remove it.
@@ -72,6 +74,9 @@ For the homepage, the desired direction is:
 - Requirements should be testable and carry stable IDs.
 - Testing docs should map requirements and experiences to Given/When/Then behavior coverage.
 - Architecture docs should describe domain concepts and boundaries when the project has them.
+- Publishing docs should distinguish built, deployed, and verified artifacts and include a
+  safe rollback path.
+- Observability should cover user outcomes as well as logs, metrics, traces, SLOs, and alerts.
 - Significant product or technical decisions should be captured as ADRs.
 - KISS review should cut bloat, stale contradictions, generic AI prose, and weak traceability.
 - Docs should remain plain Markdown that can publish through `docmd.io` without cleanup.

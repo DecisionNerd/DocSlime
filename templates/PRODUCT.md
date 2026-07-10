@@ -28,7 +28,7 @@ _What problem are we solving, and for whom?_
 
 <!-- LLM: Identify primary and secondary users, buyers, operators, admins, integrators, or
 dependent teams. For each, capture what they need from the product and what "good" feels
-like to them. Link to 1-JOURNEYS/ when fuller personas or journeys exist. -->
+like to them. Link to experience/ when fuller personas or journeys exist. -->
 
 - _Audience / role - need_
 
@@ -54,8 +54,8 @@ Each should be an outcome, not a feature. Prefer measurable where possible. -->
 
 <!-- LLM: Capture the project's quality method. Ask whether the project uses TDD, BDD,
 Domain Driven Design, ADRs, design critique, security review, or other quality gates. Keep
-this as product-level stance; put concrete test mappings in 4-TESTING.md and decisions in
-ADRs. -->
+this as product-level stance; put concrete test mappings in `engineering/TESTING.md`,
+production measures in `engineering/OBSERVABILITY.md`, and decisions in ADRs. -->
 
 - _Quality method / gate - why it matters_
 

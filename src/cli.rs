@@ -34,10 +34,10 @@ Two modes, chosen by the DOC argument:
   extension). Run `docslime list` to see every name.
 
       docslime add PRODUCT
-      docslime add 3-ARCHITECTURE.md
+      docslime add ARCHITECTURE
 
   ADR — pass the literal `adr` plus a slug to create an Architecture
-  Decision Record. The file is written to docs/3-ENGINEERING/ADRs/ as
+  Decision Record. The file is written to docs/engineering/adrs/ as
   NNNN-<slug>.md, where NNNN is the next number after the highest
   existing record (0001 if there are none yet). The slug is lower-cased
   and hyphenated, so `\"My First Decision\"` becomes `my-first-decision`.
@@ -47,7 +47,7 @@ Two modes, chosen by the DOC argument:
 
 Existing files are skipped unless --force is given.")]
     Add {
-        /// Template name (e.g. `PRODUCT`, `3-ARCHITECTURE`), or the literal `adr`.
+        /// Template name (e.g. `PRODUCT`, `ARCHITECTURE`), or the literal `adr`.
         doc: String,
 
         /// Slug for the new ADR's filename (only used with `add adr <slug>`).

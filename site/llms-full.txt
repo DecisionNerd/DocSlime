@@ -4,441 +4,102 @@
 
 ---
 
-## [Product](https://www.docslime.dev/0-PRODUCT/)
+## [Design](https://www.docslime.dev/DESIGN/)
 
-# Product
+# Design
 
-This folder expands on [`../PRODUCT.md`](../PRODUCT.md) with product, market, positioning,
-and publication detail that does not belong in the compact top-level product context.
+DocSlime has no graphical app today, but it still has a product experience: the CLI, the
+generated Markdown, the agent skills, and the way those docs later publish through
+`docmd.io`. This file is the design context that tools like `impeccable` can load from
+`docs/`.
 
-## What lives here
+## Design Principles
 
-DocSlime is still a small open-source developer tool, but the product frame is broader than
-the old scaffold-only positioning. These are the natural homes for deeper detail as the
-product grows:
+- **Useful before decorative:** the first run should leave the user with a clear, fillable
+  docs tree and obvious next action.
+- **Opinionated, not heavy:** DocSlime should make strong defaults feel helpful, not like a
+  governance framework.
+- **Agent-readable and human-readable:** templates should guide an agent without making a
+  human feel like they are reading internal machinery.
+- **Traceable by design:** requirements, BDD scenarios, tests, architecture, and ADRs should
+  naturally point at each other.
+- **Learning continues in production:** user outcomes and system health should be observable,
+  not assumed once a release deploys.
+- **Small command surface:** CLI commands stay memorable; judgment-heavy work belongs in
+  skills.
 
-- **Market & users** — teams using AI agents across services and user-facing products.
-- **Competitive landscape** — alternatives (wikis, doc generators, ad-hoc `docs/`
-  conventions) and how DocSlime differs by being agent-fillable, standardized, and
-  traceability-oriented.
-- **Positioning & messaging** — how DocSlime is framed; currently captured in the project [`README`](../../README.md).
-- **Publishing** — how DocSlime docs move into the `docmd.io` system.
-- **Roadmap** — sequencing of future bets (e.g. customizable layouts, a `--path` flag — see open questions in [`../2-REQUIREMENTS.md`](../2-REQUIREMENTS.md)).
-- **Pricing / business model** — not applicable for the CLI today; DocSlime is free and open source.
+## Brand And Voice
 
-## Index
+- **Product name:** use `DocSlime` for the product and `docslime` for the binary/command.
+- **Tone:** practical, direct, and lightly playful when the name earns it. The product can
+  carry the integrated "slime" idea without turning docs into a joke.
+- **Mascot:** use the blue anime slime as a product signal. It can appear in the homepage
+  hero and brand surfaces, but it should support the repo/docs artifact rather than replacing
+  developer credibility.
+- **Terminology:** use "docs tree," "product context," "design context," "requirements,"
+  "BDD," "Domain Driven Design," "ADR," "template," "skill," and "agent" consistently.
+- **Writing rules:** generated guidance should be specific and interview-driven. Prefer
+  "ask the user," "trace this to a requirement," and "record the decision" over vague advice.
 
-_No detailed product documents yet. Add one focused file per topic above as the need arises,
-and list it here._
+## Impeccable Workflow
 
+`impeccable` should treat `docs/PRODUCT.md` and `docs/DESIGN.md` as the current product and
+design context. UI work should begin by loading those files, critiquing the actual surface,
+and then changing the smallest set of docs/site files that makes the critique more true.
 
----
+For the homepage, the desired direction is:
 
-## [Experiences](https://www.docslime.dev/1-EXPERIENCES/)
+- lead with the outcome: DocSlime turns a repo into living docs;
+- show the repo/docs tree as the credibility anchor;
+- include the blue slime mascot as a memorable brand moment;
+- keep CTAs developer-native and direct;
+- avoid pink/purple gradient text, decorative grid backgrounds, oversized cards, and claims
+  that `docslime-kiss` is a CLI command.
 
-# Experiences
+## Markdown Experience
 
-At its best, DocSlime feels like a project suddenly has a nervous system. A developer runs
-one command, a full documentation tree appears in the repo, and their AI agent immediately
-knows how to fill it in by asking the right questions instead of guessing. The docs end up
-written and committed alongside the code, ready for agents, design tools, ADR review, tests,
-and eventual `docmd.io` publication.
+- `docs/PRODUCT.md` and `docs/DESIGN.md` are top-level context files so design and coding
+  agents can discover them from the docs directory.
+- Semantic folders separate strategy, continuous discovery, and engineering while
+  `docs/README.md` keeps the lifecycle explicit without encoding navigation into filenames.
+- Tables are useful for traceability, requirements, component lists, and ADR logs; prose
+  should stay short enough to scan.
+- Templates may contain `<!-- LLM: ... -->` guidance, but filled docs should remove it.
+- Avoid generic motivational copy. Every paragraph should help a future human or agent make
+  a better change.
 
-## Primary users
+## CLI Experience
 
-- **Engineering team member** — a developer (often working with an AI coding agent) who wants
-  consistent, in-repo project docs without designing a doc system from scratch. See [`1-JOURNEYS/`](1-JOURNEYS/).
-- **Product or design collaborator** — someone shaping a service or user-facing product who
-  needs product and design context discoverable by tools like `impeccable`.
-- **AI coding agent** — the intended author and reader of the filled-in docs; it follows the
-  inline guidance to interview the team and write each section. See [`1-JOURNEYS/`](1-JOURNEYS/).
+- **Commands:** keep `docslime init`, `docslime add`, and `docslime list` as the CLI surface.
+- **Skills:** keep `docslime-kiss` as an agent skill, not a CLI command.
+- **Defaults:** commands skip existing files unless `--force` is explicit.
+- **States:** every write should report a clear created, skipped, or overwritten outcome.
+- **Errors:** failures should say what happened and, where possible, list valid alternatives.
+- **Color:** terminal color is functional only; status words must carry meaning without it.
 
-## Key experiences
+## Quality Bar
 
-### Scaffold the docs tree
+- Requirements should be testable and carry stable IDs.
+- Testing docs should map requirements and experiences to Given/When/Then behavior coverage.
+- Architecture docs should describe domain concepts and boundaries when the project has them.
+- Publishing docs should distinguish built, deployed, and verified artifacts and include a
+  safe rollback path.
+- Observability should cover user outcomes as well as logs, metrics, traces, SLOs, and alerts.
+- Significant product or technical decisions should be captured as ADRs.
+- KISS review should cut bloat, stale contradictions, generic AI prose, and weak traceability.
+- Docs should remain plain Markdown that can publish through `docmd.io` without cleanup.
 
-> **As a** developer starting documentation on a repo
-> **I want** to drop a standardized docs tree into the project with one command
-> **So that** I have a consistent structure to fill in, without inventing one
+## References
 
-- **Given** a git repo with no `docs/` directory
-- **When** I run `docslime init`
-- **Then** the full `docs/` tree is created, including `PRODUCT.md` and `DESIGN.md`, with each
-  template carrying inline `<!-- LLM: -->` guidance
-
-Must not happen: an existing file is silently overwritten. `init` skips anything already on
-disk unless `--force` is passed.
-
-### Add a single document
-
-> **As a** developer with a partial docs tree
-> **I want** to add just one missing document by name
-> **So that** I can fill gaps without re-running the whole scaffold
-
-- **Given** a repo that already has some docs
-- **When** I run `docslime add 3-ARCHITECTURE` (name matched leniently, with or without `.md`)
-- **Then** only that document is created from its template, and existing files are untouched
-
-Must not happen: an unknown name fails silently. DocSlime reports the error and lists the
-valid template names.
-
-### Record an architecture decision
-
-> **As a** team making a significant technical choice
-> **I want** to create the next-numbered ADR with a memorable slug
-> **So that** the decision and its reasoning are captured immutably in the repo
-
-- **Given** an ADR directory with records up to `0003-*`
-- **When** I run `docslime add adr use-postgres`
-- **Then** `docs/3-ENGINEERING/ADRs/0004-use-postgres.md` is created from the ADR template
-
-Must not happen: numbering collides or restarts. DocSlime always picks the next number after
-the highest existing record (`0001` if there are none).
-
-### Fill in a document with an agent
-
-> **As a** developer with a scaffolded but empty doc
-> **I want** my AI agent to interview me and write the document
-> **So that** the doc reflects real project intent rather than boilerplate
-
-- **Given** a scaffolded document containing `<!-- LLM: -->` guidance comments
-- **When** I ask my agent to fill it in (via the `docslime-fill` skill)
-- **Then** the agent asks focused questions, writes each section, and removes the guidance
-  comments as it goes — leaving a clean, completed document
-
-Must not happen: the agent fabricates facts or leaves guidance comments behind. A finished
-doc has no `LLM:` comments and no leftover placeholder prompts.
-
-### Tighten docs after filling
-
-> **As a** developer with filled-in docs
-> **I want** my agent to challenge whether they are bloated, generic, or full of AI slop
-> **So that** the docs stay useful, truthful, and easy to maintain
-
-- **Given** a filled or partially filled docslime tree
-- **When** I ask the agent to run the `docslime-kiss` skill
-- **Then** it gives a clear KISS verdict, flags concrete bloat with file references, and
-  recommends the smallest best-practice cleanup
-
-Must not happen: the review rewards longer docs just because they sound polished. The skill
-should prefer cutting or tightening filler over rewriting it into prettier filler.
-
-### Load product and design context in impeccable
-
-> **As a** product or design agent
-> **I want** the docs tree to expose recognizable product and design context files
-> **So that** I can shape product work without asking the user to duplicate context elsewhere
-
-- **Given** a repo initialized by DocSlime
-- **When** `impeccable` resolves context
-- **Then** it can load `docs/PRODUCT.md` and `docs/DESIGN.md`
-
-Must not happen: the repo maintains separate root-level context files that drift from the
-canonical docs tree.
-
-### Trace behavior to tests and decisions
-
-> **As a** developer changing a product or service
-> **I want** requirements, BDD scenarios, tests, architecture, and ADRs to point at each other
-> **So that** future humans and agents can see why the behavior exists and how it is proved
-
-- **Given** a requirement with a stable ID
-- **When** the team documents the behavior and testing plan
-- **Then** `4-TESTING.md` includes a Given/When/Then scenario and a test reference, and
-  `3-ARCHITECTURE.md` or an ADR captures the domain boundary or decision when it matters
-
-Must not happen: a requirement sounds plausible but cannot be tested, or an ADR explains a
-choice without naming the requirement or domain force that made the choice important.
-
-### Publish through docmd.io
-
-> **As a** maintainer ready to publish documentation
-> **I want** DocSlime to hand off clean Markdown to `docmd.io`
-> **So that** publishing follows the official docmd build and deployment path instead of a
-> second DocSlime-specific hosting system
-
-- **Given** a filled DocSlime docs tree
-- **When** I build with `docmd`
-- **Then** the static site is generated from `docs/`, and any platform-specific deployment
-  details come from the official `docmd.io` docs
-
-Must not happen: DocSlime copies stale deployment instructions or implies the CLI hosts docs.
-
-## Experience principles
-
-- **Non-destructive by default** — existing files are never overwritten without an explicit `--force`.
-- **Forgiving input** — document names and ADR slugs are matched and normalized leniently.
-- **Self-explaining** — every template tells the agent (and the human) what to do; no external manual required.
-- **KISS after filling** — filled docs should be challenged for bloat, generic prose, and weak traceability.
-- **Context tools fit the tree** — product/design tools should discover context from `docs/`
-  instead of requiring duplicate files.
-- **Publishable Markdown** — docs should stay clean enough to flow into `docmd.io`.
-- **Traceable quality** — BDD scenarios, TDD evidence, domain boundaries, and ADRs should
-  make each other easier to find.
-- **Fast and local** — commands run instantly against the filesystem, and the output lives in the repo.
-- **Small surface** — three commands (`init`, `add`, `list`) cover the whole tool.
-
-## Out of scope
-
-- Hosting or rendering docs directly inside the CLI; publishing belongs to `docmd.io`.
-- Generating documentation content automatically without a human-in-the-loop interview.
-- Editing or migrating docs that have already been filled in (the CLI only scaffolds; skills
-  help with review and filling).
-- Enforcing a single rigid format — the tree is a default, and teams may diverge.
+- [`src/scaffold.rs`](../src/scaffold.rs) - write status output and safety behavior.
+- [`src/commands/list.rs`](../src/commands/list.rs) - template list output.
+- [`templates/`](../templates/) - embedded Markdown style for generated docs.
+- [`.agents/skills/`](../.agents/skills/) - lifecycle skills for filling, ADRs, and KISS review.
 
 
 ---
 
-## [Journeys](https://www.docslime.dev/1-JOURNEYS/)
-
-# Journeys
-
-This folder expands on [`../1-EXPERIENCES.md`](../1-EXPERIENCES.md) with full user personas
-and end-to-end journey maps.
-
-## Personas
-
-### Team developer
-
-- **Who:** an engineer on a team that wants consistent, in-repo project docs, typically working alongside an AI coding agent.
-- **Goals:** stand up documentation quickly, in a structure that's the same across their repos, without designing a doc system from scratch.
-- **Frustrations:** project intent is scattered across wikis, chat, and tickets; every project documents things differently; docs go stale or never get written.
-- **Success looks like:** one command produces a familiar tree, and their agent fills it in with real content that lives next to the code.
-
-### AI coding agent
-
-- **Who:** the assistant working inside the repo (e.g. via the DocSlime skills), acting as both author and consumer of the docs.
-- **Goals:** understand the project's intent so it can act with full context; produce documentation that reflects what the team actually wants.
-- **Frustrations:** without recorded intent it has to guess from code; ad-hoc doc structures give it nothing reliable to read or write against.
-- **Success looks like:** clear inline guidance tells it what to ask and how to write each section, so it interviews the team and leaves a clean, complete document.
-
-## Journeys
-
-### Document a project from scratch
-
-Traces to the "Scaffold the docs tree" and "Fill in a document with an agent" experiences in
-[`../1-EXPERIENCES.md`](../1-EXPERIENCES.md).
-
-| Step | User does | User feels | Opportunity |
-|---|---|---|---|
-| 1 | Runs `docslime init` in the repo | Curious, low commitment | Produce the full tree instantly, non-destructively |
-| 2 | Sees the numbered `docs/` tree appear | Oriented — the structure is obvious | Numbering signals the reading order |
-| 3 | Asks the agent to fill in `PRODUCT.md` | Slightly unsure what to write | Inline guidance turns it into a guided product interview |
-| 4 | Answers the agent's focused questions | Engaged; thinking is being captured | Reflect answers back; write one tight section at a time |
-| 5 | Reviews the completed doc, commits it | Satisfied — real intent, in the repo | Clean output with no leftover guidance comments |
-| 6 | Moves down the chain to the next doc | Momentum | Each doc builds on the last, so context compounds |
-
-## Index
-
-_No standalone persona or journey files yet. Add one file per substantial persona or major
-journey as the need arises, and list it here._
-
-
----
-
-## [Requirements](https://www.docslime.dev/2-REQUIREMENTS/)
-
-# Requirements
-
-DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add individual
-documents (including auto-numbered ADRs) on demand, and report what exists without
-destroying existing work. The templates must carry the inline guidance that lets an AI agent
-fill them in, while the tree stays plain Markdown for `impeccable` context loading and
-`docmd.io` publication.
-
-## Functional requirements
-
-| ID | Requirement | Traces to |
-|---|---|---|
-| FR-1 | The system shall create the full standardized `docs/` tree (`PRODUCT.md`, numbered docs, `DESIGN.md`, `publishing.md`, `0-PRODUCT/`, `1-JOURNEYS/`, `3-ENGINEERING/`, and `3-ENGINEERING/ADRs/`) in the current directory via `docslime init`. | Scaffold the docs tree |
-| FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
-| FR-3 | The system shall add a single named document via `docslime add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
-| FR-4 | The system shall create the next-numbered ADR via `docslime add adr <slug>`, where the number is one greater than the highest existing `NNNN-*` record in the ADR directory (`0001` if none). | Record an architecture decision |
-| FR-5 | The system shall normalize an ADR slug to lowercase, hyphen-separated `[a-z0-9-]`, and reject a slug with no alphanumeric characters. | Record an architecture decision |
-| FR-6 | The system shall list every available template and whether it already exists on disk via `docslime list`, including the `adr` entry. | Add a single document |
-| FR-7 | The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime. | Fast and local |
-| FR-8 | The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero. | Add a single document |
-| FR-9 | The system shall provide installable agent skills (`docslime-install`, `docslime-init`, `docslime-fill`, `docslime-adr`, `docslime-kiss`) that drive the documentation lifecycle. | Fill in and improve documents with an agent |
-| FR-10 | The `docslime-kiss` skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content. | Tighten docs after filling |
-| FR-11 | The generated tree shall include `docs/PRODUCT.md` and `docs/DESIGN.md` so `impeccable` can discover product and design context from the docs directory without duplicate root files. | Integrate with impeccable |
-| FR-12 | KISS review shall remain an agent skill rather than a `docslime` CLI subcommand. | Tighten docs after filling |
-| FR-13 | Documentation guidance shall make the quality trace explicit: product goal -> experience -> requirement -> BDD scenario -> test, with ADRs linked when a durable decision explains the design. | TDD+BDD quality |
-| FR-14 | Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects. | Domain Driven Design |
-| FR-15 | Publishing guidance shall point to official `docmd.io` build and deployment docs rather than copying that content into DocSlime. | Publishable Markdown |
-| FR-16 | Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling. | Robust agent skills |
-
-## Non-functional requirements
-
-| ID | Requirement | Target / constraint |
-|---|---|---|
-| NFR-1 | Portability | Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies. |
-| NFR-2 | Performance | Commands complete near-instantly (well under a second) on a typical repo. |
-| NFR-3 | Distribution | Installable via Homebrew tap, shell installer script, and `cargo install`. |
-| NFR-4 | Safety | No command destroys user data without an explicit `--force`. |
-| NFR-5 | Maintainability | Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required). |
-| NFR-6 | Toolchain | Builds with Rust 1.74+ (2021 edition). |
-| NFR-7 | Publication | Generated docs remain plain Markdown suitable for the `docmd.io` publishing system. |
-| NFR-8 | Quality stance | Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions. |
-| NFR-9 | Skill maintainability | Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior. |
-| NFR-10 | Design context | `impeccable` context loading should be verified from `docs/PRODUCT.md` and `docs/DESIGN.md` whenever homepage or design docs change. |
-
-## Constraints & assumptions
-
-- **Constraint:** Editing a template requires recompiling the binary, since templates are embedded via `include_dir`.
-- **Constraint:** The tree structure is fixed in the templates; DocSlime does not take a user-supplied layout.
-- **Constraint:** `docslime-kiss` is a skill, not a CLI command.
-- **Assumption:** `docslime` is run at the root of the target git repo; the tree is created relative to the current directory.
-- **Assumption:** An AI coding agent (not the CLI itself) writes the document content by following the inline guidance.
-
-## Dependencies
-
-- **`clap`** — command-line argument parsing (derive API).
-- **`include_dir`** — embeds the template tree into the binary at compile time.
-- **`anyhow` / `thiserror`** — error handling and reporting.
-- **`owo-colors`** — colored terminal output for `list`.
-- **`cargo-dist`** — generates the release workflow and Homebrew formula (build/release time only).
-
-## Open questions
-
-- Should DocSlime support a config file or flags to customize the tree layout, or stay fixed? — maintainer
-- Should `list` / `add` operate on a non-current directory via a `--path` flag? — maintainer
-
-
----
-
-## [Architecture](https://www.docslime.dev/3-ARCHITECTURE/)
-
-# Architecture
-
-DocSlime is a small monorepo with three shippable surfaces: a self-contained Rust CLI, a
-`docmd.io`-built documentation site, and a bundled set of agent skills. The CLI has no
-server, no database, and no runtime dependencies: the entire template tree is compiled into
-the binary, and every command operates directly on the filesystem relative to the current
-directory.
-
-The design is deliberately small: parse a command, resolve a template, write files without
-clobbering existing ones, and leave judgment-heavy work to skills. `docs/PRODUCT.md` and
-`docs/DESIGN.md` are part of the generated tree so tools like `impeccable` can discover
-context from `docs/`; publication remains outside the binary in the `docmd.io` system.
-
-## Context diagram
-
-```
-developer ─┐
-           ├─→ [ docslime CLI ] ─→ ./docs/ (PRODUCT.md, DESIGN.md, ADRs, tests)
-AI agent  ─┘        │                 │
-                    │                 ├─→ impeccable reads docs/PRODUCT.md + docs/DESIGN.md
-                    │                 └─→ docmd.io publishes Markdown later
-                    └─ embedded templates (compiled in; no network, no external files)
-```
-
-Inside the CLI boundary: argument parsing, template resolution, and file writing. Outside:
-the git repo's filesystem, the AI agent skills that fill and review docs, `impeccable`
-context loading, and `docmd.io` publication.
-
-## Components
-
-| Component | Responsibility | Depends on |
-|---|---|---|
-| `cli` | Define the command surface (`init`, `add`, `list`) and arguments via clap derive. KISS is intentionally not a CLI subcommand. | clap |
-| `main` | Parse args, resolve the working directory, dispatch to a command, map errors to an exit code. | cli, commands |
-| `commands::init` | Scaffold the full template tree into `docs/`, skipping existing files. | templates, scaffold |
-| `commands::add` | Resolve a single template by name, or create the next-numbered ADR with a normalized slug. | templates, scaffold |
-| `commands::list` | List every template and whether it already exists on disk. | templates, scaffold |
-| `templates` | Hold the compile-time-embedded template tree and ADR template; resolve `add` names leniently. | include_dir |
-| `scaffold` | Compute output paths and write files non-destructively (honoring `--force`); track outcomes. | std::fs |
-| `docs site` | Publish the product docs and homepage from `docs/` with `docmd build`. | `@docmd/core`, `docmd.config.json` |
-| `agent skills` | Teach compatible AI agents how to install, initialize, fill, review, and maintain DocSlime docs. | `.agents/skills`, `agents/openai.yaml` |
-
-## Data model
-
-DocSlime is essentially stateless — it stores nothing of its own. The only persistent artifacts
-are:
-
-- **Embedded templates** — a read-only directory tree (`templates/`) plus the standalone ADR
-  template (`assets/adr.md`), baked into the binary at build time.
-- **The output `docs/` tree** — plain Markdown files written into the user's repo, including
-  `PRODUCT.md` and `DESIGN.md` for product/design context discovery.
-
-The one piece of derived state computed at runtime is the **next ADR number**, obtained by
-scanning the ADR directory for the highest `NNNN-*` prefix.
-
-## Domain language and boundaries
-
-DocSlime uses Domain Driven Design language lightly. The useful domain is not "documents" in
-the abstract; it is the lifecycle of turning repo knowledge into agent-readable, testable
-context.
-
-| Domain concept | Meaning in DocSlime | Boundary |
-|---|---|---|
-| Docs tree | The fixed `docs/` structure written into the target repo. | CLI scaffold |
-| Template catalog | The embedded Markdown files and ADR template that define the default tree. | CLI scaffold |
-| Filled document | A scaffolded file after an agent removes `LLM:` guidance and writes project facts. | Agent skill lifecycle |
-| Quality trace | Links from product goals to experiences, requirements, BDD scenarios, tests, and ADRs. | Docs content |
-| Design context | `docs/PRODUCT.md` and `docs/DESIGN.md` loaded by tools like `impeccable`. | External tool integration |
-| Publishing handoff | Clean Markdown consumed by `docmd.io` to build and deploy a static docs site. | Publishing boundary |
-
-The main bounded contexts are:
-
-- **CLI scaffold context:** create, add, list, and write files safely.
-- **Agent skill context:** interview, fill, critique, and record decisions with human input.
-- **Publishing context:** build and deploy with `docmd.io`; DocSlime only prepares the source
-  Markdown and points to official publishing docs.
-- **Site context:** render this repository's docs and homepage from the same Markdown source
-  users receive from the CLI templates.
-
-## Key flows
-
-### `docslime init` (scaffold the tree)
-
-1. `main` resolves the current working directory as the root — `main`
-2. Dispatch to the init command — `commands::init`
-3. Enumerate every embedded template in the tree, including `PRODUCT.md` and `DESIGN.md` — `templates`
-4. For each, compute `docs/<relative-path>` and write it unless it exists (or `--force`) — `scaffold`
-5. Report a summary of created vs. skipped files — `commands::init`
-
-### `docslime add adr <slug>` (create an ADR)
-
-1. Dispatch to the add command; detect the literal `adr` — `commands::add`
-2. Normalize the slug to `[a-z0-9-]`; reject if empty — `commands::add`
-3. Scan `docs/3-ENGINEERING/ADRs/` for the highest `NNNN` prefix and add one — `commands::add`
-4. Write `NNNN-<slug>.md` from the embedded ADR template, non-destructively — `scaffold`
-
-These line up with the "Scaffold the docs tree" and "Record an architecture decision"
-experiences in [`1-EXPERIENCES.md`](1-EXPERIENCES.md).
-
-## Cross-cutting concerns
-
-- **Error handling:** `anyhow` propagates errors up to `main`, which prints `error: …` and
-  returns a non-zero `ExitCode`. Unknown template names produce a helpful error listing valid
-  names (FR-8).
-- **Configuration:** none — behavior is fixed by the embedded templates and a small set of
-  flags (`--force`). No config file (see open questions in [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md)).
-- **Security:** `docslime` only writes within `docs/` under the current directory and never
-  overwrites without `--force` (NFR-4). No network access.
-- **Observability:** plain stdout/stderr; `list` uses `owo-colors` for readable status output.
-- **External tools:** `impeccable` and `docmd.io` consume the Markdown tree; they are not
-  runtime dependencies of the CLI.
-
-## Decisions
-
-- [Embed templates in the binary at compile time](3-ENGINEERING/ADRs/0001-embed-templates-in-binary.md) — keeps DocSlime a zero-dependency single binary.
-
-## Risks & trade-offs
-
-- **Editing a template requires a rebuild.** Because templates are embedded via `include_dir`,
-  content changes only ship with a new binary. Accepted: it's the price of a no-dependency
-  single binary, and templates change rarely.
-- **Fixed tree layout.** DocSlime doesn't accept a custom structure, which keeps it simple but
-  limits teams that want a different shape. Tracked as an open question in the requirements.
-- **Current-directory assumption.** All commands act on the current directory; running from
-  the wrong place scaffolds in the wrong place. Mitigation: the `docslime-init` skill confirms
-  the working directory first.
-
-
----
-
-## [ADR-0001: Embed templates in the binary at compile time](https://www.docslime.dev/3-ENGINEERING/ADRs/0001-embed-templates-in-binary/)
+## [ADR-0001: Embed templates in the binary at compile time](https://www.docslime.dev/engineering/adrs/0001-embed-templates-in-binary/)
 
 # ADR-0001: Embed templates in the binary at compile time
 
@@ -488,13 +149,13 @@ offline, and distribution requirements directly.
 - **Negative:** Any template change requires recompiling and cutting a new release; users
   cannot customize the templates without rebuilding from source.
 - **Follow-up:** If user-customizable layouts become a requirement (tracked as an open
-  question in `../../2-REQUIREMENTS.md`), revisit with a new ADR that supersedes this one —
+  question in `../../REQUIREMENTS.md`), revisit with a new ADR that supersedes this one —
   e.g. allowing an external template directory to override the embedded default.
 
 
 ---
 
-## [Architecture Decision Records](https://www.docslime.dev/3-ENGINEERING/ADRs/)
+## [Architecture Decision Records](https://www.docslime.dev/engineering/adrs/)
 
 # Architecture Decision Records
 
@@ -527,43 +188,319 @@ carries inline guidance), then add a row to the log below.
 
 ---
 
-## [Engineering](https://www.docslime.dev/3-ENGINEERING/)
+## [Architecture](https://www.docslime.dev/engineering/ARCHITECTURE/)
 
-# Engineering
+# Architecture
 
-This folder holds the deeper technical documentation behind
-[`../3-ARCHITECTURE.md`](../3-ARCHITECTURE.md) and [`../4-TESTING.md`](../4-TESTING.md),
-including the project's decision records.
+DocSlime is a small monorepo with three shippable surfaces: a self-contained Rust CLI, a
+`docmd.io`-built documentation site, and a bundled set of agent skills. The CLI has no
+server, no database, and no runtime dependencies: the entire template tree is compiled into
+the binary, and every command operates directly on the filesystem relative to the current
+directory.
 
-## What lives here
+The design is deliberately small: parse a command, resolve a template, write files without
+clobbering existing ones, and leave judgment-heavy work to skills. `docs/PRODUCT.md` and
+`docs/DESIGN.md` are part of the generated tree so tools like `impeccable` can discover
+context from `docs/`; publication remains outside the binary in the `docmd.io` system.
 
-DocSlime is a small Rust CLI plus agent skill pack, so the core engineering detail is
-captured in the architecture and testing docs plus the project [`README`](../../README.md).
-The topics below are the natural homes for additional detail as it's needed:
-
-- **Development setup** — `cargo build` / `cargo test` / `cargo clippy`; see the Development section of the project README.
-- **Build & release** — `cargo-dist` builds the binaries and Homebrew formula on a tagged release; see the Releasing section of the README and `.github/workflows/release.yml`.
-- **API / interface reference** — the CLI surface (`init`, `add`, `list`) is documented via `docslime --help`.
-- **[ADRs/](ADRs/)** — Architecture Decision Records (one per significant decision).
-
-## Decision records
-
-Significant engineering and product decisions are recorded as ADRs in [`ADRs/`](ADRs/).
-Create the next one with:
+## Context diagram
 
 ```
-docslime add adr <short-slug>
+developer ─┐
+           ├─→ [ docslime CLI ] ─→ ./docs/ (product, discovery, delivery lifecycle)
+AI agent  ─┘        │                 │
+                    │                 ├─→ impeccable reads docs/PRODUCT.md + docs/DESIGN.md
+                    │                 └─→ docmd.io publishes Markdown later
+                    └─ embedded templates (compiled in; no network, no external files)
 ```
 
-## Index
+Inside the CLI boundary: argument parsing, template resolution, and file writing. Outside:
+the git repo's filesystem, the AI agent skills that fill and review docs, `impeccable`
+context loading, and `docmd.io` publication.
 
-_No standalone engineering documents yet beyond the decision records in [`ADRs/`](ADRs/).
-Add focused files per topic above as the need arises, and list them here._
+## Components
+
+| Component | Responsibility | Depends on |
+|---|---|---|
+| `cli` | Define the command surface (`init`, `add`, `list`) and arguments via clap derive. KISS is intentionally not a CLI subcommand. | clap |
+| `main` | Parse args, resolve the working directory, dispatch to a command, map errors to an exit code. | cli, commands |
+| `commands::init` | Scaffold the full template tree into `docs/`, skipping current or legacy-equivalent existing files. | templates, scaffold |
+| `commands::add` | Resolve a single template by name, or create the next-numbered ADR with a normalized slug. | templates, scaffold |
+| `commands::list` | List every template and whether it already exists on disk. | templates, scaffold |
+| `templates` | Hold the compile-time-embedded template tree and ADR template; resolve current and legacy `add` names and legacy path equivalents. | include_dir |
+| `scaffold` | Compute output paths and write files non-destructively (honoring `--force`); track outcomes. | std::fs |
+| `docs site` | Publish the product docs and homepage from `docs/` with `docmd build`. | `@docmd/core`, `docmd.config.json` |
+| `agent skills` | Teach compatible AI agents how to install, initialize, fill, review, and maintain DocSlime docs. | `.agents/skills`, `agents/openai.yaml` |
+
+## Data model
+
+DocSlime is essentially stateless — it stores nothing of its own. The only persistent artifacts
+are:
+
+- **Embedded templates** — a read-only directory tree (`templates/`) plus the standalone ADR
+  template (`assets/adr.md`), baked into the binary at build time.
+- **The output `docs/` tree** — plain Markdown files written into the user's repo, including
+  `PRODUCT.md` and `DESIGN.md` for product/design context discovery.
+
+The one piece of derived state computed at runtime is the **next ADR number**, obtained by
+scanning the ADR directory for the highest `NNNN-*` prefix.
+
+## Domain language and boundaries
+
+DocSlime uses Domain Driven Design language lightly. The useful domain is not "documents" in
+the abstract; it is the lifecycle of turning repo knowledge into agent-readable, testable
+context.
+
+| Domain concept | Meaning in DocSlime | Boundary |
+|---|---|---|
+| Docs tree | The fixed `docs/` structure written into the target repo. | CLI scaffold |
+| Template catalog | The embedded Markdown files and ADR template that define the default tree. | CLI scaffold |
+| Filled document | A scaffolded file after an agent removes `LLM:` guidance and writes project facts. | Agent skill lifecycle |
+| Lifecycle trace | Links from discovery evidence through requirements, architecture, tests, publishing, observability, and back to discovery. | Docs content |
+| Design context | `docs/PRODUCT.md` and `docs/DESIGN.md` loaded by tools like `impeccable`. | External tool integration |
+| Publishing | Promotion of verified CLI, skill, and documentation artifacts to users. | Engineering delivery boundary |
+| Observability | Release verification plus system-health and user-outcome evidence that feeds discovery. | Engineering/product feedback boundary |
+
+The main bounded contexts are:
+
+- **CLI scaffold context:** create, add, list, and write files safely.
+- **Agent skill context:** interview, fill, critique, and record decisions with human input.
+- **Publishing context:** build, version, promote, verify, and recover the CLI, skill, and
+  documentation artifacts through their external distribution systems.
+- **Observation context:** verify artifacts through user-facing paths and turn failures,
+  feedback, and adoption signals into discovery evidence.
+- **Site context:** render this repository's docs and homepage from the same Markdown source
+  users receive from the CLI templates.
+
+## Key flows
+
+### `docslime init` (scaffold the tree)
+
+1. `main` resolves the current working directory as the root — `main`
+2. Dispatch to the init command — `commands::init`
+3. Enumerate every embedded template in the tree, including `PRODUCT.md` and `DESIGN.md` — `templates`
+4. For each, compute `docs/<relative-path>` and skip it when the current path or a mapped
+   legacy equivalent exists, unless `--force` explicitly writes the current template —
+   `templates`, `scaffold`
+5. Report a summary of created vs. skipped files — `commands::init`
+
+### `docslime add adr <slug>` (create an ADR)
+
+1. Dispatch to the add command; detect the literal `adr` — `commands::add`
+2. Normalize the slug to `[a-z0-9-]`; reject if empty — `commands::add`
+3. Scan `docs/engineering/adrs/` for the highest `NNNN` prefix and add one — `commands::add`
+4. Write `NNNN-<slug>.md` from the embedded ADR template, non-destructively — `scaffold`
+
+These line up with the "Scaffold the docs tree" and "Record an architecture decision"
+journeys in [`../experience/README.md`](../experience/README.md).
+
+## Cross-cutting concerns
+
+- **Error handling:** `anyhow` propagates errors up to `main`, which prints `error: …` and
+  returns a non-zero `ExitCode`. Unknown template names produce a helpful error listing valid
+  names (FR-8).
+- **Configuration:** none — behavior is fixed by the embedded templates and a small set of
+  flags (`--force`). No config file (see open questions in [`../REQUIREMENTS.md`](../REQUIREMENTS.md)).
+- **Security:** `docslime` only writes within `docs/` under the current directory and never
+  overwrites without `--force` (NFR-4). No network access.
+- **Observability:** plain stdout/stderr; `list` uses `owo-colors` for readable status output.
+- **External tools:** `impeccable` and `docmd.io` consume the Markdown tree; they are not
+  runtime dependencies of the CLI.
+
+## Decisions
+
+- [Embed templates in the binary at compile time](adrs/0001-embed-templates-in-binary.md) — keeps DocSlime a zero-dependency single binary.
+
+## Risks & trade-offs
+
+- **Editing a template requires a rebuild.** Because templates are embedded via `include_dir`,
+  content changes only ship with a new binary. Accepted: it's the price of a no-dependency
+  single binary, and templates change rarely.
+- **Fixed tree layout.** DocSlime doesn't accept a custom structure, which keeps it simple but
+  limits teams that want a different shape. Tracked as an open question in the requirements.
+- **Current-directory assumption.** All commands act on the current directory; running from
+  the wrong place scaffolds in the wrong place. Mitigation: the `docslime-init` skill confirms
+  the working directory first.
 
 
 ---
 
-## [Testing](https://www.docslime.dev/4-TESTING/)
+## [Engineering](https://www.docslime.dev/engineering/)
+
+# Engineering
+
+Engineering carries DocSlime's [`requirements contract`](../REQUIREMENTS.md) through system
+design, pre-release evidence, artifact delivery, and production learning.
+
+## Lifecycle
+
+| Document | Responsibility |
+|---|---|
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | Rust CLI boundaries, embedded templates, skills, and site architecture. |
+| [`TESTING.md`](TESTING.md) | Unit, integration, skill, and site checks plus CI gates. |
+| [`PUBLISHING.md`](PUBLISHING.md) | CLI release, Homebrew publication, skill distribution, site build, deployment verification, and rollback. |
+| [`OBSERVABILITY.md`](OBSERVABILITY.md) | Release verification, adoption signals, failures, and product-learning feedback. |
+| [`adrs/`](adrs/) | Durable architectural decisions and their consequences. |
+
+## Supporting references
+
+- `Cargo.toml` and `Cargo.lock` define the Rust package and release version.
+- `.github/workflows/ci.yml` owns continuous-integration gates and branch policy.
+- `.github/workflows/release.yml` is the tag-driven `cargo-dist` release path.
+- `docmd.config.json` defines the documentation-site build and navigation.
+- `.agents/skills/` contains the bundled DocSlime lifecycle skills.
+
+Create the next decision record with:
+
+```sh
+docslime add adr <short-slug>
+```
+
+
+---
+
+## [Observability](https://www.docslime.dev/engineering/OBSERVABILITY/)
+
+# Observability
+
+DocSlime needs evidence at two levels: whether released artifacts work and whether the
+documentation lifecycle improves the user and agent experience. Workflow success, a deployed
+site, or an available formula is configured state; verification requires observing the
+artifact through the path users take.
+
+## Observable outcomes
+
+| Outcome / requirement | Signal | Current source | Interpretation |
+|---|---|---|---|
+| Safe scaffolding / FR-1, FR-2 | End-to-end CLI tests and throwaway-repo release smoke | `tests/cli.rs`, release verification | The CLI emits the expected tree without overwriting work. |
+| Installability / NFR-3 | Release assets, Homebrew formula, installed version smoke | GitHub Releases, Homebrew | Users can obtain the current artifact through supported channels. |
+| Skill usability / FR-9, FR-16 | Structural validation and fresh-install inspection | CI, `npx skills add` smoke | Agents receive the intended lifecycle guidance. |
+| Design-context discovery / FR-11 | `impeccable` context resolution | Local context check | Canonical product/design context is discoverable without bridges. |
+| Publication / FR-15 | Site build plus deployed route smoke | `docmd`, configured host | Generated docs are available and navigable. |
+| Product learning / FR-18 | Issues, user feedback, adoption signals, and failed journeys | Repository and distribution channels | Evidence feeds new discovery artifacts or requirement changes. |
+
+## Service and release health
+
+DocSlime has no persistent application service today. Its operational health is therefore
+artifact-oriented:
+
+- CI is green for the exact source revision being promoted.
+- Release artifacts exist for every supported target and match the tagged version.
+- Homebrew installs or upgrades to the expected version.
+- `docslime init`, `list`, `add`, and `add adr` succeed in a throwaway repository.
+- Published documentation routes resolve and navigation contains the current lifecycle docs.
+
+## Telemetry and privacy
+
+The CLI does not collect product telemetry. Do not add tracking that sends repository paths,
+document contents, command arguments, or other local project data without an explicit product
+decision, privacy review, and user consent. Prefer aggregate public distribution signals and
+direct feedback when evaluating adoption.
+
+## Alerts and response
+
+| Signal | Trigger | Response |
+|---|---|---|
+| CI | Required job fails | Block promotion and fix the owning surface. |
+| Release | Expected artifact or formula missing | Stop verification; inspect the release workflow and credentials. |
+| Install smoke | Installed version or scaffold differs | Treat the release as unverified and repair distribution before announcing it. |
+| Site | Build or important route fails | Restore the last known-good output or source revision and rebuild. |
+
+## Production learning loop
+
+Maintainer and user feedback, issues, adoption signals, release failures, and observed agent
+confusion should be reviewed as discovery evidence. Material findings update
+[`../experience/`](../experience/), then flow through requirements, architecture, tests,
+publishing, and a new production check. Dashboards are not a substitute for this review.
+
+
+---
+
+## [Publishing](https://www.docslime.dev/engineering/PUBLISHING/)
+
+---
+title: "Publishing"
+description: "How verified DocSlime CLI, skill, and documentation artifacts reach users safely."
+---
+
+# Publishing
+
+DocSlime publishes three related surfaces: the Rust CLI, the reusable agent-skill pack, and
+the static documentation site. A build or deployment is not complete until its expected
+artifact and user-facing behavior are verified.
+
+## Artifacts and destinations
+
+| Artifact | Destination | Version / identity |
+|---|---|---|
+| Rust CLI binaries and installer | GitHub Release | SemVer tag matching `Cargo.toml` |
+| Homebrew formula | `DecisionNerd/homebrew-tap` | Release version and artifact checksums |
+| Agent skills | GitHub repository via `npx skills add DecisionNerd/DocSlime` | Repository revision/release |
+| Documentation site | Static `site/` output and configured host | Source commit/deployment |
+
+## Continuous integration
+
+`.github/workflows/ci.yml` validates the CLI, site, agent skills, and branch policy. Only
+`staging` may open a pull request to `main`; feature branches target `staging`.
+
+Before publishing, run:
+
+```sh
+cargo fmt --check
+cargo test
+cargo clippy --all-targets -- -D warnings
+npm ci
+npm run build
+```
+
+## CLI and Homebrew release
+
+Distribution is configured through `cargo-dist`. A SemVer tag runs
+`.github/workflows/release.yml`, builds macOS/Linux artifacts, creates the GitHub Release,
+publishes the installer, and updates the Homebrew tap.
+
+Verify more than workflow completion:
+
+1. Confirm the GitHub Release contains the expected version and target artifacts.
+2. Confirm the Homebrew tap points at that release and its checksums.
+3. Install or upgrade through Homebrew and run `docslime --version`.
+4. Scaffold a throwaway repo and confirm the current template tree is emitted.
+
+## Skill distribution
+
+The `.agents/skills/docslime-*` directories are the canonical source. Validate them before
+release, then verify a fresh `npx skills add DecisionNerd/DocSlime` install contains the same
+skill set and instructions.
+
+## Documentation site
+
+```sh
+npm run build
+```
+
+`docmd` reads `docs/` and writes the static site to `site/`. Deployment configuration is
+outside the CLI; current build and runtime status must be verified through the configured
+host rather than inferred from generated files alone.
+
+## Rollback
+
+- Revert or supersede a bad documentation/site deployment from the last known-good source
+  commit and rebuild.
+- For a bad CLI release, stop promotion, document the impact, and issue a corrected version;
+  do not move an immutable published tag.
+- For a bad Homebrew formula, restore the last known-good formula or publish the corrected
+  release, then verify installation through Homebrew.
+
+## Official references
+
+- [cargo-dist documentation](https://opensource.axo.dev/cargo-dist/)
+- [docmd Quick Start](https://docs.docmd.io/getting-started/quick-start/)
+- [docmd Deployment Overview](https://docs.docmd.io/deployment/)
+
+
+---
+
+## [Testing](https://www.docslime.dev/engineering/TESTING/)
 
 # Testing
 
@@ -579,7 +516,7 @@ binary's observable behavior matches the experiences and requirements.
 | Layer | What it verifies | Tools |
 |---|---|---|
 | Unit | Pure logic in isolation — slug normalization, next-ADR-number computation, filename prefix parsing. | Rust `#[test]` in `src/` |
-| End-to-end / behavior | User-visible CLI behavior from [`1-EXPERIENCES.md`](1-EXPERIENCES.md) — running the actual binary and asserting on exit codes, output, and files written. | `assert_cmd`, `predicates`, `tempfile` |
+| End-to-end / behavior | User-visible CLI behavior from [`../experience/README.md`](../experience/README.md) — running the actual binary and asserting on exit codes, output, and files written. | `assert_cmd`, `predicates`, `tempfile` |
 
 There is no separate integration layer: the codebase is small and the components are best
 verified together through the CLI, so the black-box tests double as integration coverage.
@@ -588,10 +525,11 @@ verified together through the CLI, so the black-box tests double as integration 
 
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
 |---|---|---|
-| Scaffold the docs tree / FR-1, FR-11, FR-15 | Given an empty dir, When `init`, Then the full 12-file tree exists, including `PRODUCT.md`, `DESIGN.md`, and `publishing.md` | `tests/cli.rs::init_creates_full_tree` |
+| Scaffold the docs tree / FR-1, FR-11, FR-15, FR-18, FR-19 | Given an empty dir, When `init`, Then the full 12-file lifecycle tree exists, including product/design context, requirements, publishing, and observability | `tests/cli.rs::init_creates_full_tree` |
 | Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
 | Non-destructive by default / FR-2 | Given an edited file, When `init` re-runs, Then the file is left untouched | `tests/cli.rs::init_skips_existing_files` |
 | Force overwrite / FR-2 | Given an edited file, When `init --force`, Then the template is restored | `tests/cli.rs::init_force_overwrites` |
+| Legacy path safety / FR-17 | Given a filled legacy numbered file, When current `init` or `list` runs, Then the new counterpart is treated as satisfied without duplicating or moving user work | `tests/cli.rs::init_recognizes_legacy_paths`, `list_recognizes_legacy_paths` |
 | Add a single document / FR-3 | Given an empty dir, When `add <shorthand>`, Then the matching template is created | `tests/cli.rs::add_resolves_shorthand_name` |
 | Unknown name errors / FR-8 | Given an unknown name, When `add`, Then it fails with a helpful error | `tests/cli.rs::add_unknown_template_fails` |
 | Record an architecture decision / FR-4 | Given existing ADRs, When `add adr <slug>`, Then the next number is used | `tests/cli.rs::add_adr_numbers_sequentially` |
@@ -612,11 +550,12 @@ proof:
 
 | Link | Evidence |
 |---|---|
-| Product goal -> experience | `PRODUCT.md` explains why the docs tree exists; `1-EXPERIENCES.md` turns that into user stories. |
-| Experience -> requirement | `2-REQUIREMENTS.md` gives each behavior a stable FR/NFR ID and names the experience it serves. |
+| Product goal -> experience | `../PRODUCT.md` explains why the docs tree exists; `../experience/README.md` captures the evidence and journeys. |
+| Experience -> requirement | `../REQUIREMENTS.md` gives each behavior a stable FR/NFR ID and names the evidence it serves. |
 | Requirement -> BDD scenario | This file records Given/When/Then coverage for the visible behavior. |
 | Scenario -> test | `tests/cli.rs` runs the compiled binary against throwaway directories and asserts on output files, exit codes, and help text. |
-| Requirement -> architecture/ADR | `3-ARCHITECTURE.md` names the domain boundary; durable choices link to `3-ENGINEERING/ADRs/`. |
+| Requirement -> architecture/ADR | `ARCHITECTURE.md` names the domain boundary; durable choices link to `adrs/`. |
+| Release -> production evidence | `PUBLISHING.md` defines verification; `OBSERVABILITY.md` links production signals back to outcomes and discovery. |
 
 The DDD evidence is intentionally lightweight: docs should name the domain concepts and
 boundaries that affect behavior, then use ADRs for hard-to-reverse decisions. If a project
@@ -626,7 +565,7 @@ bounded contexts.
 ## Evaluation against product goals
 
 Tests prove correctness; they don't prove the product is working. The product-level signals from
-[`PRODUCT.md`](PRODUCT.md) are evaluated qualitatively:
+[`../PRODUCT.md`](../PRODUCT.md) are evaluated qualitatively:
 
 - **Docs get filled** — judged by whether scaffolded docs in real repos end up complete (no
   leftover `<!-- LLM: -->` guidance), rather than abandoned as templates. DocSlime dogfoods this
@@ -637,8 +576,10 @@ Tests prove correctness; they don't prove the product is working. The product-le
   speculative answers because product context, requirements, and ADRs are present.
 - **Impeccable context quality** — judged by whether `impeccable` resolves `docs/PRODUCT.md`
   and `docs/DESIGN.md` without duplicate root files.
-- **Publishing boundary** — judged by whether DocSlime docs point to official `docmd.io`
-  build/deploy guidance and avoid stale copied platform instructions.
+- **Delivery quality** — judged by whether each CLI, skill, and site artifact is verified
+  through its user-facing distribution path rather than inferred from workflow completion.
+- **Production learning** — judged by whether release failures, feedback, and adoption
+  signals update discovery evidence or requirements when they reveal a material gap.
 - **Skill robustness** — judged by whether skill files validate structurally and give agents
   enough setup, guardrails, verification, and failure handling to act without guessing.
 - **Adoption** — tracked via Homebrew and `npx skills` installs and repos using the tree.
@@ -681,92 +622,94 @@ fixtures to seed, and no risk of touching the working repo.
 
 ---
 
-## [Design](https://www.docslime.dev/DESIGN/)
+## [Experience](https://www.docslime.dev/experience/)
 
-# Design
+# Experience
 
-DocSlime has no graphical app today, but it still has a product experience: the CLI, the
-generated Markdown, the agent skills, and the way those docs later publish through
-`docmd.io`. This file is the design context that tools like `impeccable` can load from
-`docs/`.
+This folder is DocSlime's continuous-discovery and experience-design workspace. It connects
+observed user needs to requirements without turning research notes into an untraceable
+feature backlog.
 
-## Design Principles
+## Discovery practice
 
-- **Useful before decorative:** the first run should leave the user with a clear, fillable
-  docs tree and obvious next action.
-- **Opinionated, not heavy:** DocSlime should make strong defaults feel helpful, not like a
-  governance framework.
-- **Agent-readable and human-readable:** templates should guide an agent without making a
-  human feel like they are reading internal machinery.
-- **Traceable by design:** requirements, BDD scenarios, tests, architecture, and ADRs should
-  naturally point at each other.
-- **Small command surface:** CLI commands stay memorable; judgment-heavy work belongs in
-  skills.
+DocSlime is maintainer-led today. Product learning comes from direct maintainer and user
+feedback, issues and pull requests, real repositories using the scaffold and skills, CLI
+behavior observed during development, and whether agents can act accurately from the
+generated docs. Claims that lack evidence remain hypotheses rather than being written as
+validated user facts.
 
-## Brand And Voice
+A finding becomes a requirement when it identifies an observable behavior or measurable
+quality the product must provide. A requirement remains solution-neutral; implementation
+choices belong in architecture or an ADR.
 
-- **Product name:** use `DocSlime` for the product and `docslime` for the binary/command.
-- **Tone:** practical, direct, and lightly playful when the name earns it. The product can
-  carry the integrated "slime" idea without turning docs into a joke.
-- **Mascot:** use the blue anime slime as a product signal. It can appear in the homepage
-  hero and brand surfaces, but it should support the repo/docs artifact rather than replacing
-  developer credibility.
-- **Terminology:** use "docs tree," "product context," "design context," "requirements,"
-  "BDD," "Domain Driven Design," "ADR," "template," "skill," and "agent" consistently.
-- **Writing rules:** generated guidance should be specific and interview-driven. Prefer
-  "ask the user," "trace this to a requirement," and "record the decision" over vague advice.
+## Primary participants
 
-## Impeccable Workflow
+- **Team developer:** wants a familiar in-repo documentation system without inventing one
+  for every project.
+- **Product or design collaborator:** needs concise product and design context that tools can
+  discover without maintaining duplicate files.
+- **AI coding agent:** needs evidence, requirements, boundaries, and decisions close to the
+  code so it can ask focused questions instead of fabricating context.
 
-`impeccable` should treat `docs/PRODUCT.md` and `docs/DESIGN.md` as the current product and
-design context. UI work should begin by loading those files, critiquing the actual surface,
-and then changing the smallest set of docs/site files that makes the critique more true.
+## Core journeys
 
-For the homepage, the desired direction is:
+| Journey | Desired outcome | Requirements |
+|---|---|---|
+| Scaffold a repo | One safe command creates the complete lifecycle-oriented docs tree. | FR-1, FR-2, FR-7 |
+| Add one missing document | A partial tree can gain one known template without overwriting work. | FR-2, FR-3, FR-8 |
+| Record a decision | The next collision-free ADR is created with a normalized memorable slug. | FR-4, FR-5 |
+| Fill docs with an agent | The agent interviews the team, follows inline guidance, and removes scaffolding. | FR-9, FR-16 |
+| Tighten docs | Review cuts bloat, contradictions, weak requirements, and invented certainty. | FR-10, FR-12 |
+| Load design context | `impeccable` resolves canonical `docs/PRODUCT.md` and `docs/DESIGN.md`. | FR-11 |
+| Trace intent through production | Discovery, requirements, architecture, tests, delivery, and observability point to one another. | FR-13–FR-18 |
 
-- lead with the outcome: DocSlime turns a repo into living docs;
-- show the repo/docs tree as the credibility anchor;
-- include the blue slime mascot as a memorable brand moment;
-- keep CTAs developer-native and direct;
-- avoid pink/purple gradient text, decorative grid backgrounds, oversized cards, and claims
-  that `docslime-kiss` is a CLI command.
+## Experience principles
 
-## Markdown Experience
+- **Non-destructive by default:** existing user-authored files are never overwritten or
+  migrated implicitly.
+- **Evidence before assertion:** agents ask rather than inventing users, systems, metrics, or
+  decisions.
+- **Opinionated, not ceremonial:** the lifecycle is complete, but documents stay as small as
+  the project permits.
+- **Traceable quality:** a user need can be followed to a requirement, test, decision,
+  release, and production signal.
+- **Fast and local:** the CLI works offline against the current repository.
+- **Discoverable context:** standard names and a semantic tree make important context easy
+  for humans, agents, and publishing tools to find.
 
-- `docs/PRODUCT.md` and `docs/DESIGN.md` are top-level context files so design and coding
-  agents can discover them from the docs directory.
-- Numbered docs keep the reading path obvious after product/design context:
-  experiences, requirements, architecture, and testing.
-- Tables are useful for traceability, requirements, component lists, and ADR logs; prose
-  should stay short enough to scan.
-- Templates may contain `<!-- LLM: ... -->` guidance, but filled docs should remove it.
-- Avoid generic motivational copy. Every paragraph should help a future human or agent make
-  a better change.
+## Continuous-discovery artifact shape
 
-## CLI Experience
+Create one focused lowercase-kebab-case file when an opportunity, study, journey, or product
+slice needs more evidence than this index can hold. Use only the sections the evidence earns:
 
-- **Commands:** keep `docslime init`, `docslime add`, and `docslime list` as the CLI surface.
-- **Skills:** keep `docslime-kiss` as an agent skill, not a CLI command.
-- **Defaults:** commands skip existing files unless `--force` is explicit.
-- **States:** every write should report a clear created, skipped, or overwritten outcome.
-- **Errors:** failures should say what happened and, where possible, list valid alternatives.
-- **Color:** terminal color is functional only; status words must carry meaning without it.
+```markdown
+# Opportunity or experience
 
-## Quality Bar
+## Observed need and evidence
+## Desired user and business outcome
+## Users and context
+## Current journey
+## Opportunity and hypothesis
+## Intended behavior
+## Given / When / Then scenarios
+## Constraints and domain language
+## Success signals and telemetry
+## Open questions
+## Related requirements, tests, architecture, and ADRs
+```
 
-- Requirements should be testable and carry stable IDs.
-- Testing docs should map requirements and experiences to Given/When/Then behavior coverage.
-- Architecture docs should describe domain concepts and boundaries when the project has them.
-- Significant product or technical decisions should be captured as ADRs.
-- KISS review should cut bloat, stale contradictions, generic AI prose, and weak traceability.
-- Docs should remain plain Markdown that can publish through `docmd.io` without cleanup.
+## Learning loop
 
-## References
+```text
+evidence -> opportunity -> requirement -> architecture -> test -> release -> observation
+     ^                                                                    |
+     +--------------------------------------------------------------------+
+```
 
-- [`src/scaffold.rs`](../src/scaffold.rs) - write status output and safety behavior.
-- [`src/commands/list.rs`](../src/commands/list.rs) - template list output.
-- [`templates/`](../templates/) - embedded Markdown style for generated docs.
-- [`.agents/skills/`](../.agents/skills/) - lifecycle skills for filling, ADRs, and KISS review.
+## Index
+
+No separate discovery artifacts exist yet. Add them when evidence for a meaningful
+opportunity or journey should outlive the issue or conversation where it surfaced.
 
 
 ---
@@ -782,8 +725,9 @@ image: /assets/images/docslime-hero.png
 ::: hero glow:true
 # Turn your repo into living docs.
 
-DocSlime makes repo knowledge stick. It absorbs product intent, requirements, design,
-architecture, tests, and decisions into one local docs body that humans and agents can use.
+DocSlime makes repo knowledge stick. It connects product intent and continuous discovery to
+requirements, architecture, tests, delivery, observability, and decisions in one local docs
+body that humans and agents can use.
 
 ```sh
 brew install DecisionNerd/tap/docslime
@@ -801,23 +745,24 @@ better context for the next change.
 ## Why It Sticks
 
 ```text
-product intent  -> PRODUCT.md + DESIGN.md
-behavior        -> REQUIREMENTS.md + TESTING.md
-system shape    -> ARCHITECTURE.md + ADRs
-maintenance     -> docslime-fill + docslime-adr + docslime-kiss
-publication     -> docmd.io
+strategy -> product/design -> discovery -> requirements -> architecture -> testing
+    ^                                                               |
+    +----------- observation <- publishing <- verified build <------+
 ```
 
 - **Product and design context** flows into `PRODUCT.md` and `DESIGN.md`, so agents stop
   guessing what the code is for.
-- **Requirements and behavior** flow into `2-REQUIREMENTS.md` and `4-TESTING.md`, so TDD+BDD
-  work can trace back to intent.
-- **Domain shape and tradeoffs** flow into `3-ARCHITECTURE.md` and `3-ENGINEERING/ADRs/`, so
+- **Continuous discovery** lives in `experience/`, where evidence and journeys become
+  solution-neutral requirements rather than an untraceable feature backlog.
+- **Requirements and behavior** flow into `REQUIREMENTS.md` and `engineering/TESTING.md`, so
+  TDD+BDD work can trace back to evidence.
+- **Domain shape and tradeoffs** flow into `engineering/ARCHITECTURE.md` and `engineering/adrs/`, so
   Domain Driven Design language stays close to decisions.
 - **Human judgment** flows through `docslime-fill`, `docslime-adr`, and `docslime-kiss`, so
   docs get filled, decisions get recorded, and bloat gets cut.
-- **Publishing stays thin**: DocSlime keeps the Markdown clean, then hands static-site build
-  and hosting choices to the [`docmd.io` docs](publishing/).
+- **Delivery and observation close the loop**: `engineering/PUBLISHING.md` defines promotion,
+  verification, and rollback; `engineering/OBSERVABILITY.md` connects production health and
+  user outcomes back to discovery.
 
 ## Install DocSlime
 
@@ -895,30 +840,34 @@ pack, fill `docs/PRODUCT.md`, then use `docslime-kiss` once the first useful con
 
 ```text
 docs/
+|-- README.md
 |-- PRODUCT.md
-|-- 1-EXPERIENCES.md
-|-- 2-REQUIREMENTS.md
 |-- DESIGN.md
-|-- 3-ARCHITECTURE.md
-|-- 4-TESTING.md
-|-- publishing.md
-|-- 0-PRODUCT/
-|-- 1-JOURNEYS/
-`-- 3-ENGINEERING/ADRs/
+|-- REQUIREMENTS.md
+|-- strategy/README.md
+|-- experience/README.md
+`-- engineering/
+    |-- README.md
+    |-- ARCHITECTURE.md
+    |-- TESTING.md
+    |-- PUBLISHING.md
+    |-- OBSERVABILITY.md
+    `-- adrs/README.md
 ```
 
 `docs/PRODUCT.md` and `docs/DESIGN.md` are deliberately discoverable from the docs tree so
 tools like `impeccable` can load product and design context without duplicate root files.
 
-- **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `0-PRODUCT/` capture purpose,
+- **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `strategy/` capture purpose,
   voice, principles, and success measures.
-- **Experiences + requirements:** `1-EXPERIENCES.md`, `1-JOURNEYS/`, and
-  `2-REQUIREMENTS.md` map human and agent journeys to testable behavior.
-- **Architecture + ADRs:** `3-ARCHITECTURE.md` and `3-ENGINEERING/ADRs/` keep domain
+- **Experience + requirements:** `experience/` captures evidence, opportunities, journeys,
+  and hypotheses; `REQUIREMENTS.md` translates them into a testable build contract.
+- **Architecture + ADRs:** `engineering/ARCHITECTURE.md` and `engineering/adrs/` keep domain
   boundaries and decisions explicit.
-- **Testing:** `4-TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
-- **Publishing:** [`publishing.md`](publishing/) points to the official `docmd.io` build and
-  deployment docs instead of copying that system into DocSlime.
+- **Testing:** `engineering/TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
+- **Publishing + observability:** [`engineering/PUBLISHING.md`](engineering/PUBLISHING/) and
+  [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY/) carry verified artifacts to
+  users and feed production evidence back into discovery.
 
 ## Agent Skills
 
@@ -944,14 +893,14 @@ CLI subcommand.
 :::
 
 ::: grid
-::: card "Experiences" icon:route
-[See the core workflows](1-EXPERIENCES/){.docmd-button}
+::: card "Experience" icon:route
+[See continuous discovery](experience/){.docmd-button}
 :::
 :::
 
 ::: grid
 ::: card "Requirements" icon:list-checks
-[Review the behavior contract](2-REQUIREMENTS/){.docmd-button}
+[Review the behavior contract](REQUIREMENTS/){.docmd-button}
 :::
 :::
 
@@ -962,8 +911,8 @@ CLI subcommand.
 :::
 
 ::: grid
-::: card "Publishing" icon:upload-cloud
-[Ship through docmd.io](publishing/){.docmd-button}
+::: card "Engineering" icon:wrench
+[Follow the engineering lifecycle](engineering/){.docmd-button}
 :::
 :::
 :::
@@ -979,10 +928,10 @@ DocSlime is an opinionated documentation system for codebases. It gives a repo a
 `docs/` tree, a `docslime` CLI, and agent skills that help teams turn product intent into
 filled-in, version-controlled Markdown.
 
-It exists so services and user-facing products can carry their product context, experiences,
-requirements, design guidance, architecture, tests, and decisions next to the code. Agents
-working in the repo can read that context directly instead of guessing from implementation
-details alone.
+It exists so services and user-facing products can carry product context, continuous
+discovery, requirements, design guidance, architecture, tests, delivery, observability, and
+decisions next to the code. Agents working in the repo can read that context directly
+instead of guessing from implementation details alone.
 
 ## Problem
 
@@ -1012,8 +961,12 @@ context is complete, local, and testable.
 - **Impeccable integration:** `docs/PRODUCT.md` and `docs/DESIGN.md` are discoverable product
   and design context files without needing root-level duplicates, so `impeccable` can critique
   and polish product surfaces from the same docs tree agents use.
-- **Publishing path:** the docs stay plain Markdown and are intended to publish through the
-  `docmd.io` system; DocSlime links to that system instead of reimplementing it.
+- **Lifecycle:** discovery evidence becomes requirements, architecture and tests implement
+  the contract, publishing carries verified artifacts to users, and observability closes the
+  learning loop.
+- **Publishing path:** the docs stay plain Markdown and can publish through `docmd.io`; the
+  engineering publishing template also covers software artifacts, promotion, deployment,
+  verification, and rollback.
 - **Quality stance:** requirements should trace to BDD scenarios and tests, architecture
   should use Domain Driven Design language where it clarifies the system, and significant
   choices should become ADRs.
@@ -1023,7 +976,9 @@ context is complete, local, and testable.
 DocSlime's quality method is a trace, not a ceremony:
 
 ```text
-product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a choice matters
+strategy -> product/design -> discovery -> requirement -> architecture -> test -> publish
+     ^                                                                    |
+     +-------------------------- observe ----------------------------------+
 ```
 
 - **TDD+BDD:** requirements get stable IDs, behavior is written in Given/When/Then language,
@@ -1031,14 +986,17 @@ product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a 
 - **Domain Driven Design:** architecture docs name the domain concepts, boundaries, and
   language that matter for the project; small projects can stay light, but they should still
   know their core nouns and responsibilities.
-- **ADRs:** durable choices live in `3-ENGINEERING/ADRs/` so future humans and agents can see
+- **ADRs:** durable choices live in `engineering/adrs/` so future humans and agents can see
   why the current shape exists.
+- **Observability:** production health and user-outcome signals trace back to requirements
+  and discovery, so learning continues after release.
 
 ## Goals
 
 - Give every repo a consistent, agent-readable documentation structure.
 - Make first-run value fast: `docslime init` should create useful next steps immediately.
-- Keep product, design, engineering, testing, and ADR context local and version-controlled.
+- Keep product, design, discovery, requirements, engineering, delivery, observability, and
+  ADR context local and version-controlled.
 - Support both services and user-facing products without splitting into separate doc systems.
 - Make docs easier to fill, review, tighten, and publish than to let drift.
 
@@ -1057,6 +1015,8 @@ product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a 
 - **Docs get filled:** scaffolded documents are completed, with no leftover `LLM:` guidance.
 - **Traceability improves:** requirements, behavior scenarios, tests, and ADRs point to each
   other clearly enough for a future agent to act.
+- **The loop closes:** published artifacts carry verification steps, and observability links
+  production signals back to product outcomes and experience hypotheses.
 - **Design context improves:** `impeccable` resolves `docs/PRODUCT.md` and `docs/DESIGN.md`
   as the current product/design source without bridge files that can drift.
 - **Low friction:** short time from `docslime init` to a useful first filled document.
@@ -1076,98 +1036,119 @@ product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a 
 
 ---
 
-## [Publishing](https://www.docslime.dev/publishing/)
-
----
-title: "Publishing"
-description: "How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host."
----
-
-# Publishing
-
-DocSlime prepares an in-repo Markdown docs tree. It does not host, render, or deploy that
-tree itself. The publishing boundary is intentionally thin: keep the Markdown clean, point
-`docmd` at `docs/`, build the static site, then deploy the generated output through the
-hosting path your project already uses.
-
-## Boundary
-
-| DocSlime owns | docmd.io owns |
-|---|---|
-| The `docs/` structure and templates | Static-site generation from Markdown |
-| Product, design, requirements, architecture, testing, and ADR context | Navigation, search, theming, SEO, `llms.txt`, and output assets |
-| Agent skills that fill, review, and tighten docs | Deployment helpers and platform-specific hosting guidance |
-
-DocSlime should not duplicate the `docmd.io` publishing docs. When publishing behavior
-changes, the official docs should remain the source of truth.
-
-## Local DocSlime Site
-
-This repository dogfoods the publishing path with `docmd.config.json`:
-
-```sh
-npm run build
-```
-
-That command runs `docmd build`, reads Markdown from `docs/`, and writes the static site to
-`site/`.
-
-## Official docmd.io References
-
-- [docmd Quick Start](https://docs.docmd.io/getting-started/quick-start/) - local dev and
-  production build basics.
-- [docmd Deployment Overview](https://docs.docmd.io/deployment/) - deployment methods,
-  static output, and production checklist.
-- [Choosing Your Deployment Method](https://docs.docmd.io/guides/integrations/choosing-deployment-method/) -
-  when to use deploy helpers such as Vercel, Netlify, Docker, NGINX, or Caddy.
-
-For DocSlime projects, the main requirement is simple: keep the generated Markdown plain,
-linked, and free of unfinished `LLM:` guidance before handing it to `docmd`.
-
-
----
-
 ## [Documentation](https://www.docslime.dev/README/)
 
 # Documentation
 
-This folder holds the living documentation for DocSlime. It is structured for
-**behavior-driven development**: product and design context lead into experiences,
-requirements, architecture, testing, and ADRs. The docs stay in-repo so both people and AI
-coding agents have full context without reaching for an external source.
+DocSlime dogfoods the documentation lifecycle it scaffolds. Product and design context feed
+continuous discovery, requirements translate that evidence into a build contract, and the
+engineering docs carry the contract through architecture, testing, publishing, and
+production observability.
 
-## How the docs are organized
-
-Read the top-level docs in this order:
+## Lifecycle
 
 | Document | Question it answers |
 |---|---|
-| [`PRODUCT.md`](PRODUCT.md) | What is this product, who is it for, and why does it exist? |
-| [`1-EXPERIENCES.md`](1-EXPERIENCES.md) | What should it feel like to use? |
-| [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md) | What must the system do? |
-| [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and CLI experience? |
-| [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
-| [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
-| [`publishing.md`](publishing.md) | How does the Markdown tree hand off to `docmd.io`? |
+| [`PRODUCT.md`](PRODUCT.md) | What is DocSlime, who is it for, and why does it exist? |
+| [`DESIGN.md`](DESIGN.md) | What should stay consistent across its CLI, templates, skills, and site? |
+| [`experience/`](experience/) | What user evidence, journeys, and behaviors inform the product? |
+| [`REQUIREMENTS.md`](REQUIREMENTS.md) | What must DocSlime demonstrably do as a result? |
+| [`engineering/ARCHITECTURE.md`](engineering/ARCHITECTURE.md) | How is the system built? |
+| [`engineering/TESTING.md`](engineering/TESTING.md) | How do tests and CI prove it before release? |
+| [`engineering/PUBLISHING.md`](engineering/PUBLISHING.md) | How do verified CLI, skill, and site artifacts reach users? |
+| [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY.md) | How do we verify releases and learn from production signals? |
 
-Supporting detail lives in subfolders:
+Supporting detail lives in:
 
 | Folder | Contents |
 |---|---|
-| [`0-PRODUCT/`](0-PRODUCT/) | Product, market, and positioning detail beyond `PRODUCT.md`. |
-| [`1-JOURNEYS/`](1-JOURNEYS/) | User personas, journeys, and experience detail. |
-| [`3-ENGINEERING/`](3-ENGINEERING/) | Technical documentation, including testing and decision records. |
-| [`3-ENGINEERING/ADRs/`](3-ENGINEERING/ADRs/) | Architecture Decision Records. |
+| [`strategy/`](strategy/) | Market, positioning, roadmap, and strategic bets beyond `PRODUCT.md`. |
+| [`experience/`](experience/) | Continuous-discovery practice and user-centered evidence. |
+| [`engineering/`](engineering/) | Technical lifecycle and operational documentation. |
+| [`engineering/adrs/`](engineering/adrs/) | Numbered Architecture Decision Records. |
 
 ## Conventions
 
-- **Keep docs current.** When behavior changes, update the doc in the same change.
-- **Link, don't duplicate.** Reference detail in subfolders rather than copying it.
-- **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
-- **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so tools like
-  `impeccable` can load them without duplicate root files.
-- **Keep publishing thin.** DocSlime prepares Markdown; `docmd.io` owns build and deployment
-  behavior.
+- Keep `PRODUCT.md` and `DESIGN.md` compact and discoverable by tools such as `impeccable`.
+- Link evidence forward: experience -> requirement -> architecture/test -> release -> observation.
+- Keep requirements solution-neutral; architecture owns how the system satisfies them.
+- Separate configured or deployed state from verified production behavior.
+- Record significant durable choices as ADRs.
+- Update the relevant docs in the same change as behavior.
+
+
+---
+
+## [Requirements](https://www.docslime.dev/REQUIREMENTS/)
+
+# Requirements
+
+DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add individual
+documents (including auto-numbered ADRs) on demand, and report what exists without
+destroying existing work. The templates must carry the inline guidance that lets an AI agent
+fill them in, while the tree stays plain Markdown for design-context loading, continuous
+discovery, delivery, publication, and production learning.
+
+## Functional requirements
+
+| ID | Requirement | Traces to |
+|---|---|---|
+| FR-1 | The system shall create the full standardized `docs/` tree with `README.md`, `PRODUCT.md`, `DESIGN.md`, `REQUIREMENTS.md`, `strategy/`, `experience/`, and engineering architecture, testing, publishing, observability, and ADR docs via `docslime init`. | Scaffold the docs tree |
+| FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
+| FR-3 | The system shall add a single named document via `docslime add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
+| FR-4 | The system shall create the next-numbered ADR via `docslime add adr <slug>`, where the number is one greater than the highest existing `NNNN-*` record in the ADR directory (`0001` if none). | Record an architecture decision |
+| FR-5 | The system shall normalize an ADR slug to lowercase, hyphen-separated `[a-z0-9-]`, and reject a slug with no alphanumeric characters. | Record an architecture decision |
+| FR-6 | The system shall list every available template and whether it already exists on disk via `docslime list`, including the `adr` entry. | Add a single document |
+| FR-7 | The system shall embed all templates in the binary at compile time, requiring no network access or external files at runtime. | Fast and local |
+| FR-8 | The system shall report a clear error and list valid template names when given an unknown document name, and exit non-zero. | Add a single document |
+| FR-9 | The system shall provide installable agent skills (`docslime-install`, `docslime-init`, `docslime-fill`, `docslime-adr`, `docslime-kiss`) that drive the documentation lifecycle. | Fill in and improve documents with an agent |
+| FR-10 | The `docslime-kiss` skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content. | Tighten docs after filling |
+| FR-11 | The generated tree shall include `docs/PRODUCT.md` and `docs/DESIGN.md` so `impeccable` can discover product and design context from the docs directory without duplicate root files. | Integrate with impeccable |
+| FR-12 | KISS review shall remain an agent skill rather than a `docslime` CLI subcommand. | Tighten docs after filling |
+| FR-13 | Documentation guidance shall make the lifecycle trace explicit: strategy -> product/design -> discovery -> requirement -> architecture -> test -> publish -> observe -> discovery, with ADRs linked when a durable decision explains the design. | Trace intent through production |
+| FR-14 | Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects. | Domain Driven Design |
+| FR-15 | Publishing guidance shall cover artifacts, versioning, CI gates, promotion, deployment verification, rollback, and official platform references without copying volatile provider instructions. | Publish verified artifacts |
+| FR-16 | Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling. | Robust agent skills |
+| FR-17 | When a legacy numbered path exists, `init` and `list` shall recognize it as satisfying the corresponding current template and shall not create a duplicate renamed file unless `--force` is explicit. | Preserve existing documentation during upgrades |
+| FR-18 | Experience guidance shall define a continuous-discovery practice and connect evidence, journeys, opportunities, hypotheses, behavior scenarios, and success signals to requirements. | Learn from users continuously |
+| FR-19 | Observability guidance shall connect production system health and user-outcome signals to requirements and discovery while covering telemetry, SLOs, alerts, ownership, and privacy. | Close the product-learning loop |
+
+## Non-functional requirements
+
+| ID | Requirement | Target / constraint |
+|---|---|---|
+| NFR-1 | Portability | Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies. |
+| NFR-2 | Performance | Commands complete near-instantly (well under a second) on a typical repo. |
+| NFR-3 | Distribution | Installable via Homebrew tap, shell installer script, and `cargo install`. |
+| NFR-4 | Safety | No command destroys user data without an explicit `--force`. |
+| NFR-5 | Maintainability | Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required). |
+| NFR-6 | Toolchain | Builds with Rust 1.74+ (2021 edition). |
+| NFR-7 | Publication | Generated docs remain plain Markdown suitable for the `docmd.io` publishing system. |
+| NFR-8 | Quality stance | Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions. |
+| NFR-9 | Skill maintainability | Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior. |
+| NFR-10 | Design context | `impeccable` context loading should be verified from `docs/PRODUCT.md` and `docs/DESIGN.md` whenever homepage or design docs change. |
+| NFR-11 | Privacy | The default observability guidance must not normalize collecting sensitive repository or user data without an explicit decision, consent, and controls. |
+
+## Constraints & assumptions
+
+- **Constraint:** Editing a template requires recompiling the binary, since templates are embedded via `include_dir`.
+- **Constraint:** The tree structure is fixed in the templates; DocSlime does not take a user-supplied layout.
+- **Constraint:** `docslime-kiss` is a skill, not a CLI command.
+- **Assumption:** `docslime` is run at the root of the target git repo; the tree is created relative to the current directory.
+- **Assumption:** An AI coding agent (not the CLI itself) writes the document content by following the inline guidance.
+
+## Dependencies
+
+- **`clap`** — command-line argument parsing (derive API).
+- **`include_dir`** — embeds the template tree into the binary at compile time.
+- **`anyhow` / `thiserror`** — error handling and reporting.
+- **`owo-colors`** — colored terminal output for `list`.
+- **`cargo-dist`** — generates the release workflow and Homebrew formula (build/release time only).
+
+## Open questions
+
+- Should DocSlime support a config file or flags to customize the tree layout, or stay fixed? — maintainer
+- Should `list` / `add` operate on a non-current directory via a `--path` flag? — maintainer
 
 
 ---
@@ -1239,7 +1220,7 @@ Once installed, invoke the skills from inside the agent:
 
 Each skill follows the docs tree instead of maintaining a separate source of truth. Product
 context lives in `docs/PRODUCT.md`, design context lives in `docs/DESIGN.md`, and decisions
-live in `docs/3-ENGINEERING/ADRs/`.
+live in `docs/engineering/adrs/`.
 
 The same files feed design work: `impeccable` loads `docs/PRODUCT.md` and `docs/DESIGN.md`
 for homepage/product critique, so skill-driven doc updates improve future UI iteration too.
@@ -1248,9 +1229,11 @@ for homepage/product critique, so skill-driven doc updates improve future UI ite
 
 1. Run `docslime init`.
 2. Fill `PRODUCT.md` with `docslime-fill`.
-3. Work through experiences, requirements, design, architecture, and testing.
+3. Capture discovery in `experience/`, translate it into `REQUIREMENTS.md`, then work through
+   architecture, testing, publishing, and observability.
 4. Use `docslime-adr` whenever a durable technical or product decision is made.
-5. Run `docslime-kiss` before merging documentation-heavy changes.
+5. Run `docslime-kiss` before merging documentation-heavy changes and whenever production
+   learning exposes stale assumptions.
 
 ## Validation
 
@@ -1265,6 +1248,34 @@ stays part of the normal test loop. CI also has a dedicated `Agent skills` job t
 every bundled `docslime-*` skill for frontmatter, OpenAI metadata, guardrails, verification,
 and failure handling. When working in a harness that ships the Agent Skills validator, also
 run `quick_validate.py .agents/skills/<skill>` for each changed skill.
+
+
+---
+
+## [Strategy](https://www.docslime.dev/strategy/)
+
+# Strategy
+
+This folder expands [`../PRODUCT.md`](../PRODUCT.md) with strategic context that changes at a
+different cadence from the durable product definition.
+
+## Current strategic frame
+
+- **Audience:** engineering teams using AI agents across services and user-facing products.
+- **Alternative:** wikis, generic doc generators, tickets, and ad hoc `docs/` conventions
+  that do not give agents a predictable, fillable, traceable context structure.
+- **Positioning:** a small opinionated CLI plus agent skills that make living in-repo docs
+  easier to create, fill, review, and maintain.
+- **Distribution:** Homebrew, install script, source build, and reusable agent skills.
+- **Business model:** free and open source today.
+
+Requirements do not live here. Validated product needs become stable commitments in
+[`../REQUIREMENTS.md`](../REQUIREMENTS.md).
+
+## Index
+
+No additional strategy documents exist yet. Add one focused file when market evidence,
+positioning, roadmap, or another strategic bet needs more detail than `PRODUCT.md`.
 
 
 ---
