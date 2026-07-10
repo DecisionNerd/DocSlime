@@ -6,6 +6,7 @@
 //! and is embedded separately.
 
 use include_dir::{include_dir, Dir, File};
+use std::path::Path;
 
 /// The full `docs/` template tree, embedded at compile time.
 static TEMPLATES: Dir<'static> = include_dir!("$CARGO_MANIFEST_DIR/templates");
@@ -37,16 +38,62 @@ pub fn relative_paths() -> Vec<&'static str> {
     all().iter().filter_map(|f| f.path().to_str()).collect()
 }
 
+/// Legacy scaffold paths that correspond to a current template path.
+///
+/// These paths are not emitted by new releases. They are recognized so running a newer
+/// `init` against a filled pre-rename tree does not create duplicate documents beside the
+/// user's existing work.
+pub fn legacy_paths(relative: &Path) -> &'static [&'static str] {
+    match relative.to_str() {
+        Some("strategy/README.md") => &["0-PRODUCT/README.md"],
+        Some("experience/README.md") => &["1-EXPERIENCES.md", "1-JOURNEYS/README.md"],
+        Some("REQUIREMENTS.md") => &["2-REQUIREMENTS.md"],
+        Some("engineering/ARCHITECTURE.md") => &["3-ARCHITECTURE.md"],
+        Some("engineering/TESTING.md") => &["4-TESTING.md"],
+        Some("engineering/PUBLISHING.md") => &["publishing.md"],
+        Some("engineering/README.md") => &["3-ENGINEERING/README.md"],
+        Some("engineering/adrs/README.md") => &["3-ENGINEERING/ADRs/README.md"],
+        _ => &[],
+    }
+}
+
 /// Resolve a user-supplied `add <doc>` argument to a single template file.
 ///
 /// Resolution is tried in order:
-/// 1. exact relative-path match (`3-ENGINEERING/ADRs/README.md`)
+/// 1. exact relative-path match (`engineering/adrs/README.md`)
 /// 2. relative path with the `.md` extension optional (`PRODUCT` -> `PRODUCT.md`)
 /// 3. unambiguous case-insensitive basename match (`PRODUCT` -> `PRODUCT.md`)
 ///
 /// Returns `Err` with the list of candidate paths when the name is unknown or ambiguous.
 pub fn find(name: &str) -> Result<&'static File<'static>, FindError> {
     let files = all();
+
+    // Preserve the old command vocabulary after the scaffold path rename. Directory names
+    // also resolve to their README so `docslime add experience` remains intuitive.
+    let normalized = name.trim_end_matches(".md").to_ascii_lowercase();
+    let alias = match normalized.as_str() {
+        "0-product" | "0-product/readme" | "strategy" | "strategy/readme" => {
+            Some("strategy/README.md")
+        }
+        "1-experiences" | "1-journeys" | "1-journeys/readme" | "experience"
+        | "experience/readme" => Some("experience/README.md"),
+        "2-requirements" => Some("REQUIREMENTS.md"),
+        "3-architecture" => Some("engineering/ARCHITECTURE.md"),
+        "4-testing" => Some("engineering/TESTING.md"),
+        "publishing" => Some("engineering/PUBLISHING.md"),
+        "3-engineering" | "3-engineering/readme" | "engineering" | "engineering/readme" => {
+            Some("engineering/README.md")
+        }
+        "3-engineering/adrs/readme" | "engineering/adrs" | "engineering/adrs/readme" => {
+            Some("engineering/adrs/README.md")
+        }
+        _ => None,
+    };
+    if let Some(path) = alias {
+        if let Some(file) = files.iter().find(|file| file.path().to_str() == Some(path)) {
+            return Ok(file);
+        }
+    }
 
     // 1. exact relative path
     if let Some(f) = files.iter().find(|f| f.path().to_str() == Some(name)) {
@@ -63,7 +110,7 @@ pub fn find(name: &str) -> Result<&'static File<'static>, FindError> {
     }
 
     // 3. case-insensitive basename match (with or without `.md`)
-    let needle = name.trim_end_matches(".md").to_ascii_lowercase();
+    let needle = normalized;
     let basename_matches: Vec<&'static File<'static>> = files
         .iter()
         .copied()

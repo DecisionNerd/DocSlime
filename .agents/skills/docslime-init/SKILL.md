@@ -5,9 +5,9 @@ description: Scaffolds the standardized DocSlime docs tree with docslime init. U
 
 # DocSlime Init
 
-Scaffold the full `docs/` tree into the current git repo so the project's product context,
-experiences, requirements, design guidance, architecture, tests, and decisions live
-alongside the code.
+Scaffold the full `docs/` tree into the current git repo so product context, continuous
+discovery, requirements, design guidance, architecture, testing, delivery, observability,
+and decisions live alongside the code.
 
 ## When to Use
 
@@ -54,20 +54,23 @@ This creates:
 docs/
 ├── README.md           # how the docs are organized
 ├── PRODUCT.md          # product context and goals
-├── 1-EXPERIENCES.md    # the user experience
-├── 2-REQUIREMENTS.md   # what the system must do
 ├── DESIGN.md           # product design / style / accessibility guidance
-├── 3-ARCHITECTURE.md   # how it is designed
-├── 4-TESTING.md        # how we prove it works
-├── publishing.md       # thin publishing handoff to docmd.io or another docs host
-├── 0-PRODUCT/          # product / market / positioning detail
-├── 1-JOURNEYS/         # personas and user journeys
-└── 3-ENGINEERING/      # technical docs
-    └── ADRs/           # Architecture Decision Records
+├── REQUIREMENTS.md     # build contract derived from discovery
+├── strategy/           # market, positioning, roadmap, strategic bets
+├── experience/         # continuous discovery and experience design
+└── engineering/
+    ├── README.md       # engineering lifecycle index
+    ├── ARCHITECTURE.md # domain and system design
+    ├── TESTING.md      # testing strategy and CI evidence
+    ├── PUBLISHING.md   # continuous delivery and rollback
+    ├── OBSERVABILITY.md # production health and product learning
+    └── adrs/           # Architecture Decision Records
 ```
 
-Existing files are **never overwritten** — `init` skips anything already on disk. To
-intentionally overwrite, re-run with `docslime init --force`.
+Existing files are **never overwritten**. `init` also recognizes the old numbered paths and
+treats them as legacy matches rather than creating duplicate renamed docs. To intentionally
+write the new template path, re-run with `docslime init --force`; this still does not remove
+the legacy file.
 
 ### 3 — See what's there
 
@@ -79,9 +82,9 @@ docslime list
 
 ### 4 — Orient and hand off
 
-The top-level documents read as a chain, each building on the one before it. Each file
-contains inline `<!-- LLM: ... -->` comments telling you what to interview the user about
-and how to write each section.
+The docs form a lifecycle: strategy -> product/design -> discovery -> requirements ->
+architecture -> testing -> publishing -> observability -> discovery. Each template contains
+inline `<!-- LLM: ... -->` guidance for interviewing the user and filling the sections.
 
 Tell the user the tree is ready, and offer to start filling it in with the **docslime-fill**
 skill — beginning with `docs/PRODUCT.md`, since every other document derives from it.
@@ -93,8 +96,8 @@ docslime list
 test -f docs/PRODUCT.md && test -f docs/DESIGN.md
 ```
 
-Confirm created/skipped output is clear and that the docs tree includes the top-level chain,
-engineering folder, ADR folder, and publishing handoff doc.
+Confirm created/skipped/legacy output is clear and that the tree includes requirements,
+continuous discovery, the engineering lifecycle, observability, and ADRs.
 
 ## Failure Handling
 

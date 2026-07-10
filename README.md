@@ -5,32 +5,32 @@ agent-ready documentation workspace. It scaffolds a standardized docs tree that 
 agents can fill in with you, then tighten through skills like `docslime-fill`,
 `docslime-adr`, and `docslime-kiss`.
 
-The point is to pull a project's product context, experiences, requirements, design
-guidance, architecture, testing strategy, and ADRs into the repo itself. DocSlime is built
-for services and user-facing products, with a strong bias toward TDD+BDD quality, Domain
-Driven Design, explicit decisions, and docs that can publish cleanly through the `docmd.io`
-system.
+The point is to keep a complete product-and-engineering learning loop in the repo: strategy,
+product/design context, continuous discovery, requirements, architecture, TDD/BDD evidence,
+delivery, observability, and decisions. DocSlime is built for services and user-facing
+products with user-driven Domain Driven Design and explicit traceability from evidence to
+production learning.
 
 ## The tree it creates
 
 ```
 docs/
-├── README.md           # intro to docs and how they are organized
-├── PRODUCT.md          # product context, mission, audience, goals
-├── 1-EXPERIENCES.md    # the user experience main doc
-├── 2-REQUIREMENTS.md   # what the system needs to do
-├── DESIGN.md           # product design, style, and accessibility guidance
-├── 3-ARCHITECTURE.md   # how the system is designed
-├── 4-TESTING.md        # how we test and evaluate that the system fulfills its goals
-├── publishing.md       # thin publishing handoff to docmd.io or another docs host
-├── 0-PRODUCT/          # product, market, and positioning detail beyond PRODUCT.md
-│   └── README.md
-├── 1-JOURNEYS/         # user personas, user journeys, and other experience detail
-│   └── README.md
-└── 3-ENGINEERING/      # technical documentation including testing docs
-    ├── README.md
-    └── ADRs/           # Architecture Decision Records
-        └── README.md
+├── README.md              # lifecycle map and conventions
+├── PRODUCT.md             # product context, audience, goals, outcomes
+├── DESIGN.md              # design principles, patterns, accessibility
+├── REQUIREMENTS.md        # testable contract derived from discovery
+├── strategy/
+│   └── README.md          # market, positioning, roadmap, strategic bets
+├── experience/
+│   └── README.md          # continuous discovery and experience design
+└── engineering/
+    ├── README.md          # engineering lifecycle index
+    ├── ARCHITECTURE.md    # domain and system design
+    ├── TESTING.md         # TDD/BDD strategy and CI evidence
+    ├── PUBLISHING.md      # continuous delivery, verification, rollback
+    ├── OBSERVABILITY.md   # production health and user-outcome learning
+    └── adrs/
+        └── README.md      # Architecture Decision Record index
 ```
 
 `docs/PRODUCT.md` and `docs/DESIGN.md` are intentionally named so tools like `impeccable`
@@ -65,8 +65,9 @@ docslime add PRODUCT          # add a single document (name resolution is forgiv
 docslime add adr <slug>       # create the next-numbered ADR, e.g. 0001-<slug>.md
 ```
 
-Existing files are **never overwritten** — `init` and `add` skip anything already on disk.
-Pass `--force` to overwrite intentionally.
+Existing files are **never overwritten**. `init` also recognizes the previous numbered
+layout and will not create duplicate renamed files beside existing user work. Pass `--force`
+to write a current template intentionally; legacy files are still not deleted.
 
 ### Filling in the docs with an agent
 

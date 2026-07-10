@@ -1,41 +1,86 @@
-# Journeys
+# Experience
 
-This folder expands on [`../1-EXPERIENCES.md`](../1-EXPERIENCES.md) with full user personas
-and end-to-end journey maps.
+This folder is DocSlime's continuous-discovery and experience-design workspace. It connects
+observed user needs to requirements without turning research notes into an untraceable
+feature backlog.
 
-## Personas
+## Discovery practice
 
-### Team developer
+DocSlime is maintainer-led today. Product learning comes from direct maintainer and user
+feedback, issues and pull requests, real repositories using the scaffold and skills, CLI
+behavior observed during development, and whether agents can act accurately from the
+generated docs. Claims that lack evidence remain hypotheses rather than being written as
+validated user facts.
 
-- **Who:** an engineer on a team that wants consistent, in-repo project docs, typically working alongside an AI coding agent.
-- **Goals:** stand up documentation quickly, in a structure that's the same across their repos, without designing a doc system from scratch.
-- **Frustrations:** project intent is scattered across wikis, chat, and tickets; every project documents things differently; docs go stale or never get written.
-- **Success looks like:** one command produces a familiar tree, and their agent fills it in with real content that lives next to the code.
+A finding becomes a requirement when it identifies an observable behavior or measurable
+quality the product must provide. A requirement remains solution-neutral; implementation
+choices belong in architecture or an ADR.
 
-### AI coding agent
+## Primary participants
 
-- **Who:** the assistant working inside the repo (e.g. via the DocSlime skills), acting as both author and consumer of the docs.
-- **Goals:** understand the project's intent so it can act with full context; produce documentation that reflects what the team actually wants.
-- **Frustrations:** without recorded intent it has to guess from code; ad-hoc doc structures give it nothing reliable to read or write against.
-- **Success looks like:** clear inline guidance tells it what to ask and how to write each section, so it interviews the team and leaves a clean, complete document.
+- **Team developer:** wants a familiar in-repo documentation system without inventing one
+  for every project.
+- **Product or design collaborator:** needs concise product and design context that tools can
+  discover without maintaining duplicate files.
+- **AI coding agent:** needs evidence, requirements, boundaries, and decisions close to the
+  code so it can ask focused questions instead of fabricating context.
 
-## Journeys
+## Core journeys
 
-### Document a project from scratch
+| Journey | Desired outcome | Requirements |
+|---|---|---|
+| Scaffold a repo | One safe command creates the complete lifecycle-oriented docs tree. | FR-1, FR-2, FR-7 |
+| Add one missing document | A partial tree can gain one known template without overwriting work. | FR-2, FR-3, FR-8 |
+| Record a decision | The next collision-free ADR is created with a normalized memorable slug. | FR-4, FR-5 |
+| Fill docs with an agent | The agent interviews the team, follows inline guidance, and removes scaffolding. | FR-9, FR-16 |
+| Tighten docs | Review cuts bloat, contradictions, weak requirements, and invented certainty. | FR-10, FR-12 |
+| Load design context | `impeccable` resolves canonical `docs/PRODUCT.md` and `docs/DESIGN.md`. | FR-11 |
+| Trace intent through production | Discovery, requirements, architecture, tests, delivery, and observability point to one another. | FR-13–FR-18 |
 
-Traces to the "Scaffold the docs tree" and "Fill in a document with an agent" experiences in
-[`../1-EXPERIENCES.md`](../1-EXPERIENCES.md).
+## Experience principles
 
-| Step | User does | User feels | Opportunity |
-|---|---|---|---|
-| 1 | Runs `docslime init` in the repo | Curious, low commitment | Produce the full tree instantly, non-destructively |
-| 2 | Sees the numbered `docs/` tree appear | Oriented — the structure is obvious | Numbering signals the reading order |
-| 3 | Asks the agent to fill in `PRODUCT.md` | Slightly unsure what to write | Inline guidance turns it into a guided product interview |
-| 4 | Answers the agent's focused questions | Engaged; thinking is being captured | Reflect answers back; write one tight section at a time |
-| 5 | Reviews the completed doc, commits it | Satisfied — real intent, in the repo | Clean output with no leftover guidance comments |
-| 6 | Moves down the chain to the next doc | Momentum | Each doc builds on the last, so context compounds |
+- **Non-destructive by default:** existing user-authored files are never overwritten or
+  migrated implicitly.
+- **Evidence before assertion:** agents ask rather than inventing users, systems, metrics, or
+  decisions.
+- **Opinionated, not ceremonial:** the lifecycle is complete, but documents stay as small as
+  the project permits.
+- **Traceable quality:** a user need can be followed to a requirement, test, decision,
+  release, and production signal.
+- **Fast and local:** the CLI works offline against the current repository.
+- **Discoverable context:** standard names and a semantic tree make important context easy
+  for humans, agents, and publishing tools to find.
+
+## Continuous-discovery artifact shape
+
+Create one focused lowercase-kebab-case file when an opportunity, study, journey, or product
+slice needs more evidence than this index can hold. Use only the sections the evidence earns:
+
+```markdown
+# Opportunity or experience
+
+## Observed need and evidence
+## Desired user and business outcome
+## Users and context
+## Current journey
+## Opportunity and hypothesis
+## Intended behavior
+## Given / When / Then scenarios
+## Constraints and domain language
+## Success signals and telemetry
+## Open questions
+## Related requirements, tests, architecture, and ADRs
+```
+
+## Learning loop
+
+```text
+evidence -> opportunity -> requirement -> architecture -> test -> release -> observation
+     ^                                                                    |
+     +--------------------------------------------------------------------+
+```
 
 ## Index
 
-_No standalone persona or journey files yet. Add one file per substantial persona or major
-journey as the need arises, and list it here._
+No separate discovery artifacts exist yet. Add them when evidence for a meaningful
+opportunity or journey should outlive the issue or conversation where it surfaced.

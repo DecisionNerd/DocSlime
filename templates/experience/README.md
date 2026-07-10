@@ -1,44 +1,73 @@
-<!-- LLM: This folder holds the detailed user personas and journey maps that back the
-summaries in ../1-EXPERIENCES.md. Interview the user to build out personas and journeys.
-Create one file per persona and/or per major journey rather than cramming everything here.
-Keep the journeys aligned with the Given/When/Then experiences so they trace into testing.
-Update the index as files are added. Remove LLM comments as you go. -->
+<!-- LLM: This folder is the continuous-discovery and experience-design workspace. Read
+../PRODUCT.md and ../DESIGN.md first. Interview the user about actual evidence; never invent
+research, users, quotes, or validation. Keep this README as the operating model and index,
+then create one focused file per meaningful opportunity, journey, study, or product slice.
+Translate validated findings into stable requirements in ../REQUIREMENTS.md rather than
+turning discovery notes into an untraceable backlog. Remove LLM comments as you go. -->
 
-# Journeys
+# Experience
 
-This folder expands on [`../1-EXPERIENCES.md`](../1-EXPERIENCES.md) with full user personas
-and end-to-end journey maps.
+This folder connects continuous discovery and experience design to delivery. It captures
+what the team has learned from users, the outcomes they need, the opportunities worth
+pursuing, and the behavior that would demonstrate improvement.
 
-## Personas
+## Discovery practice
 
-<!-- LLM: For each primary/secondary user, capture a persona. Interview the user: goals,
-context, frustrations, level of expertise, what success looks like for them. One file per
-persona is recommended for anything substantial. Use the sketch below as a starting shape. -->
+<!-- LLM: Describe how the team continuously discovers needs and validates direction. Ask:
+- Who participates in discovery and how often?
+- Which evidence sources are trusted (interviews, support, analytics, observation, sales)?
+- How are assumptions, opportunities, and experiments recorded?
+- What threshold turns a finding into a requirement or product decision?
+Keep this practical; do not prescribe ceremony the team will not use. -->
 
-### _Persona name_
+_How does the team learn from users and decide what is worth building?_
 
-- **Who:** _role / context_
-- **Goals:** _what they're trying to achieve_
-- **Frustrations:** _what gets in their way today_
-- **Success looks like:** _their definition of a good outcome_
+## Experience principles
 
-## Journeys
+<!-- LLM: Capture the cross-cutting qualities that should be true of every journey. Link to
+the corresponding design principle in ../DESIGN.md when one exists. -->
 
-<!-- LLM: For each important journey, map the steps the user takes from trigger to outcome,
-noting their goal, actions, and emotional state at each step, plus where the product helps or
-fails them. Tie each journey back to a key experience in ../1-EXPERIENCES.md. -->
+- _Principle — what it means for a user._
 
-### _Journey name_
+## Artifact template
 
-| Step | User does | User feels | Opportunity |
-|---|---|---|---|
-| 1 | _action_ | _emotion_ | _where the product can help_ |
+<!-- LLM: Use this shape when creating a new opportunity, journey, study, or product-slice
+file. Adapt it to the evidence available; do not create empty sections just to satisfy the
+template. Requirements should state what must be true, not prescribe architecture. -->
+
+```markdown
+# Opportunity or experience
+
+## Observed need and evidence
+## Desired user and business outcome
+## Users and context
+## Current journey
+## Opportunity and hypothesis
+## Intended behavior
+## Given / When / Then scenarios
+## Constraints and domain language
+## Success signals and telemetry
+## Open questions
+## Related requirements, tests, architecture, and ADRs
+```
+
+## Traceability
+
+Discovery artifacts should link forward to requirements they justify. Requirements should
+link back here, tests should prove their acceptance behavior, and observability should show
+whether the intended outcome happens in production.
+
+```text
+evidence -> opportunity -> requirement -> architecture -> test -> release -> observation
+     ^                                                                    |
+     +--------------------------------------------------------------------+
+```
 
 ## Index
 
-<!-- LLM: List the persona and journey files in this folder with a one-line description.
-Update whenever a file is added. -->
+<!-- LLM: List only artifacts that actually exist. Use one file per substantial artifact
+and give each a stable, descriptive lowercase-kebab-case filename. -->
 
-| Document | Description |
-|---|---|
-| _filename.md_ | _what it covers_ |
+| Document | Kind | Status | What it informs |
+|---|---|---|---|
+| _filename.md_ | _Opportunity / journey / study / product slice_ | _Active / validated / retired_ | _Requirement, decision, or open question_ |

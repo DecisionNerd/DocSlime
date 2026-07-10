@@ -3,62 +3,56 @@
   "description": "",
   "pages": [
     {
-      "title": "Product",
-      "url": "https://www.docslime.dev/0-PRODUCT/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Experiences",
-      "url": "https://www.docslime.dev/1-EXPERIENCES/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Journeys",
-      "url": "https://www.docslime.dev/1-JOURNEYS/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Requirements",
-      "url": "https://www.docslime.dev/2-REQUIREMENTS/",
-      "description": "",
-      "priority": "medium"
-    },
-    {
-      "title": "Architecture",
-      "url": "https://www.docslime.dev/3-ARCHITECTURE/",
+      "title": "Design",
+      "url": "https://www.docslime.dev/DESIGN/",
       "description": "",
       "priority": "medium"
     },
     {
       "title": "ADR-0001: Embed templates in the binary at compile time",
-      "url": "https://www.docslime.dev/3-ENGINEERING/ADRs/0001-embed-templates-in-binary/",
+      "url": "https://www.docslime.dev/engineering/adrs/0001-embed-templates-in-binary/",
       "description": "",
       "priority": "medium"
     },
     {
       "title": "Architecture Decision Records",
-      "url": "https://www.docslime.dev/3-ENGINEERING/ADRs/",
+      "url": "https://www.docslime.dev/engineering/adrs/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Architecture",
+      "url": "https://www.docslime.dev/engineering/ARCHITECTURE/",
       "description": "",
       "priority": "medium"
     },
     {
       "title": "Engineering",
-      "url": "https://www.docslime.dev/3-ENGINEERING/",
+      "url": "https://www.docslime.dev/engineering/",
       "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Observability",
+      "url": "https://www.docslime.dev/engineering/OBSERVABILITY/",
+      "description": "",
+      "priority": "medium"
+    },
+    {
+      "title": "Publishing",
+      "url": "https://www.docslime.dev/engineering/PUBLISHING/",
+      "description": "How verified DocSlime CLI, skill, and documentation artifacts reach users safely.",
       "priority": "medium"
     },
     {
       "title": "Testing",
-      "url": "https://www.docslime.dev/4-TESTING/",
+      "url": "https://www.docslime.dev/engineering/TESTING/",
       "description": "",
       "priority": "medium"
     },
     {
-      "title": "Design",
-      "url": "https://www.docslime.dev/DESIGN/",
+      "title": "Experience",
+      "url": "https://www.docslime.dev/experience/",
       "description": "",
       "priority": "medium"
     },
@@ -75,14 +69,14 @@
       "priority": "medium"
     },
     {
-      "title": "Publishing",
-      "url": "https://www.docslime.dev/publishing/",
-      "description": "How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host.",
+      "title": "Documentation",
+      "url": "https://www.docslime.dev/README/",
+      "description": "",
       "priority": "medium"
     },
     {
-      "title": "Documentation",
-      "url": "https://www.docslime.dev/README/",
+      "title": "Requirements",
+      "url": "https://www.docslime.dev/REQUIREMENTS/",
       "description": "",
       "priority": "medium"
     },
@@ -90,6 +84,12 @@
       "title": "Agent Skills",
       "url": "https://www.docslime.dev/skills/",
       "description": "Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs.",
+      "priority": "medium"
+    },
+    {
+      "title": "Strategy",
+      "url": "https://www.docslime.dev/strategy/",
+      "description": "",
       "priority": "medium"
     }
   ]

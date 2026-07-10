@@ -1,39 +1,40 @@
-<!-- LLM: This folder holds technical documentation that supports ../3-ARCHITECTURE.md and
-../4-TESTING.md — things like setup guides, operational runbooks, API references, and the
-Architecture Decision Records in ADRs/. Interview the user about what engineering docs exist
-or are needed. Create focused files per topic. Update the index as files are added. Remove
-LLM comments as you go. -->
+<!-- LLM: This folder carries the product and experience contract through the complete
+engineering lifecycle. Read ../REQUIREMENTS.md first. Fill the canonical lifecycle docs,
+then create focused setup guides, runbooks, API references, or operational docs only when
+the project needs them. Keep the index current and remove LLM comments as you go. -->
 
 # Engineering
 
-This folder holds the deeper technical documentation behind
-[`../3-ARCHITECTURE.md`](../3-ARCHITECTURE.md) and [`../4-TESTING.md`](../4-TESTING.md),
-including the project's decision records.
+Engineering begins with the shared requirements contract and follows it through design,
+pre-release evidence, continuous delivery, and production learning.
 
-## What lives here
+## Lifecycle
 
-<!-- LLM: Create the documents that fit this project. Common ones: -->
+| Document | Responsibility |
+|---|---|
+| [`ARCHITECTURE.md`](ARCHITECTURE.md) | How domain boundaries and system components satisfy the requirements. |
+| [`TESTING.md`](TESTING.md) | How tests and CI prove the system before release. |
+| [`PUBLISHING.md`](PUBLISHING.md) | How verified artifacts are versioned, promoted, deployed, and rolled back. |
+| [`OBSERVABILITY.md`](OBSERVABILITY.md) | How production health and user outcomes are measured and fed back into discovery. |
+| [`adrs/`](adrs/) | Why significant product and technical decisions were made. |
 
-- **Development setup** — _how to get a working dev environment._
-- **Build & release** — _how the project is built, versioned, and shipped._
-- **Operations / runbook** — _how it's run, monitored, and recovered._
-- **API / interface reference** — _contracts other code depends on._
-- **[ADRs/](ADRs/)** — _Architecture Decision Records (one per significant decision)._
+## Supporting documentation
 
-## Decision records
-
-Significant engineering and product decisions are recorded as ADRs in [`ADRs/`](ADRs/).
-Create the next one with:
-
-```
-docslime add adr <short-slug>
-```
-
-## Index
-
-<!-- LLM: List the engineering documents in this folder with a one-line description each.
-Update whenever a file is added. -->
+<!-- LLM: Create only the focused documents this project needs. Common examples include
+development setup, API/interface references, data contracts, security guides, migration
+plans, and operational runbooks. Do not duplicate the canonical lifecycle docs above. -->
 
 | Document | Description |
 |---|---|
-| _filename.md_ | _what it covers_ |
+| _filename.md_ | _What it covers and who uses it_ |
+
+## Decision records
+
+Create the next Architecture Decision Record with:
+
+```sh
+docslime add adr <short-slug>
+```
+
+Keep the decision log in [`adrs/README.md`](adrs/README.md) synchronized with accepted,
+superseded, and deprecated records.

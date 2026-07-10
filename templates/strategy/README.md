@@ -1,13 +1,13 @@
-<!-- LLM: This folder holds product, market, positioning, and publication detail that is too deep for
-PRODUCT.md. Use it for things like market analysis, competitive landscape, positioning,
-pricing, roadmap, and detailed product requirements. Interview the user about which of these
-exist or are needed; create one focused file per topic rather than one giant file. Update the
-index below as files are added. Remove LLM comments as you go. -->
+<!-- LLM: This folder holds strategic context that is too deep or changeable for PRODUCT.md:
+market analysis, competitive landscape, positioning, pricing, business model, roadmap, and
+strategic bets. Requirements belong in ../REQUIREMENTS.md, not here. Interview the user about
+which strategy artifacts exist or are needed; create one focused file per topic rather than
+one giant file. Update the index below as files are added. Remove LLM comments as you go. -->
 
-# Product
+# Strategy
 
-This folder expands on [`../PRODUCT.md`](../PRODUCT.md) with product, market, positioning,
-and publication detail that doesn't belong in the compact top-level product context.
+This folder expands on [`../PRODUCT.md`](../PRODUCT.md) with market, positioning, business,
+roadmap, and strategic-bet detail that does not belong in compact product context.
 
 ## What lives here
 

@@ -15,7 +15,7 @@ you complete each section. -->
 <!-- LLM: Describe the forces at play — the problem, constraints, and requirements that make a
 decision necessary. Ask the user: "What situation are we in that forces a choice? What
 requirements or constraints bound it?" Reference the relevant requirement IDs from
-../../2-REQUIREMENTS.md where applicable. State facts, not the decision yet. -->
+../../REQUIREMENTS.md where applicable. State facts, not the decision yet. -->
 
 _What is the issue we're deciding on, and why now?_
 

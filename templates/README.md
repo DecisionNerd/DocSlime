@@ -5,40 +5,44 @@ as you complete each section. -->
 
 # Documentation
 
-This folder holds the living documentation for this project. It is structured for
-**behavior-driven development**: product and design context lead into experiences,
-requirements, architecture, testing, and ADRs. The docs stay in-repo so both people and AI
-coding agents have full context without reaching for an external source.
+This folder holds the living documentation for this project. Product and design context
+feed continuous discovery, requirements translate that evidence into a build contract, and
+engineering docs carry the contract through architecture, testing, publishing, and
+production observability. The docs stay in-repo so people and coding agents can work from
+the same evidence without reaching for an external source.
 
 ## How the docs are organized
 
-Read the top-level docs in this order:
+Follow this lifecycle rather than treating the filenames as a numbered checklist:
 
 | Document | Question it answers |
 |---|---|
 | [`PRODUCT.md`](PRODUCT.md) | What is this product, who is it for, and why does it exist? |
-| [`1-EXPERIENCES.md`](1-EXPERIENCES.md) | What should it feel like to use? |
-| [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md) | What must the system do? |
 | [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and UX experience? |
-| [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
-| [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
-| [`publishing.md`](publishing.md) | How does this Markdown tree hand off to a publishing system? |
+| [`experience/`](experience/) | What have we learned from users, and what outcomes and behaviors do they need? |
+| [`REQUIREMENTS.md`](REQUIREMENTS.md) | What must the delivered system demonstrably do as a result? |
+| [`engineering/ARCHITECTURE.md`](engineering/ARCHITECTURE.md) | How is the system built? |
+| [`engineering/TESTING.md`](engineering/TESTING.md) | How do we prove it before release and gate continuous integration? |
+| [`engineering/PUBLISHING.md`](engineering/PUBLISHING.md) | How does a verified change reach users safely? |
+| [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY.md) | How do we know it works in production and feed learning back into discovery? |
 
 Supporting detail lives in subfolders:
 
 | Folder | Contents |
 |---|---|
-| [`0-PRODUCT/`](0-PRODUCT/) | Product, market, and positioning detail beyond `PRODUCT.md`. |
-| [`1-JOURNEYS/`](1-JOURNEYS/) | User personas, journeys, and experience detail. |
-| [`3-ENGINEERING/`](3-ENGINEERING/) | Technical documentation, including testing and decision records. |
-| [`3-ENGINEERING/ADRs/`](3-ENGINEERING/ADRs/) | Architecture Decision Records. |
+| [`strategy/`](strategy/) | Market, positioning, business model, roadmap, and strategic bets. |
+| [`experience/`](experience/) | Continuous discovery, research, opportunities, journeys, hypotheses, and behavior scenarios. |
+| [`engineering/`](engineering/) | Architecture, CI, delivery, observability, operations, and decision records. |
+| [`engineering/adrs/`](engineering/adrs/) | Architecture Decision Records. |
 
 ## Conventions
 
 - **Keep docs current.** When behavior changes, update the doc in the same change.
 - **Link, don't duplicate.** Reference detail in subfolders rather than copying it.
-- **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
+- **Trace evidence through delivery.** User evidence should lead to requirements, tests,
+  architecture, telemetry, and production learning.
+- **Decisions are recorded.** Significant choices get an ADR (see `engineering/adrs/`).
 - **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so design and
   coding agents can load them without duplicate root files.
-- **Keep publishing thin.** This docs tree should stay plain Markdown and point to the
-  publishing system's official docs rather than copying platform instructions here.
+- **Close the loop.** Observability should measure both system health and the user outcomes
+  named in product, experience, and requirements docs.

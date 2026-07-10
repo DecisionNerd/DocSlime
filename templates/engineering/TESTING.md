@@ -1,6 +1,6 @@
 <!-- LLM: This document explains how we prove the system fulfills its product goals, experiences,
-and requirements. It closes the BDD loop: the experiences in 1-EXPERIENCES.md and the
-requirements in 2-REQUIREMENTS.md should each map to something verified here. Interview the
+and requirements. It closes the BDD loop: evidence in ../experience/ and requirements in
+../REQUIREMENTS.md should map to something verified here. Interview the
 user about how they actually test (or intend to). Remove LLM comments as you complete each
 section. -->
 
@@ -21,13 +21,13 @@ they don't have. -->
 |---|---|---|
 | Unit | _Smallest units of logic_ | _…_ |
 | Integration | _Components working together_ | _…_ |
-| End-to-end / behavior | _User-visible behavior from 1-EXPERIENCES.md_ | _…_ |
+| End-to-end / behavior | _User-visible behavior derived from ../experience/_ | _…_ |
 
 ## Behavior coverage
 
 <!-- LLM: This is the BDD heart of the doc. Map each key experience / requirement to the
-test(s) that prove it. Reuse the Given/When/Then scenarios from 1-EXPERIENCES.md and the
-requirement IDs from 2-REQUIREMENTS.md. Ask the user to confirm each important behavior has a
+test(s) that prove it. Reuse the Given/When/Then scenarios from ../experience/ and the
+requirement IDs from ../REQUIREMENTS.md. Ask the user to confirm each important behavior has a
 test (or flag it as a gap). -->
 
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
@@ -43,8 +43,8 @@ do not leave behavior untraceable. -->
 
 | Link | Evidence |
 |---|---|
-| Product goal -> experience | _PRODUCT.md / 1-EXPERIENCES.md evidence_ |
-| Experience -> requirement | _Requirement IDs from 2-REQUIREMENTS.md_ |
+| Product goal -> experience | _../PRODUCT.md / ../experience/ evidence_ |
+| Experience -> requirement | _Requirement IDs from ../REQUIREMENTS.md_ |
 | Requirement -> BDD scenario | _Given/When/Then scenario_ |
 | Scenario -> test | _Test file, manual check, eval, or known gap_ |
 | Requirement -> architecture/ADR | _Architecture section or ADR link when applicable_ |
@@ -52,7 +52,7 @@ do not leave behavior untraceable. -->
 ## Evaluation against product goals
 
 <!-- LLM: Beyond pass/fail tests, how do we evaluate that the system fulfills the product goals and
-success metrics (from PRODUCT.md)? This may include metrics, manual evaluation, user
+success metrics (from ../PRODUCT.md)? This may include metrics, manual evaluation, user
 feedback, or LLM/qualitative evals. Ask the user how they judge product-level success, not
 just code correctness. -->
 

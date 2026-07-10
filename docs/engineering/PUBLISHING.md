@@ -1,45 +1,78 @@
 ---
 title: "Publishing"
-description: "How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host."
+description: "How verified DocSlime CLI, skill, and documentation artifacts reach users safely."
 ---
 
 # Publishing
 
-DocSlime prepares an in-repo Markdown docs tree. It does not host, render, or deploy that
-tree itself. The publishing boundary is intentionally thin: keep the Markdown clean, point
-`docmd` at `docs/`, build the static site, then deploy the generated output through the
-hosting path your project already uses.
+DocSlime publishes three related surfaces: the Rust CLI, the reusable agent-skill pack, and
+the static documentation site. A build or deployment is not complete until its expected
+artifact and user-facing behavior are verified.
 
-## Boundary
+## Artifacts and destinations
 
-| DocSlime owns | docmd.io owns |
-|---|---|
-| The `docs/` structure and templates | Static-site generation from Markdown |
-| Product, design, requirements, architecture, testing, and ADR context | Navigation, search, theming, SEO, `llms.txt`, and output assets |
-| Agent skills that fill, review, and tighten docs | Deployment helpers and platform-specific hosting guidance |
+| Artifact | Destination | Version / identity |
+|---|---|---|
+| Rust CLI binaries and installer | GitHub Release | SemVer tag matching `Cargo.toml` |
+| Homebrew formula | `DecisionNerd/homebrew-tap` | Release version and artifact checksums |
+| Agent skills | GitHub repository via `npx skills add DecisionNerd/DocSlime` | Repository revision/release |
+| Documentation site | Static `site/` output and configured host | Source commit/deployment |
 
-DocSlime should not duplicate the `docmd.io` publishing docs. When publishing behavior
-changes, the official docs should remain the source of truth.
+## Continuous integration
 
-## Local DocSlime Site
+`.github/workflows/ci.yml` validates the CLI, site, agent skills, and branch policy. Only
+`staging` may open a pull request to `main`; feature branches target `staging`.
 
-This repository dogfoods the publishing path with `docmd.config.json`:
+Before publishing, run:
+
+```sh
+cargo fmt --check
+cargo test
+cargo clippy --all-targets -- -D warnings
+npm ci
+npm run build
+```
+
+## CLI and Homebrew release
+
+Distribution is configured through `cargo-dist`. A SemVer tag runs
+`.github/workflows/release.yml`, builds macOS/Linux artifacts, creates the GitHub Release,
+publishes the installer, and updates the Homebrew tap.
+
+Verify more than workflow completion:
+
+1. Confirm the GitHub Release contains the expected version and target artifacts.
+2. Confirm the Homebrew tap points at that release and its checksums.
+3. Install or upgrade through Homebrew and run `docslime --version`.
+4. Scaffold a throwaway repo and confirm the current template tree is emitted.
+
+## Skill distribution
+
+The `.agents/skills/docslime-*` directories are the canonical source. Validate them before
+release, then verify a fresh `npx skills add DecisionNerd/DocSlime` install contains the same
+skill set and instructions.
+
+## Documentation site
 
 ```sh
 npm run build
 ```
 
-That command runs `docmd build`, reads Markdown from `docs/`, and writes the static site to
-`site/`.
+`docmd` reads `docs/` and writes the static site to `site/`. Deployment configuration is
+outside the CLI; current build and runtime status must be verified through the configured
+host rather than inferred from generated files alone.
 
-## Official docmd.io References
+## Rollback
 
-- [docmd Quick Start](https://docs.docmd.io/getting-started/quick-start/) - local dev and
-  production build basics.
-- [docmd Deployment Overview](https://docs.docmd.io/deployment/) - deployment methods,
-  static output, and production checklist.
-- [Choosing Your Deployment Method](https://docs.docmd.io/guides/integrations/choosing-deployment-method/) -
-  when to use deploy helpers such as Vercel, Netlify, Docker, NGINX, or Caddy.
+- Revert or supersede a bad documentation/site deployment from the last known-good source
+  commit and rebuild.
+- For a bad CLI release, stop promotion, document the impact, and issue a corrected version;
+  do not move an immutable published tag.
+- For a bad Homebrew formula, restore the last known-good formula or publish the corrected
+  release, then verify installation through Homebrew.
 
-For DocSlime projects, the main requirement is simple: keep the generated Markdown plain,
-linked, and free of unfinished `LLM:` guidance before handing it to `docmd`.
+## Official references
+
+- [cargo-dist documentation](https://opensource.axo.dev/cargo-dist/)
+- [docmd Quick Start](https://docs.docmd.io/getting-started/quick-start/)
+- [docmd Deployment Overview](https://docs.docmd.io/deployment/)

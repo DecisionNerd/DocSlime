@@ -63,7 +63,7 @@ Once installed, invoke the skills from inside the agent:
 
 Each skill follows the docs tree instead of maintaining a separate source of truth. Product
 context lives in `docs/PRODUCT.md`, design context lives in `docs/DESIGN.md`, and decisions
-live in `docs/3-ENGINEERING/ADRs/`.
+live in `docs/engineering/adrs/`.
 
 The same files feed design work: `impeccable` loads `docs/PRODUCT.md` and `docs/DESIGN.md`
 for homepage/product critique, so skill-driven doc updates improve future UI iteration too.
@@ -72,9 +72,11 @@ for homepage/product critique, so skill-driven doc updates improve future UI ite
 
 1. Run `docslime init`.
 2. Fill `PRODUCT.md` with `docslime-fill`.
-3. Work through experiences, requirements, design, architecture, and testing.
+3. Capture discovery in `experience/`, translate it into `REQUIREMENTS.md`, then work through
+   architecture, testing, publishing, and observability.
 4. Use `docslime-adr` whenever a durable technical or product decision is made.
-5. Run `docslime-kiss` before merging documentation-heavy changes.
+5. Run `docslime-kiss` before merging documentation-heavy changes and whenever production
+   learning exposes stale assumptions.
 
 ## Validation
 

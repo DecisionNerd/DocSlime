@@ -1,9 +1,10 @@
 <!-- LLM: This document captures the product's design context: brand, content, interaction,
 accessibility, and component conventions that make the experience coherent. It is also
-discoverable by tools that look for DESIGN.md. Read PRODUCT.md and 1-EXPERIENCES.md first.
+discoverable by tools that look for DESIGN.md. Read PRODUCT.md and relevant evidence in
+experience/ first.
 Interview the user about any existing brand, UI kit, design system, Storybook, tokens,
 screenshots, Figma files, terminal conventions, docs standards, or accessibility bar. Keep
-implementation mechanics in 3-ENGINEERING/ unless they are necessary to explain a design
+implementation mechanics in engineering/ unless they are necessary to explain a design
 rule. Remove LLM comments as you go. -->
 
 # Design
@@ -17,7 +18,7 @@ _What should stay consistent across the product experience?_
 ## Design Principles
 
 <!-- LLM: Capture 3-6 principles that guide product decisions and UX trade-offs. These should
-connect to the experience principles in 1-EXPERIENCES.md. -->
+connect to evidence and hypotheses in experience/. -->
 
 - **_Principle name_** - _what it means in practice._
 

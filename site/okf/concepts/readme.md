@@ -6,44 +6,42 @@ path: /README/
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T04:25:52.803Z"
+  generated_at: "2026-07-10T20:50:08.948Z"
 ---
 # Documentation
 
-This folder holds the living documentation for DocSlime. It is structured for
-**behavior-driven development**: product and design context lead into experiences,
-requirements, architecture, testing, and ADRs. The docs stay in-repo so both people and AI
-coding agents have full context without reaching for an external source.
+DocSlime dogfoods the documentation lifecycle it scaffolds. Product and design context feed
+continuous discovery, requirements translate that evidence into a build contract, and the
+engineering docs carry the contract through architecture, testing, publishing, and
+production observability.
 
-## How the docs are organized
-
-Read the top-level docs in this order:
+## Lifecycle
 
 | Document | Question it answers |
 |---|---|
-| [`PRODUCT.md`](PRODUCT.md) | What is this product, who is it for, and why does it exist? |
-| [`1-EXPERIENCES.md`](1-EXPERIENCES.md) | What should it feel like to use? |
-| [`2-REQUIREMENTS.md`](2-REQUIREMENTS.md) | What must the system do? |
-| [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and CLI experience? |
-| [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
-| [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
-| [`publishing.md`](publishing.md) | How does the Markdown tree hand off to `docmd.io`? |
+| [`PRODUCT.md`](PRODUCT.md) | What is DocSlime, who is it for, and why does it exist? |
+| [`DESIGN.md`](DESIGN.md) | What should stay consistent across its CLI, templates, skills, and site? |
+| [`experience/`](experience/) | What user evidence, journeys, and behaviors inform the product? |
+| [`REQUIREMENTS.md`](REQUIREMENTS.md) | What must DocSlime demonstrably do as a result? |
+| [`engineering/ARCHITECTURE.md`](engineering/ARCHITECTURE.md) | How is the system built? |
+| [`engineering/TESTING.md`](engineering/TESTING.md) | How do tests and CI prove it before release? |
+| [`engineering/PUBLISHING.md`](engineering/PUBLISHING.md) | How do verified CLI, skill, and site artifacts reach users? |
+| [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY.md) | How do we verify releases and learn from production signals? |
 
-Supporting detail lives in subfolders:
+Supporting detail lives in:
 
 | Folder | Contents |
 |---|---|
-| [`0-PRODUCT/`](0-PRODUCT/) | Product, market, and positioning detail beyond `PRODUCT.md`. |
-| [`1-JOURNEYS/`](1-JOURNEYS/) | User personas, journeys, and experience detail. |
-| [`3-ENGINEERING/`](3-ENGINEERING/) | Technical documentation, including testing and decision records. |
-| [`3-ENGINEERING/ADRs/`](3-ENGINEERING/ADRs/) | Architecture Decision Records. |
+| [`strategy/`](strategy/) | Market, positioning, roadmap, and strategic bets beyond `PRODUCT.md`. |
+| [`experience/`](experience/) | Continuous-discovery practice and user-centered evidence. |
+| [`engineering/`](engineering/) | Technical lifecycle and operational documentation. |
+| [`engineering/adrs/`](engineering/adrs/) | Numbered Architecture Decision Records. |
 
 ## Conventions
 
-- **Keep docs current.** When behavior changes, update the doc in the same change.
-- **Link, don't duplicate.** Reference detail in subfolders rather than copying it.
-- **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
-- **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so tools like
-  `impeccable` can load them without duplicate root files.
-- **Keep publishing thin.** DocSlime prepares Markdown; `docmd.io` owns build and deployment
-  behavior.
+- Keep `PRODUCT.md` and `DESIGN.md` compact and discoverable by tools such as `impeccable`.
+- Link evidence forward: experience -> requirement -> architecture/test -> release -> observation.
+- Keep requirements solution-neutral; architecture owns how the system satisfies them.
+- Separate configured or deployed state from verified production behavior.
+- Record significant durable choices as ADRs.
+- Update the relevant docs in the same change as behavior.

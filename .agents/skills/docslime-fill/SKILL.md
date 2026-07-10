@@ -1,6 +1,6 @@
 ---
 name: docslime-fill
-description: Fills scaffolded DocSlime documents by interviewing the user and removing inline LLM guidance. Use when writing product, experiences, requirements, design, architecture, testing docs, or resolving placeholders.
+description: Fills scaffolded DocSlime documents by interviewing the user and removing inline LLM guidance. Use when writing product, discovery, requirements, design, architecture, testing, publishing, observability, or resolving placeholders.
 ---
 
 # DocSlime Fill
@@ -22,30 +22,30 @@ The `docs/` tree must exist. If it doesn't, run the **docslime-init** skill firs
 need to add one missing document, create it with `docslime add <name>` (run `docslime list` to
 see names).
 
-## The document chain
+## The document lifecycle
 
-The top-level docs build on each other — fill them roughly in order, because later ones
-reference earlier ones:
+Fill the durable context first, then follow evidence through delivery and production
+learning. Revisit earlier docs when observation changes what the team knows:
 
 1. `PRODUCT.md` — what the product is, who it serves, and why it exists
-2. `1-EXPERIENCES.md` — the user experience (detail in `1-JOURNEYS/`)
-3. `2-REQUIREMENTS.md` — what the system must do
-4. `3-ARCHITECTURE.md` — how it's designed (decisions captured as ADRs — see **docslime-adr**)
-5. `4-TESTING.md` — how we prove it fulfills the product goals
-6. `publishing.md` — how clean Markdown hands off to a docs publishing system
-
-`0-PRODUCT/`, `1-JOURNEYS/`, `DESIGN.md`, and `3-ENGINEERING/` hold deeper detail beyond
-the top-level docs.
+2. `DESIGN.md` — the experience principles and reusable design rules
+3. `strategy/` — deeper market, positioning, roadmap, and strategic-bet context when needed
+4. `experience/` — continuous discovery, journeys, opportunities, hypotheses, and behavior
+5. `REQUIREMENTS.md` — the testable build contract derived from product, design, and evidence
+6. `engineering/ARCHITECTURE.md` — how it is designed (decisions live in `engineering/adrs/`)
+7. `engineering/TESTING.md` — how tests and CI prove it before release
+8. `engineering/PUBLISHING.md` — how verified artifacts reach users safely
+9. `engineering/OBSERVABILITY.md` — how production evidence closes the discovery loop
 
 ## Guardrails
 
 - Do not invent product facts, requirements, architecture, tests, decisions, users, or metrics.
 - Ask one focused question at a time when facts are missing.
 - Preserve existing user-written content unless it conflicts with a correction the user gives.
-- Keep requirements testable, architecture grounded in real domain boundaries, and testing
-  docs mapped to Given/When/Then behavior.
-- Keep publishing guidance thin: link to official publishing docs rather than copying platform
-  instructions.
+- Keep requirements testable and solution-neutral, architecture grounded in real domain
+  boundaries, and testing mapped to Given/When/Then behavior.
+- Keep publishing grounded in actual artifacts, gates, promotion, verification, and rollback.
+- Keep observability tied to user outcomes as well as system health; never invent telemetry.
 
 ## Steps
 
@@ -68,14 +68,15 @@ Follow the guidance comments. Ask **one focused question at a time**, reflect th
 answer back in your own words, and confirm before writing. Don't dump every question at
 once and don't invent facts — if the user doesn't know something, note it and move on.
 
-Pull context from earlier docs in the chain: when filling `2-REQUIREMENTS.md`, ground it in
-what `PRODUCT.md` and `1-EXPERIENCES.md` already say.
+Pull context from the lifecycle: when filling `REQUIREMENTS.md`, ground it in `PRODUCT.md`,
+`DESIGN.md`, and evidence in `experience/`. When filling observability, trace signals back to
+requirements and discovery hypotheses.
 
 ### 3 — Write each section
 
 Replace the italic prompt and write the real content per the section's guidance. Match the
 intended altitude — `PRODUCT.md` stays tight (it's product context, not a spec);
-`3-ARCHITECTURE.md` can go deeper.
+`engineering/ARCHITECTURE.md` can go deeper.
 
 ### 4 — Remove the guidance comment
 

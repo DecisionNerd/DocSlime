@@ -24,20 +24,22 @@
   "navigation": [
     { "title": "Overview", "path": "/", "icon": "zap" },
     { "title": "Product", "path": "/PRODUCT/", "icon": "target" },
-    { "title": "Experiences", "path": "/1-EXPERIENCES/", "icon": "route" },
-    { "title": "Requirements", "path": "/2-REQUIREMENTS/", "icon": "list-checks" },
     { "title": "Design", "path": "/DESIGN/", "icon": "palette" },
-    { "title": "Architecture", "path": "/3-ARCHITECTURE/", "icon": "boxes" },
-    { "title": "Testing", "path": "/4-TESTING/", "icon": "flask-conical" },
+    { "title": "Strategy", "path": "/strategy/", "icon": "telescope" },
+    { "title": "Experience", "path": "/experience/", "icon": "route" },
+    { "title": "Requirements", "path": "/REQUIREMENTS/", "icon": "list-checks" },
     { "title": "Agent Skills", "path": "/skills/", "icon": "brain-circuit" },
-    { "title": "Publishing", "path": "/publishing/", "icon": "upload-cloud" },
     {
       "title": "Engineering",
       "icon": "wrench",
       "collapsible": false,
       "children": [
-        { "title": "Engineering", "path": "/3-ENGINEERING/", "icon": "file-code" },
-        { "title": "ADRs", "path": "/3-ENGINEERING/ADRs/", "icon": "scroll-text" }
+        { "title": "Engineering", "path": "/engineering/", "icon": "file-code" },
+        { "title": "Architecture", "path": "/engineering/ARCHITECTURE/", "icon": "boxes" },
+        { "title": "Testing", "path": "/engineering/TESTING/", "icon": "flask-conical" },
+        { "title": "Publishing", "path": "/engineering/PUBLISHING/", "icon": "upload-cloud" },
+        { "title": "Observability", "path": "/engineering/OBSERVABILITY/", "icon": "activity" },
+        { "title": "ADRs", "path": "/engineering/adrs/", "icon": "scroll-text" }
       ]
     },
     { "title": "GitHub", "path": "https://github.com/DecisionNerd/DocSlime", "icon": "github", "external": true }

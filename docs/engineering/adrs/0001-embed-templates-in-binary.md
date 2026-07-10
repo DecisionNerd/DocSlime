@@ -46,5 +46,5 @@ offline, and distribution requirements directly.
 - **Negative:** Any template change requires recompiling and cutting a new release; users
   cannot customize the templates without rebuilding from source.
 - **Follow-up:** If user-customizable layouts become a requirement (tracked as an open
-  question in `../../2-REQUIREMENTS.md`), revisit with a new ADR that supersedes this one —
+  question in `../../REQUIREMENTS.md`), revisit with a new ADR that supersedes this one —
   e.g. allowing an external template directory to override the embedded default.

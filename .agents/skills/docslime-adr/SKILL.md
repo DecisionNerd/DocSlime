@@ -19,7 +19,8 @@ its consequences — so the reasoning lives in the repo alongside the code.
 ## Prerequisites
 
 The `docs/` tree must exist (run **docslime-init** if not) and `docslime` must be installed (run
-**docslime-install** if not). ADRs live in `docs/3-ENGINEERING/ADRs/`.
+**docslime-install** if not). ADRs live in `docs/engineering/adrs/`. Older initialized trees
+may still use `docs/3-ENGINEERING/ADRs/`; the CLI continues there rather than splitting the log.
 
 ## Guardrails
 
@@ -38,7 +39,7 @@ docslime add adr <short-slug>
 ```
 
 `<slug>` is a short kebab name for the decision, e.g. `use-postgres`. `docslime` writes
-`docs/3-ENGINEERING/ADRs/NNNN-<slug>.md`, where `NNNN` is the next number after the highest
+`docs/engineering/adrs/NNNN-<slug>.md`, where `NNNN` is the next number after the highest
 existing record (`0001` if there are none). The slug is lower-cased and hyphenated
 automatically, so `docslime add adr "Use Postgres"` produces `0002-use-postgres.md`.
 
@@ -52,7 +53,7 @@ ADR, one decision. Work through the sections:
 - **Title & metadata** — set `ADR-NNNN: <Title>`, `Status: Proposed` (→ `Accepted` once
   decided), today's `Date`, and the deciders.
 - **Context** — the forces, constraints, and requirements that force a choice. Reference
-  requirement IDs from `../../2-REQUIREMENTS.md` where relevant. State facts, not the choice.
+  requirement IDs from `../../REQUIREMENTS.md` where relevant. State facts, not the choice.
 - **Options considered** — the realistic alternatives (including "do nothing"), each with
   pros and cons. Ask the user what was actually on the table.
 - **Decision** — the option chosen and the reasoning. Be definite.
@@ -63,7 +64,8 @@ comment and replace each `_italic prompt_` as you complete its section.
 
 ### 3 — Update the decision log
 
-Add a row for this ADR to the table in `docs/3-ENGINEERING/ADRs/README.md`:
+Add a row for this ADR to the table in `docs/engineering/adrs/README.md` (or the legacy ADR
+index when the CLI deliberately continued an older tree):
 
 ```
 | 0002 | Use Postgres | Accepted | 2026-06-02 |
@@ -83,7 +85,7 @@ See the verification section below before reporting completion.
 ## Verification
 
 ```bash
-grep -rn "LLM:" docs/3-ENGINEERING/ADRs/
+grep -rn "LLM:" docs/engineering/adrs/ docs/3-ENGINEERING/ADRs/ 2>/dev/null
 ```
 
 When the new ADR and the log are clean, summarize the decision and the record's number.

@@ -1,8 +1,8 @@
 <!-- LLM: This document explains how the system is designed to meet the requirements
-(2-REQUIREMENTS.md). Read the prior docs first so the architecture clearly serves the
-requirements and experiences. Interview the user about the actual or intended design — don't
+(../REQUIREMENTS.md). Read the prior docs first so the architecture clearly serves the
+requirements and experience evidence. Interview the user about the actual or intended design — don't
 invent components. Where a significant choice was made between alternatives, record it as an
-ADR in 3-ENGINEERING/ADRs/ and link to it here rather than arguing the decision inline.
+ADR in adrs/ and link to it here rather than arguing the decision inline.
 Remove LLM comments as you fill each section. -->
 
 # Architecture
@@ -55,7 +55,7 @@ say so and remove the table. -->
 
 <!-- LLM: Trace 1-3 important paths through the system end-to-end (e.g. the main request, the
 main command). Number the steps and name the components involved. These should line up with
-the key experiences in 1-EXPERIENCES.md. -->
+the relevant requirements and evidence in ../experience/. -->
 
 ### _Flow name_
 
@@ -79,7 +79,7 @@ and how they're addressed. Drop the ones that don't apply. -->
 re-argue them here. If no ADRs exist yet, prompt the user: "What were the big either/or
 choices? Each deserves an ADR." Use `docslime add adr <slug>` to create one. -->
 
-- _[ADR-0001 — short title](3-ENGINEERING/ADRs/0001-*.md)_
+- _[ADR-0001 — short title](adrs/0001-*.md)_
 
 ## Risks & trade-offs
 

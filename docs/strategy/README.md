@@ -1,24 +1,22 @@
-# Product
+# Strategy
 
-This folder expands on [`../PRODUCT.md`](../PRODUCT.md) with product, market, positioning,
-and publication detail that does not belong in the compact top-level product context.
+This folder expands [`../PRODUCT.md`](../PRODUCT.md) with strategic context that changes at a
+different cadence from the durable product definition.
 
-## What lives here
+## Current strategic frame
 
-DocSlime is still a small open-source developer tool, but the product frame is broader than
-the old scaffold-only positioning. These are the natural homes for deeper detail as the
-product grows:
+- **Audience:** engineering teams using AI agents across services and user-facing products.
+- **Alternative:** wikis, generic doc generators, tickets, and ad hoc `docs/` conventions
+  that do not give agents a predictable, fillable, traceable context structure.
+- **Positioning:** a small opinionated CLI plus agent skills that make living in-repo docs
+  easier to create, fill, review, and maintain.
+- **Distribution:** Homebrew, install script, source build, and reusable agent skills.
+- **Business model:** free and open source today.
 
-- **Market & users** — teams using AI agents across services and user-facing products.
-- **Competitive landscape** — alternatives (wikis, doc generators, ad-hoc `docs/`
-  conventions) and how DocSlime differs by being agent-fillable, standardized, and
-  traceability-oriented.
-- **Positioning & messaging** — how DocSlime is framed; currently captured in the project [`README`](../../README.md).
-- **Publishing** — how DocSlime docs move into the `docmd.io` system.
-- **Roadmap** — sequencing of future bets (e.g. customizable layouts, a `--path` flag — see open questions in [`../2-REQUIREMENTS.md`](../2-REQUIREMENTS.md)).
-- **Pricing / business model** — not applicable for the CLI today; DocSlime is free and open source.
+Requirements do not live here. Validated product needs become stable commitments in
+[`../REQUIREMENTS.md`](../REQUIREMENTS.md).
 
 ## Index
 
-_No detailed product documents yet. Add one focused file per topic above as the need arises,
-and list it here._
+No additional strategy documents exist yet. Add one focused file when market evidence,
+positioning, roadmap, or another strategic bet needs more detail than `PRODUCT.md`.
