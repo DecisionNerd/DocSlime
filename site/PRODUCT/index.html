@@ -103,11 +103,11 @@
     </title>
 
     <base href="/">
-    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mre1ybgf">
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mre1ybgf">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mrea2r5a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrea2r5a">
     
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mre1ybgf" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mre1ybgf" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrea2r5a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrea2r5a" id="hljs-dark" disabled>
     
     
 <meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
@@ -122,11 +122,11 @@
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mre1ybgf" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mre1ybgf" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrea2r5a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrea2r5a" >
 
     
-      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mre1ybgf">
+      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mrea2r5a">
     
     <script>/**
  * --------------------------------------------------------------------
@@ -618,6 +618,40 @@
         
       </li>
     
+      <li class="" >
+      
+        <a href="../publishing/" class=" "
+          >
+           
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Publishing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
       <li class="expanded nav-group" >
       
         <span class="nav-label nav-group">
@@ -827,7 +861,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="%23%20Product%0A%0ADocSlime%20is%20an%20opinionated%20documentation%20system%20for%20codebases.%20It%20gives%20a%20repo%20a%20consistent%0A%60docs%2F%60%20tree%2C%20a%20%60docslime%60%20CLI%2C%20and%20agent%20skills%20that%20help%20teams%20turn%20product%20intent%20into%0Afilled-in%2C%20version-controlled%20Markdown.%0A%0AIt%20exists%20so%20services%20and%20user-facing%20products%20can%20carry%20their%20product%20context%2C%20experiences%2C%0Arequirements%2C%20design%20guidance%2C%20architecture%2C%20tests%2C%20and%20decisions%20next%20to%20the%20code.%20Agents%0Aworking%20in%20the%20repo%20can%20read%20that%20context%20directly%20instead%20of%20guessing%20from%20implementation%0Adetails%20alone.%0A%0A%23%23%20Problem%0A%0AProject%20knowledge%20usually%20lives%20away%20from%20the%20work%3A%20in%20tickets%2C%20chats%2C%20wikis%2C%20docs%20tools%2C%0Aand%20memory.%20That%20is%20painful%20for%20humans%20and%20worse%20for%20AI%20coding%20agents%2C%20which%20often%20see%20the%0Acode%20but%20not%20the%20intent%20behind%20it.%20Teams%20also%20reinvent%20documentation%20structure%20per%20repo%2C%20so%0Athere%20is%20no%20familiar%20shape%20for%20agents%20to%20read%2C%20fill%2C%20tighten%2C%20or%20publish.%0A%0AThe%20result%20is%20predictable%3A%20missing%20context%2C%20stale%20decisions%2C%20requirements%20that%20do%20not%20map%20to%0Atests%2C%20and%20architecture%20docs%20that%20sound%20polished%20but%20do%20not%20guide%20the%20next%20change.%0A%0A%23%23%20Vision%0A%0ADocSlime%20makes%20the%20repo%20the%20product%20and%20engineering%20context%20container.%20A%20team%20runs%0A%60docslime%20init%60%2C%20answers%20focused%20agent%20questions%2C%20records%20ADRs%20as%20decisions%20happen%2C%20and%20uses%0A%60docslime-kiss%60%20to%20keep%20the%20tree%20lean%20and%20honest.%0A%0AThe%20system%20is%20playful%20in%20name%20but%20serious%20in%20method%3A%20it%20gathers%20the%20scattered%20pieces%20of%20a%0Aproject%20into%20one%20integrated%20docs%20body%2C%20then%20gives%20humans%20and%20agents%20more%20power%20because%20the%0Acontext%20is%20complete%2C%20local%2C%20and%20testable.%0A%0A%23%23%20Product%20Shape%0A%0A-%20**CLI%3A**%20%60docslime%20init%60%2C%20%60docslime%20add%60%2C%20and%20%60docslime%20list%60%20manage%20the%20scaffold.%0A-%20**Skills%3A**%20%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20and%0A%20%20%60docslime-kiss%60%20drive%20the%20human-in-the-loop%20documentation%20lifecycle.%0A-%20**Impeccable%20integration%3A**%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20are%20discoverable%20product%0A%20%20and%20design%20context%20files%20without%20needing%20root-level%20duplicates.%0A-%20**Publishing%20path%3A**%20the%20docs%20stay%20plain%20Markdown%20and%20are%20intended%20to%20publish%20through%20the%0A%20%20%60docmd.io%60%20system.%0A-%20**Quality%20stance%3A**%20requirements%20should%20trace%20to%20BDD%20scenarios%20and%20tests%2C%20architecture%0A%20%20should%20use%20Domain%20Driven%20Design%20language%20where%20it%20clarifies%20the%20system%2C%20and%20significant%0A%20%20choices%20should%20become%20ADRs.%0A%0A%23%23%20Goals%0A%0A-%20Give%20every%20repo%20a%20consistent%2C%20agent-readable%20documentation%20structure.%0A-%20Make%20first-run%20value%20fast%3A%20%60docslime%20init%60%20should%20create%20useful%20next%20steps%20immediately.%0A-%20Keep%20product%2C%20design%2C%20engineering%2C%20testing%2C%20and%20ADR%20context%20local%20and%20version-controlled.%0A-%20Support%20both%20services%20and%20user-facing%20products%20without%20splitting%20into%20separate%20doc%20systems.%0A-%20Make%20docs%20easier%20to%20fill%2C%20review%2C%20tighten%2C%20and%20publish%20than%20to%20let%20drift.%0A%0A%23%23%20Non-goals%0A%0A-%20DocSlime%20does%20not%20replace%20the%20human%20conversation.%20Agents%20fill%20docs%20by%20interviewing%20the%0A%20%20team%2C%20not%20by%20inventing%20facts.%0A-%20DocSlime%20does%20not%20add%20a%20runtime%20service%20or%20database%20to%20the%20target%20project.%0A-%20DocSlime%20does%20not%20turn%20the%20CLI%20into%20a%20publishing%20host%3B%20publication%20belongs%20to%20the%0A%20%20%60docmd.io%60%20system.%0A-%20DocSlime%20does%20not%20make%20%60kiss%60%20a%20CLI%20command.%20KISS%20review%20is%20an%20agent%20skill%20because%20it%0A%20%20depends%20on%20judgment%20over%20filled%20docs.%0A%0A%23%23%20Success%20Metrics%0A%0A-%20**Docs%20get%20filled%3A**%20scaffolded%20documents%20are%20completed%2C%20with%20no%20leftover%20%60LLM%3A%60%20guidance.%0A-%20**Traceability%20improves%3A**%20requirements%2C%20behavior%20scenarios%2C%20tests%2C%20and%20ADRs%20point%20to%20each%0A%20%20other%20clearly%20enough%20for%20a%20future%20agent%20to%20act.%0A-%20**Low%20friction%3A**%20short%20time%20from%20%60docslime%20init%60%20to%20a%20useful%20first%20filled%20document.%0A-%20**Adoption%3A**%20installs%20through%20Homebrew%2C%20shell%20installer%2C%20source%20builds%2C%20and%20skill-pack%20use.%0A-%20**Publication%20readiness%3A**%20docs%20remain%20clean%20Markdown%20that%20can%20flow%20into%20%60docmd.io%60.%0A%0A%23%23%20Stakeholders%0A%0A-%20**Maintainer%20(DecisionNerd)%3A**%20owns%20DocSlime&#039;s%20direction%2C%20release%20process%2C%20templates%2C%20and%0A%20%20skill%20pack.%0A-%20**Engineering%20teams%3A**%20adopt%20the%20tree%20across%20repos%20to%20keep%20intent%20close%20to%20code.%0A-%20**Product%20and%20design%20collaborators%3A**%20use%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20as%20compact%20context%0A%20%20for%20shaping%20user-facing%20work.%0A-%20**AI%20coding%20agents%3A**%20fill%2C%20consume%2C%20critique%2C%20and%20maintain%20the%20docs%20while%20working%20in%20the%0A%20%20repo.%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="%23%20Product%0A%0ADocSlime%20is%20an%20opinionated%20documentation%20system%20for%20codebases.%20It%20gives%20a%20repo%20a%20consistent%0A%60docs%2F%60%20tree%2C%20a%20%60docslime%60%20CLI%2C%20and%20agent%20skills%20that%20help%20teams%20turn%20product%20intent%20into%0Afilled-in%2C%20version-controlled%20Markdown.%0A%0AIt%20exists%20so%20services%20and%20user-facing%20products%20can%20carry%20their%20product%20context%2C%20experiences%2C%0Arequirements%2C%20design%20guidance%2C%20architecture%2C%20tests%2C%20and%20decisions%20next%20to%20the%20code.%20Agents%0Aworking%20in%20the%20repo%20can%20read%20that%20context%20directly%20instead%20of%20guessing%20from%20implementation%0Adetails%20alone.%0A%0A%23%23%20Problem%0A%0AProject%20knowledge%20usually%20lives%20away%20from%20the%20work%3A%20in%20tickets%2C%20chats%2C%20wikis%2C%20docs%20tools%2C%0Aand%20memory.%20That%20is%20painful%20for%20humans%20and%20worse%20for%20AI%20coding%20agents%2C%20which%20often%20see%20the%0Acode%20but%20not%20the%20intent%20behind%20it.%20Teams%20also%20reinvent%20documentation%20structure%20per%20repo%2C%20so%0Athere%20is%20no%20familiar%20shape%20for%20agents%20to%20read%2C%20fill%2C%20tighten%2C%20or%20publish.%0A%0AThe%20result%20is%20predictable%3A%20missing%20context%2C%20stale%20decisions%2C%20requirements%20that%20do%20not%20map%20to%0Atests%2C%20and%20architecture%20docs%20that%20sound%20polished%20but%20do%20not%20guide%20the%20next%20change.%0A%0A%23%23%20Vision%0A%0ADocSlime%20makes%20the%20repo%20the%20product%20and%20engineering%20context%20container.%20A%20team%20runs%0A%60docslime%20init%60%2C%20answers%20focused%20agent%20questions%2C%20records%20ADRs%20as%20decisions%20happen%2C%20and%20uses%0A%60docslime-kiss%60%20to%20keep%20the%20tree%20lean%20and%20honest.%0A%0AThe%20system%20is%20playful%20in%20name%20but%20serious%20in%20method%3A%20it%20gathers%20the%20scattered%20pieces%20of%20a%0Aproject%20into%20one%20integrated%20docs%20body%2C%20then%20gives%20humans%20and%20agents%20more%20power%20because%20the%0Acontext%20is%20complete%2C%20local%2C%20and%20testable.%0A%0A%23%23%20Product%20Shape%0A%0A-%20**CLI%3A**%20%60docslime%20init%60%2C%20%60docslime%20add%60%2C%20and%20%60docslime%20list%60%20manage%20the%20scaffold.%0A-%20**Skills%3A**%20%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20and%0A%20%20%60docslime-kiss%60%20drive%20the%20human-in-the-loop%20documentation%20lifecycle.%0A-%20**Impeccable%20integration%3A**%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20are%20discoverable%20product%0A%20%20and%20design%20context%20files%20without%20needing%20root-level%20duplicates%2C%20so%20%60impeccable%60%20can%20critique%0A%20%20and%20polish%20product%20surfaces%20from%20the%20same%20docs%20tree%20agents%20use.%0A-%20**Publishing%20path%3A**%20the%20docs%20stay%20plain%20Markdown%20and%20are%20intended%20to%20publish%20through%20the%0A%20%20%60docmd.io%60%20system%3B%20DocSlime%20links%20to%20that%20system%20instead%20of%20reimplementing%20it.%0A-%20**Quality%20stance%3A**%20requirements%20should%20trace%20to%20BDD%20scenarios%20and%20tests%2C%20architecture%0A%20%20should%20use%20Domain%20Driven%20Design%20language%20where%20it%20clarifies%20the%20system%2C%20and%20significant%0A%20%20choices%20should%20become%20ADRs.%0A%0A%23%23%20Quality%20Method%0A%0ADocSlime&#039;s%20quality%20method%20is%20a%20trace%2C%20not%20a%20ceremony%3A%0A%0A%60%60%60text%0Aproduct%20goal%20-%3E%20experience%20-%3E%20requirement%20-%3E%20BDD%20scenario%20-%3E%20test%20-%3E%20ADR%20when%20a%20choice%20matters%0A%60%60%60%0A%0A-%20**TDD%2BBDD%3A**%20requirements%20get%20stable%20IDs%2C%20behavior%20is%20written%20in%20Given%2FWhen%2FThen%20language%2C%0A%20%20and%20tests%20prove%20observable%20behavior%20before%20the%20docs%20call%20it%20done.%0A-%20**Domain%20Driven%20Design%3A**%20architecture%20docs%20name%20the%20domain%20concepts%2C%20boundaries%2C%20and%0A%20%20language%20that%20matter%20for%20the%20project%3B%20small%20projects%20can%20stay%20light%2C%20but%20they%20should%20still%0A%20%20know%20their%20core%20nouns%20and%20responsibilities.%0A-%20**ADRs%3A**%20durable%20choices%20live%20in%20%603-ENGINEERING%2FADRs%2F%60%20so%20future%20humans%20and%20agents%20can%20see%0A%20%20why%20the%20current%20shape%20exists.%0A%0A%23%23%20Goals%0A%0A-%20Give%20every%20repo%20a%20consistent%2C%20agent-readable%20documentation%20structure.%0A-%20Make%20first-run%20value%20fast%3A%20%60docslime%20init%60%20should%20create%20useful%20next%20steps%20immediately.%0A-%20Keep%20product%2C%20design%2C%20engineering%2C%20testing%2C%20and%20ADR%20context%20local%20and%20version-controlled.%0A-%20Support%20both%20services%20and%20user-facing%20products%20without%20splitting%20into%20separate%20doc%20systems.%0A-%20Make%20docs%20easier%20to%20fill%2C%20review%2C%20tighten%2C%20and%20publish%20than%20to%20let%20drift.%0A%0A%23%23%20Non-goals%0A%0A-%20DocSlime%20does%20not%20replace%20the%20human%20conversation.%20Agents%20fill%20docs%20by%20interviewing%20the%0A%20%20team%2C%20not%20by%20inventing%20facts.%0A-%20DocSlime%20does%20not%20add%20a%20runtime%20service%20or%20database%20to%20the%20target%20project.%0A-%20DocSlime%20does%20not%20turn%20the%20CLI%20into%20a%20publishing%20host%3B%20publication%20belongs%20to%20the%0A%20%20%60docmd.io%60%20system.%0A-%20DocSlime%20does%20not%20make%20%60kiss%60%20a%20CLI%20command.%20KISS%20review%20is%20an%20agent%20skill%20because%20it%0A%20%20depends%20on%20judgment%20over%20filled%20docs.%0A%0A%23%23%20Success%20Metrics%0A%0A-%20**Docs%20get%20filled%3A**%20scaffolded%20documents%20are%20completed%2C%20with%20no%20leftover%20%60LLM%3A%60%20guidance.%0A-%20**Traceability%20improves%3A**%20requirements%2C%20behavior%20scenarios%2C%20tests%2C%20and%20ADRs%20point%20to%20each%0A%20%20other%20clearly%20enough%20for%20a%20future%20agent%20to%20act.%0A-%20**Design%20context%20improves%3A**%20%60impeccable%60%20resolves%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%0A%20%20as%20the%20current%20product%2Fdesign%20source%20without%20bridge%20files%20that%20can%20drift.%0A-%20**Low%20friction%3A**%20short%20time%20from%20%60docslime%20init%60%20to%20a%20useful%20first%20filled%20document.%0A-%20**Adoption%3A**%20installs%20through%20Homebrew%2C%20shell%20installer%2C%20source%20builds%2C%20and%20skill-pack%20use.%0A-%20**Publication%20readiness%3A**%20docs%20remain%20clean%20Markdown%20that%20can%20flow%20into%20%60docmd.io%60.%0A%0A%23%23%20Stakeholders%0A%0A-%20**Maintainer%20(DecisionNerd)%3A**%20owns%20DocSlime&#039;s%20direction%2C%20release%20process%2C%20templates%2C%20and%0A%20%20skill%20pack.%0A-%20**Engineering%20teams%3A**%20adopt%20the%20tree%20across%20repos%20to%20keep%20intent%20close%20to%20code.%0A-%20**Product%20and%20design%20collaborators%3A**%20use%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20as%20compact%20context%0A%20%20for%20shaping%20user-facing%20work.%0A-%20**AI%20coding%20agents%3A**%20fill%2C%20consume%2C%20critique%2C%20and%20maintain%20the%20docs%20while%20working%20in%20the%0A%20%20repo.%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -920,12 +954,26 @@ context is complete, local, and testable.</p>
 <li><strong>Skills:</strong> <code>docslime-install</code>, <code>docslime-init</code>, <code>docslime-fill</code>, <code>docslime-adr</code>, and<br>
 <code>docslime-kiss</code> drive the human-in-the-loop documentation lifecycle.</li>
 <li><strong>Impeccable integration:</strong> <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> are discoverable product<br>
-and design context files without needing root-level duplicates.</li>
+and design context files without needing root-level duplicates, so <code>impeccable</code> can critique<br>
+and polish product surfaces from the same docs tree agents use.</li>
 <li><strong>Publishing path:</strong> the docs stay plain Markdown and are intended to publish through the<br>
-<code>docmd.io</code> system.</li>
+<code>docmd.io</code> system; DocSlime links to that system instead of reimplementing it.</li>
 <li><strong>Quality stance:</strong> requirements should trace to BDD scenarios and tests, architecture<br>
 should use Domain Driven Design language where it clarifies the system, and significant<br>
 choices should become ADRs.</li>
+</ul>
+<h2 id="product-quality-method" class="docmd-heading"><a href="#product-quality-method" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Quality Method</h2>
+<p>DocSlime’s quality method is a trace, not a ceremony:</p>
+<pre class="hljs"><code class="language-text">product goal <span class="hljs-punctuation">-&gt;</span> experience <span class="hljs-punctuation">-&gt;</span> requirement <span class="hljs-punctuation">-&gt;</span> BDD scenario <span class="hljs-punctuation">-&gt;</span> test <span class="hljs-punctuation">-&gt;</span> ADR when a choice matters
+</code></pre>
+<ul>
+<li><strong>TDD+BDD:</strong> requirements get stable IDs, behavior is written in Given/When/Then language,<br>
+and tests prove observable behavior before the docs call it done.</li>
+<li><strong>Domain Driven Design:</strong> architecture docs name the domain concepts, boundaries, and<br>
+language that matter for the project; small projects can stay light, but they should still<br>
+know their core nouns and responsibilities.</li>
+<li><strong>ADRs:</strong> durable choices live in <code>3-ENGINEERING/ADRs/</code> so future humans and agents can see<br>
+why the current shape exists.</li>
 </ul>
 <h2 id="product-goals" class="docmd-heading"><a href="#product-goals" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Goals</h2>
 <ul>
@@ -950,6 +998,8 @@ depends on judgment over filled docs.</li>
 <li><strong>Docs get filled:</strong> scaffolded documents are completed, with no leftover <code>LLM:</code> guidance.</li>
 <li><strong>Traceability improves:</strong> requirements, behavior scenarios, tests, and ADRs point to each<br>
 other clearly enough for a future agent to act.</li>
+<li><strong>Design context improves:</strong> <code>impeccable</code> resolves <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code><br>
+as the current product/design source without bridge files that can drift.</li>
 <li><strong>Low friction:</strong> short time from <code>docslime init</code> to a useful first filled document.</li>
 <li><strong>Adoption:</strong> installs through Homebrew, shell installer, source builds, and skill-pack use.</li>
 <li><strong>Publication readiness:</strong> docs remain clean Markdown that can flow into <code>docmd.io</code>.</li>
@@ -1059,6 +1109,10 @@ repo.</li>
         </li>
       
         <li class="toc-item toc-level-2">
+          <a href="#product-quality-method" class="toc-link">Quality Method</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
           <a href="#product-goals" class="toc-link">Goals</a>
         </li>
       
@@ -1135,13 +1189,13 @@ repo.</li>
         </div>
       </div>
       
-      <script src="../assets/js/docmd-main.js?v=mre1ybgf"></script>
+      <script src="../assets/js/docmd-main.js?v=mrea2r5a"></script>
       
-      <script src="../assets/js/docmd-git.js?v=mre1ybgf"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mre1ybgf" ></script>
+      <script src="../assets/js/docmd-git.js?v=mrea2r5a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrea2r5a" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mre1ybgf" ></script>
-<script src="../assets/js/docmd-git.js?v=mre1ybgf" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mrea2r5a" ></script>
+<script src="../assets/js/docmd-git.js?v=mrea2r5a" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1217,7 +1271,7 @@ repo.</li>
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
       
         <script
-          src="../assets/js/docslime-nav.js?v=mre1ybgf"></script>
+          src="../assets/js/docslime-nav.js?v=mrea2r5a"></script>
         
       
       

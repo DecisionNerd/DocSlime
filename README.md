@@ -22,6 +22,7 @@ docs/
 ├── DESIGN.md           # product design, style, and accessibility guidance
 ├── 3-ARCHITECTURE.md   # how the system is designed
 ├── 4-TESTING.md        # how we test and evaluate that the system fulfills its goals
+├── publishing.md       # thin publishing handoff to docmd.io or another docs host
 ├── 0-PRODUCT/          # product, market, and positioning detail beyond PRODUCT.md
 │   └── README.md
 ├── 1-JOURNEYS/         # user personas, user journeys, and other experience detail

@@ -35,6 +35,20 @@ npx skills add DecisionNerd/DocSlime --agent claude-code
 | `docslime-adr` | Creates and fills the next-numbered Architecture Decision Record. |
 | `docslime-kiss` | Reviews filled docs for bloat, stale contradictions, weak traceability, and generic AI prose. |
 
+## Skill Quality Bar
+
+DocSlime skills are intentionally closer to small operating procedures than prompt snippets.
+Each bundled skill should tell an agent:
+
+- **When to use it** and when to hand off to another DocSlime skill.
+- **Prerequisites** such as an installed `docslime` binary, a repo root, or an existing docs tree.
+- **Steps** that preserve user work and ask for missing facts instead of inventing them.
+- **Guardrails** for the command surface: `init`, `add`, and `list` are CLI commands;
+  `docslime-kiss` is a skill.
+- **Verification** commands or checks that prove the work finished.
+- **Failure handling** for missing binaries, missing docs, ambiguous targets, dirty context, or
+  unfinished `LLM:` guidance.
+
 ## How it works at runtime
 
 Once installed, invoke the skills from inside the agent:
@@ -51,6 +65,9 @@ Each skill follows the docs tree instead of maintaining a separate source of tru
 context lives in `docs/PRODUCT.md`, design context lives in `docs/DESIGN.md`, and decisions
 live in `docs/3-ENGINEERING/ADRs/`.
 
+The same files feed design work: `impeccable` loads `docs/PRODUCT.md` and `docs/DESIGN.md`
+for homepage/product critique, so skill-driven doc updates improve future UI iteration too.
+
 ## Recommended flow
 
 1. Run `docslime init`.
@@ -58,3 +75,15 @@ live in `docs/3-ENGINEERING/ADRs/`.
 3. Work through experiences, requirements, design, architecture, and testing.
 4. Use `docslime-adr` whenever a durable technical or product decision is made.
 5. Run `docslime-kiss` before merging documentation-heavy changes.
+
+## Validation
+
+Run the repo-native checks before release or after changing skill metadata:
+
+```sh
+cargo test
+```
+
+The repository tests inspect the bundled skills for required sections, so skill robustness
+stays part of the normal test loop. When working in a harness that ships the Agent Skills
+validator, also run `quick_validate.py .agents/skills/<skill>` for each changed skill.

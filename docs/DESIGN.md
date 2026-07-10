@@ -23,10 +23,28 @@ generated Markdown, the agent skills, and the way those docs later publish throu
 - **Product name:** use `DocSlime` for the product and `docslime` for the binary/command.
 - **Tone:** practical, direct, and lightly playful when the name earns it. The product can
   carry the integrated "slime" idea without turning docs into a joke.
+- **Mascot:** use the blue anime slime as a product signal. It can appear in the homepage
+  hero and brand surfaces, but it should support the repo/docs artifact rather than replacing
+  developer credibility.
 - **Terminology:** use "docs tree," "product context," "design context," "requirements,"
   "BDD," "Domain Driven Design," "ADR," "template," "skill," and "agent" consistently.
 - **Writing rules:** generated guidance should be specific and interview-driven. Prefer
   "ask the user," "trace this to a requirement," and "record the decision" over vague advice.
+
+## Impeccable Workflow
+
+`impeccable` should treat `docs/PRODUCT.md` and `docs/DESIGN.md` as the current product and
+design context. UI work should begin by loading those files, critiquing the actual surface,
+and then changing the smallest set of docs/site files that makes the critique more true.
+
+For the homepage, the desired direction is:
+
+- lead with the outcome: DocSlime turns a repo into living docs;
+- show the repo/docs tree as the credibility anchor;
+- include the blue slime mascot as a memorable brand moment;
+- keep CTAs developer-native and direct;
+- avoid pink/purple gradient text, decorative grid backgrounds, oversized cards, and claims
+  that `docslime-kiss` is a CLI command.
 
 ## Markdown Experience
 

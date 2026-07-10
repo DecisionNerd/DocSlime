@@ -103,11 +103,11 @@
     </title>
 
     <base href="/">
-    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mre1ybgf">
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mre1ybgf">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mrea2r5a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrea2r5a">
     
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mre1ybgf" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mre1ybgf" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrea2r5a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrea2r5a" id="hljs-dark" disabled>
     
     
 <meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
@@ -122,11 +122,11 @@
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mre1ybgf" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mre1ybgf" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrea2r5a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrea2r5a" >
 
     
-      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mre1ybgf">
+      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mrea2r5a">
     
     <script>/**
  * --------------------------------------------------------------------
@@ -618,6 +618,40 @@
         
       </li>
     
+      <li class="" >
+      
+        <a href="../publishing/" class=" "
+          >
+           
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Publishing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
       <li class="expanded nav-group" >
       
         <span class="nav-label nav-group">
@@ -827,7 +861,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="%23%20Requirements%0A%0ADocSlime%20must%20scaffold%20a%20fixed%2C%20standardized%20%60docs%2F%60%20tree%20into%20a%20git%20repo%2C%20add%20individual%0Adocuments%20(including%20auto-numbered%20ADRs)%20on%20demand%2C%20and%20report%20what%20exists%20without%0Adestroying%20existing%20work.%20The%20templates%20must%20carry%20the%20inline%20guidance%20that%20lets%20an%20AI%20agent%0Afill%20them%20in%2C%20while%20the%20tree%20stays%20plain%20Markdown%20for%20%60impeccable%60%20context%20loading%20and%0A%60docmd.io%60%20publication.%0A%0A%23%23%20Functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Traces%20to%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20FR-1%20%7C%20The%20system%20shall%20create%20the%20full%20standardized%20%60docs%2F%60%20tree%20(%60PRODUCT.md%60%2C%20numbered%20docs%2C%20%60DESIGN.md%60%2C%20%600-PRODUCT%2F%60%2C%20%601-JOURNEYS%2F%60%2C%20%603-ENGINEERING%2F%60%2C%20and%20%603-ENGINEERING%2FADRs%2F%60)%20in%20the%20current%20directory%20via%20%60docslime%20init%60.%20%7C%20Scaffold%20the%20docs%20tree%20%7C%0A%7C%20FR-2%20%7C%20The%20system%20shall%20skip%20any%20file%20that%20already%20exists%20during%20%60init%60%20and%20%60add%60%2C%20and%20overwrite%20only%20when%20%60--force%60%20is%20given.%20%7C%20Non-destructive%20by%20default%20%7C%0A%7C%20FR-3%20%7C%20The%20system%20shall%20add%20a%20single%20named%20document%20via%20%60docslime%20add%20%3Cname%3E%60%2C%20resolving%20the%20name%20leniently%20(case-insensitive%2C%20with%20or%20without%20the%20%60.md%60%20extension).%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-4%20%7C%20The%20system%20shall%20create%20the%20next-numbered%20ADR%20via%20%60docslime%20add%20adr%20%3Cslug%3E%60%2C%20where%20the%20number%20is%20one%20greater%20than%20the%20highest%20existing%20%60NNNN-*%60%20record%20in%20the%20ADR%20directory%20(%600001%60%20if%20none).%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-5%20%7C%20The%20system%20shall%20normalize%20an%20ADR%20slug%20to%20lowercase%2C%20hyphen-separated%20%60%5Ba-z0-9-%5D%60%2C%20and%20reject%20a%20slug%20with%20no%20alphanumeric%20characters.%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-6%20%7C%20The%20system%20shall%20list%20every%20available%20template%20and%20whether%20it%20already%20exists%20on%20disk%20via%20%60docslime%20list%60%2C%20including%20the%20%60adr%60%20entry.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-7%20%7C%20The%20system%20shall%20embed%20all%20templates%20in%20the%20binary%20at%20compile%20time%2C%20requiring%20no%20network%20access%20or%20external%20files%20at%20runtime.%20%7C%20Fast%20and%20local%20%7C%0A%7C%20FR-8%20%7C%20The%20system%20shall%20report%20a%20clear%20error%20and%20list%20valid%20template%20names%20when%20given%20an%20unknown%20document%20name%2C%20and%20exit%20non-zero.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-9%20%7C%20The%20system%20shall%20provide%20installable%20agent%20skills%20(%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20%60docslime-kiss%60)%20that%20drive%20the%20documentation%20lifecycle.%20%7C%20Fill%20in%20and%20improve%20documents%20with%20an%20agent%20%7C%0A%7C%20FR-10%20%7C%20The%20%60docslime-kiss%60%20skill%20shall%20review%20filled%20docs%20for%20bloat%2C%20generic%20AI%20prose%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20non-actionable%20requirements%2C%20architecture%2C%20design%2C%20or%20testing%20content.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-11%20%7C%20The%20generated%20tree%20shall%20include%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20so%20%60impeccable%60%20can%20discover%20product%20and%20design%20context%20from%20the%20docs%20directory%20without%20duplicate%20root%20files.%20%7C%20Integrate%20with%20impeccable%20%7C%0A%7C%20FR-12%20%7C%20KISS%20review%20shall%20remain%20an%20agent%20skill%20rather%20than%20a%20%60docslime%60%20CLI%20subcommand.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%0A%23%23%20Non-functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Target%20%2F%20constraint%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20NFR-1%20%7C%20Portability%20%7C%20Runs%20on%20macOS%20(arm64%2C%20x86_64)%20and%20Linux%20(arm64%2C%20x86_64)%3B%20no%20runtime%20dependencies.%20%7C%0A%7C%20NFR-2%20%7C%20Performance%20%7C%20Commands%20complete%20near-instantly%20(well%20under%20a%20second)%20on%20a%20typical%20repo.%20%7C%0A%7C%20NFR-3%20%7C%20Distribution%20%7C%20Installable%20via%20Homebrew%20tap%2C%20shell%20installer%20script%2C%20and%20%60cargo%20install%60.%20%7C%0A%7C%20NFR-4%20%7C%20Safety%20%7C%20No%20command%20destroys%20user%20data%20without%20an%20explicit%20%60--force%60.%20%7C%0A%7C%20NFR-5%20%7C%20Maintainability%20%7C%20Templates%20are%20plain%20Markdown%20files%20in%20the%20repo%2C%20editable%20without%20touching%20Rust%20logic%20(rebuild%20required).%20%7C%0A%7C%20NFR-6%20%7C%20Toolchain%20%7C%20Builds%20with%20Rust%201.74%2B%20(2021%20edition).%20%7C%0A%7C%20NFR-7%20%7C%20Publication%20%7C%20Generated%20docs%20remain%20plain%20Markdown%20suitable%20for%20the%20%60docmd.io%60%20publishing%20system.%20%7C%0A%7C%20NFR-8%20%7C%20Quality%20stance%20%7C%20Docs%20support%20TDD%2BBDD%20traceability%2C%20Domain%20Driven%20Design%20framing%20where%20useful%2C%20and%20ADR-backed%20decisions.%20%7C%0A%0A%23%23%20Constraints%20%26%20assumptions%0A%0A-%20**Constraint%3A**%20Editing%20a%20template%20requires%20recompiling%20the%20binary%2C%20since%20templates%20are%20embedded%20via%20%60include_dir%60.%0A-%20**Constraint%3A**%20The%20tree%20structure%20is%20fixed%20in%20the%20templates%3B%20DocSlime%20does%20not%20take%20a%20user-supplied%20layout.%0A-%20**Constraint%3A**%20%60docslime-kiss%60%20is%20a%20skill%2C%20not%20a%20CLI%20command.%0A-%20**Assumption%3A**%20%60docslime%60%20is%20run%20at%20the%20root%20of%20the%20target%20git%20repo%3B%20the%20tree%20is%20created%20relative%20to%20the%20current%20directory.%0A-%20**Assumption%3A**%20An%20AI%20coding%20agent%20(not%20the%20CLI%20itself)%20writes%20the%20document%20content%20by%20following%20the%20inline%20guidance.%0A%0A%23%23%20Dependencies%0A%0A-%20**%60clap%60**%20%E2%80%94%20command-line%20argument%20parsing%20(derive%20API).%0A-%20**%60include_dir%60**%20%E2%80%94%20embeds%20the%20template%20tree%20into%20the%20binary%20at%20compile%20time.%0A-%20**%60anyhow%60%20%2F%20%60thiserror%60**%20%E2%80%94%20error%20handling%20and%20reporting.%0A-%20**%60owo-colors%60**%20%E2%80%94%20colored%20terminal%20output%20for%20%60list%60.%0A-%20**%60cargo-dist%60**%20%E2%80%94%20generates%20the%20release%20workflow%20and%20Homebrew%20formula%20(build%2Frelease%20time%20only).%0A%0A%23%23%20Open%20questions%0A%0A-%20Should%20DocSlime%20support%20a%20config%20file%20or%20flags%20to%20customize%20the%20tree%20layout%2C%20or%20stay%20fixed%3F%20%E2%80%94%20maintainer%0A-%20Should%20%60list%60%20%2F%20%60add%60%20operate%20on%20a%20non-current%20directory%20via%20a%20%60--path%60%20flag%3F%20%E2%80%94%20maintainer%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="%23%20Requirements%0A%0ADocSlime%20must%20scaffold%20a%20fixed%2C%20standardized%20%60docs%2F%60%20tree%20into%20a%20git%20repo%2C%20add%20individual%0Adocuments%20(including%20auto-numbered%20ADRs)%20on%20demand%2C%20and%20report%20what%20exists%20without%0Adestroying%20existing%20work.%20The%20templates%20must%20carry%20the%20inline%20guidance%20that%20lets%20an%20AI%20agent%0Afill%20them%20in%2C%20while%20the%20tree%20stays%20plain%20Markdown%20for%20%60impeccable%60%20context%20loading%20and%0A%60docmd.io%60%20publication.%0A%0A%23%23%20Functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Traces%20to%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20FR-1%20%7C%20The%20system%20shall%20create%20the%20full%20standardized%20%60docs%2F%60%20tree%20(%60PRODUCT.md%60%2C%20numbered%20docs%2C%20%60DESIGN.md%60%2C%20%60publishing.md%60%2C%20%600-PRODUCT%2F%60%2C%20%601-JOURNEYS%2F%60%2C%20%603-ENGINEERING%2F%60%2C%20and%20%603-ENGINEERING%2FADRs%2F%60)%20in%20the%20current%20directory%20via%20%60docslime%20init%60.%20%7C%20Scaffold%20the%20docs%20tree%20%7C%0A%7C%20FR-2%20%7C%20The%20system%20shall%20skip%20any%20file%20that%20already%20exists%20during%20%60init%60%20and%20%60add%60%2C%20and%20overwrite%20only%20when%20%60--force%60%20is%20given.%20%7C%20Non-destructive%20by%20default%20%7C%0A%7C%20FR-3%20%7C%20The%20system%20shall%20add%20a%20single%20named%20document%20via%20%60docslime%20add%20%3Cname%3E%60%2C%20resolving%20the%20name%20leniently%20(case-insensitive%2C%20with%20or%20without%20the%20%60.md%60%20extension).%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-4%20%7C%20The%20system%20shall%20create%20the%20next-numbered%20ADR%20via%20%60docslime%20add%20adr%20%3Cslug%3E%60%2C%20where%20the%20number%20is%20one%20greater%20than%20the%20highest%20existing%20%60NNNN-*%60%20record%20in%20the%20ADR%20directory%20(%600001%60%20if%20none).%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-5%20%7C%20The%20system%20shall%20normalize%20an%20ADR%20slug%20to%20lowercase%2C%20hyphen-separated%20%60%5Ba-z0-9-%5D%60%2C%20and%20reject%20a%20slug%20with%20no%20alphanumeric%20characters.%20%7C%20Record%20an%20architecture%20decision%20%7C%0A%7C%20FR-6%20%7C%20The%20system%20shall%20list%20every%20available%20template%20and%20whether%20it%20already%20exists%20on%20disk%20via%20%60docslime%20list%60%2C%20including%20the%20%60adr%60%20entry.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-7%20%7C%20The%20system%20shall%20embed%20all%20templates%20in%20the%20binary%20at%20compile%20time%2C%20requiring%20no%20network%20access%20or%20external%20files%20at%20runtime.%20%7C%20Fast%20and%20local%20%7C%0A%7C%20FR-8%20%7C%20The%20system%20shall%20report%20a%20clear%20error%20and%20list%20valid%20template%20names%20when%20given%20an%20unknown%20document%20name%2C%20and%20exit%20non-zero.%20%7C%20Add%20a%20single%20document%20%7C%0A%7C%20FR-9%20%7C%20The%20system%20shall%20provide%20installable%20agent%20skills%20(%60docslime-install%60%2C%20%60docslime-init%60%2C%20%60docslime-fill%60%2C%20%60docslime-adr%60%2C%20%60docslime-kiss%60)%20that%20drive%20the%20documentation%20lifecycle.%20%7C%20Fill%20in%20and%20improve%20documents%20with%20an%20agent%20%7C%0A%7C%20FR-10%20%7C%20The%20%60docslime-kiss%60%20skill%20shall%20review%20filled%20docs%20for%20bloat%2C%20generic%20AI%20prose%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20non-actionable%20requirements%2C%20architecture%2C%20design%2C%20or%20testing%20content.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-11%20%7C%20The%20generated%20tree%20shall%20include%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20so%20%60impeccable%60%20can%20discover%20product%20and%20design%20context%20from%20the%20docs%20directory%20without%20duplicate%20root%20files.%20%7C%20Integrate%20with%20impeccable%20%7C%0A%7C%20FR-12%20%7C%20KISS%20review%20shall%20remain%20an%20agent%20skill%20rather%20than%20a%20%60docslime%60%20CLI%20subcommand.%20%7C%20Tighten%20docs%20after%20filling%20%7C%0A%7C%20FR-13%20%7C%20Documentation%20guidance%20shall%20make%20the%20quality%20trace%20explicit%3A%20product%20goal%20-%3E%20experience%20-%3E%20requirement%20-%3E%20BDD%20scenario%20-%3E%20test%2C%20with%20ADRs%20linked%20when%20a%20durable%20decision%20explains%20the%20design.%20%7C%20TDD%2BBDD%20quality%20%7C%0A%7C%20FR-14%20%7C%20Architecture%20guidance%20shall%20ask%20for%20domain%20language%20and%20boundaries%20when%20useful%2C%20without%20forcing%20heavyweight%20Domain%20Driven%20Design%20ceremony%20on%20small%20projects.%20%7C%20Domain%20Driven%20Design%20%7C%0A%7C%20FR-15%20%7C%20Publishing%20guidance%20shall%20point%20to%20official%20%60docmd.io%60%20build%20and%20deployment%20docs%20rather%20than%20copying%20that%20content%20into%20DocSlime.%20%7C%20Publishable%20Markdown%20%7C%0A%7C%20FR-16%20%7C%20Each%20bundled%20DocSlime%20skill%20shall%20include%20clear%20prerequisites%2C%20steps%2C%20guardrails%2C%20verification%2C%20and%20failure%20handling.%20%7C%20Robust%20agent%20skills%20%7C%0A%0A%23%23%20Non-functional%20requirements%0A%0A%7C%20ID%20%7C%20Requirement%20%7C%20Target%20%2F%20constraint%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20NFR-1%20%7C%20Portability%20%7C%20Runs%20on%20macOS%20(arm64%2C%20x86_64)%20and%20Linux%20(arm64%2C%20x86_64)%3B%20no%20runtime%20dependencies.%20%7C%0A%7C%20NFR-2%20%7C%20Performance%20%7C%20Commands%20complete%20near-instantly%20(well%20under%20a%20second)%20on%20a%20typical%20repo.%20%7C%0A%7C%20NFR-3%20%7C%20Distribution%20%7C%20Installable%20via%20Homebrew%20tap%2C%20shell%20installer%20script%2C%20and%20%60cargo%20install%60.%20%7C%0A%7C%20NFR-4%20%7C%20Safety%20%7C%20No%20command%20destroys%20user%20data%20without%20an%20explicit%20%60--force%60.%20%7C%0A%7C%20NFR-5%20%7C%20Maintainability%20%7C%20Templates%20are%20plain%20Markdown%20files%20in%20the%20repo%2C%20editable%20without%20touching%20Rust%20logic%20(rebuild%20required).%20%7C%0A%7C%20NFR-6%20%7C%20Toolchain%20%7C%20Builds%20with%20Rust%201.74%2B%20(2021%20edition).%20%7C%0A%7C%20NFR-7%20%7C%20Publication%20%7C%20Generated%20docs%20remain%20plain%20Markdown%20suitable%20for%20the%20%60docmd.io%60%20publishing%20system.%20%7C%0A%7C%20NFR-8%20%7C%20Quality%20stance%20%7C%20Docs%20support%20TDD%2BBDD%20traceability%2C%20Domain%20Driven%20Design%20framing%20where%20useful%2C%20and%20ADR-backed%20decisions.%20%7C%0A%7C%20NFR-9%20%7C%20Skill%20maintainability%20%7C%20Skill%20instructions%20stay%20compact%20enough%20for%20agents%20to%20follow%20while%20still%20naming%20setup%2C%20verification%2C%20and%20blocked-state%20behavior.%20%7C%0A%7C%20NFR-10%20%7C%20Design%20context%20%7C%20%60impeccable%60%20context%20loading%20should%20be%20verified%20from%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20whenever%20homepage%20or%20design%20docs%20change.%20%7C%0A%0A%23%23%20Constraints%20%26%20assumptions%0A%0A-%20**Constraint%3A**%20Editing%20a%20template%20requires%20recompiling%20the%20binary%2C%20since%20templates%20are%20embedded%20via%20%60include_dir%60.%0A-%20**Constraint%3A**%20The%20tree%20structure%20is%20fixed%20in%20the%20templates%3B%20DocSlime%20does%20not%20take%20a%20user-supplied%20layout.%0A-%20**Constraint%3A**%20%60docslime-kiss%60%20is%20a%20skill%2C%20not%20a%20CLI%20command.%0A-%20**Assumption%3A**%20%60docslime%60%20is%20run%20at%20the%20root%20of%20the%20target%20git%20repo%3B%20the%20tree%20is%20created%20relative%20to%20the%20current%20directory.%0A-%20**Assumption%3A**%20An%20AI%20coding%20agent%20(not%20the%20CLI%20itself)%20writes%20the%20document%20content%20by%20following%20the%20inline%20guidance.%0A%0A%23%23%20Dependencies%0A%0A-%20**%60clap%60**%20%E2%80%94%20command-line%20argument%20parsing%20(derive%20API).%0A-%20**%60include_dir%60**%20%E2%80%94%20embeds%20the%20template%20tree%20into%20the%20binary%20at%20compile%20time.%0A-%20**%60anyhow%60%20%2F%20%60thiserror%60**%20%E2%80%94%20error%20handling%20and%20reporting.%0A-%20**%60owo-colors%60**%20%E2%80%94%20colored%20terminal%20output%20for%20%60list%60.%0A-%20**%60cargo-dist%60**%20%E2%80%94%20generates%20the%20release%20workflow%20and%20Homebrew%20formula%20(build%2Frelease%20time%20only).%0A%0A%23%23%20Open%20questions%0A%0A-%20Should%20DocSlime%20support%20a%20config%20file%20or%20flags%20to%20customize%20the%20tree%20layout%2C%20or%20stay%20fixed%3F%20%E2%80%94%20maintainer%0A-%20Should%20%60list%60%20%2F%20%60add%60%20operate%20on%20a%20non-current%20directory%20via%20a%20%60--path%60%20flag%3F%20%E2%80%94%20maintainer%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -910,7 +944,7 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
 <tbody>
 <tr>
 <td>FR-1</td>
-<td>The system shall create the full standardized <code>docs/</code> tree (<code>PRODUCT.md</code>, numbered docs, <code>DESIGN.md</code>, <code>0-PRODUCT/</code>, <code>1-JOURNEYS/</code>, <code>3-ENGINEERING/</code>, and <code>3-ENGINEERING/ADRs/</code>) in the current directory via <code>docslime init</code>.</td>
+<td>The system shall create the full standardized <code>docs/</code> tree (<code>PRODUCT.md</code>, numbered docs, <code>DESIGN.md</code>, <code>publishing.md</code>, <code>0-PRODUCT/</code>, <code>1-JOURNEYS/</code>, <code>3-ENGINEERING/</code>, and <code>3-ENGINEERING/ADRs/</code>) in the current directory via <code>docslime init</code>.</td>
 <td>Scaffold the docs tree</td>
 </tr>
 <tr>
@@ -968,6 +1002,26 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
 <td>KISS review shall remain an agent skill rather than a <code>docslime</code> CLI subcommand.</td>
 <td>Tighten docs after filling</td>
 </tr>
+<tr>
+<td>FR-13</td>
+<td>Documentation guidance shall make the quality trace explicit: product goal -&gt; experience -&gt; requirement -&gt; BDD scenario -&gt; test, with ADRs linked when a durable decision explains the design.</td>
+<td>TDD+BDD quality</td>
+</tr>
+<tr>
+<td>FR-14</td>
+<td>Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects.</td>
+<td>Domain Driven Design</td>
+</tr>
+<tr>
+<td>FR-15</td>
+<td>Publishing guidance shall point to official <code>docmd.io</code> build and deployment docs rather than copying that content into DocSlime.</td>
+<td>Publishable Markdown</td>
+</tr>
+<tr>
+<td>FR-16</td>
+<td>Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling.</td>
+<td>Robust agent skills</td>
+</tr>
 </tbody>
 </table>
 </div><h2 id="requirements-non-functional-requirements" class="docmd-heading"><a href="#requirements-non-functional-requirements" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Non-functional requirements</h2>
@@ -1019,6 +1073,16 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
 <td>NFR-8</td>
 <td>Quality stance</td>
 <td>Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions.</td>
+</tr>
+<tr>
+<td>NFR-9</td>
+<td>Skill maintainability</td>
+<td>Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior.</td>
+</tr>
+<tr>
+<td>NFR-10</td>
+<td>Design context</td>
+<td><code>impeccable</code> context loading should be verified from <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> whenever homepage or design docs change.</td>
 </tr>
 </tbody>
 </table>
@@ -1266,13 +1330,13 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
         </div>
       </div>
       
-      <script src="../assets/js/docmd-main.js?v=mre1ybgf"></script>
+      <script src="../assets/js/docmd-main.js?v=mrea2r5a"></script>
       
-      <script src="../assets/js/docmd-git.js?v=mre1ybgf"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mre1ybgf" ></script>
+      <script src="../assets/js/docmd-git.js?v=mrea2r5a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrea2r5a" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mre1ybgf" ></script>
-<script src="../assets/js/docmd-git.js?v=mre1ybgf" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mrea2r5a" ></script>
+<script src="../assets/js/docmd-git.js?v=mrea2r5a" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1348,7 +1412,7 @@ fill them in, while the tree stays plain Markdown for <code>impeccable</code> co
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
       
         <script
-          src="../assets/js/docslime-nav.js?v=mre1ybgf"></script>
+          src="../assets/js/docslime-nav.js?v=mrea2r5a"></script>
         
       
       

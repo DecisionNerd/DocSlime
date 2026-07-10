@@ -40,6 +40,17 @@ passes around, and how do they relate?" Remove if the system is essentially stat
 
 _Key entities and relationships._
 
+## Domain language and boundaries
+
+<!-- LLM: Use Domain Driven Design lightly. Ask: "What are the core domain nouns, what words
+must mean one thing here, and where are the boundaries between responsibilities?" Capture
+bounded contexts only when they clarify the system. If there is no meaningful domain split,
+say so and remove the table. -->
+
+| Domain concept | Meaning in this project | Boundary / owner |
+|---|---|---|
+| _Concept_ | _Definition in project language_ | _Component, team, module, or external system_ |
+
 ## Key flows
 
 <!-- LLM: Trace 1-3 important paths through the system end-to-end (e.g. the main request, the

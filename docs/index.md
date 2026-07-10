@@ -4,12 +4,17 @@ description: "Opinionated docs scaffolding and agent skills for services and use
 ---
 
 ::: hero layout:split glow:true
-# DocSlime
+# Turn your repo into living docs.
 
-Make repo knowledge stick. DocSlime absorbs product intent, requirements, design,
+DocSlime makes repo knowledge stick. It absorbs product intent, requirements, design,
 architecture, tests, and decisions into one local docs body that humans and agents can use.
 
-[Install DocSlime](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button .docmd-button-secondary} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button .docmd-button-ghost}
+```sh
+brew install DecisionNerd/tap/docslime
+docslime init
+```
+
+[Install details](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button .docmd-button-secondary} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button .docmd-button-ghost}
 
 == side
 
@@ -21,6 +26,7 @@ repo/
 |   |-- 2-REQUIREMENTS.md
 |   |-- 3-ARCHITECTURE.md
 |   |-- 4-TESTING.md
+|   |-- publishing.md
 |   `-- 3-ENGINEERING/ADRs/
 `-- .agents/skills/
     |-- docslime-fill
@@ -53,6 +59,8 @@ publication     -> docmd.io
   Domain Driven Design language stays close to decisions.
 - **Human judgment** flows through `docslime-fill`, `docslime-adr`, and `docslime-kiss`, so
   docs get filled, decisions get recorded, and bloat gets cut.
+- **Publishing stays thin**: DocSlime keeps the Markdown clean, then hands static-site build
+  and hosting choices to the [`docmd.io` docs](publishing/).
 
 ## Install DocSlime
 
@@ -123,6 +131,9 @@ weak traceability before docs become ceremony.
 :::
 :::
 
+The recommended happy path is short: install the CLI, run `docslime init`, add the skill
+pack, fill `docs/PRODUCT.md`, then use `docslime-kiss` once the first useful context exists.
+
 ## What DocSlime Creates
 
 ```text
@@ -133,6 +144,7 @@ docs/
 |-- DESIGN.md
 |-- 3-ARCHITECTURE.md
 |-- 4-TESTING.md
+|-- publishing.md
 |-- 0-PRODUCT/
 |-- 1-JOURNEYS/
 `-- 3-ENGINEERING/ADRs/
@@ -148,6 +160,8 @@ tools like `impeccable` can load product and design context without duplicate ro
 - **Architecture + ADRs:** `3-ARCHITECTURE.md` and `3-ENGINEERING/ADRs/` keep domain
   boundaries and decisions explicit.
 - **Testing:** `4-TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
+- **Publishing:** [`publishing.md`](publishing/) points to the official `docmd.io` build and
+  deployment docs instead of copying that system into DocSlime.
 
 ## Agent Skills
 
@@ -187,6 +201,12 @@ CLI subcommand.
 ::: grid
 ::: card "Design" icon:palette
 [Open the design context](DESIGN/){.docmd-button .docmd-button-secondary}
+:::
+:::
+
+::: grid
+::: card "Publishing" icon:upload-cloud
+[Ship through docmd.io](publishing/){.docmd-button .docmd-button-secondary}
 :::
 :::
 :::

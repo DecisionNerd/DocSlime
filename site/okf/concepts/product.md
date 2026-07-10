@@ -3,10 +3,10 @@ type: concept
 title: Product
 source: "https://www.docslime.dev/PRODUCT/"
 path: /PRODUCT/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.693Z"
+  generated_at: "2026-07-10T01:49:44.534Z"
 ---
 # Product
 
@@ -45,12 +45,29 @@ context is complete, local, and testable.
 - **Skills:** `docslime-install`, `docslime-init`, `docslime-fill`, `docslime-adr`, and
   `docslime-kiss` drive the human-in-the-loop documentation lifecycle.
 - **Impeccable integration:** `docs/PRODUCT.md` and `docs/DESIGN.md` are discoverable product
-  and design context files without needing root-level duplicates.
+  and design context files without needing root-level duplicates, so `impeccable` can critique
+  and polish product surfaces from the same docs tree agents use.
 - **Publishing path:** the docs stay plain Markdown and are intended to publish through the
-  `docmd.io` system.
+  `docmd.io` system; DocSlime links to that system instead of reimplementing it.
 - **Quality stance:** requirements should trace to BDD scenarios and tests, architecture
   should use Domain Driven Design language where it clarifies the system, and significant
   choices should become ADRs.
+
+## Quality Method
+
+DocSlime's quality method is a trace, not a ceremony:
+
+```text
+product goal -> experience -> requirement -> BDD scenario -> test -> ADR when a choice matters
+```
+
+- **TDD+BDD:** requirements get stable IDs, behavior is written in Given/When/Then language,
+  and tests prove observable behavior before the docs call it done.
+- **Domain Driven Design:** architecture docs name the domain concepts, boundaries, and
+  language that matter for the project; small projects can stay light, but they should still
+  know their core nouns and responsibilities.
+- **ADRs:** durable choices live in `3-ENGINEERING/ADRs/` so future humans and agents can see
+  why the current shape exists.
 
 ## Goals
 
@@ -75,6 +92,8 @@ context is complete, local, and testable.
 - **Docs get filled:** scaffolded documents are completed, with no leftover `LLM:` guidance.
 - **Traceability improves:** requirements, behavior scenarios, tests, and ADRs point to each
   other clearly enough for a future agent to act.
+- **Design context improves:** `impeccable` resolves `docs/PRODUCT.md` and `docs/DESIGN.md`
+  as the current product/design source without bridge files that can drift.
 - **Low friction:** short time from `docslime init` to a useful first filled document.
 - **Adoption:** installs through Homebrew, shell installer, source builds, and skill-pack use.
 - **Publication readiness:** docs remain clean Markdown that can flow into `docmd.io`.

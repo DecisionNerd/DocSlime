@@ -21,6 +21,14 @@ connect to the experience principles in 1-EXPERIENCES.md. -->
 
 - **_Principle name_** - _what it means in practice._
 
+## Design tool context
+
+<!-- LLM: Explain how design-aware agents or tools should use this file. If the project uses
+impeccable, Figma, Storybook, screenshots, or another source of visual truth, link it here.
+Keep this section about context and workflow, not implementation detail. -->
+
+_How should design critique or UI iteration use PRODUCT.md and DESIGN.md?_
+
 ## Brand And Voice
 
 <!-- LLM: Document naming, tone, writing style, terminology, and visible personality. Include

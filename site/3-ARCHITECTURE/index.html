@@ -103,11 +103,11 @@
     </title>
 
     <base href="/">
-    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mre1ybgf">
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mre1ybgf">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mrea2r5a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrea2r5a">
     
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mre1ybgf" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mre1ybgf" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrea2r5a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrea2r5a" id="hljs-dark" disabled>
     
     
 <meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
@@ -122,11 +122,11 @@
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mre1ybgf" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mre1ybgf" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrea2r5a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrea2r5a" >
 
     
-      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mre1ybgf">
+      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mrea2r5a">
     
     <script>/**
  * --------------------------------------------------------------------
@@ -618,6 +618,40 @@
         
       </li>
     
+      <li class="" >
+      
+        <a href="../publishing/" class=" "
+          >
+           
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Publishing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
       <li class="expanded nav-group" >
       
         <span class="nav-label nav-group">
@@ -827,7 +861,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="%23%20Architecture%0A%0ADocSlime%20is%20a%20single%20self-contained%20command-line%20binary%20written%20in%20Rust%20plus%20a%20bundled%20set%0Aof%20agent%20skills.%20It%20has%20no%20server%2C%20no%20database%2C%20and%20no%20runtime%20dependencies%3A%20the%20entire%0Atemplate%20tree%20is%20compiled%20into%20the%20binary%2C%20and%20every%20CLI%20command%20operates%20directly%20on%20the%0Afilesystem%20relative%20to%20the%20current%20directory.%0A%0AThe%20design%20is%20deliberately%20small%3A%20parse%20a%20command%2C%20resolve%20a%20template%2C%20write%20files%20without%0Aclobbering%20existing%20ones%2C%20and%20leave%20judgment-heavy%20work%20to%20skills.%20%60docs%2FPRODUCT.md%60%20and%0A%60docs%2FDESIGN.md%60%20are%20part%20of%20the%20generated%20tree%20so%20tools%20like%20%60impeccable%60%20can%20discover%0Acontext%20from%20%60docs%2F%60%3B%20publication%20remains%20outside%20the%20binary%20in%20the%20%60docmd.io%60%20system.%0A%0A%23%23%20Context%20diagram%0A%0A%60%60%60%0Adeveloper%20%E2%94%80%E2%94%90%0A%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20%5B%20docslime%20CLI%20%5D%20%E2%94%80%E2%86%92%20.%2Fdocs%2F%20(PRODUCT.md%2C%20DESIGN.md%2C%20ADRs%2C%20tests)%0AAI%20agent%20%20%E2%94%80%E2%94%98%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20impeccable%20reads%20docs%2FPRODUCT.md%20%2B%20docs%2FDESIGN.md%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%86%92%20docmd.io%20publishes%20Markdown%20later%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%20embedded%20templates%20(compiled%20in%3B%20no%20network%2C%20no%20external%20files)%0A%60%60%60%0A%0AInside%20the%20CLI%20boundary%3A%20argument%20parsing%2C%20template%20resolution%2C%20and%20file%20writing.%20Outside%3A%0Athe%20git%20repo&#039;s%20filesystem%2C%20the%20AI%20agent%20skills%20that%20fill%20and%20review%20docs%2C%20%60impeccable%60%0Acontext%20loading%2C%20and%20%60docmd.io%60%20publication.%0A%0A%23%23%20Components%0A%0A%7C%20Component%20%7C%20Responsibility%20%7C%20Depends%20on%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20%60cli%60%20%7C%20Define%20the%20command%20surface%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20and%20arguments%20via%20clap%20derive.%20KISS%20is%20intentionally%20not%20a%20CLI%20subcommand.%20%7C%20clap%20%7C%0A%7C%20%60main%60%20%7C%20Parse%20args%2C%20resolve%20the%20working%20directory%2C%20dispatch%20to%20a%20command%2C%20map%20errors%20to%20an%20exit%20code.%20%7C%20cli%2C%20commands%20%7C%0A%7C%20%60commands%3A%3Ainit%60%20%7C%20Scaffold%20the%20full%20template%20tree%20into%20%60docs%2F%60%2C%20skipping%20existing%20files.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Aadd%60%20%7C%20Resolve%20a%20single%20template%20by%20name%2C%20or%20create%20the%20next-numbered%20ADR%20with%20a%20normalized%20slug.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Alist%60%20%7C%20List%20every%20template%20and%20whether%20it%20already%20exists%20on%20disk.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60templates%60%20%7C%20Hold%20the%20compile-time-embedded%20template%20tree%20and%20ADR%20template%3B%20resolve%20%60add%60%20names%20leniently.%20%7C%20include_dir%20%7C%0A%7C%20%60scaffold%60%20%7C%20Compute%20output%20paths%20and%20write%20files%20non-destructively%20(honoring%20%60--force%60)%3B%20track%20outcomes.%20%7C%20std%3A%3Afs%20%7C%0A%0A%23%23%20Data%20model%0A%0ADocSlime%20is%20essentially%20stateless%20%E2%80%94%20it%20stores%20nothing%20of%20its%20own.%20The%20only%20persistent%20artifacts%0Aare%3A%0A%0A-%20**Embedded%20templates**%20%E2%80%94%20a%20read-only%20directory%20tree%20(%60templates%2F%60)%20plus%20the%20standalone%20ADR%0A%20%20template%20(%60assets%2Fadr.md%60)%2C%20baked%20into%20the%20binary%20at%20build%20time.%0A-%20**The%20output%20%60docs%2F%60%20tree**%20%E2%80%94%20plain%20Markdown%20files%20written%20into%20the%20user&#039;s%20repo%2C%20including%0A%20%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20for%20product%2Fdesign%20context%20discovery.%0A%0AThe%20one%20piece%20of%20derived%20state%20computed%20at%20runtime%20is%20the%20**next%20ADR%20number**%2C%20obtained%20by%0Ascanning%20the%20ADR%20directory%20for%20the%20highest%20%60NNNN-*%60%20prefix.%0A%0A%23%23%20Key%20flows%0A%0A%23%23%23%20%60docslime%20init%60%20(scaffold%20the%20tree)%0A%0A1.%20%60main%60%20resolves%20the%20current%20working%20directory%20as%20the%20root%20%E2%80%94%20%60main%60%0A2.%20Dispatch%20to%20the%20init%20command%20%E2%80%94%20%60commands%3A%3Ainit%60%0A3.%20Enumerate%20every%20embedded%20template%20in%20the%20tree%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20%E2%80%94%20%60templates%60%0A4.%20For%20each%2C%20compute%20%60docs%2F%3Crelative-path%3E%60%20and%20write%20it%20unless%20it%20exists%20(or%20%60--force%60)%20%E2%80%94%20%60scaffold%60%0A5.%20Report%20a%20summary%20of%20created%20vs.%20skipped%20files%20%E2%80%94%20%60commands%3A%3Ainit%60%0A%0A%23%23%23%20%60docslime%20add%20adr%20%3Cslug%3E%60%20(create%20an%20ADR)%0A%0A1.%20Dispatch%20to%20the%20add%20command%3B%20detect%20the%20literal%20%60adr%60%20%E2%80%94%20%60commands%3A%3Aadd%60%0A2.%20Normalize%20the%20slug%20to%20%60%5Ba-z0-9-%5D%60%3B%20reject%20if%20empty%20%E2%80%94%20%60commands%3A%3Aadd%60%0A3.%20Scan%20%60docs%2F3-ENGINEERING%2FADRs%2F%60%20for%20the%20highest%20%60NNNN%60%20prefix%20and%20add%20one%20%E2%80%94%20%60commands%3A%3Aadd%60%0A4.%20Write%20%60NNNN-%3Cslug%3E.md%60%20from%20the%20embedded%20ADR%20template%2C%20non-destructively%20%E2%80%94%20%60scaffold%60%0A%0AThese%20line%20up%20with%20the%20%22Scaffold%20the%20docs%20tree%22%20and%20%22Record%20an%20architecture%20decision%22%0Aexperiences%20in%20%5B%601-EXPERIENCES.md%60%5D(1-EXPERIENCES.md).%0A%0A%23%23%20Cross-cutting%20concerns%0A%0A-%20**Error%20handling%3A**%20%60anyhow%60%20propagates%20errors%20up%20to%20%60main%60%2C%20which%20prints%20%60error%3A%20%E2%80%A6%60%20and%0A%20%20returns%20a%20non-zero%20%60ExitCode%60.%20Unknown%20template%20names%20produce%20a%20helpful%20error%20listing%20valid%0A%20%20names%20(FR-8).%0A-%20**Configuration%3A**%20none%20%E2%80%94%20behavior%20is%20fixed%20by%20the%20embedded%20templates%20and%20a%20small%20set%20of%0A%20%20flags%20(%60--force%60).%20No%20config%20file%20(see%20open%20questions%20in%20%5B%602-REQUIREMENTS.md%60%5D(2-REQUIREMENTS.md)).%0A-%20**Security%3A**%20%60docslime%60%20only%20writes%20within%20%60docs%2F%60%20under%20the%20current%20directory%20and%20never%0A%20%20overwrites%20without%20%60--force%60%20(NFR-4).%20No%20network%20access.%0A-%20**Observability%3A**%20plain%20stdout%2Fstderr%3B%20%60list%60%20uses%20%60owo-colors%60%20for%20readable%20status%20output.%0A-%20**External%20tools%3A**%20%60impeccable%60%20and%20%60docmd.io%60%20consume%20the%20Markdown%20tree%3B%20they%20are%20not%0A%20%20runtime%20dependencies%20of%20the%20CLI.%0A%0A%23%23%20Decisions%0A%0A-%20%5BEmbed%20templates%20in%20the%20binary%20at%20compile%20time%5D(3-ENGINEERING%2FADRs%2F0001-embed-templates-in-binary.md)%20%E2%80%94%20keeps%20DocSlime%20a%20zero-dependency%20single%20binary.%0A%0A%23%23%20Risks%20%26%20trade-offs%0A%0A-%20**Editing%20a%20template%20requires%20a%20rebuild.**%20Because%20templates%20are%20embedded%20via%20%60include_dir%60%2C%0A%20%20content%20changes%20only%20ship%20with%20a%20new%20binary.%20Accepted%3A%20it&#039;s%20the%20price%20of%20a%20no-dependency%0A%20%20single%20binary%2C%20and%20templates%20change%20rarely.%0A-%20**Fixed%20tree%20layout.**%20DocSlime%20doesn&#039;t%20accept%20a%20custom%20structure%2C%20which%20keeps%20it%20simple%20but%0A%20%20limits%20teams%20that%20want%20a%20different%20shape.%20Tracked%20as%20an%20open%20question%20in%20the%20requirements.%0A-%20**Current-directory%20assumption.**%20All%20commands%20act%20on%20the%20current%20directory%3B%20running%20from%0A%20%20the%20wrong%20place%20scaffolds%20in%20the%20wrong%20place.%20Mitigation%3A%20the%20%60docslime-init%60%20skill%20confirms%0A%20%20the%20working%20directory%20first.%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="%23%20Architecture%0A%0ADocSlime%20is%20a%20single%20self-contained%20command-line%20binary%20written%20in%20Rust%20plus%20a%20bundled%20set%0Aof%20agent%20skills.%20It%20has%20no%20server%2C%20no%20database%2C%20and%20no%20runtime%20dependencies%3A%20the%20entire%0Atemplate%20tree%20is%20compiled%20into%20the%20binary%2C%20and%20every%20CLI%20command%20operates%20directly%20on%20the%0Afilesystem%20relative%20to%20the%20current%20directory.%0A%0AThe%20design%20is%20deliberately%20small%3A%20parse%20a%20command%2C%20resolve%20a%20template%2C%20write%20files%20without%0Aclobbering%20existing%20ones%2C%20and%20leave%20judgment-heavy%20work%20to%20skills.%20%60docs%2FPRODUCT.md%60%20and%0A%60docs%2FDESIGN.md%60%20are%20part%20of%20the%20generated%20tree%20so%20tools%20like%20%60impeccable%60%20can%20discover%0Acontext%20from%20%60docs%2F%60%3B%20publication%20remains%20outside%20the%20binary%20in%20the%20%60docmd.io%60%20system.%0A%0A%23%23%20Context%20diagram%0A%0A%60%60%60%0Adeveloper%20%E2%94%80%E2%94%90%0A%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20%5B%20docslime%20CLI%20%5D%20%E2%94%80%E2%86%92%20.%2Fdocs%2F%20(PRODUCT.md%2C%20DESIGN.md%2C%20ADRs%2C%20tests)%0AAI%20agent%20%20%E2%94%80%E2%94%98%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%9C%E2%94%80%E2%86%92%20impeccable%20reads%20docs%2FPRODUCT.md%20%2B%20docs%2FDESIGN.md%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%82%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%E2%86%92%20docmd.io%20publishes%20Markdown%20later%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%E2%94%94%E2%94%80%20embedded%20templates%20(compiled%20in%3B%20no%20network%2C%20no%20external%20files)%0A%60%60%60%0A%0AInside%20the%20CLI%20boundary%3A%20argument%20parsing%2C%20template%20resolution%2C%20and%20file%20writing.%20Outside%3A%0Athe%20git%20repo&#039;s%20filesystem%2C%20the%20AI%20agent%20skills%20that%20fill%20and%20review%20docs%2C%20%60impeccable%60%0Acontext%20loading%2C%20and%20%60docmd.io%60%20publication.%0A%0A%23%23%20Components%0A%0A%7C%20Component%20%7C%20Responsibility%20%7C%20Depends%20on%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20%60cli%60%20%7C%20Define%20the%20command%20surface%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20and%20arguments%20via%20clap%20derive.%20KISS%20is%20intentionally%20not%20a%20CLI%20subcommand.%20%7C%20clap%20%7C%0A%7C%20%60main%60%20%7C%20Parse%20args%2C%20resolve%20the%20working%20directory%2C%20dispatch%20to%20a%20command%2C%20map%20errors%20to%20an%20exit%20code.%20%7C%20cli%2C%20commands%20%7C%0A%7C%20%60commands%3A%3Ainit%60%20%7C%20Scaffold%20the%20full%20template%20tree%20into%20%60docs%2F%60%2C%20skipping%20existing%20files.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Aadd%60%20%7C%20Resolve%20a%20single%20template%20by%20name%2C%20or%20create%20the%20next-numbered%20ADR%20with%20a%20normalized%20slug.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60commands%3A%3Alist%60%20%7C%20List%20every%20template%20and%20whether%20it%20already%20exists%20on%20disk.%20%7C%20templates%2C%20scaffold%20%7C%0A%7C%20%60templates%60%20%7C%20Hold%20the%20compile-time-embedded%20template%20tree%20and%20ADR%20template%3B%20resolve%20%60add%60%20names%20leniently.%20%7C%20include_dir%20%7C%0A%7C%20%60scaffold%60%20%7C%20Compute%20output%20paths%20and%20write%20files%20non-destructively%20(honoring%20%60--force%60)%3B%20track%20outcomes.%20%7C%20std%3A%3Afs%20%7C%0A%0A%23%23%20Data%20model%0A%0ADocSlime%20is%20essentially%20stateless%20%E2%80%94%20it%20stores%20nothing%20of%20its%20own.%20The%20only%20persistent%20artifacts%0Aare%3A%0A%0A-%20**Embedded%20templates**%20%E2%80%94%20a%20read-only%20directory%20tree%20(%60templates%2F%60)%20plus%20the%20standalone%20ADR%0A%20%20template%20(%60assets%2Fadr.md%60)%2C%20baked%20into%20the%20binary%20at%20build%20time.%0A-%20**The%20output%20%60docs%2F%60%20tree**%20%E2%80%94%20plain%20Markdown%20files%20written%20into%20the%20user&#039;s%20repo%2C%20including%0A%20%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20for%20product%2Fdesign%20context%20discovery.%0A%0AThe%20one%20piece%20of%20derived%20state%20computed%20at%20runtime%20is%20the%20**next%20ADR%20number**%2C%20obtained%20by%0Ascanning%20the%20ADR%20directory%20for%20the%20highest%20%60NNNN-*%60%20prefix.%0A%0A%23%23%20Domain%20language%20and%20boundaries%0A%0ADocSlime%20uses%20Domain%20Driven%20Design%20language%20lightly.%20The%20useful%20domain%20is%20not%20%22documents%22%20in%0Athe%20abstract%3B%20it%20is%20the%20lifecycle%20of%20turning%20repo%20knowledge%20into%20agent-readable%2C%20testable%0Acontext.%0A%0A%7C%20Domain%20concept%20%7C%20Meaning%20in%20DocSlime%20%7C%20Boundary%20%7C%0A%7C---%7C---%7C---%7C%0A%7C%20Docs%20tree%20%7C%20The%20fixed%20%60docs%2F%60%20structure%20written%20into%20the%20target%20repo.%20%7C%20CLI%20scaffold%20%7C%0A%7C%20Template%20catalog%20%7C%20The%20embedded%20Markdown%20files%20and%20ADR%20template%20that%20define%20the%20default%20tree.%20%7C%20CLI%20scaffold%20%7C%0A%7C%20Filled%20document%20%7C%20A%20scaffolded%20file%20after%20an%20agent%20removes%20%60LLM%3A%60%20guidance%20and%20writes%20project%20facts.%20%7C%20Agent%20skill%20lifecycle%20%7C%0A%7C%20Quality%20trace%20%7C%20Links%20from%20product%20goals%20to%20experiences%2C%20requirements%2C%20BDD%20scenarios%2C%20tests%2C%20and%20ADRs.%20%7C%20Docs%20content%20%7C%0A%7C%20Design%20context%20%7C%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%20loaded%20by%20tools%20like%20%60impeccable%60.%20%7C%20External%20tool%20integration%20%7C%0A%7C%20Publishing%20handoff%20%7C%20Clean%20Markdown%20consumed%20by%20%60docmd.io%60%20to%20build%20and%20deploy%20a%20static%20docs%20site.%20%7C%20Publishing%20boundary%20%7C%0A%0AThe%20main%20bounded%20contexts%20are%3A%0A%0A-%20**CLI%20scaffold%20context%3A**%20create%2C%20add%2C%20list%2C%20and%20write%20files%20safely.%0A-%20**Agent%20skill%20context%3A**%20interview%2C%20fill%2C%20critique%2C%20and%20record%20decisions%20with%20human%20input.%0A-%20**Publishing%20context%3A**%20build%20and%20deploy%20with%20%60docmd.io%60%3B%20DocSlime%20only%20prepares%20the%20source%0A%20%20Markdown%20and%20points%20to%20official%20publishing%20docs.%0A%0A%23%23%20Key%20flows%0A%0A%23%23%23%20%60docslime%20init%60%20(scaffold%20the%20tree)%0A%0A1.%20%60main%60%20resolves%20the%20current%20working%20directory%20as%20the%20root%20%E2%80%94%20%60main%60%0A2.%20Dispatch%20to%20the%20init%20command%20%E2%80%94%20%60commands%3A%3Ainit%60%0A3.%20Enumerate%20every%20embedded%20template%20in%20the%20tree%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%20%E2%80%94%20%60templates%60%0A4.%20For%20each%2C%20compute%20%60docs%2F%3Crelative-path%3E%60%20and%20write%20it%20unless%20it%20exists%20(or%20%60--force%60)%20%E2%80%94%20%60scaffold%60%0A5.%20Report%20a%20summary%20of%20created%20vs.%20skipped%20files%20%E2%80%94%20%60commands%3A%3Ainit%60%0A%0A%23%23%23%20%60docslime%20add%20adr%20%3Cslug%3E%60%20(create%20an%20ADR)%0A%0A1.%20Dispatch%20to%20the%20add%20command%3B%20detect%20the%20literal%20%60adr%60%20%E2%80%94%20%60commands%3A%3Aadd%60%0A2.%20Normalize%20the%20slug%20to%20%60%5Ba-z0-9-%5D%60%3B%20reject%20if%20empty%20%E2%80%94%20%60commands%3A%3Aadd%60%0A3.%20Scan%20%60docs%2F3-ENGINEERING%2FADRs%2F%60%20for%20the%20highest%20%60NNNN%60%20prefix%20and%20add%20one%20%E2%80%94%20%60commands%3A%3Aadd%60%0A4.%20Write%20%60NNNN-%3Cslug%3E.md%60%20from%20the%20embedded%20ADR%20template%2C%20non-destructively%20%E2%80%94%20%60scaffold%60%0A%0AThese%20line%20up%20with%20the%20%22Scaffold%20the%20docs%20tree%22%20and%20%22Record%20an%20architecture%20decision%22%0Aexperiences%20in%20%5B%601-EXPERIENCES.md%60%5D(1-EXPERIENCES.md).%0A%0A%23%23%20Cross-cutting%20concerns%0A%0A-%20**Error%20handling%3A**%20%60anyhow%60%20propagates%20errors%20up%20to%20%60main%60%2C%20which%20prints%20%60error%3A%20%E2%80%A6%60%20and%0A%20%20returns%20a%20non-zero%20%60ExitCode%60.%20Unknown%20template%20names%20produce%20a%20helpful%20error%20listing%20valid%0A%20%20names%20(FR-8).%0A-%20**Configuration%3A**%20none%20%E2%80%94%20behavior%20is%20fixed%20by%20the%20embedded%20templates%20and%20a%20small%20set%20of%0A%20%20flags%20(%60--force%60).%20No%20config%20file%20(see%20open%20questions%20in%20%5B%602-REQUIREMENTS.md%60%5D(2-REQUIREMENTS.md)).%0A-%20**Security%3A**%20%60docslime%60%20only%20writes%20within%20%60docs%2F%60%20under%20the%20current%20directory%20and%20never%0A%20%20overwrites%20without%20%60--force%60%20(NFR-4).%20No%20network%20access.%0A-%20**Observability%3A**%20plain%20stdout%2Fstderr%3B%20%60list%60%20uses%20%60owo-colors%60%20for%20readable%20status%20output.%0A-%20**External%20tools%3A**%20%60impeccable%60%20and%20%60docmd.io%60%20consume%20the%20Markdown%20tree%3B%20they%20are%20not%0A%20%20runtime%20dependencies%20of%20the%20CLI.%0A%0A%23%23%20Decisions%0A%0A-%20%5BEmbed%20templates%20in%20the%20binary%20at%20compile%20time%5D(3-ENGINEERING%2FADRs%2F0001-embed-templates-in-binary.md)%20%E2%80%94%20keeps%20DocSlime%20a%20zero-dependency%20single%20binary.%0A%0A%23%23%20Risks%20%26%20trade-offs%0A%0A-%20**Editing%20a%20template%20requires%20a%20rebuild.**%20Because%20templates%20are%20embedded%20via%20%60include_dir%60%2C%0A%20%20content%20changes%20only%20ship%20with%20a%20new%20binary.%20Accepted%3A%20it&#039;s%20the%20price%20of%20a%20no-dependency%0A%20%20single%20binary%2C%20and%20templates%20change%20rarely.%0A-%20**Fixed%20tree%20layout.**%20DocSlime%20doesn&#039;t%20accept%20a%20custom%20structure%2C%20which%20keeps%20it%20simple%20but%0A%20%20limits%20teams%20that%20want%20a%20different%20shape.%20Tracked%20as%20an%20open%20question%20in%20the%20requirements.%0A-%20**Current-directory%20assumption.**%20All%20commands%20act%20on%20the%20current%20directory%3B%20running%20from%0A%20%20the%20wrong%20place%20scaffolds%20in%20the%20wrong%20place.%20Mitigation%3A%20the%20%60docslime-init%60%20skill%20confirms%0A%20%20the%20working%20directory%20first.%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -970,6 +1004,58 @@ template (<code>assets/adr.md</code>), baked into the binary at build time.</li>
 </ul>
 <p>The one piece of derived state computed at runtime is the <strong>next ADR number</strong>, obtained by<br>
 scanning the ADR directory for the highest <code>NNNN-*</code> prefix.</p>
+<h2 id="architecture-domain-language-and-boundaries" class="docmd-heading"><a href="#architecture-domain-language-and-boundaries" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Domain language and boundaries</h2>
+<p>DocSlime uses Domain Driven Design language lightly. The useful domain is not “documents” in<br>
+the abstract; it is the lifecycle of turning repo knowledge into agent-readable, testable<br>
+context.</p>
+<div class="table-wrapper"><table>
+<thead>
+<tr>
+<th>Domain concept</th>
+<th>Meaning in DocSlime</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Docs tree</td>
+<td>The fixed <code>docs/</code> structure written into the target repo.</td>
+<td>CLI scaffold</td>
+</tr>
+<tr>
+<td>Template catalog</td>
+<td>The embedded Markdown files and ADR template that define the default tree.</td>
+<td>CLI scaffold</td>
+</tr>
+<tr>
+<td>Filled document</td>
+<td>A scaffolded file after an agent removes <code>LLM:</code> guidance and writes project facts.</td>
+<td>Agent skill lifecycle</td>
+</tr>
+<tr>
+<td>Quality trace</td>
+<td>Links from product goals to experiences, requirements, BDD scenarios, tests, and ADRs.</td>
+<td>Docs content</td>
+</tr>
+<tr>
+<td>Design context</td>
+<td><code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code> loaded by tools like <code>impeccable</code>.</td>
+<td>External tool integration</td>
+</tr>
+<tr>
+<td>Publishing handoff</td>
+<td>Clean Markdown consumed by <code>docmd.io</code> to build and deploy a static docs site.</td>
+<td>Publishing boundary</td>
+</tr>
+</tbody>
+</table>
+</div><p>The main bounded contexts are:</p>
+<ul>
+<li><strong>CLI scaffold context:</strong> create, add, list, and write files safely.</li>
+<li><strong>Agent skill context:</strong> interview, fill, critique, and record decisions with human input.</li>
+<li><strong>Publishing context:</strong> build and deploy with <code>docmd.io</code>; DocSlime only prepares the source<br>
+Markdown and points to official publishing docs.</li>
+</ul>
 <h2 id="architecture-key-flows" class="docmd-heading"><a href="#architecture-key-flows" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Key flows</h2>
 <h3 id="architecture-key-flows-docslime-init-scaffold-the-tree" class="docmd-heading"><a href="#architecture-key-flows-docslime-init-scaffold-the-tree" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a><code>docslime init</code> (scaffold the tree)</h3>
 <ol>
@@ -1108,6 +1194,10 @@ the working directory first.</li>
       
         <li class="toc-item toc-level-2">
           <a href="#architecture-data-model" class="toc-link">Data model</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#architecture-domain-language-and-boundaries" class="toc-link">Domain language and boundaries</a>
         </li>
       
         <li class="toc-item toc-level-2">
@@ -1255,13 +1345,13 @@ the working directory first.</li>
         </div>
       </div>
       
-      <script src="../assets/js/docmd-main.js?v=mre1ybgf"></script>
+      <script src="../assets/js/docmd-main.js?v=mrea2r5a"></script>
       
-      <script src="../assets/js/docmd-git.js?v=mre1ybgf"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mre1ybgf" ></script>
+      <script src="../assets/js/docmd-git.js?v=mrea2r5a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrea2r5a" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mre1ybgf" ></script>
-<script src="../assets/js/docmd-git.js?v=mre1ybgf" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mrea2r5a" ></script>
+<script src="../assets/js/docmd-git.js?v=mrea2r5a" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1337,7 +1427,7 @@ the working directory first.</li>
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
       
         <script
-          src="../assets/js/docslime-nav.js?v=mre1ybgf"></script>
+          src="../assets/js/docslime-nav.js?v=mrea2r5a"></script>
         
       
       

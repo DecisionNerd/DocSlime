@@ -103,11 +103,11 @@
     </title>
 
     <base href="/">
-    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mre1ybgf">
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mre1ybgf">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mrea2r5a">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mrea2r5a">
     
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mre1ybgf" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mre1ybgf" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mrea2r5a" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mrea2r5a" id="hljs-dark" disabled>
     
     
 <meta name="description" content="Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs.">
@@ -122,11 +122,11 @@
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mre1ybgf" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mre1ybgf" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mrea2r5a" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mrea2r5a" >
 
     
-      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mre1ybgf">
+      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mrea2r5a">
     
     <script>/**
  * --------------------------------------------------------------------
@@ -618,6 +618,40 @@
         
       </li>
     
+      <li class="" >
+      
+        <a href="../publishing/" class=" "
+          >
+           
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Publishing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
       <li class="expanded nav-group" >
       
         <span class="nav-label nav-group">
@@ -827,7 +861,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="---%0Atitle%3A%20%22Agent%20Skills%22%0Adescription%3A%20%22Teach%20AI%20coding%20agents%20to%20install%2C%20initialize%2C%20fill%2C%20review%2C%20and%20maintain%20DocSlime%20docs.%22%0A---%0A%0A%23%20Agent%20Skills%0A%0ADocSlime%20ships%20agent%20skills%20so%20Codex%2C%20Claude%20Code%2C%20ChatGPT%2C%20and%20other%20skill-aware%20tools%20can%0Adrive%20the%20documentation%20lifecycle%20with%20the%20same%20product%20rules%20the%20CLI%20scaffolds.%0A%0AThe%20CLI%20creates%20files.%20The%20skills%20do%20the%20judgment-heavy%20work%3A%20check%20installation%2C%20scaffold%20a%0Arepo%2C%20interview%20the%20user%2C%20fill%20documents%2C%20create%20ADRs%2C%20and%20review%20the%20result%20for%20KISS%0Aproblems.%0A%0A%23%23%20Install%0A%0A%60%60%60sh%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%0A%60%60%60%0A%0AFor%20a%20specific%20coding%20agent%3A%0A%0A%60%60%60sh%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%20--agent%20codex%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%20--agent%20claude-code%0A%60%60%60%0A%0A%23%23%20Skills%0A%0A%7C%20Skill%20%7C%20What%20it%20does%20%7C%0A%7C---%7C---%7C%0A%7C%20%60docslime-install%60%20%7C%20Verifies%20the%20%60docslime%60%20binary%20and%20installs%20it%20if%20missing.%20%7C%0A%7C%20%60docslime-init%60%20%7C%20Confirms%20the%20current%20repo%20and%20scaffolds%20the%20standard%20%60docs%2F%60%20tree.%20%7C%0A%7C%20%60docslime-fill%60%20%7C%20Interviews%20the%20user%20and%20fills%20one%20scaffolded%20document.%20%7C%0A%7C%20%60docslime-adr%60%20%7C%20Creates%20and%20fills%20the%20next-numbered%20Architecture%20Decision%20Record.%20%7C%0A%7C%20%60docslime-kiss%60%20%7C%20Reviews%20filled%20docs%20for%20bloat%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20generic%20AI%20prose.%20%7C%0A%0A%23%23%20How%20it%20works%20at%20runtime%0A%0AOnce%20installed%2C%20invoke%20the%20skills%20from%20inside%20the%20agent%3A%0A%0A%60%60%60text%0A%2Fdocslime-install%0A%2Fdocslime-init%0A%2Fdocslime-fill%20PRODUCT.md%0A%2Fdocslime-adr%20embed-templates-in-binary%0A%2Fdocslime-kiss%0A%60%60%60%0A%0AEach%20skill%20follows%20the%20docs%20tree%20instead%20of%20maintaining%20a%20separate%20source%20of%20truth.%20Product%0Acontext%20lives%20in%20%60docs%2FPRODUCT.md%60%2C%20design%20context%20lives%20in%20%60docs%2FDESIGN.md%60%2C%20and%20decisions%0Alive%20in%20%60docs%2F3-ENGINEERING%2FADRs%2F%60.%0A%0A%23%23%20Recommended%20flow%0A%0A1.%20Run%20%60docslime%20init%60.%0A2.%20Fill%20%60PRODUCT.md%60%20with%20%60docslime-fill%60.%0A3.%20Work%20through%20experiences%2C%20requirements%2C%20design%2C%20architecture%2C%20and%20testing.%0A4.%20Use%20%60docslime-adr%60%20whenever%20a%20durable%20technical%20or%20product%20decision%20is%20made.%0A5.%20Run%20%60docslime-kiss%60%20before%20merging%20documentation-heavy%20changes.%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="---%0Atitle%3A%20%22Agent%20Skills%22%0Adescription%3A%20%22Teach%20AI%20coding%20agents%20to%20install%2C%20initialize%2C%20fill%2C%20review%2C%20and%20maintain%20DocSlime%20docs.%22%0A---%0A%0A%23%20Agent%20Skills%0A%0ADocSlime%20ships%20agent%20skills%20so%20Codex%2C%20Claude%20Code%2C%20ChatGPT%2C%20and%20other%20skill-aware%20tools%20can%0Adrive%20the%20documentation%20lifecycle%20with%20the%20same%20product%20rules%20the%20CLI%20scaffolds.%0A%0AThe%20CLI%20creates%20files.%20The%20skills%20do%20the%20judgment-heavy%20work%3A%20check%20installation%2C%20scaffold%20a%0Arepo%2C%20interview%20the%20user%2C%20fill%20documents%2C%20create%20ADRs%2C%20and%20review%20the%20result%20for%20KISS%0Aproblems.%0A%0A%23%23%20Install%0A%0A%60%60%60sh%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%0A%60%60%60%0A%0AFor%20a%20specific%20coding%20agent%3A%0A%0A%60%60%60sh%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%20--agent%20codex%0Anpx%20skills%20add%20DecisionNerd%2FDocSlime%20--agent%20claude-code%0A%60%60%60%0A%0A%23%23%20Skills%0A%0A%7C%20Skill%20%7C%20What%20it%20does%20%7C%0A%7C---%7C---%7C%0A%7C%20%60docslime-install%60%20%7C%20Verifies%20the%20%60docslime%60%20binary%20and%20installs%20it%20if%20missing.%20%7C%0A%7C%20%60docslime-init%60%20%7C%20Confirms%20the%20current%20repo%20and%20scaffolds%20the%20standard%20%60docs%2F%60%20tree.%20%7C%0A%7C%20%60docslime-fill%60%20%7C%20Interviews%20the%20user%20and%20fills%20one%20scaffolded%20document.%20%7C%0A%7C%20%60docslime-adr%60%20%7C%20Creates%20and%20fills%20the%20next-numbered%20Architecture%20Decision%20Record.%20%7C%0A%7C%20%60docslime-kiss%60%20%7C%20Reviews%20filled%20docs%20for%20bloat%2C%20stale%20contradictions%2C%20weak%20traceability%2C%20and%20generic%20AI%20prose.%20%7C%0A%0A%23%23%20Skill%20Quality%20Bar%0A%0ADocSlime%20skills%20are%20intentionally%20closer%20to%20small%20operating%20procedures%20than%20prompt%20snippets.%0AEach%20bundled%20skill%20should%20tell%20an%20agent%3A%0A%0A-%20**When%20to%20use%20it**%20and%20when%20to%20hand%20off%20to%20another%20DocSlime%20skill.%0A-%20**Prerequisites**%20such%20as%20an%20installed%20%60docslime%60%20binary%2C%20a%20repo%20root%2C%20or%20an%20existing%20docs%20tree.%0A-%20**Steps**%20that%20preserve%20user%20work%20and%20ask%20for%20missing%20facts%20instead%20of%20inventing%20them.%0A-%20**Guardrails**%20for%20the%20command%20surface%3A%20%60init%60%2C%20%60add%60%2C%20and%20%60list%60%20are%20CLI%20commands%3B%0A%20%20%60docslime-kiss%60%20is%20a%20skill.%0A-%20**Verification**%20commands%20or%20checks%20that%20prove%20the%20work%20finished.%0A-%20**Failure%20handling**%20for%20missing%20binaries%2C%20missing%20docs%2C%20ambiguous%20targets%2C%20dirty%20context%2C%20or%0A%20%20unfinished%20%60LLM%3A%60%20guidance.%0A%0A%23%23%20How%20it%20works%20at%20runtime%0A%0AOnce%20installed%2C%20invoke%20the%20skills%20from%20inside%20the%20agent%3A%0A%0A%60%60%60text%0A%2Fdocslime-install%0A%2Fdocslime-init%0A%2Fdocslime-fill%20PRODUCT.md%0A%2Fdocslime-adr%20embed-templates-in-binary%0A%2Fdocslime-kiss%0A%60%60%60%0A%0AEach%20skill%20follows%20the%20docs%20tree%20instead%20of%20maintaining%20a%20separate%20source%20of%20truth.%20Product%0Acontext%20lives%20in%20%60docs%2FPRODUCT.md%60%2C%20design%20context%20lives%20in%20%60docs%2FDESIGN.md%60%2C%20and%20decisions%0Alive%20in%20%60docs%2F3-ENGINEERING%2FADRs%2F%60.%0A%0AThe%20same%20files%20feed%20design%20work%3A%20%60impeccable%60%20loads%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%0Afor%20homepage%2Fproduct%20critique%2C%20so%20skill-driven%20doc%20updates%20improve%20future%20UI%20iteration%20too.%0A%0A%23%23%20Recommended%20flow%0A%0A1.%20Run%20%60docslime%20init%60.%0A2.%20Fill%20%60PRODUCT.md%60%20with%20%60docslime-fill%60.%0A3.%20Work%20through%20experiences%2C%20requirements%2C%20design%2C%20architecture%2C%20and%20testing.%0A4.%20Use%20%60docslime-adr%60%20whenever%20a%20durable%20technical%20or%20product%20decision%20is%20made.%0A5.%20Run%20%60docslime-kiss%60%20before%20merging%20documentation-heavy%20changes.%0A%0A%23%23%20Validation%0A%0ARun%20the%20repo-native%20checks%20before%20release%20or%20after%20changing%20skill%20metadata%3A%0A%0A%60%60%60sh%0Acargo%20test%0A%60%60%60%0A%0AThe%20repository%20tests%20inspect%20the%20bundled%20skills%20for%20required%20sections%2C%20so%20skill%20robustness%0Astays%20part%20of%20the%20normal%20test%20loop.%20When%20working%20in%20a%20harness%20that%20ships%20the%20Agent%20Skills%0Avalidator%2C%20also%20run%20%60quick_validate.py%20.agents%2Fskills%2F%3Cskill%3E%60%20for%20each%20changed%20skill.%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -936,7 +970,20 @@ npx skills add DecisionNerd<span class="hljs-punctuation">/</span>DocSlime <span
 </tr>
 </tbody>
 </table>
-</div><h2 id="agent-skills-how-it-works-at-runtime" class="docmd-heading"><a href="#agent-skills-how-it-works-at-runtime" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>How it works at runtime</h2>
+</div><h2 id="agent-skills-skill-quality-bar" class="docmd-heading"><a href="#agent-skills-skill-quality-bar" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Skill Quality Bar</h2>
+<p>DocSlime skills are intentionally closer to small operating procedures than prompt snippets.<br>
+Each bundled skill should tell an agent:</p>
+<ul>
+<li><strong>When to use it</strong> and when to hand off to another DocSlime skill.</li>
+<li><strong>Prerequisites</strong> such as an installed <code>docslime</code> binary, a repo root, or an existing docs tree.</li>
+<li><strong>Steps</strong> that preserve user work and ask for missing facts instead of inventing them.</li>
+<li><strong>Guardrails</strong> for the command surface: <code>init</code>, <code>add</code>, and <code>list</code> are CLI commands;<br>
+<code>docslime-kiss</code> is a skill.</li>
+<li><strong>Verification</strong> commands or checks that prove the work finished.</li>
+<li><strong>Failure handling</strong> for missing binaries, missing docs, ambiguous targets, dirty context, or<br>
+unfinished <code>LLM:</code> guidance.</li>
+</ul>
+<h2 id="agent-skills-how-it-works-at-runtime" class="docmd-heading"><a href="#agent-skills-how-it-works-at-runtime" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>How it works at runtime</h2>
 <p>Once installed, invoke the skills from inside the agent:</p>
 <pre class="hljs"><code class="language-text"><span class="hljs-punctuation">/</span>docslime<span class="hljs-punctuation">-</span>install
 <span class="hljs-punctuation">/</span>docslime<span class="hljs-punctuation">-</span>init
@@ -947,6 +994,8 @@ npx skills add DecisionNerd<span class="hljs-punctuation">/</span>DocSlime <span
 <p>Each skill follows the docs tree instead of maintaining a separate source of truth. Product<br>
 context lives in <code>docs/PRODUCT.md</code>, design context lives in <code>docs/DESIGN.md</code>, and decisions<br>
 live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
+<p>The same files feed design work: <code>impeccable</code> loads <code>docs/PRODUCT.md</code> and <code>docs/DESIGN.md</code><br>
+for homepage/product critique, so skill-driven doc updates improve future UI iteration too.</p>
 <h2 id="agent-skills-recommended-flow" class="docmd-heading"><a href="#agent-skills-recommended-flow" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Recommended flow</h2>
 <ol>
 <li>Run <code>docslime init</code>.</li>
@@ -955,6 +1004,13 @@ live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
 <li>Use <code>docslime-adr</code> whenever a durable technical or product decision is made.</li>
 <li>Run <code>docslime-kiss</code> before merging documentation-heavy changes.</li>
 </ol>
+<h2 id="agent-skills-validation" class="docmd-heading"><a href="#agent-skills-validation" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Validation</h2>
+<p>Run the repo-native checks before release or after changing skill metadata:</p>
+<pre class="hljs"><code class="language-sh"><span class="hljs-keyword">cargo</span> test
+</code></pre>
+<p>The repository tests inspect the bundled skills for required sections, so skill robustness<br>
+stays part of the normal test loop. When working in a harness that ships the Agent Skills<br>
+validator, also run <code>quick_validate.py .agents/skills/&lt;skill&gt;</code> for each changed skill.</p>
 
                 
                   <div class="page-navigation">
@@ -983,10 +1039,10 @@ live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
                       </a>
                     
                     
-                      <a href="../3-ENGINEERING/" class="next-page">
+                      <a href="../publishing/" class="next-page">
                         <span><small>Next</small>
                           <strong>
-                            Engineering
+                            Publishing
                           </strong></span>
                         
 <svg class="lucide-icon icon-arrow-right page-nav-icon" width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
@@ -1046,11 +1102,19 @@ live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
         </li>
       
         <li class="toc-item toc-level-2">
+          <a href="#agent-skills-skill-quality-bar" class="toc-link">Skill Quality Bar</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
           <a href="#agent-skills-how-it-works-at-runtime" class="toc-link">How it works at runtime</a>
         </li>
       
         <li class="toc-item toc-level-2">
           <a href="#agent-skills-recommended-flow" class="toc-link">Recommended flow</a>
+        </li>
+      
+        <li class="toc-item toc-level-2">
+          <a href="#agent-skills-validation" class="toc-link">Validation</a>
         </li>
       
     </ul>
@@ -1129,13 +1193,13 @@ live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
         </div>
       </div>
       
-      <script src="../assets/js/docmd-main.js?v=mre1ybgf"></script>
+      <script src="../assets/js/docmd-main.js?v=mrea2r5a"></script>
       
-      <script src="../assets/js/docmd-git.js?v=mre1ybgf"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mre1ybgf" ></script>
+      <script src="../assets/js/docmd-git.js?v=mrea2r5a"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mrea2r5a" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mre1ybgf" ></script>
-<script src="../assets/js/docmd-git.js?v=mre1ybgf" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mrea2r5a" ></script>
+<script src="../assets/js/docmd-git.js?v=mrea2r5a" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1211,7 +1275,7 @@ live in <code>docs/3-ENGINEERING/ADRs/</code>.</p>
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
       
         <script
-          src="../assets/js/docslime-nav.js?v=mre1ybgf"></script>
+          src="../assets/js/docslime-nav.js?v=mrea2r5a"></script>
         
       
       

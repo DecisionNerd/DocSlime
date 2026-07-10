@@ -3,10 +3,10 @@ type: concept
 title: Testing
 source: "https://www.docslime.dev/4-TESTING/"
 path: /4-TESTING/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.692Z"
+  generated_at: "2026-07-10T01:49:44.533Z"
 ---
 # Testing
 
@@ -31,7 +31,7 @@ verified together through the CLI, so the black-box tests double as integration 
 
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
 |---|---|---|
-| Scaffold the docs tree / FR-1, FR-11 | Given an empty dir, When `init`, Then the full 11-file tree exists, including `PRODUCT.md` and `DESIGN.md` | `tests/cli.rs::init_creates_full_tree` |
+| Scaffold the docs tree / FR-1, FR-11, FR-15 | Given an empty dir, When `init`, Then the full 12-file tree exists, including `PRODUCT.md`, `DESIGN.md`, and `publishing.md` | `tests/cli.rs::init_creates_full_tree` |
 | Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
 | Non-destructive by default / FR-2 | Given an edited file, When `init` re-runs, Then the file is left untouched | `tests/cli.rs::init_skips_existing_files` |
 | Force overwrite / FR-2 | Given an edited file, When `init --force`, Then the template is restored | `tests/cli.rs::init_force_overwrites` |
@@ -44,8 +44,27 @@ verified together through the CLI, so the black-box tests double as integration 
 | List reflects disk state / FR-6 | Given some files exist, When `list`, Then status reflects what's on disk | `tests/cli.rs::list_reflects_on_disk_status` |
 | Agent skill structure / FR-9, FR-10 | Given the bundled docslime skills, When validated, Then their frontmatter and metadata are well-formed | `skill-creator/scripts/quick_validate.py .agents/skills/<skill>` |
 | KISS stays a skill / FR-12 | Given the CLI help, When inspected, Then there is no `kiss` CLI subcommand | `tests/cli.rs::kiss_is_not_a_cli_subcommand` |
+| Skill robustness / FR-16 | Given the bundled skill folders, When inspected, Then each `SKILL.md` has frontmatter, guardrails, verification, and failure handling | `tests/cli.rs::agent_skills_have_required_sections` |
 | Slug normalization / FR-5 | Mixed-case/spaced input normalizes to `[a-z0-9-]`; empty rejected | `src/commands/add.rs::normalize_slug_lowercases_and_hyphenates` |
 | ADR numbering helper / FR-4 | Missing dir → `1`; filename prefix parsed correctly | `src/commands/add.rs::next_adr_number_is_one_when_dir_missing`, `leading_number_parses_prefix` |
+
+## Traceability contract
+
+DocSlime's TDD+BDD bar is that every important behavior can be followed from intent to
+proof:
+
+| Link | Evidence |
+|---|---|
+| Product goal -> experience | `PRODUCT.md` explains why the docs tree exists; `1-EXPERIENCES.md` turns that into user stories. |
+| Experience -> requirement | `2-REQUIREMENTS.md` gives each behavior a stable FR/NFR ID and names the experience it serves. |
+| Requirement -> BDD scenario | This file records Given/When/Then coverage for the visible behavior. |
+| Scenario -> test | `tests/cli.rs` runs the compiled binary against throwaway directories and asserts on output files, exit codes, and help text. |
+| Requirement -> architecture/ADR | `3-ARCHITECTURE.md` names the domain boundary; durable choices link to `3-ENGINEERING/ADRs/`. |
+
+The DDD evidence is intentionally lightweight: docs should name the domain concepts and
+boundaries that affect behavior, then use ADRs for hard-to-reverse decisions. If a project
+has no meaningful domain split, the architecture doc should say that instead of inventing
+bounded contexts.
 
 ## Evaluation against product goals
 
@@ -61,6 +80,10 @@ Tests prove correctness; they don't prove the product is working. The product-le
   speculative answers because product context, requirements, and ADRs are present.
 - **Impeccable context quality** — judged by whether `impeccable` resolves `docs/PRODUCT.md`
   and `docs/DESIGN.md` without duplicate root files.
+- **Publishing boundary** — judged by whether DocSlime docs point to official `docmd.io`
+  build/deploy guidance and avoid stale copied platform instructions.
+- **Skill robustness** — judged by whether skill files validate structurally and give agents
+  enough setup, guardrails, verification, and failure handling to act without guessing.
 - **Adoption** — tracked via Homebrew and `npx skills` installs and repos using the tree.
 
 ## Running the tests

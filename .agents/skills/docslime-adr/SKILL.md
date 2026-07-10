@@ -21,6 +21,14 @@ its consequences — so the reasoning lives in the repo alongside the code.
 The `docs/` tree must exist (run **docslime-init** if not) and `docslime` must be installed (run
 **docslime-install** if not). ADRs live in `docs/3-ENGINEERING/ADRs/`.
 
+## Guardrails
+
+- Record one decision per ADR. Do not use an ADR to relitigate the whole system.
+- Keep accepted ADRs immutable; create a new superseding ADR for changed decisions.
+- Tie context back to requirement IDs, domain boundaries, constraints, or forces when they
+  are known.
+- Ask the user what options were actually considered; do not invent alternatives for polish.
+
 ## Steps
 
 ### 1 — Create the next-numbered record
@@ -70,8 +78,23 @@ that supersedes it, and set the old one's status to `Superseded by ADR-NNNN`.
 
 ### 5 — Verify and report
 
+See the verification section below before reporting completion.
+
+## Verification
+
 ```bash
 grep -rn "LLM:" docs/3-ENGINEERING/ADRs/
 ```
 
 When the new ADR and the log are clean, summarize the decision and the record's number.
+
+Also confirm the ADR file exists at the expected `NNNN-<slug>.md` path and the ADR index has
+one row for that file.
+
+## Failure Handling
+
+- If the docs tree or ADR directory is missing, run **docslime-init** or create the missing ADR
+  path through `docslime add adr <slug>`.
+- If the slug is unknown, ask for a 2-4 word decision name before creating the record.
+- If the decision is not actually made, keep the ADR status `Proposed` and list the unresolved
+  question rather than forcing `Accepted`.

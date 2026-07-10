@@ -51,6 +51,7 @@
     { "title": "Architecture", "path": "/3-ARCHITECTURE/", "icon": "boxes" },
     { "title": "Testing", "path": "/4-TESTING/", "icon": "flask-conical" },
     { "title": "Agent Skills", "path": "/skills/", "icon": "brain-circuit" },
+    { "title": "Publishing", "path": "/publishing/", "icon": "upload-cloud" },
     {
       "title": "Engineering",
       "icon": "wrench",

@@ -3,10 +3,10 @@ type: concept
 title: Journeys
 source: "https://www.docslime.dev/1-JOURNEYS/"
 path: /1-JOURNEYS/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.689Z"
+  generated_at: "2026-07-10T01:49:44.529Z"
 ---
 # Journeys
 
