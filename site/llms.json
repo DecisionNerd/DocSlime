@@ -75,6 +75,12 @@
       "priority": "medium"
     },
     {
+      "title": "Publishing",
+      "url": "https://www.docslime.dev/publishing/",
+      "description": "How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host.",
+      "priority": "medium"
+    },
+    {
       "title": "Documentation",
       "url": "https://www.docslime.dev/README/",
       "description": "",

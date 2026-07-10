@@ -3,17 +3,18 @@ type: concept
 title: Architecture
 source: "https://www.docslime.dev/3-ARCHITECTURE/"
 path: /3-ARCHITECTURE/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.691Z"
+  generated_at: "2026-07-10T02:05:24.381Z"
 ---
 # Architecture
 
-DocSlime is a single self-contained command-line binary written in Rust plus a bundled set
-of agent skills. It has no server, no database, and no runtime dependencies: the entire
-template tree is compiled into the binary, and every CLI command operates directly on the
-filesystem relative to the current directory.
+DocSlime is a small monorepo with three shippable surfaces: a self-contained Rust CLI, a
+`docmd.io`-built documentation site, and a bundled set of agent skills. The CLI has no
+server, no database, and no runtime dependencies: the entire template tree is compiled into
+the binary, and every command operates directly on the filesystem relative to the current
+directory.
 
 The design is deliberately small: parse a command, resolve a template, write files without
 clobbering existing ones, and leave judgment-heavy work to skills. `docs/PRODUCT.md` and
@@ -46,6 +47,8 @@ context loading, and `docmd.io` publication.
 | `commands::list` | List every template and whether it already exists on disk. | templates, scaffold |
 | `templates` | Hold the compile-time-embedded template tree and ADR template; resolve `add` names leniently. | include_dir |
 | `scaffold` | Compute output paths and write files non-destructively (honoring `--force`); track outcomes. | std::fs |
+| `docs site` | Publish the product docs and homepage from `docs/` with `docmd build`. | `@docmd/core`, `docmd.config.json` |
+| `agent skills` | Teach compatible AI agents how to install, initialize, fill, review, and maintain DocSlime docs. | `.agents/skills`, `agents/openai.yaml` |
 
 ## Data model
 
@@ -59,6 +62,30 @@ are:
 
 The one piece of derived state computed at runtime is the **next ADR number**, obtained by
 scanning the ADR directory for the highest `NNNN-*` prefix.
+
+## Domain language and boundaries
+
+DocSlime uses Domain Driven Design language lightly. The useful domain is not "documents" in
+the abstract; it is the lifecycle of turning repo knowledge into agent-readable, testable
+context.
+
+| Domain concept | Meaning in DocSlime | Boundary |
+|---|---|---|
+| Docs tree | The fixed `docs/` structure written into the target repo. | CLI scaffold |
+| Template catalog | The embedded Markdown files and ADR template that define the default tree. | CLI scaffold |
+| Filled document | A scaffolded file after an agent removes `LLM:` guidance and writes project facts. | Agent skill lifecycle |
+| Quality trace | Links from product goals to experiences, requirements, BDD scenarios, tests, and ADRs. | Docs content |
+| Design context | `docs/PRODUCT.md` and `docs/DESIGN.md` loaded by tools like `impeccable`. | External tool integration |
+| Publishing handoff | Clean Markdown consumed by `docmd.io` to build and deploy a static docs site. | Publishing boundary |
+
+The main bounded contexts are:
+
+- **CLI scaffold context:** create, add, list, and write files safely.
+- **Agent skill context:** interview, fill, critique, and record decisions with human input.
+- **Publishing context:** build and deploy with `docmd.io`; DocSlime only prepares the source
+  Markdown and points to official publishing docs.
+- **Site context:** render this repository's docs and homepage from the same Markdown source
+  users receive from the CLI templates.
 
 ## Key flows
 

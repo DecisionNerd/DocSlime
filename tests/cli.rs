@@ -7,7 +7,7 @@ use assert_cmd::Command;
 use predicates::prelude::*;
 use tempfile::TempDir;
 
-/// The 11 files `init` is expected to create, relative to `docs/`.
+/// The 12 files `init` is expected to create, relative to `docs/`.
 const EXPECTED: &[&str] = &[
     "README.md",
     "PRODUCT.md",
@@ -16,6 +16,7 @@ const EXPECTED: &[&str] = &[
     "DESIGN.md",
     "3-ARCHITECTURE.md",
     "4-TESTING.md",
+    "publishing.md",
     "0-PRODUCT/README.md",
     "1-JOURNEYS/README.md",
     "3-ENGINEERING/README.md",
@@ -186,4 +187,46 @@ fn kiss_is_not_a_cli_subcommand() {
         .assert()
         .success()
         .stdout(predicate::str::contains("kiss").not());
+}
+
+#[test]
+fn agent_skills_have_required_sections() {
+    let repo = Path::new(env!("CARGO_MANIFEST_DIR"));
+    let skills_dir = repo.join(".agents/skills");
+    let required = [
+        "docslime-install",
+        "docslime-init",
+        "docslime-fill",
+        "docslime-adr",
+        "docslime-kiss",
+    ];
+
+    for skill in required {
+        let path = skills_dir.join(skill).join("SKILL.md");
+        let contents = fs::read_to_string(&path).unwrap_or_else(|err| {
+            panic!("failed to read {}: {err}", path.display());
+        });
+
+        assert!(contents.starts_with("---\n"), "{skill} missing frontmatter");
+        assert!(
+            contents.contains("name: ") && contents.contains("description: "),
+            "{skill} missing required frontmatter fields"
+        );
+
+        for section in [
+            "## When to Use",
+            "## Prerequisites",
+            "## Guardrails",
+            "## Verification",
+            "## Failure Handling",
+        ] {
+            assert!(
+                contents.contains(section),
+                "{skill} missing required section {section}"
+            );
+        }
+
+        let metadata = skills_dir.join(skill).join("agents/openai.yaml");
+        assert!(metadata.is_file(), "{skill} missing agents/openai.yaml");
+    }
 }

@@ -301,25 +301,47 @@ body[data-source-file="docs/index.md"] .docmd-hero.hero-split {
 
 body[data-source-file="docs/index.md"] .hero-content {
   display: flex;
+  flex: 1 1 34rem;
   flex-direction: column;
   justify-content: center;
 }
 
 body[data-source-file="docs/index.md"] .hero-content h1 {
   color: var(--text-heading);
-  font-size: 4.45rem;
+  font-size: 4.35rem;
   letter-spacing: 0;
   line-height: 0.96;
   margin-bottom: 1rem;
-  max-width: 8ch;
+  max-width: 12.4ch;
 }
 
 body[data-source-file="docs/index.md"] .hero-content p {
   color: var(--text-color);
   font-size: 1.16rem;
   line-height: 1.5;
-  margin-bottom: clamp(1rem, 3vw, 1.6rem);
+  margin-bottom: clamp(0.85rem, 2vw, 1.25rem);
   max-width: 38rem;
+}
+
+body[data-source-file="docs/index.md"] .hero-content pre.hljs {
+  background: oklch(0.12 0.022 224);
+  border: 1px solid color-mix(in oklch, var(--docslime-gel) 34%, transparent);
+  border-radius: 8px;
+  color: oklch(0.91 0.028 154);
+  margin: 0 0 clamp(1rem, 2.5vw, 1.4rem);
+  max-width: 31rem;
+  overflow-x: auto;
+  width: 100%;
+}
+
+body[data-source-file="docs/index.md"] .hero-content pre.hljs code {
+  background: transparent;
+  color: inherit;
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  padding: 0.82rem 0.95rem;
+  white-space: pre;
 }
 
 body[data-source-file="docs/index.md"] .hero-content p:has(.docmd-button) {
@@ -334,6 +356,16 @@ body[data-source-file="docs/index.md"] .hero-content .docmd-button {
 
 body[data-source-file="docs/index.md"] .hero-side {
   align-items: center;
+  flex: 1 1 26rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-art {
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+  min-height: clamp(19rem, 34vw, 25rem);
+  position: relative;
+  width: 100%;
 }
 
 body[data-source-file="docs/index.md"] .hero-side pre {
@@ -346,6 +378,12 @@ body[data-source-file="docs/index.md"] .hero-side pre {
   width: 100%;
 }
 
+body[data-source-file="docs/index.md"] .hero-side pre.docslime-hero-tree {
+  margin: 0;
+  max-width: 31rem;
+  min-height: 17.25rem;
+}
+
 body[data-source-file="docs/index.md"] .hero-side pre code {
   background: transparent;
   color: inherit;
@@ -353,6 +391,79 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
   line-height: 1.55;
   padding: clamp(1rem, 3vw, 1.6rem);
   white-space: pre;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-mascot {
+  align-items: flex-end;
+  bottom: -0.35rem;
+  display: flex;
+  gap: 0.35rem;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(-0.25rem, 1vw, 0.75rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-mascot img {
+  height: clamp(6rem, 11vw, 9.25rem);
+  width: clamp(6rem, 11vw, 9.25rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page {
+  background: color-mix(in oklch, var(--docslime-card) 92%, var(--docslime-surface));
+  border: 1px solid color-mix(in oklch, var(--docslime-core) 24%, var(--border-color));
+  border-radius: 8px;
+  color: var(--text-heading);
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.28rem;
+  margin-bottom: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  transform: rotate(6deg);
+  width: clamp(7rem, 13vw, 9.5rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page strong {
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page span {
+  color: var(--link-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i {
+  background: color-mix(in oklch, var(--docslime-gel) 24%, var(--border-color));
+  border-radius: 999px;
+  display: block;
+  height: 0.28rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i:nth-child(4) {
+  width: 72%;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i:nth-child(5) {
+  width: 54%;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-badge {
+  background: var(--docslime-primary);
+  border: 1px solid color-mix(in oklch, var(--docslime-gel) 34%, var(--docslime-primary));
+  border-radius: 8px;
+  bottom: 0.15rem;
+  color: oklch(1 0 0);
+  font-size: 0.88rem;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 11.25rem;
+  padding: 0.62rem 0.72rem;
+  position: absolute;
+  right: clamp(0.3rem, 2.5vw, 1.4rem);
+  text-wrap: balance;
 }
 
 body[data-source-file="docs/index.md"] h2 {
@@ -461,10 +572,15 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
 
   body[data-source-file="docs/index.md"] .hero-content h1 {
     font-size: 3.75rem;
+    max-width: 12.5ch;
   }
 
   body[data-source-file="docs/index.md"] .hero-content p {
     font-size: 1.08rem;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-content pre.hljs {
+    max-width: 100%;
   }
 }
 
@@ -489,6 +605,47 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
 
   body[data-source-file="docs/index.md"] .hero-content h1 {
     font-size: 3.15rem;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-art {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 0;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-content pre.hljs code {
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-side pre.docslime-hero-tree {
+    min-height: 14.75rem;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-mascot {
+    align-self: flex-end;
+    bottom: auto;
+    right: 0;
+    top: auto;
+    position: relative;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-page {
+    display: none;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-badge {
+    align-self: stretch;
+    bottom: auto;
+    font-size: 0.78rem;
+    max-width: none;
+    padding: 0.5rem 0.6rem;
+    position: static;
+    right: auto;
+    text-align: center;
+    top: auto;
   }
 
   body[data-source-file="docs/index.md"] .hero-content p:has(.docmd-button) {

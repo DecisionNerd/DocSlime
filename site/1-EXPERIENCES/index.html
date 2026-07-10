@@ -103,11 +103,11 @@
     </title>
 
     <base href="/">
-    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mre1ybgf">
-    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mre1ybgf">
+    <link id="site-favicon" rel="icon" href="../assets/favicon.svg?v=mreamw8u">
+    <link rel="stylesheet" href="../assets/css/docmd-main.css?v=mreamw8u">
     
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mre1ybgf" id="hljs-light" >
-    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mre1ybgf" id="hljs-dark" disabled>
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-light.css?v=mreamw8u" id="hljs-light" >
+    <link rel="stylesheet" href="../assets/css/docmd-highlight-dark.css?v=mreamw8u" id="hljs-dark" disabled>
     
     
 <meta name="description" content="DocSlime is an opinionated CLI and agent-skill system for building living, agent-ready documentation inside a repo.">
@@ -122,11 +122,11 @@
 
 
 
-<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mre1ybgf" >
-<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mre1ybgf" >
+<link rel="stylesheet" href="../assets/css/docmd-git.css?v=mreamw8u" >
+<link rel="stylesheet" href="../assets/css/docmd-openapi.css?v=mreamw8u" >
 
     
-      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mre1ybgf">
+      <link rel="stylesheet" href="../assets/css/docslime-brand.css?v=mreamw8u">
     
     <script>/**
  * --------------------------------------------------------------------
@@ -618,6 +618,40 @@
         
       </li>
     
+      <li class="" >
+      
+        <a href="../publishing/" class=" "
+          >
+           
+<svg class="lucide-icon icon-upload-cloud " width="1em" height="1em" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"
+  class="lucide lucide-cloud-upload"
+  xmlns="http://www.w3.org/2000/svg"
+  width="24"
+  height="24"
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+>
+  <path d="M12 13v8" />
+  <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
+  <path d="m8 17 4-4 4 4" />
+</svg>
+
+          
+          <span class="nav-item-title">
+            Publishing
+            </span>
+          
+          
+        </a>
+        
+
+        
+      </li>
+    
       <li class="expanded nav-group" >
       
         <span class="nav-label nav-group">
@@ -827,7 +861,7 @@
             <div class="content-layout">
               <div class="main-content">
                 <div class="docmd-breadcrumbs-row">
-                  <div id="docmd-raw-markdown" data-content="%23%20Experiences%0A%0AAt%20its%20best%2C%20DocSlime%20feels%20like%20a%20project%20suddenly%20has%20a%20nervous%20system.%20A%20developer%20runs%0Aone%20command%2C%20a%20full%20documentation%20tree%20appears%20in%20the%20repo%2C%20and%20their%20AI%20agent%20immediately%0Aknows%20how%20to%20fill%20it%20in%20by%20asking%20the%20right%20questions%20instead%20of%20guessing.%20The%20docs%20end%20up%0Awritten%20and%20committed%20alongside%20the%20code%2C%20ready%20for%20agents%2C%20design%20tools%2C%20ADR%20review%2C%20tests%2C%0Aand%20eventual%20%60docmd.io%60%20publication.%0A%0A%23%23%20Primary%20users%0A%0A-%20**Engineering%20team%20member**%20%E2%80%94%20a%20developer%20(often%20working%20with%20an%20AI%20coding%20agent)%20who%20wants%0A%20%20consistent%2C%20in-repo%20project%20docs%20without%20designing%20a%20doc%20system%20from%20scratch.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A-%20**Product%20or%20design%20collaborator**%20%E2%80%94%20someone%20shaping%20a%20service%20or%20user-facing%20product%20who%0A%20%20needs%20product%20and%20design%20context%20discoverable%20by%20tools%20like%20%60impeccable%60.%0A-%20**AI%20coding%20agent**%20%E2%80%94%20the%20intended%20author%20and%20reader%20of%20the%20filled-in%20docs%3B%20it%20follows%20the%0A%20%20inline%20guidance%20to%20interview%20the%20team%20and%20write%20each%20section.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A%0A%23%23%20Key%20experiences%0A%0A%23%23%23%20Scaffold%20the%20docs%20tree%0A%0A%3E%20**As%20a**%20developer%20starting%20documentation%20on%20a%20repo%0A%3E%20**I%20want**%20to%20drop%20a%20standardized%20docs%20tree%20into%20the%20project%20with%20one%20command%0A%3E%20**So%20that**%20I%20have%20a%20consistent%20structure%20to%20fill%20in%2C%20without%20inventing%20one%0A%0A-%20**Given**%20a%20git%20repo%20with%20no%20%60docs%2F%60%20directory%0A-%20**When**%20I%20run%20%60docslime%20init%60%0A-%20**Then**%20the%20full%20%60docs%2F%60%20tree%20is%20created%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%2C%20with%20each%0A%20%20template%20carrying%20inline%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%0A%0AMust%20not%20happen%3A%20an%20existing%20file%20is%20silently%20overwritten.%20%60init%60%20skips%20anything%20already%20on%0Adisk%20unless%20%60--force%60%20is%20passed.%0A%0A%23%23%23%20Add%20a%20single%20document%0A%0A%3E%20**As%20a**%20developer%20with%20a%20partial%20docs%20tree%0A%3E%20**I%20want**%20to%20add%20just%20one%20missing%20document%20by%20name%0A%3E%20**So%20that**%20I%20can%20fill%20gaps%20without%20re-running%20the%20whole%20scaffold%0A%0A-%20**Given**%20a%20repo%20that%20already%20has%20some%20docs%0A-%20**When**%20I%20run%20%60docslime%20add%203-ARCHITECTURE%60%20(name%20matched%20leniently%2C%20with%20or%20without%20%60.md%60)%0A-%20**Then**%20only%20that%20document%20is%20created%20from%20its%20template%2C%20and%20existing%20files%20are%20untouched%0A%0AMust%20not%20happen%3A%20an%20unknown%20name%20fails%20silently.%20DocSlime%20reports%20the%20error%20and%20lists%20the%0Avalid%20template%20names.%0A%0A%23%23%23%20Record%20an%20architecture%20decision%0A%0A%3E%20**As%20a**%20team%20making%20a%20significant%20technical%20choice%0A%3E%20**I%20want**%20to%20create%20the%20next-numbered%20ADR%20with%20a%20memorable%20slug%0A%3E%20**So%20that**%20the%20decision%20and%20its%20reasoning%20are%20captured%20immutably%20in%20the%20repo%0A%0A-%20**Given**%20an%20ADR%20directory%20with%20records%20up%20to%20%600003-*%60%0A-%20**When**%20I%20run%20%60docslime%20add%20adr%20use-postgres%60%0A-%20**Then**%20%60docs%2F3-ENGINEERING%2FADRs%2F0004-use-postgres.md%60%20is%20created%20from%20the%20ADR%20template%0A%0AMust%20not%20happen%3A%20numbering%20collides%20or%20restarts.%20DocSlime%20always%20picks%20the%20next%20number%20after%0Athe%20highest%20existing%20record%20(%600001%60%20if%20there%20are%20none).%0A%0A%23%23%23%20Fill%20in%20a%20document%20with%20an%20agent%0A%0A%3E%20**As%20a**%20developer%20with%20a%20scaffolded%20but%20empty%20doc%0A%3E%20**I%20want**%20my%20AI%20agent%20to%20interview%20me%20and%20write%20the%20document%0A%3E%20**So%20that**%20the%20doc%20reflects%20real%20project%20intent%20rather%20than%20boilerplate%0A%0A-%20**Given**%20a%20scaffolded%20document%20containing%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%20comments%0A-%20**When**%20I%20ask%20my%20agent%20to%20fill%20it%20in%20(via%20the%20%60docslime-fill%60%20skill)%0A-%20**Then**%20the%20agent%20asks%20focused%20questions%2C%20writes%20each%20section%2C%20and%20removes%20the%20guidance%0A%20%20comments%20as%20it%20goes%20%E2%80%94%20leaving%20a%20clean%2C%20completed%20document%0A%0AMust%20not%20happen%3A%20the%20agent%20fabricates%20facts%20or%20leaves%20guidance%20comments%20behind.%20A%20finished%0Adoc%20has%20no%20%60LLM%3A%60%20comments%20and%20no%20leftover%20placeholder%20prompts.%0A%0A%23%23%23%20Tighten%20docs%20after%20filling%0A%0A%3E%20**As%20a**%20developer%20with%20filled-in%20docs%0A%3E%20**I%20want**%20my%20agent%20to%20challenge%20whether%20they%20are%20bloated%2C%20generic%2C%20or%20full%20of%20AI%20slop%0A%3E%20**So%20that**%20the%20docs%20stay%20useful%2C%20truthful%2C%20and%20easy%20to%20maintain%0A%0A-%20**Given**%20a%20filled%20or%20partially%20filled%20docslime%20tree%0A-%20**When**%20I%20ask%20the%20agent%20to%20run%20the%20%60docslime-kiss%60%20skill%0A-%20**Then**%20it%20gives%20a%20clear%20KISS%20verdict%2C%20flags%20concrete%20bloat%20with%20file%20references%2C%20and%0A%20%20recommends%20the%20smallest%20best-practice%20cleanup%0A%0AMust%20not%20happen%3A%20the%20review%20rewards%20longer%20docs%20just%20because%20they%20sound%20polished.%20The%20skill%0Ashould%20prefer%20cutting%20or%20tightening%20filler%20over%20rewriting%20it%20into%20prettier%20filler.%0A%0A%23%23%23%20Load%20product%20and%20design%20context%20in%20impeccable%0A%0A%3E%20**As%20a**%20product%20or%20design%20agent%0A%3E%20**I%20want**%20the%20docs%20tree%20to%20expose%20recognizable%20product%20and%20design%20context%20files%0A%3E%20**So%20that**%20I%20can%20shape%20product%20work%20without%20asking%20the%20user%20to%20duplicate%20context%20elsewhere%0A%0A-%20**Given**%20a%20repo%20initialized%20by%20DocSlime%0A-%20**When**%20%60impeccable%60%20resolves%20context%0A-%20**Then**%20it%20can%20load%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%0A%0AMust%20not%20happen%3A%20the%20repo%20maintains%20separate%20root-level%20context%20files%20that%20drift%20from%20the%0Acanonical%20docs%20tree.%0A%0A%23%23%20Experience%20principles%0A%0A-%20**Non-destructive%20by%20default**%20%E2%80%94%20existing%20files%20are%20never%20overwritten%20without%20an%20explicit%20%60--force%60.%0A-%20**Forgiving%20input**%20%E2%80%94%20document%20names%20and%20ADR%20slugs%20are%20matched%20and%20normalized%20leniently.%0A-%20**Self-explaining**%20%E2%80%94%20every%20template%20tells%20the%20agent%20(and%20the%20human)%20what%20to%20do%3B%20no%20external%20manual%20required.%0A-%20**KISS%20after%20filling**%20%E2%80%94%20filled%20docs%20should%20be%20challenged%20for%20bloat%2C%20generic%20prose%2C%20and%20weak%20traceability.%0A-%20**Context%20tools%20fit%20the%20tree**%20%E2%80%94%20product%2Fdesign%20tools%20should%20discover%20context%20from%20%60docs%2F%60%0A%20%20instead%20of%20requiring%20duplicate%20files.%0A-%20**Publishable%20Markdown**%20%E2%80%94%20docs%20should%20stay%20clean%20enough%20to%20flow%20into%20%60docmd.io%60.%0A-%20**Fast%20and%20local**%20%E2%80%94%20commands%20run%20instantly%20against%20the%20filesystem%2C%20and%20the%20output%20lives%20in%20the%20repo.%0A-%20**Small%20surface**%20%E2%80%94%20three%20commands%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20cover%20the%20whole%20tool.%0A%0A%23%23%20Out%20of%20scope%0A%0A-%20Hosting%20or%20rendering%20docs%20directly%20inside%20the%20CLI%3B%20publishing%20belongs%20to%20%60docmd.io%60.%0A-%20Generating%20documentation%20content%20automatically%20without%20a%20human-in-the-loop%20interview.%0A-%20Editing%20or%20migrating%20docs%20that%20have%20already%20been%20filled%20in%20(the%20CLI%20only%20scaffolds%3B%20skills%0A%20%20help%20with%20review%20and%20filling).%0A-%20Enforcing%20a%20single%20rigid%20format%20%E2%80%94%20the%20tree%20is%20a%20default%2C%20and%20teams%20may%20diverge.%0A" style="display: none;"></div>
+                  <div id="docmd-raw-markdown" data-content="%23%20Experiences%0A%0AAt%20its%20best%2C%20DocSlime%20feels%20like%20a%20project%20suddenly%20has%20a%20nervous%20system.%20A%20developer%20runs%0Aone%20command%2C%20a%20full%20documentation%20tree%20appears%20in%20the%20repo%2C%20and%20their%20AI%20agent%20immediately%0Aknows%20how%20to%20fill%20it%20in%20by%20asking%20the%20right%20questions%20instead%20of%20guessing.%20The%20docs%20end%20up%0Awritten%20and%20committed%20alongside%20the%20code%2C%20ready%20for%20agents%2C%20design%20tools%2C%20ADR%20review%2C%20tests%2C%0Aand%20eventual%20%60docmd.io%60%20publication.%0A%0A%23%23%20Primary%20users%0A%0A-%20**Engineering%20team%20member**%20%E2%80%94%20a%20developer%20(often%20working%20with%20an%20AI%20coding%20agent)%20who%20wants%0A%20%20consistent%2C%20in-repo%20project%20docs%20without%20designing%20a%20doc%20system%20from%20scratch.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A-%20**Product%20or%20design%20collaborator**%20%E2%80%94%20someone%20shaping%20a%20service%20or%20user-facing%20product%20who%0A%20%20needs%20product%20and%20design%20context%20discoverable%20by%20tools%20like%20%60impeccable%60.%0A-%20**AI%20coding%20agent**%20%E2%80%94%20the%20intended%20author%20and%20reader%20of%20the%20filled-in%20docs%3B%20it%20follows%20the%0A%20%20inline%20guidance%20to%20interview%20the%20team%20and%20write%20each%20section.%20See%20%5B%601-JOURNEYS%2F%60%5D(1-JOURNEYS%2F).%0A%0A%23%23%20Key%20experiences%0A%0A%23%23%23%20Scaffold%20the%20docs%20tree%0A%0A%3E%20**As%20a**%20developer%20starting%20documentation%20on%20a%20repo%0A%3E%20**I%20want**%20to%20drop%20a%20standardized%20docs%20tree%20into%20the%20project%20with%20one%20command%0A%3E%20**So%20that**%20I%20have%20a%20consistent%20structure%20to%20fill%20in%2C%20without%20inventing%20one%0A%0A-%20**Given**%20a%20git%20repo%20with%20no%20%60docs%2F%60%20directory%0A-%20**When**%20I%20run%20%60docslime%20init%60%0A-%20**Then**%20the%20full%20%60docs%2F%60%20tree%20is%20created%2C%20including%20%60PRODUCT.md%60%20and%20%60DESIGN.md%60%2C%20with%20each%0A%20%20template%20carrying%20inline%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%0A%0AMust%20not%20happen%3A%20an%20existing%20file%20is%20silently%20overwritten.%20%60init%60%20skips%20anything%20already%20on%0Adisk%20unless%20%60--force%60%20is%20passed.%0A%0A%23%23%23%20Add%20a%20single%20document%0A%0A%3E%20**As%20a**%20developer%20with%20a%20partial%20docs%20tree%0A%3E%20**I%20want**%20to%20add%20just%20one%20missing%20document%20by%20name%0A%3E%20**So%20that**%20I%20can%20fill%20gaps%20without%20re-running%20the%20whole%20scaffold%0A%0A-%20**Given**%20a%20repo%20that%20already%20has%20some%20docs%0A-%20**When**%20I%20run%20%60docslime%20add%203-ARCHITECTURE%60%20(name%20matched%20leniently%2C%20with%20or%20without%20%60.md%60)%0A-%20**Then**%20only%20that%20document%20is%20created%20from%20its%20template%2C%20and%20existing%20files%20are%20untouched%0A%0AMust%20not%20happen%3A%20an%20unknown%20name%20fails%20silently.%20DocSlime%20reports%20the%20error%20and%20lists%20the%0Avalid%20template%20names.%0A%0A%23%23%23%20Record%20an%20architecture%20decision%0A%0A%3E%20**As%20a**%20team%20making%20a%20significant%20technical%20choice%0A%3E%20**I%20want**%20to%20create%20the%20next-numbered%20ADR%20with%20a%20memorable%20slug%0A%3E%20**So%20that**%20the%20decision%20and%20its%20reasoning%20are%20captured%20immutably%20in%20the%20repo%0A%0A-%20**Given**%20an%20ADR%20directory%20with%20records%20up%20to%20%600003-*%60%0A-%20**When**%20I%20run%20%60docslime%20add%20adr%20use-postgres%60%0A-%20**Then**%20%60docs%2F3-ENGINEERING%2FADRs%2F0004-use-postgres.md%60%20is%20created%20from%20the%20ADR%20template%0A%0AMust%20not%20happen%3A%20numbering%20collides%20or%20restarts.%20DocSlime%20always%20picks%20the%20next%20number%20after%0Athe%20highest%20existing%20record%20(%600001%60%20if%20there%20are%20none).%0A%0A%23%23%23%20Fill%20in%20a%20document%20with%20an%20agent%0A%0A%3E%20**As%20a**%20developer%20with%20a%20scaffolded%20but%20empty%20doc%0A%3E%20**I%20want**%20my%20AI%20agent%20to%20interview%20me%20and%20write%20the%20document%0A%3E%20**So%20that**%20the%20doc%20reflects%20real%20project%20intent%20rather%20than%20boilerplate%0A%0A-%20**Given**%20a%20scaffolded%20document%20containing%20%60%3C!--%20LLM%3A%20--%3E%60%20guidance%20comments%0A-%20**When**%20I%20ask%20my%20agent%20to%20fill%20it%20in%20(via%20the%20%60docslime-fill%60%20skill)%0A-%20**Then**%20the%20agent%20asks%20focused%20questions%2C%20writes%20each%20section%2C%20and%20removes%20the%20guidance%0A%20%20comments%20as%20it%20goes%20%E2%80%94%20leaving%20a%20clean%2C%20completed%20document%0A%0AMust%20not%20happen%3A%20the%20agent%20fabricates%20facts%20or%20leaves%20guidance%20comments%20behind.%20A%20finished%0Adoc%20has%20no%20%60LLM%3A%60%20comments%20and%20no%20leftover%20placeholder%20prompts.%0A%0A%23%23%23%20Tighten%20docs%20after%20filling%0A%0A%3E%20**As%20a**%20developer%20with%20filled-in%20docs%0A%3E%20**I%20want**%20my%20agent%20to%20challenge%20whether%20they%20are%20bloated%2C%20generic%2C%20or%20full%20of%20AI%20slop%0A%3E%20**So%20that**%20the%20docs%20stay%20useful%2C%20truthful%2C%20and%20easy%20to%20maintain%0A%0A-%20**Given**%20a%20filled%20or%20partially%20filled%20docslime%20tree%0A-%20**When**%20I%20ask%20the%20agent%20to%20run%20the%20%60docslime-kiss%60%20skill%0A-%20**Then**%20it%20gives%20a%20clear%20KISS%20verdict%2C%20flags%20concrete%20bloat%20with%20file%20references%2C%20and%0A%20%20recommends%20the%20smallest%20best-practice%20cleanup%0A%0AMust%20not%20happen%3A%20the%20review%20rewards%20longer%20docs%20just%20because%20they%20sound%20polished.%20The%20skill%0Ashould%20prefer%20cutting%20or%20tightening%20filler%20over%20rewriting%20it%20into%20prettier%20filler.%0A%0A%23%23%23%20Load%20product%20and%20design%20context%20in%20impeccable%0A%0A%3E%20**As%20a**%20product%20or%20design%20agent%0A%3E%20**I%20want**%20the%20docs%20tree%20to%20expose%20recognizable%20product%20and%20design%20context%20files%0A%3E%20**So%20that**%20I%20can%20shape%20product%20work%20without%20asking%20the%20user%20to%20duplicate%20context%20elsewhere%0A%0A-%20**Given**%20a%20repo%20initialized%20by%20DocSlime%0A-%20**When**%20%60impeccable%60%20resolves%20context%0A-%20**Then**%20it%20can%20load%20%60docs%2FPRODUCT.md%60%20and%20%60docs%2FDESIGN.md%60%0A%0AMust%20not%20happen%3A%20the%20repo%20maintains%20separate%20root-level%20context%20files%20that%20drift%20from%20the%0Acanonical%20docs%20tree.%0A%0A%23%23%23%20Trace%20behavior%20to%20tests%20and%20decisions%0A%0A%3E%20**As%20a**%20developer%20changing%20a%20product%20or%20service%0A%3E%20**I%20want**%20requirements%2C%20BDD%20scenarios%2C%20tests%2C%20architecture%2C%20and%20ADRs%20to%20point%20at%20each%20other%0A%3E%20**So%20that**%20future%20humans%20and%20agents%20can%20see%20why%20the%20behavior%20exists%20and%20how%20it%20is%20proved%0A%0A-%20**Given**%20a%20requirement%20with%20a%20stable%20ID%0A-%20**When**%20the%20team%20documents%20the%20behavior%20and%20testing%20plan%0A-%20**Then**%20%604-TESTING.md%60%20includes%20a%20Given%2FWhen%2FThen%20scenario%20and%20a%20test%20reference%2C%20and%0A%20%20%603-ARCHITECTURE.md%60%20or%20an%20ADR%20captures%20the%20domain%20boundary%20or%20decision%20when%20it%20matters%0A%0AMust%20not%20happen%3A%20a%20requirement%20sounds%20plausible%20but%20cannot%20be%20tested%2C%20or%20an%20ADR%20explains%20a%0Achoice%20without%20naming%20the%20requirement%20or%20domain%20force%20that%20made%20the%20choice%20important.%0A%0A%23%23%23%20Publish%20through%20docmd.io%0A%0A%3E%20**As%20a**%20maintainer%20ready%20to%20publish%20documentation%0A%3E%20**I%20want**%20DocSlime%20to%20hand%20off%20clean%20Markdown%20to%20%60docmd.io%60%0A%3E%20**So%20that**%20publishing%20follows%20the%20official%20docmd%20build%20and%20deployment%20path%20instead%20of%20a%0A%3E%20second%20DocSlime-specific%20hosting%20system%0A%0A-%20**Given**%20a%20filled%20DocSlime%20docs%20tree%0A-%20**When**%20I%20build%20with%20%60docmd%60%0A-%20**Then**%20the%20static%20site%20is%20generated%20from%20%60docs%2F%60%2C%20and%20any%20platform-specific%20deployment%0A%20%20details%20come%20from%20the%20official%20%60docmd.io%60%20docs%0A%0AMust%20not%20happen%3A%20DocSlime%20copies%20stale%20deployment%20instructions%20or%20implies%20the%20CLI%20hosts%20docs.%0A%0A%23%23%20Experience%20principles%0A%0A-%20**Non-destructive%20by%20default**%20%E2%80%94%20existing%20files%20are%20never%20overwritten%20without%20an%20explicit%20%60--force%60.%0A-%20**Forgiving%20input**%20%E2%80%94%20document%20names%20and%20ADR%20slugs%20are%20matched%20and%20normalized%20leniently.%0A-%20**Self-explaining**%20%E2%80%94%20every%20template%20tells%20the%20agent%20(and%20the%20human)%20what%20to%20do%3B%20no%20external%20manual%20required.%0A-%20**KISS%20after%20filling**%20%E2%80%94%20filled%20docs%20should%20be%20challenged%20for%20bloat%2C%20generic%20prose%2C%20and%20weak%20traceability.%0A-%20**Context%20tools%20fit%20the%20tree**%20%E2%80%94%20product%2Fdesign%20tools%20should%20discover%20context%20from%20%60docs%2F%60%0A%20%20instead%20of%20requiring%20duplicate%20files.%0A-%20**Publishable%20Markdown**%20%E2%80%94%20docs%20should%20stay%20clean%20enough%20to%20flow%20into%20%60docmd.io%60.%0A-%20**Traceable%20quality**%20%E2%80%94%20BDD%20scenarios%2C%20TDD%20evidence%2C%20domain%20boundaries%2C%20and%20ADRs%20should%0A%20%20make%20each%20other%20easier%20to%20find.%0A-%20**Fast%20and%20local**%20%E2%80%94%20commands%20run%20instantly%20against%20the%20filesystem%2C%20and%20the%20output%20lives%20in%20the%20repo.%0A-%20**Small%20surface**%20%E2%80%94%20three%20commands%20(%60init%60%2C%20%60add%60%2C%20%60list%60)%20cover%20the%20whole%20tool.%0A%0A%23%23%20Out%20of%20scope%0A%0A-%20Hosting%20or%20rendering%20docs%20directly%20inside%20the%20CLI%3B%20publishing%20belongs%20to%20%60docmd.io%60.%0A-%20Generating%20documentation%20content%20automatically%20without%20a%20human-in-the-loop%20interview.%0A-%20Editing%20or%20migrating%20docs%20that%20have%20already%20been%20filled%20in%20(the%20CLI%20only%20scaffolds%3B%20skills%0A%20%20help%20with%20review%20and%20filling).%0A-%20Enforcing%20a%20single%20rigid%20format%20%E2%80%94%20the%20tree%20is%20a%20default%2C%20and%20teams%20may%20diverge.%0A" style="display: none;"></div>
                   
                     <nav aria-label="breadcrumb" class="docmd-breadcrumbs">
                       <ol>
@@ -989,6 +1023,34 @@ should prefer cutting or tightening filler over rewriting it into prettier fille
 </ul>
 <p>Must not happen: the repo maintains separate root-level context files that drift from the<br>
 canonical docs tree.</p>
+<h3 id="experiences-key-experiences-trace-behavior-to-tests-and-decisions" class="docmd-heading"><a href="#experiences-key-experiences-trace-behavior-to-tests-and-decisions" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Trace behavior to tests and decisions</h3>
+<blockquote>
+<p><strong>As a</strong> developer changing a product or service<br>
+<strong>I want</strong> requirements, BDD scenarios, tests, architecture, and ADRs to point at each other<br>
+<strong>So that</strong> future humans and agents can see why the behavior exists and how it is proved</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a requirement with a stable ID</li>
+<li><strong>When</strong> the team documents the behavior and testing plan</li>
+<li><strong>Then</strong> <code>4-TESTING.md</code> includes a Given/When/Then scenario and a test reference, and<br>
+<code>3-ARCHITECTURE.md</code> or an ADR captures the domain boundary or decision when it matters</li>
+</ul>
+<p>Must not happen: a requirement sounds plausible but cannot be tested, or an ADR explains a<br>
+choice without naming the requirement or domain force that made the choice important.</p>
+<h3 id="experiences-key-experiences-publish-through-docmdio" class="docmd-heading"><a href="#experiences-key-experiences-publish-through-docmdio" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Publish through <a href="http://docmd.io">docmd.io</a></h3>
+<blockquote>
+<p><strong>As a</strong> maintainer ready to publish documentation<br>
+<strong>I want</strong> DocSlime to hand off clean Markdown to <code>docmd.io</code><br>
+<strong>So that</strong> publishing follows the official docmd build and deployment path instead of a<br>
+second DocSlime-specific hosting system</p>
+</blockquote>
+<ul>
+<li><strong>Given</strong> a filled DocSlime docs tree</li>
+<li><strong>When</strong> I build with <code>docmd</code></li>
+<li><strong>Then</strong> the static site is generated from <code>docs/</code>, and any platform-specific deployment<br>
+details come from the official <code>docmd.io</code> docs</li>
+</ul>
+<p>Must not happen: DocSlime copies stale deployment instructions or implies the CLI hosts docs.</p>
 <h2 id="experiences-experience-principles" class="docmd-heading"><a href="#experiences-experience-principles" class="heading-anchor" aria-label="Permalink to this section"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-link2-icon lucide-link-2"><path d="M9 17H7A5 5 0 0 1 7 7h2m6 0h2a5 5 0 1 1 0 10h-2m-7-5h8"/></svg></a>Experience principles</h2>
 <ul>
 <li><strong>Non-destructive by default</strong> — existing files are never overwritten without an explicit <code>--force</code>.</li>
@@ -998,6 +1060,8 @@ canonical docs tree.</p>
 <li><strong>Context tools fit the tree</strong> — product/design tools should discover context from <code>docs/</code><br>
 instead of requiring duplicate files.</li>
 <li><strong>Publishable Markdown</strong> — docs should stay clean enough to flow into <code>docmd.io</code>.</li>
+<li><strong>Traceable quality</strong> — BDD scenarios, TDD evidence, domain boundaries, and ADRs should<br>
+make each other easier to find.</li>
 <li><strong>Fast and local</strong> — commands run instantly against the filesystem, and the output lives in the repo.</li>
 <li><strong>Small surface</strong> — three commands (<code>init</code>, <code>add</code>, <code>list</code>) cover the whole tool.</li>
 </ul>
@@ -1121,6 +1185,14 @@ help with review and filling).</li>
       
         <li class="toc-item toc-level-3">
           <a href="#experiences-key-experiences-load-product-and-design-context-in-impeccable" class="toc-link">Load product and design context in impeccable</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-trace-behavior-to-tests-and-decisions" class="toc-link">Trace behavior to tests and decisions</a>
+        </li>
+      
+        <li class="toc-item toc-level-3">
+          <a href="#experiences-key-experiences-publish-through-docmdio" class="toc-link">Publish through docmd.io</a>
         </li>
       
         <li class="toc-item toc-level-2">
@@ -1252,13 +1324,13 @@ help with review and filling).</li>
         </div>
       </div>
       
-      <script src="../assets/js/docmd-main.js?v=mre1ybgf"></script>
+      <script src="../assets/js/docmd-main.js?v=mreamw8u"></script>
       
-      <script src="../assets/js/docmd-git.js?v=mre1ybgf"></script>
-      <script src="../assets/js/docmd-image-lightbox.js?v=mre1ybgf" ></script>
+      <script src="../assets/js/docmd-git.js?v=mreamw8u"></script>
+      <script src="../assets/js/docmd-image-lightbox.js?v=mreamw8u" ></script>
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.2.0/dist/umd/index.min.js" ></script>
-<script src="../assets/js/docmd-search.js?v=mre1ybgf" ></script>
-<script src="../assets/js/docmd-git.js?v=mre1ybgf" type="module"></script>
+<script src="../assets/js/docmd-search.js?v=mreamw8u" ></script>
+<script src="../assets/js/docmd-git.js?v=mreamw8u" type="module"></script>
 
   <!-- Search Modal (Injected by @docmd/plugin-search) -->
   <div id="docmd-search-modal" class="docmd-search-modal" style="display: none;" data-show-confidence="false" data-show-filters="true"
@@ -1334,7 +1406,7 @@ help with review and filling).</li>
 <script>window.__git_config={"repo":null,"branch":"main","editLink":false,"lastUpdated":true,"commitHistory":true,"maxCommits":5,"dateFormat":"relative"};window.__git_i18n={"lastUpdated":"Last updated","recentCommits":"Recent commits","viewCommitHistory":"View commit history","editOnGitHub":"Edit on GitHub","editOnGitLab":"Edit on GitLab","editOnBitbucket":"Edit on Bitbucket","editThisPage":"Edit this page","justNow":"just now","minutesAgo":"{n}m ago","hoursAgo":"{n}h ago","daysAgo":"{n}d ago"}</script>
       
         <script
-          src="../assets/js/docslime-nav.js?v=mre1ybgf"></script>
+          src="../assets/js/docslime-nav.js?v=mreamw8u"></script>
         
       
       

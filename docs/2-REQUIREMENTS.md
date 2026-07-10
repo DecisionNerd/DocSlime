@@ -10,7 +10,7 @@ fill them in, while the tree stays plain Markdown for `impeccable` context loadi
 
 | ID | Requirement | Traces to |
 |---|---|---|
-| FR-1 | The system shall create the full standardized `docs/` tree (`PRODUCT.md`, numbered docs, `DESIGN.md`, `0-PRODUCT/`, `1-JOURNEYS/`, `3-ENGINEERING/`, and `3-ENGINEERING/ADRs/`) in the current directory via `docslime init`. | Scaffold the docs tree |
+| FR-1 | The system shall create the full standardized `docs/` tree (`PRODUCT.md`, numbered docs, `DESIGN.md`, `publishing.md`, `0-PRODUCT/`, `1-JOURNEYS/`, `3-ENGINEERING/`, and `3-ENGINEERING/ADRs/`) in the current directory via `docslime init`. | Scaffold the docs tree |
 | FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
 | FR-3 | The system shall add a single named document via `docslime add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
 | FR-4 | The system shall create the next-numbered ADR via `docslime add adr <slug>`, where the number is one greater than the highest existing `NNNN-*` record in the ADR directory (`0001` if none). | Record an architecture decision |
@@ -22,6 +22,10 @@ fill them in, while the tree stays plain Markdown for `impeccable` context loadi
 | FR-10 | The `docslime-kiss` skill shall review filled docs for bloat, generic AI prose, stale contradictions, weak traceability, and non-actionable requirements, architecture, design, or testing content. | Tighten docs after filling |
 | FR-11 | The generated tree shall include `docs/PRODUCT.md` and `docs/DESIGN.md` so `impeccable` can discover product and design context from the docs directory without duplicate root files. | Integrate with impeccable |
 | FR-12 | KISS review shall remain an agent skill rather than a `docslime` CLI subcommand. | Tighten docs after filling |
+| FR-13 | Documentation guidance shall make the quality trace explicit: product goal -> experience -> requirement -> BDD scenario -> test, with ADRs linked when a durable decision explains the design. | TDD+BDD quality |
+| FR-14 | Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects. | Domain Driven Design |
+| FR-15 | Publishing guidance shall point to official `docmd.io` build and deployment docs rather than copying that content into DocSlime. | Publishable Markdown |
+| FR-16 | Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling. | Robust agent skills |
 
 ## Non-functional requirements
 
@@ -35,6 +39,8 @@ fill them in, while the tree stays plain Markdown for `impeccable` context loadi
 | NFR-6 | Toolchain | Builds with Rust 1.74+ (2021 edition). |
 | NFR-7 | Publication | Generated docs remain plain Markdown suitable for the `docmd.io` publishing system. |
 | NFR-8 | Quality stance | Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions. |
+| NFR-9 | Skill maintainability | Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior. |
+| NFR-10 | Design context | `impeccable` context loading should be verified from `docs/PRODUCT.md` and `docs/DESIGN.md` whenever homepage or design docs change. |
 
 ## Constraints & assumptions
 
