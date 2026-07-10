@@ -34,6 +34,21 @@ test (or flag it as a gap). -->
 |---|---|---|
 | _Experience name / FR-1_ | _Given … When … Then …_ | _path/to/test_ |
 
+## Traceability contract
+
+<!-- LLM: Explain the quality trace this project uses. Keep it concrete: product goal ->
+experience -> requirement -> BDD scenario -> test, with architecture/ADR links where a
+domain boundary or durable decision matters. Remove or shorten if the project is tiny, but
+do not leave behavior untraceable. -->
+
+| Link | Evidence |
+|---|---|
+| Product goal -> experience | _PRODUCT.md / 1-EXPERIENCES.md evidence_ |
+| Experience -> requirement | _Requirement IDs from 2-REQUIREMENTS.md_ |
+| Requirement -> BDD scenario | _Given/When/Then scenario_ |
+| Scenario -> test | _Test file, manual check, eval, or known gap_ |
+| Requirement -> architecture/ADR | _Architecture section or ADR link when applicable_ |
+
 ## Evaluation against product goals
 
 <!-- LLM: Beyond pass/fail tests, how do we evaluate that the system fulfills the product goals and

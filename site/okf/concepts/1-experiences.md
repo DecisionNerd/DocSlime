@@ -3,10 +3,10 @@ type: concept
 title: Experiences
 source: "https://www.docslime.dev/1-EXPERIENCES/"
 path: /1-EXPERIENCES/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.689Z"
+  generated_at: "2026-07-10T02:57:05.444Z"
 ---
 # Experiences
 
@@ -108,6 +108,34 @@ should prefer cutting or tightening filler over rewriting it into prettier fille
 Must not happen: the repo maintains separate root-level context files that drift from the
 canonical docs tree.
 
+### Trace behavior to tests and decisions
+
+> **As a** developer changing a product or service
+> **I want** requirements, BDD scenarios, tests, architecture, and ADRs to point at each other
+> **So that** future humans and agents can see why the behavior exists and how it is proved
+
+- **Given** a requirement with a stable ID
+- **When** the team documents the behavior and testing plan
+- **Then** `4-TESTING.md` includes a Given/When/Then scenario and a test reference, and
+  `3-ARCHITECTURE.md` or an ADR captures the domain boundary or decision when it matters
+
+Must not happen: a requirement sounds plausible but cannot be tested, or an ADR explains a
+choice without naming the requirement or domain force that made the choice important.
+
+### Publish through docmd.io
+
+> **As a** maintainer ready to publish documentation
+> **I want** DocSlime to hand off clean Markdown to `docmd.io`
+> **So that** publishing follows the official docmd build and deployment path instead of a
+> second DocSlime-specific hosting system
+
+- **Given** a filled DocSlime docs tree
+- **When** I build with `docmd`
+- **Then** the static site is generated from `docs/`, and any platform-specific deployment
+  details come from the official `docmd.io` docs
+
+Must not happen: DocSlime copies stale deployment instructions or implies the CLI hosts docs.
+
 ## Experience principles
 
 - **Non-destructive by default** — existing files are never overwritten without an explicit `--force`.
@@ -117,6 +145,8 @@ canonical docs tree.
 - **Context tools fit the tree** — product/design tools should discover context from `docs/`
   instead of requiring duplicate files.
 - **Publishable Markdown** — docs should stay clean enough to flow into `docmd.io`.
+- **Traceable quality** — BDD scenarios, TDD evidence, domain boundaries, and ADRs should
+  make each other easier to find.
 - **Fast and local** — commands run instantly against the filesystem, and the output lives in the repo.
 - **Small surface** — three commands (`init`, `add`, `list`) cover the whole tool.
 

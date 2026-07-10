@@ -6,13 +6,13 @@
     "description": "",
     "url": "https://www.docslime.dev",
     "generated_by": "@docmd/plugin-okf",
-    "generated_at": "2026-07-09T22:02:20.695Z",
+    "generated_at": "2026-07-10T02:57:05.448Z",
     "default_type": "concept"
   },
   "stats": {
-    "concepts": 14,
+    "concepts": 15,
     "by_type": {
-      "concept": 14
+      "concept": 15
     },
     "locales": [],
     "versions": []
@@ -144,6 +144,16 @@
       "title": "DocSlime",
       "path": "/",
       "file": "concepts/root.md",
+      "locale": "",
+      "version": "",
+      "tags": []
+    },
+    {
+      "id": "publishing",
+      "type": "concept",
+      "title": "Publishing",
+      "path": "/publishing/",
+      "file": "concepts/publishing.md",
       "locale": "",
       "version": "",
       "tags": []

@@ -34,6 +34,14 @@
   --sidebar-link-active-text: var(--docslime-heading);
   --code-bg: oklch(0.957 0.006 224);
   --code-text: oklch(0.205 0.024 224);
+  --docslime-code-comment: oklch(0.42 0.025 224);
+  --docslime-code-keyword: oklch(0.38 0.142 328);
+  --docslime-code-string: oklch(0.39 0.118 148);
+  --docslime-code-attr: oklch(0.38 0.116 72);
+  --docslime-code-title: oklch(0.42 0.142 245);
+  --docslime-code-built-in: oklch(0.39 0.12 78);
+  --docslime-code-literal: oklch(0.38 0.124 226);
+  --docslime-code-punctuation: oklch(0.31 0.022 224);
   --header-bg: color-mix(in oklch, oklch(1 0 0) 86%, var(--docslime-surface));
   --header-border: var(--docslime-border);
   --docmd-accent: var(--docslime-primary);
@@ -76,12 +84,20 @@
   --link-color-hover: var(--docslime-primary-hover);
   --border-color: var(--docslime-border);
   --border-color-hover: var(--docslime-border-strong);
-  --sidebar-bg: oklch(0.12 0.016 224);
-  --sidebar-text: oklch(0.852 0.019 205);
-  --sidebar-link-active-bg: color-mix(in oklch, var(--docslime-gel) 18%, transparent);
-  --sidebar-link-active-text: var(--docslime-heading);
+  --sidebar-bg: #111923;
+  --sidebar-text: #d7e5e7;
+  --sidebar-link-active-bg: #173b36;
+  --sidebar-link-active-text: #f7fbfb;
   --code-bg: oklch(0.103 0.017 224);
   --code-text: oklch(0.91 0.015 205);
+  --docslime-code-comment: oklch(0.74 0.032 205);
+  --docslime-code-keyword: oklch(0.84 0.132 328);
+  --docslime-code-string: oklch(0.82 0.132 150);
+  --docslime-code-attr: oklch(0.85 0.13 78);
+  --docslime-code-title: oklch(0.82 0.128 238);
+  --docslime-code-built-in: oklch(0.84 0.12 84);
+  --docslime-code-literal: oklch(0.82 0.112 226);
+  --docslime-code-punctuation: oklch(0.9 0.014 205);
   --header-bg: color-mix(in oklch, var(--docslime-bg) 82%, oklch(0 0 0));
   --header-border: var(--docslime-border);
   --glow-color: color-mix(in oklch, var(--docslime-gel) 18%, transparent);
@@ -94,6 +110,12 @@ h2,
 h3 {
   letter-spacing: 0;
   text-wrap: balance;
+}
+
+.docmd-heading {
+  column-gap: 0.25ch;
+  flex-wrap: wrap;
+  row-gap: 0;
 }
 
 p,
@@ -109,12 +131,138 @@ a:hover {
   text-decoration: underline;
 }
 
-.sidebar h1 a,
+.main-content a:not(.docmd-button):not(.heading-anchor):not(.footnote-ref):not(.footnote-backref) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.branding-footer a {
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.18em;
+}
+
+.main-content a:not(.docmd-button):not(.heading-anchor):not(.footnote-ref):not(.footnote-backref):hover {
+  text-decoration-thickness: 0.12em;
+}
+
+.branding-footer a:hover {
+  text-decoration-thickness: 0.12em;
+}
+
+.main-content,
+.content-area,
+.docmd-container,
+.card,
+.callout,
+.table-wrapper,
+.code-wrapper {
+  min-width: 0;
+}
+
+.main-content :where(p, li, td, th, blockquote, dd),
+.main-content a {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.main-content :where(p, li, td, th, blockquote, dd) a {
+  overflow-wrap: anywhere;
+}
+
+.main-content :where(h1, h2, h3, h4, h5, h6) a {
+  overflow-wrap: normal;
+}
+
+.table-wrapper,
+.code-wrapper,
+pre {
+  max-width: 100%;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table-wrapper:focus-visible,
+pre:focus-visible {
+  outline: 2px solid var(--docslime-gel);
+  outline-offset: 3px;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: var(--docslime-code-comment);
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword,
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst,
+.hljs-operator,
+.hljs-punctuation {
+  color: var(--docslime-code-keyword);
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: var(--docslime-code-string);
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: var(--docslime-code-attr);
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: var(--docslime-code-title);
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: var(--docslime-code-built-in);
+}
+
+.hljs-literal {
+  color: var(--docslime-code-literal);
+}
+
+.hljs-operator,
+.hljs-punctuation {
+  color: var(--docslime-code-punctuation);
+}
+
 .page-header .header-title {
   color: var(--text-heading);
 }
 
-.sidebar h1 a {
+.sidebar h1 a,
+.sidebar .docslime-sidebar-title a {
+  color: var(--sidebar-link-active-text);
+}
+
+.sidebar h1 a,
+.sidebar .docslime-sidebar-title a {
   align-items: center;
   display: inline-flex;
   gap: 0.55rem;
@@ -123,8 +271,16 @@ a:hover {
   text-decoration: none;
 }
 
-.sidebar h1 a:hover {
+.sidebar h1 a:hover,
+.sidebar .docslime-sidebar-title a:hover {
   text-decoration: none;
+}
+
+.sidebar .docslime-sidebar-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  padding: var(--space-2);
 }
 
 .docslime-brand-logo {
@@ -146,12 +302,18 @@ a:hover {
 .sidebar nav li a,
 .docmd-options-menu .theme-toggle-button,
 .docmd-options-menu .docmd-search-trigger {
+  color: var(--sidebar-text);
   transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
 }
 
 .sidebar nav li > a.active {
   background: var(--sidebar-link-active-bg);
-  color: var(--link-color);
+  color: var(--sidebar-link-active-text);
+}
+
+.sidebar nav li > a.active .nav-item-title,
+.sidebar nav li > a.active .nav-item-path {
+  color: var(--sidebar-link-active-text);
 }
 
 .sidebar nav li > a.active:before {
@@ -192,9 +354,39 @@ a:hover {
 .docmd-button:focus-visible,
 .docmd-search-trigger:focus-visible,
 .theme-toggle-button:focus-visible,
+.sidebar-menu-button:focus-visible,
+.copy-code-button:focus-visible,
+.docmd-copy-btn:focus-visible,
+.git-last-updated.has-history:focus-visible,
 .sidebar a:focus-visible {
   outline: 2px solid var(--docslime-gel);
   outline-offset: 2px;
+}
+
+.sidebar-menu-button,
+.sidebar-toggle-button,
+.copy-code-button,
+.docmd-search-trigger,
+.theme-toggle-button,
+.docmd-copy-btn,
+.git-last-updated.has-history,
+.heading-anchor {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+.docmd-copy-widgets {
+  overflow: visible;
+}
+
+.docmd-copy-btn,
+.git-last-updated.has-history {
+  align-items: center;
+  justify-content: center;
+}
+
+.docmd-copy-btn {
+  padding-inline: 0.72rem;
 }
 
 a.docmd-button.docmd-button-secondary {
@@ -276,6 +468,14 @@ body[data-source-file="docs/index.md"] .main-content {
 }
 
 body[data-source-file="docs/index.md"] .docmd-hero {
+  --docslime-code-comment: oklch(0.74 0.032 205);
+  --docslime-code-keyword: oklch(0.84 0.132 328);
+  --docslime-code-string: oklch(0.82 0.132 150);
+  --docslime-code-attr: oklch(0.85 0.13 78);
+  --docslime-code-title: oklch(0.82 0.128 238);
+  --docslime-code-built-in: oklch(0.84 0.12 84);
+  --docslime-code-literal: oklch(0.82 0.112 226);
+  --docslime-code-punctuation: oklch(0.9 0.014 205);
   background:
     linear-gradient(
       135deg,
@@ -301,25 +501,47 @@ body[data-source-file="docs/index.md"] .docmd-hero.hero-split {
 
 body[data-source-file="docs/index.md"] .hero-content {
   display: flex;
+  flex: 1 1 34rem;
   flex-direction: column;
   justify-content: center;
 }
 
 body[data-source-file="docs/index.md"] .hero-content h1 {
   color: var(--text-heading);
-  font-size: 4.45rem;
+  font-size: 4.35rem;
   letter-spacing: 0;
   line-height: 0.96;
   margin-bottom: 1rem;
-  max-width: 8ch;
+  max-width: 12.4ch;
 }
 
 body[data-source-file="docs/index.md"] .hero-content p {
   color: var(--text-color);
   font-size: 1.16rem;
   line-height: 1.5;
-  margin-bottom: clamp(1rem, 3vw, 1.6rem);
+  margin-bottom: clamp(0.85rem, 2vw, 1.25rem);
   max-width: 38rem;
+}
+
+body[data-source-file="docs/index.md"] .hero-content pre.hljs {
+  background: oklch(0.12 0.022 224);
+  border: 1px solid color-mix(in oklch, var(--docslime-gel) 34%, transparent);
+  border-radius: 8px;
+  color: oklch(0.91 0.028 154);
+  margin: 0 0 clamp(1rem, 2.5vw, 1.4rem);
+  max-width: 31rem;
+  overflow-x: auto;
+  width: 100%;
+}
+
+body[data-source-file="docs/index.md"] .hero-content pre.hljs code {
+  background: transparent;
+  color: inherit;
+  display: block;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  padding: 0.82rem 0.95rem;
+  white-space: pre;
 }
 
 body[data-source-file="docs/index.md"] .hero-content p:has(.docmd-button) {
@@ -334,6 +556,16 @@ body[data-source-file="docs/index.md"] .hero-content .docmd-button {
 
 body[data-source-file="docs/index.md"] .hero-side {
   align-items: center;
+  flex: 1 1 26rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-art {
+  align-items: stretch;
+  display: flex;
+  justify-content: center;
+  min-height: clamp(19rem, 34vw, 25rem);
+  position: relative;
+  width: 100%;
 }
 
 body[data-source-file="docs/index.md"] .hero-side pre {
@@ -346,6 +578,12 @@ body[data-source-file="docs/index.md"] .hero-side pre {
   width: 100%;
 }
 
+body[data-source-file="docs/index.md"] .hero-side pre.docslime-hero-tree {
+  margin: 0;
+  max-width: 31rem;
+  min-height: 17.25rem;
+}
+
 body[data-source-file="docs/index.md"] .hero-side pre code {
   background: transparent;
   color: inherit;
@@ -353,6 +591,79 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
   line-height: 1.55;
   padding: clamp(1rem, 3vw, 1.6rem);
   white-space: pre;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-mascot {
+  align-items: flex-end;
+  bottom: -0.35rem;
+  display: flex;
+  gap: 0.35rem;
+  pointer-events: none;
+  position: absolute;
+  right: clamp(-0.25rem, 1vw, 0.75rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-mascot img {
+  height: clamp(6rem, 11vw, 9.25rem);
+  width: clamp(6rem, 11vw, 9.25rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page {
+  background: color-mix(in oklch, var(--docslime-card) 92%, var(--docslime-surface));
+  border: 1px solid color-mix(in oklch, var(--docslime-core) 24%, var(--border-color));
+  border-radius: 8px;
+  color: var(--text-heading);
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.28rem;
+  margin-bottom: 0.2rem;
+  padding: 0.65rem 0.75rem;
+  transform: rotate(6deg);
+  width: clamp(7rem, 13vw, 9.5rem);
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page strong {
+  font-size: 0.76rem;
+  line-height: 1;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page span {
+  color: var(--link-color);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.74rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i {
+  background: color-mix(in oklch, var(--docslime-gel) 24%, var(--border-color));
+  border-radius: 999px;
+  display: block;
+  height: 0.28rem;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i:nth-child(4) {
+  width: 72%;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-page i:nth-child(5) {
+  width: 54%;
+}
+
+body[data-source-file="docs/index.md"] .docslime-hero-badge {
+  background: var(--docslime-primary);
+  border: 1px solid color-mix(in oklch, var(--docslime-gel) 34%, var(--docslime-primary));
+  border-radius: 8px;
+  bottom: 0.15rem;
+  color: oklch(1 0 0);
+  font-size: 0.88rem;
+  font-weight: 760;
+  letter-spacing: 0;
+  line-height: 1.25;
+  margin: 0;
+  max-width: 11.25rem;
+  padding: 0.62rem 0.72rem;
+  position: absolute;
+  right: clamp(0.3rem, 2.5vw, 1.4rem);
+  text-wrap: balance;
 }
 
 body[data-source-file="docs/index.md"] h2 {
@@ -461,10 +772,15 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
 
   body[data-source-file="docs/index.md"] .hero-content h1 {
     font-size: 3.75rem;
+    max-width: 12.5ch;
   }
 
   body[data-source-file="docs/index.md"] .hero-content p {
     font-size: 1.08rem;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-content pre.hljs {
+    max-width: 100%;
   }
 }
 
@@ -491,6 +807,47 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
     font-size: 3.15rem;
   }
 
+  body[data-source-file="docs/index.md"] .docslime-hero-art {
+    align-items: center;
+    flex-direction: column;
+    gap: 0.75rem;
+    min-height: 0;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-content pre.hljs code {
+    font-size: 0.78rem;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  body[data-source-file="docs/index.md"] .hero-side pre.docslime-hero-tree {
+    min-height: 14.75rem;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-mascot {
+    align-self: flex-end;
+    bottom: auto;
+    right: 0;
+    top: auto;
+    position: relative;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-page {
+    display: none;
+  }
+
+  body[data-source-file="docs/index.md"] .docslime-hero-badge {
+    align-self: stretch;
+    bottom: auto;
+    font-size: 0.78rem;
+    max-width: none;
+    padding: 0.5rem 0.6rem;
+    position: static;
+    right: auto;
+    text-align: center;
+    top: auto;
+  }
+
   body[data-source-file="docs/index.md"] .hero-content p:has(.docmd-button) {
     align-items: stretch;
     flex-direction: column;
@@ -499,6 +856,21 @@ body[data-source-file="docs/index.md"] .hero-side pre code {
   body[data-source-file="docs/index.md"] .docmd-button {
     justify-content: center;
     width: 100%;
+  }
+
+  .main-content table {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .main-content th,
+  .main-content td {
+    overflow-wrap: anywhere;
+    word-break: normal;
+  }
+
+  .docmd-copy-widgets {
+    flex-wrap: wrap;
   }
 
   body[data-source-file="docs/index.md"] .hero-side pre code {

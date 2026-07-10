@@ -10,6 +10,15 @@ Use this when the user asks whether docs, requirements, architecture, design gui
 or testing docs are bloated, generic, "AI slop", overcomplicated, or not conforming to best
 practice.
 
+## When to Use
+
+- "Review these docs for bloat"
+- "Run KISS on the docs"
+- "Do these requirements trace to tests?"
+- "Is this architecture doc honest?"
+- Before merging documentation-heavy changes
+- After **docslime-fill** has replaced enough scaffold guidance to judge the tree
+
 ## Core Question
 
 Ask this of every doc tree:
@@ -19,6 +28,21 @@ Are these docs helping future work, or are they bloated, generic, and full of AI
 ```
 
 Answer with evidence from the files, not vibes.
+
+## Prerequisites
+
+- A `docs/` tree should exist.
+- Read the relevant docs before judging them; do not critique from filenames alone.
+- If the user wants edits, work in the current repo and preserve unrelated changes.
+
+## Guardrails
+
+- Lead with concrete findings and file references.
+- Prefer deleting filler over rewriting it into prettier filler.
+- Distinguish current behavior from target architecture or future ideas.
+- Do not invent missing strategy, requirements, domain boundaries, tests, or ADRs.
+- Do not rewrite accepted ADRs except for path/index maintenance; create a superseding ADR
+  when a decision changes.
 
 ## Workflow
 
@@ -80,3 +104,21 @@ Then report:
 - Do not invent missing strategy, architecture, requirements, test coverage, or design sources.
 - Do not rewrite accepted ADRs except for path/index maintenance; create a superseding ADR when the decision changes.
 - Keep generated docs plain Markdown with direct headings, compact tables, and no decorative prose.
+
+## Verification
+
+```bash
+grep -rn "LLM:" docs/
+```
+
+For review-only runs, verify the report cites concrete files and names the smallest useful
+cleanup. For edit runs, re-run the relevant search/checks and confirm the changed docs still
+trace product -> experiences -> requirements -> architecture/testing -> ADRs.
+
+## Failure Handling
+
+- If `docs/` is missing, say DocSlime is not initialized and offer **docslime-init**.
+- If docs are too incomplete to judge, report the missing inputs and suggest **docslime-fill**
+  for the next document in the chain.
+- If evidence conflicts across docs, quote the conflicting file locations and ask the user
+  which source is current before rewriting facts.

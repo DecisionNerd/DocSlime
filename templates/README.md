@@ -22,6 +22,7 @@ Read the top-level docs in this order:
 | [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and UX experience? |
 | [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
 | [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
+| [`publishing.md`](publishing.md) | How does this Markdown tree hand off to a publishing system? |
 
 Supporting detail lives in subfolders:
 
@@ -39,3 +40,5 @@ Supporting detail lives in subfolders:
 - **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
 - **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so design and
   coding agents can load them without duplicate root files.
+- **Keep publishing thin.** This docs tree should stay plain Markdown and point to the
+  publishing system's official docs rather than copying platform instructions here.

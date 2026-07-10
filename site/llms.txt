@@ -17,6 +17,8 @@
 - [DocSlime](https://www.docslime.dev/)
   Opinionated docs scaffolding and agent skills for services and user-facing products.
 - [Product](https://www.docslime.dev/PRODUCT/)
+- [Publishing](https://www.docslime.dev/publishing/)
+  How DocSlime docs stay ready for docmd.io without making DocSlime a publishing host.
 - [Documentation](https://www.docslime.dev/README/)
 - [Agent Skills](https://www.docslime.dev/skills/)
   Teach AI coding agents to install, initialize, fill, review, and maintain DocSlime docs.

@@ -3,10 +3,10 @@ type: concept
 title: "Architecture Decision Records"
 source: "https://www.docslime.dev/3-ENGINEERING/ADRs/"
 path: /3-ENGINEERING/ADRs/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.692Z"
+  generated_at: "2026-07-10T02:57:05.446Z"
 ---
 # Architecture Decision Records
 

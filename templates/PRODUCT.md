@@ -50,6 +50,15 @@ Each should be an outcome, not a feature. Prefer measurable where possible. -->
 - _Goal 2_
 - _Goal 3_
 
+## Quality stance
+
+<!-- LLM: Capture the project's quality method. Ask whether the project uses TDD, BDD,
+Domain Driven Design, ADRs, design critique, security review, or other quality gates. Keep
+this as product-level stance; put concrete test mappings in 4-TESTING.md and decisions in
+ADRs. -->
+
+- _Quality method / gate - why it matters_
+
 ## Non-goals
 
 <!-- LLM: Explicitly list what this project will NOT do. This prevents scope creep and is

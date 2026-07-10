@@ -3,10 +3,10 @@ type: concept
 title: Documentation
 source: "https://www.docslime.dev/README/"
 path: /README/
-updated: 2026-07-09
+updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-09T22:02:20.694Z"
+  generated_at: "2026-07-10T02:57:05.447Z"
 ---
 # Documentation
 
@@ -27,6 +27,7 @@ Read the top-level docs in this order:
 | [`DESIGN.md`](DESIGN.md) | What should stay consistent in product, docs, and CLI experience? |
 | [`3-ARCHITECTURE.md`](3-ARCHITECTURE.md) | How is the system built? |
 | [`4-TESTING.md`](4-TESTING.md) | How do we prove it works? |
+| [`publishing.md`](publishing.md) | How does the Markdown tree hand off to `docmd.io`? |
 
 Supporting detail lives in subfolders:
 
@@ -44,3 +45,5 @@ Supporting detail lives in subfolders:
 - **Decisions are recorded.** Significant choices get an ADR (see `3-ENGINEERING/ADRs/`).
 - **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so tools like
   `impeccable` can load them without duplicate root files.
+- **Keep publishing thin.** DocSlime prepares Markdown; `docmd.io` owns build and deployment
+  behavior.

@@ -2,7 +2,8 @@
 requirements. Read PRODUCT.md and 1-EXPERIENCES.md first so every requirement traces back
 to an experience or goal. Interview the user to elicit requirements, then write each as a
 testable statement. Give every requirement a stable ID so 4-TESTING.md and ADRs can reference
-it. Remove LLM comments as you complete each section. -->
+it. When useful, capture acceptance behavior in Given/When/Then language so the testing doc
+can close the BDD loop. Remove LLM comments as you complete each section. -->
 
 # Requirements
 
@@ -32,6 +33,16 @@ security, accessibility, portability, cost. Ask the user for concrete targets wh
 |---|---|---|
 | NFR-1 | _Performance / reliability / security / …_ | _Measurable target_ |
 | NFR-2 | _…_ | _…_ |
+
+## Behavior trace
+
+<!-- LLM: Optional but strongly recommended for behavior-heavy projects. Capture the small
+set of BDD scenarios that prove the highest-value requirements. These scenarios should be
+expanded into concrete tests in 4-TESTING.md. Remove this section if it adds no value. -->
+
+| Requirement | Given | When | Then |
+|---|---|---|---|
+| _FR-1_ | _initial context_ | _user/system action_ | _observable outcome_ |
 
 ## Constraints & assumptions
 

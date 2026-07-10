@@ -32,9 +32,20 @@ reference earlier ones:
 3. `2-REQUIREMENTS.md` — what the system must do
 4. `3-ARCHITECTURE.md` — how it's designed (decisions captured as ADRs — see **docslime-adr**)
 5. `4-TESTING.md` — how we prove it fulfills the product goals
+6. `publishing.md` — how clean Markdown hands off to a docs publishing system
 
 `0-PRODUCT/`, `1-JOURNEYS/`, `DESIGN.md`, and `3-ENGINEERING/` hold deeper detail beyond
 the top-level docs.
+
+## Guardrails
+
+- Do not invent product facts, requirements, architecture, tests, decisions, users, or metrics.
+- Ask one focused question at a time when facts are missing.
+- Preserve existing user-written content unless it conflicts with a correction the user gives.
+- Keep requirements testable, architecture grounded in real domain boundaries, and testing
+  docs mapped to Given/When/Then behavior.
+- Keep publishing guidance thin: link to official publishing docs rather than copying platform
+  instructions.
 
 ## Steps
 
@@ -74,6 +85,10 @@ comments and no leftover italic prompts.
 
 ### 5 — Verify nothing is left
 
+See the verification section below before reporting completion.
+
+## Verification
+
 ```bash
 grep -rn "LLM:" docs/
 ```
@@ -82,3 +97,14 @@ Anything still listed is unfinished. When the target doc is clean, summarize wha
 and offer to move to the next document in the chain, record an architecture decision with
 the **docslime-adr** skill, or run **docslime-kiss** once enough docs exist to tighten bloat and
 generic AI prose.
+
+Also check for leftover italic placeholders in the target file and confirm any requirement
+IDs, BDD scenarios, test references, or ADR links you added point to real docs or known gaps.
+
+## Failure Handling
+
+- If `docs/` does not exist, run **docslime-init** first.
+- If the target document is ambiguous, ask which file to fill.
+- If the user does not know an answer, record a clear open question instead of guessing.
+- If filling reveals a durable product or technical decision, offer **docslime-adr** rather
+  than burying the decision in prose.
