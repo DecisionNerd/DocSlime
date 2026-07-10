@@ -7,14 +7,15 @@ path: /
 updated: 2026-07-10
 okf:
   generated_by: "@docmd/plugin-okf"
-  generated_at: "2026-07-10T03:52:27.059Z"
+  generated_at: "2026-07-10T04:22:37.539Z"
 ---
 ---
 title: "DocSlime"
 description: "Opinionated docs scaffolding and agent skills for services and user-facing products."
+image: /assets/images/docslime-hero.png
 ---
 
-::: hero layout:split glow:true
+::: hero glow:true
 # Turn your repo into living docs.
 
 DocSlime makes repo knowledge stick. It absorbs product intent, requirements, design,
@@ -25,10 +26,6 @@ brew install DecisionNerd/tap/docslime
 ```
 
 [Install DocSlime](#install-docslime){.docmd-button} [See the docs tree](#what-docslime-creates){.docmd-button} [View on GitHub](https://github.com/DecisionNerd/DocSlime){.docmd-button}
-
-== side
-
-![DocSlime: make repo knowledge stick. A docs tree with PRODUCT.md, DESIGN.md, requirements, architecture, and agent skills.](/assets/images/docslime-hero.png)
 
 :::
 
