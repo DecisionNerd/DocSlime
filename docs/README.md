@@ -5,6 +5,9 @@ continuous discovery, requirements translate that evidence into a build contract
 engineering docs carry the contract through architecture, testing, publishing, and
 production observability.
 
+Start with the [lifecycle guide](lifecycle.md) for the full UX → DDD → TDD+BDD trace and
+day-to-day tool usage.
+
 ## Lifecycle
 
 | Document | Question it answers |

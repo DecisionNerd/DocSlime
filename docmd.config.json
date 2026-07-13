@@ -23,6 +23,7 @@
   "pageNavigation": true,
   "navigation": [
     { "title": "Overview", "path": "/", "icon": "zap" },
+    { "title": "Lifecycle", "path": "/lifecycle/", "icon": "workflow" },
     { "title": "Product", "path": "/PRODUCT/", "icon": "target" },
     { "title": "Design", "path": "/DESIGN/", "icon": "palette" },
     { "title": "Strategy", "path": "/strategy/", "icon": "telescope" },

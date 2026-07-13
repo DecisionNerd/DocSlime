@@ -24,6 +24,84 @@ opinionated `docs/` tree. The name is silly on purpose; the method is not. It pu
 scattered parts of a project into one integrated body, then gives future humans and AI agents
 better context for the next change.
 
+[Read the full lifecycle guide](lifecycle/){.docmd-button .docmd-button-secondary}
+
+## How to Use DocSlime
+
+DocSlime separates **scaffolding** (CLI) from **judgment** (agent skills). You run commands
+to create files; you use skills to interview the team, fill documents, record decisions, and
+review for bloat.
+
+### Quick start
+
+```sh
+brew install DecisionNerd/tap/docslime
+docslime init
+npx skills add DecisionNerd/DocSlime
+```
+
+Then fill `docs/PRODUCT.md` with `docslime-fill` and work through the tree in lifecycle order.
+
+### Day-to-day commands
+
+| What you need | Command or skill |
+|---|---|
+| See what exists | `docslime list` |
+| Add one missing doc | `docslime add <name>` |
+| Create the next ADR | `docslime add adr <slug>` then `docslime-adr` |
+| Fill a scaffolded doc | `docslime-fill` (agent skill) |
+| Review for bloat | `docslime-kiss` (agent skill) |
+| Publish the site | `docmd build` (see [engineering/PUBLISHING](engineering/PUBLISHING/)) |
+
+`init`, `add`, and `list` are CLI commands. `docslime-kiss` is intentionally a skill — it
+requires judgment over filled docs, not a flag.
+
+### Recommended fill order
+
+1. `PRODUCT.md` and `DESIGN.md` — durable product and design context
+2. `experience/` — user evidence, journeys, and hypotheses
+3. `REQUIREMENTS.md` — testable build contract derived from evidence
+4. `engineering/ARCHITECTURE.md` and `engineering/adrs/` — domain shape and decisions
+5. `engineering/TESTING.md` — Given/When/Then scenarios mapped to tests
+6. `engineering/PUBLISHING.md` and `engineering/OBSERVABILITY.md` — delivery and learning loop
+
+Each template includes `<!-- LLM: ... -->` guidance. Skills follow those prompts, ask one
+focused question at a time, and remove scaffolding when a section is complete.
+
+## UX, DDD, and TDD+BDD in One Trace
+
+DocSlime encodes three practices as **links in one chain**, not separate ceremonies.
+
+### UX — continuous discovery
+
+The `experience/` folder captures **evidence before solutions**: observed needs, journeys,
+opportunities, and hypotheses. Findings become requirements only when they describe
+observable behavior the product must provide. This keeps UX research connected to the build
+contract instead of rotting in a backlog.
+
+### DDD — domain language and decisions
+
+Architecture docs name the **domain concepts, boundaries, and invariants** that matter for
+the project. Significant, hard-to-reverse choices become ADRs in `engineering/adrs/`. DocSlime
+uses Domain Driven Design lightly — enough vocabulary to guide the next change, without
+forcing bounded-context diagrams on every repo.
+
+### TDD+BDD — proof before promotion
+
+Requirements get stable IDs. Behavior is written as **Given/When/Then** scenarios in
+`engineering/TESTING.md`. Automated tests prove observable behavior; CI gates block promotion
+when the contract is broken. In this repo, `tests/cli.rs` runs the real `docslime` binary
+against throwaway directories and maps every FR to a test case.
+
+### The trace
+
+```text
+evidence -> requirement -> BDD scenario -> test -> release -> observation -> evidence
+```
+
+When production contradicts an assumption, update `experience/` or `REQUIREMENTS.md` — the
+loop only works if docs stay as honest as the code.
+
 ## Why It Sticks
 
 ```text
@@ -168,6 +246,12 @@ CLI subcommand.
 ## Read Next
 
 ::: grids
+::: grid
+::: card "Lifecycle" icon:workflow
+[How UX, DDD, and TDD+BDD connect](lifecycle/){.docmd-button .docmd-button-secondary}
+:::
+:::
+
 ::: grid
 ::: card "Product" icon:target
 [Understand the product model](PRODUCT/){.docmd-button}

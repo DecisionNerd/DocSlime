@@ -65,6 +65,9 @@ Each skill follows the docs tree instead of maintaining a separate source of tru
 context lives in `docs/PRODUCT.md`, design context lives in `docs/DESIGN.md`, and decisions
 live in `docs/engineering/adrs/`.
 
+See the [lifecycle guide](lifecycle/) for how skills fit into continuous discovery, Domain
+Driven Design, and TDD+BDD traceability.
+
 The same files feed design work: `impeccable` loads `docs/PRODUCT.md` and `docs/DESIGN.md`
 for homepage/product critique, so skill-driven doc updates improve future UI iteration too.
 
