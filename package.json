@@ -5,10 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "docmd dev",
-    "build": "docmd build && node scripts/check-rendered-line-breaks.mjs",
+    "build": "npm run check:markdown && docmd build && node scripts/check-rendered-line-breaks.mjs",
+    "format:markdown": "prettier --write \"**/*.md\" && node scripts/format-markdown-comments.mjs",
+    "check:markdown": "prettier --check \"**/*.md\" && node scripts/format-markdown-comments.mjs --check",
     "preview": "npx serve site"
   },
   "dependencies": {
     "@docmd/core": "^0.8.10"
+  },
+  "devDependencies": {
+    "prettier": "3.6.2"
   }
 }

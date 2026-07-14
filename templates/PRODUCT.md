@@ -1,8 +1,4 @@
-<!-- LLM: This is the foundation product-context document. It is also discoverable by tools
-that look for PRODUCT.md. Interview the user before writing. Work through the sections in
-order, asking one focused question at a time and reflecting their answers back. Keep the
-final document tight: this is the source of product truth, not a feature backlog. Remove each
-LLM comment once its section is filled. -->
+<!-- LLM: This is the foundation product-context document. It is also discoverable by tools that look for PRODUCT.md. Interview the user before writing. Work through the sections in order, asking one focused question at a time and reflecting their answers back. Keep the final document tight: this is the source of product truth, not a feature backlog. Remove each LLM comment once its section is filled. -->
 
 # Product
 
@@ -26,9 +22,7 @@ _What problem are we solving, and for whom?_
 
 ## Audience
 
-<!-- LLM: Identify primary and secondary users, buyers, operators, admins, integrators, or
-dependent teams. For each, capture what they need from the product and what "good" feels
-like to them. Link to experience/ when fuller personas or journeys exist. -->
+<!-- LLM: Identify primary and secondary users, buyers, operators, admins, integrators, or dependent teams. For each, capture what they need from the product and what "good" feels like to them. Link to experience/ when fuller personas or journeys exist. -->
 
 - _Audience / role - need_
 
@@ -43,8 +37,7 @@ _Where are we headed?_
 
 ## Goals
 
-<!-- LLM: List the concrete outcomes that define success. Ask the user for 3-5 goals.
-Each should be an outcome, not a feature. Prefer measurable where possible. -->
+<!-- LLM: List the concrete outcomes that define success. Ask the user for 3-5 goals. Each should be an outcome, not a feature. Prefer measurable where possible. -->
 
 - _Goal 1_
 - _Goal 2_
@@ -52,33 +45,26 @@ Each should be an outcome, not a feature. Prefer measurable where possible. -->
 
 ## Quality stance
 
-<!-- LLM: Capture the project's quality method. Ask whether the project uses TDD, BDD,
-Domain Driven Design, ADRs, design critique, security review, or other quality gates. Keep
-this as product-level stance; put concrete test mappings in `engineering/TESTING.md`,
-production measures in `engineering/OBSERVABILITY.md`, and decisions in ADRs. -->
+<!-- LLM: Capture the project's quality method. Ask whether the project uses TDD, BDD, Domain Driven Design, ADRs, design critique, security review, or other quality gates. Keep this as product-level stance; put concrete test mappings in `engineering/TESTING.md`, production measures in `engineering/OBSERVABILITY.md`, and decisions in ADRs. -->
 
 - _Quality method / gate - why it matters_
 
 ## Non-goals
 
-<!-- LLM: Explicitly list what this project will NOT do. This prevents scope creep and is
-often as valuable as the goals. Ask: "What might people assume this does that it deliberately
-won't?" -->
+<!-- LLM: Explicitly list what this project will NOT do. This prevents scope creep and is often as valuable as the goals. Ask: "What might people assume this does that it deliberately won't?" -->
 
 - _Non-goal 1_
 - _Non-goal 2_
 
 ## Success Metrics
 
-<!-- LLM: How will we know the product is fulfilling its mission? Ask for the few signals or
-metrics that would tell the team it's working. Tie each back to a goal above where possible. -->
+<!-- LLM: How will we know the product is fulfilling its mission? Ask for the few signals or metrics that would tell the team it's working. Tie each back to a goal above where possible. -->
 
 - _Metric 1_
 - _Metric 2_
 
 ## Stakeholders
 
-<!-- LLM: Who cares about this project and in what role (owner, users, sponsors, dependents)?
-Keep it brief. Remove this section if the user says it's not relevant. -->
+<!-- LLM: Who cares about this project and in what role (owner, users, sponsors, dependents)? Keep it brief. Remove this section if the user says it's not relevant. -->
 
 - _Role - who / why_

@@ -17,16 +17,13 @@ Verify the `docslime` binary is available, and install it if it isn't.
 
 ## Prerequisites
 
-- Run from the target repo when possible so the follow-up recommendation can inspect whether
-  `docs/` already exists.
-- Prefer Homebrew on macOS/Linux when available; use the install script or source install as
-  fallbacks.
+- Run from the target repo when possible so the follow-up recommendation can inspect whether `docs/` already exists.
+- Prefer Homebrew on macOS/Linux when available; use the install script or source install as fallbacks.
 
 ## Guardrails
 
 - Install the `docslime` binary; do not describe `docslime-kiss` as a CLI command.
-- Do not run `docslime init` from this skill unless the user explicitly asks for setup beyond
-  installation. Offer **docslime-init** as the next step instead.
+- Do not run `docslime init` from this skill unless the user explicitly asks for setup beyond installation. Offer **docslime-init** as the next step instead.
 - If Homebrew reports a tap or trust issue, diagnose that path before switching installers.
 
 ## Steps
@@ -77,13 +74,9 @@ You should see the version plus the `init`, `add`, and `list` subcommands.
 ## Failure Handling
 
 - If `docslime` is still missing, report the attempted install path and the exact failure.
-- If Homebrew is present but the tap cannot be read, ask the user before changing taps or
-  trust settings.
-- If no installer can run in the current environment, leave the repo untouched and give the
-  user the shortest manual install command that applies.
+- If Homebrew is present but the tap cannot be read, ask the user before changing taps or trust settings.
+- If no installer can run in the current environment, leave the repo untouched and give the user the shortest manual install command that applies.
 
 ### 4 — Report and offer next steps
 
-Tell the user DocSlime is ready. If the current repo has no `docs/` tree yet, offer to run
-the **docslime-init** skill to scaffold it; otherwise offer **docslime-fill** to start filling
-documents in.
+Tell the user DocSlime is ready. If the current repo has no `docs/` tree yet, offer to run the **docslime-init** skill to scaffold it; otherwise offer **docslime-fill** to start filling documents in.
