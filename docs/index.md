@@ -5,6 +5,9 @@ image: /assets/images/docslime-hero.png
 ---
 
 ::: hero glow:true
+![DocSlime](/assets/images/docslime-wordmark.svg){.docslime-hero-wordmark .docslime-hero-wordmark-light}
+![DocSlime](/assets/images/docslime-wordmark-dark.svg){.docslime-hero-wordmark .docslime-hero-wordmark-dark}
+
 # Turn your repo into living docs.
 
 DocSlime makes repo knowledge stick. It connects product intent and continuous discovery to

@@ -2,13 +2,6 @@
   "title": "DocSlime",
   "url": "https://www.docslime.dev",
   "favicon": "/assets/favicon.svg",
-  "logo": {
-    "light": "/assets/images/docslime-wordmark.svg",
-    "dark": "/assets/images/docslime-wordmark-dark.svg",
-    "alt": "DocSlime",
-    "href": "/",
-    "height": "2.5rem"
-  },
   "src": "docs",
   "out": "site",
   "engine": "js",
@@ -22,6 +15,7 @@
   "theme": {
     "name": "default",
     "appearance": "system",
+    "customCss": ["/assets/styles/docslime.css"],
     "codeHighlight": true
   },
   "minify": true,
