@@ -1,5 +1,5 @@
 <!-- LLM: This folder is the continuous-discovery and experience-design workspace. Read
-../PRODUCT.md and ../DESIGN.md first. Interview the user about actual evidence; never invent
+../PRODUCT.md and ../DESIGN.md first when they are retained and applicable. Interview the user about actual evidence; never invent
 research, users, quotes, or validation. Keep this README as the operating model and index,
 then create one focused file per meaningful opportunity, journey, study, or product slice.
 Translate validated findings into stable requirements in ../REQUIREMENTS.md rather than
@@ -10,6 +10,11 @@ turning discovery notes into an untraceable backlog. Remove LLM comments as you 
 This folder connects continuous discovery and experience design to delivery. It captures
 what the team has learned from users, the outcomes they need, the opportunities worth
 pursuing, and the behavior that would demonstrate improvement.
+
+For a service, library, SDK, CLI, or API, the users may be developers, operators,
+integrators, coding agents, or other automated consumers. Keep experience artifacts for
+developer experience and agent experience even when product strategy or visual design is
+owned elsewhere and omitted from this repo.
 
 ## Discovery practice
 
@@ -57,10 +62,15 @@ Discovery artifacts should link forward to requirements they justify. Requiremen
 link back here, tests should prove their acceptance behavior, and observability should show
 whether the intended outcome happens in production.
 
-```text
-evidence -> opportunity -> requirement -> architecture -> test -> release -> observation
-     ^                                                                    |
-     +--------------------------------------------------------------------+
+```mermaid
+flowchart LR
+    Evidence["Evidence"] --> Opportunity["Opportunity"]
+    Opportunity --> Requirement["Requirement"]
+    Requirement --> Architecture["Architecture"]
+    Architecture --> Test["Test"]
+    Test --> Release["Release"]
+    Release --> Observation["Observation"]
+    Observation --> Evidence
 ```
 
 ## Index

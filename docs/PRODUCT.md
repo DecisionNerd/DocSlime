@@ -51,10 +51,16 @@ context is complete, local, and testable.
 
 DocSlime's quality method is a trace, not a ceremony:
 
-```text
-strategy -> product/design -> discovery -> requirement -> architecture -> test -> publish
-     ^                                                                    |
-     +-------------------------- observe ----------------------------------+
+```mermaid
+flowchart LR
+    Strategy["Strategy"] --> ProductDesign["Product / design"]
+    ProductDesign --> Discovery["Discovery"]
+    Discovery --> Requirement["Requirement"]
+    Requirement --> Architecture["Architecture"]
+    Architecture --> Test["Test"]
+    Test --> Publish["Publish"]
+    Publish --> Observe["Observe"]
+    Observe --> Strategy
 ```
 
 - **TDD+BDD:** requirements get stable IDs, behavior is written in Given/When/Then language,

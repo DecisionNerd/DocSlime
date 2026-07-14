@@ -1,5 +1,5 @@
-<!-- LLM: This document is the shared contract between product/design discovery and
-engineering. Translate evidence from PRODUCT.md, DESIGN.md, and experience/ into concrete,
+<!-- LLM: This document is the shared contract between intent and engineering. Translate
+evidence from retained local docs, experience/, and linked authoritative context into concrete,
 checkable requirements without repeating personas, journeys, research, or proposed
 architecture. Give every requirement a stable ID so architecture, tests, ADRs, publishing,
 and observability can reference it. Capture acceptance behavior in Given/When/Then language
