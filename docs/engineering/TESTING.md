@@ -23,6 +23,8 @@ verified together through the CLI, so the black-box tests double as integration 
 |---|---|---|
 | Scaffold the docs tree / FR-1, FR-11, FR-15, FR-18, FR-19 | Given an empty dir, When `init`, Then the full 12-file lifecycle tree exists, including product/design context, requirements, publishing, and observability | `tests/cli.rs::init_creates_full_tree` |
 | Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
+| Mermaid flowcharts / FR-20 | Given a scaffolded tree, When diagram guidance and examples are inspected, Then flowcharts use Mermaid and reject ASCII-art guidance | `tests/cli.rs::flowcharts_use_mermaid_in_generated_docs` |
+| Adaptable scaffold / FR-21 | Given a scaffolded tree and bundled skills, When scope guidance is inspected, Then it treats the tree as a starting template and names backend API developer and agent experience as a valid tailored use | `tests/cli.rs::scaffold_and_skills_explain_project_specific_scope` |
 | Non-destructive by default / FR-2 | Given an edited file, When `init` re-runs, Then the file is left untouched | `tests/cli.rs::init_skips_existing_files` |
 | Force overwrite / FR-2 | Given an edited file, When `init --force`, Then the template is restored | `tests/cli.rs::init_force_overwrites` |
 | Legacy path safety / FR-17 | Given a filled legacy numbered file, When current `init` or `list` runs, Then the new counterpart is treated as satisfied without duplicating or moving user work | `tests/cli.rs::init_recognizes_legacy_paths`, `list_recognizes_legacy_paths` |

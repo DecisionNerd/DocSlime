@@ -95,8 +95,14 @@ against throwaway directories and maps every FR to a test case.
 
 ### The trace
 
-```text
-evidence -> requirement -> BDD scenario -> test -> release -> observation -> evidence
+```mermaid
+flowchart LR
+    Evidence["Evidence"] --> Requirement["Requirement"]
+    Requirement --> BDD["BDD scenario"]
+    BDD --> Test["Test"]
+    Test --> Release["Release"]
+    Release --> Observation["Observation"]
+    Observation --> Evidence
 ```
 
 When production contradicts an assumption, update `experience/` or `REQUIREMENTS.md` — the
@@ -104,10 +110,17 @@ loop only works if docs stay as honest as the code.
 
 ## Why It Sticks
 
-```text
-strategy -> product/design -> discovery -> requirements -> architecture -> testing
-    ^                                                               |
-    +----------- observation <- publishing <- verified build <------+
+```mermaid
+flowchart LR
+    Strategy["Strategy"] --> ProductDesign["Product / design"]
+    ProductDesign --> Discovery["Discovery"]
+    Discovery --> Requirements["Requirements"]
+    Requirements --> Architecture["Architecture"]
+    Architecture --> Testing["Testing"]
+    Testing --> Build["Verified build"]
+    Build --> Publishing["Publishing"]
+    Publishing --> Observation["Observation"]
+    Observation --> Strategy
 ```
 
 - **Product and design context** flows into `PRODUCT.md` and `DESIGN.md`, so agents stop
@@ -217,6 +230,11 @@ docs/
 
 `docs/PRODUCT.md` and `docs/DESIGN.md` are deliberately discoverable from the docs tree so
 tools like `impeccable` can load product and design context without duplicate root files.
+
+This is a starting template, not a compliance checklist. Tailor it to the project and keep
+only the artifacts that reduce ambiguity for its actual consumers. A backend API in a large
+organization may link to product strategy and design context owned elsewhere while retaining
+`experience/` for developer experience, integration journeys, and agent experience.
 
 - **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `strategy/` capture purpose,
   voice, principles, and success measures.

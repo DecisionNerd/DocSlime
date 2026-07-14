@@ -13,13 +13,14 @@ context from `docs/`; publication remains outside the binary in the `docmd.io` s
 
 ## Context diagram
 
-```
-developer ─┐
-           ├─→ [ docslime CLI ] ─→ ./docs/ (product, discovery, delivery lifecycle)
-AI agent  ─┘        │                 │
-                    │                 ├─→ impeccable reads docs/PRODUCT.md + docs/DESIGN.md
-                    │                 └─→ docmd.io publishes Markdown later
-                    └─ embedded templates (compiled in; no network, no external files)
+```mermaid
+flowchart LR
+    Developer["Developer"] --> CLI["docslime CLI"]
+    Agent["AI agent"] --> CLI
+    Templates["Embedded templates<br/>compiled in; no network"] --> CLI
+    CLI --> Docs["docs/<br/>product, discovery, delivery lifecycle"]
+    Docs --> Impeccable["impeccable reads<br/>PRODUCT.md + DESIGN.md"]
+    Docs --> Docmd["docmd.io publishes Markdown"]
 ```
 
 Inside the CLI boundary: argument parsing, template resolution, and file writing. Outside:

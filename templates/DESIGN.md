@@ -43,8 +43,8 @@ words to use/avoid when that matters. -->
 
 <!-- LLM: Capture visual/content rules that apply to the product. If the project has no
 visual UI, state what is not applicable and document terminal, API, docs, or generated
-artifact style instead. Link to tokens, CSS, Figma, brand assets, or Storybook when
-available. -->
+artifact style instead. Use Mermaid fenced blocks for flowcharts rather than ASCII art.
+Link to tokens, CSS, Figma, brand assets, or Storybook when available. -->
 
 - **Color:** _palette, semantic usage, contrast expectations._
 - **Typography:** _font choices, scale, hierarchy._

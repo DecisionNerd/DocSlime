@@ -1,5 +1,6 @@
 <!-- LLM: This document defines how the team knows the product works in production. Read
-../PRODUCT.md, ../REQUIREMENTS.md, relevant experience artifacts, ARCHITECTURE.md, and
+the applicable retained docs: ../PRODUCT.md when present, ../REQUIREMENTS.md, relevant
+experience artifacts, ARCHITECTURE.md, and
 PUBLISHING.md first. Cover both system health and user outcomes; logs and uptime alone are
 not enough. Interview the user about actual telemetry, ownership, privacy, alerting, and the
 feedback loop into continuous discovery. Remove LLM comments as you complete each section. -->
