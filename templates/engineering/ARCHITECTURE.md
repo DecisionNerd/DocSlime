@@ -15,11 +15,14 @@ _What kind of system is this, in one paragraph?_
 ## Context diagram
 
 <!-- LLM: Show the system in its environment — its users and the external systems it talks to.
-A simple ASCII/Mermaid diagram or a bullet list of "actor → system → external service" is
-fine. Ask the user what's inside the boundary vs. outside it. -->
+A Mermaid flowchart is the standard for relationships and flows; do not use ASCII art. If the
+relationships do not merit a diagram, use concise prose or a bullet list instead. Ask the user
+what's inside the boundary vs. outside it. -->
 
-```
-_actor_ → [ this system ] → _external service_
+```mermaid
+flowchart LR
+    Actor["Actor"] --> System["This system"]
+    System --> External["External service"]
 ```
 
 ## Components

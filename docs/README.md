@@ -8,6 +8,18 @@ production observability.
 Start with the [lifecycle guide](lifecycle.md) for the full UX → DDD → TDD+BDD trace and
 day-to-day tool usage.
 
+## Adapt the scaffold
+
+The generated tree is a starting template, not a requirement to keep every file. Projects
+should retain only the docs that help their humans or agents make better decisions, link to
+authoritative organization-level context, and update the index when files are removed or
+merged.
+
+For example, a backend API service in a large organization may omit local product strategy
+and visual design docs when those concerns are owned elsewhere. It can still keep
+`experience/` for developer experience (DX), operator and integration journeys, and agent
+experience for coding agents or automated consumers of the API.
+
 ## Lifecycle
 
 | Document | Question it answers |

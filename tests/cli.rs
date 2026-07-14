@@ -55,6 +55,51 @@ fn every_template_carries_llm_guidance() {
 }
 
 #[test]
+fn flowcharts_use_mermaid_in_generated_docs() {
+    let tmp = TempDir::new().unwrap();
+    docslime(tmp.path()).arg("init").assert().success();
+
+    let architecture =
+        fs::read_to_string(tmp.path().join("docs/engineering/ARCHITECTURE.md")).unwrap();
+    assert!(architecture.contains("```mermaid\nflowchart LR"));
+    assert!(architecture.contains("do not use ASCII art"));
+    assert!(!architecture.contains("ASCII/Mermaid"));
+
+    let experience = fs::read_to_string(tmp.path().join("docs/experience/README.md")).unwrap();
+    assert!(experience.contains("```mermaid\nflowchart LR"));
+    assert!(!experience.contains("evidence -> opportunity"));
+}
+
+#[test]
+fn scaffold_and_skills_explain_project_specific_scope() {
+    let tmp = TempDir::new().unwrap();
+    docslime(tmp.path()).arg("init").assert().success();
+
+    let readme = fs::read_to_string(tmp.path().join("docs/README.md")).unwrap();
+    for expected in [
+        "starting template",
+        "backend API service",
+        "developer experience (DX)",
+        "agent experience",
+    ] {
+        assert!(
+            readme.contains(expected),
+            "docs/README.md missing {expected}"
+        );
+    }
+
+    let repo = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for skill in ["docslime-init", "docslime-fill", "docslime-kiss"] {
+        let contents =
+            fs::read_to_string(repo.join(".agents/skills").join(skill).join("SKILL.md")).unwrap();
+        assert!(
+            contents.contains("template"),
+            "{skill} does not explain template adaptation"
+        );
+    }
+}
+
+#[test]
 fn init_skips_existing_files() {
     let tmp = TempDir::new().unwrap();
     docslime(tmp.path()).arg("init").assert().success();

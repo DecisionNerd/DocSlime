@@ -11,6 +11,18 @@ engineering docs carry the contract through architecture, testing, publishing, a
 production observability. The docs stay in-repo so people and coding agents can work from
 the same evidence without reaching for an external source.
 
+## Adapt this template to the project
+
+This tree is a broad starting template, not a compliance checklist. Keep the documents that
+help this project's humans or agents make better decisions; remove, merge, or replace the
+rest with links to authoritative organization-level context. Update this index and affected
+links whenever the shape changes.
+
+For example, a backend API service in a large organization may not need local product
+strategy or visual design docs when those concerns are owned elsewhere. It may still keep
+`experience/` to document developer experience (DX), operator and integration journeys, and
+agent experience for coding agents or other automated consumers of the service.
+
 ## How the docs are organized
 
 Follow this lifecycle rather than treating the filenames as a numbered checklist:
@@ -42,7 +54,7 @@ Supporting detail lives in subfolders:
 - **Trace evidence through delivery.** User evidence should lead to requirements, tests,
   architecture, telemetry, and production learning.
 - **Decisions are recorded.** Significant choices get an ADR (see `engineering/adrs/`).
-- **Keep context discoverable.** `PRODUCT.md` and `DESIGN.md` stay in `docs/` so design and
-  coding agents can load them without duplicate root files.
+- **Keep applicable context discoverable.** When retained, `PRODUCT.md` and `DESIGN.md` stay
+  in `docs/` so design and coding agents can load them without duplicate root files.
 - **Close the loop.** Observability should measure both system health and the user outcomes
   named in product, experience, and requirements docs.

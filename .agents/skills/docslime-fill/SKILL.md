@@ -24,12 +24,13 @@ see names).
 
 ## The document lifecycle
 
-Fill the durable context first, then follow evidence through delivery and production
-learning. Revisit earlier docs when observation changes what the team knows:
+This is a menu and a common order, not a mandatory checklist. First identify which documents
+belong in this repo, then fill durable context and follow relevant evidence through delivery
+and production learning. Revisit earlier docs when observation changes what the team knows:
 
-1. `PRODUCT.md` — what the product is, who it serves, and why it exists
-2. `DESIGN.md` — the experience principles and reusable design rules
-3. `strategy/` — deeper market, positioning, roadmap, and strategic-bet context when needed
+1. `PRODUCT.md` — project-level product context, when this repo owns it
+2. `DESIGN.md` — reusable product or interface design rules, when applicable
+3. `strategy/` — market, positioning, roadmap, and strategic bets only when owned here
 4. `experience/` — continuous discovery, journeys, opportunities, hypotheses, and behavior
 5. `REQUIREMENTS.md` — the testable build contract derived from product, design, and evidence
 6. `engineering/ARCHITECTURE.md` — how it is designed (decisions live in `engineering/adrs/`)
@@ -40,6 +41,10 @@ learning. Revisit earlier docs when observation changes what the team knows:
 ## Guardrails
 
 - Do not invent product facts, requirements, architecture, tests, decisions, users, or metrics.
+- Do not fill or preserve a document merely because the template created it. Recommend
+  removing, merging, or replacing irrelevant docs with a link to the authoritative source.
+- Treat developers, operators, integrators, and coding agents as real users when they consume
+  a service, library, SDK, CLI, or API; retain `experience/` when DX or agent experience matters.
 - Ask one focused question at a time when facts are missing.
 - Preserve existing user-written content unless it conflicts with a correction the user gives.
 - Keep requirements testable and solution-neutral, architecture grounded in real domain
@@ -51,7 +56,10 @@ learning. Revisit earlier docs when observation changes what the team knows:
 
 ### 1 — Read the document and its guidance
 
-Open the target file (e.g. `docs/PRODUCT.md`). Each template carries two kinds of
+Open the target file (e.g. `docs/PRODUCT.md`) and confirm it serves this project's actual
+consumers before filling it. A backend API in a large organization may reasonably omit local
+product strategy and visual design docs while keeping experience artifacts for developer and
+agent workflows. Each retained template carries two kinds of
 authoring cues:
 
 - A **file-level** `<!-- LLM: ... -->` comment at the top with overall instructions and
@@ -68,9 +76,9 @@ Follow the guidance comments. Ask **one focused question at a time**, reflect th
 answer back in your own words, and confirm before writing. Don't dump every question at
 once and don't invent facts — if the user doesn't know something, note it and move on.
 
-Pull context from the lifecycle: when filling `REQUIREMENTS.md`, ground it in `PRODUCT.md`,
-`DESIGN.md`, and evidence in `experience/`. When filling observability, trace signals back to
-requirements and discovery hypotheses.
+Pull context from the applicable lifecycle: when filling `REQUIREMENTS.md`, ground it in the
+retained local docs, experience evidence, and linked organization-level sources. When filling
+observability, trace signals back to requirements and discovery hypotheses.
 
 ### 3 — Write each section
 

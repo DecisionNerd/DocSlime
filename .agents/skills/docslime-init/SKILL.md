@@ -1,13 +1,14 @@
 ---
 name: docslime-init
-description: Scaffolds the standardized DocSlime docs tree with docslime init. Use when setting up project docs, initializing docs in a repo, or safely adding missing default docs.
+description: Scaffolds and tailors the DocSlime docs starting template with docslime init. Use when setting up project docs, initializing docs in a repo, or safely adding missing default docs.
 ---
 
 # DocSlime Init
 
-Scaffold the full `docs/` tree into the current git repo so product context, continuous
+Scaffold a broad `docs/` starting tree into the current git repo so product context, continuous
 discovery, requirements, design guidance, architecture, testing, delivery, observability,
-and decisions live alongside the code.
+and decisions can live alongside the code. Tailor the result to the project instead of
+treating every generated file as mandatory.
 
 ## When to Use
 
@@ -26,8 +27,10 @@ The `docslime` binary must be installed. If `docslime --version` fails, run the
 - Confirm you are at the target git repo root before writing files.
 - `docslime init` is non-destructive by default; do not use `--force` unless the user asks to
   overwrite existing scaffold files.
-- Keep `docs/PRODUCT.md` and `docs/DESIGN.md` in `docs/`; do not create duplicate root bridge
-  files for tools such as `impeccable`.
+- Treat the scaffold as a template, not a compliance checklist. Recommend irrelevant files
+  for removal or consolidation and get confirmation before deleting them.
+- When `docs/PRODUCT.md` and `docs/DESIGN.md` are useful, keep them in `docs/`; do not create
+  duplicate root bridge files for tools such as `impeccable`.
 - Remember the CLI surface is `init`, `add`, and `list`. KISS review belongs to the
   **docslime-kiss** skill.
 
@@ -72,7 +75,21 @@ treats them as legacy matches rather than creating duplicate renamed docs. To in
 write the new template path, re-run with `docslime init --force`; this still does not remove
 the legacy file.
 
-### 3 — See what's there
+### 3 — Tailor the template
+
+Identify the project type and the people or agents who consume it, then keep only documents
+that reduce ambiguity for those users. Link to an authoritative organization-level source
+instead of duplicating it locally.
+
+For example, a backend API service in a large organization may not need local product
+strategy or visual design docs when those concerns are owned elsewhere. It may still keep
+`experience/` for developer experience, operator and integration journeys, and agent
+experience when coding agents or other automated consumers use the API.
+
+When removing or merging template files, update `docs/README.md` and affected links so the
+remaining tree is intentional and navigable. Preserve real evidence and accepted decisions.
+
+### 4 — See what's there
 
 ```bash
 docslime list
@@ -80,14 +97,16 @@ docslime list
 
 `list` shows every template and whether it already exists on disk, plus the `adr` entry.
 
-### 4 — Orient and hand off
+### 5 — Orient and hand off
 
 The docs form a lifecycle: strategy -> product/design -> discovery -> requirements ->
 architecture -> testing -> publishing -> observability -> discovery. Each template contains
 inline `<!-- LLM: ... -->` guidance for interviewing the user and filling the sections.
 
-Tell the user the tree is ready, and offer to start filling it in with the **docslime-fill**
-skill — beginning with `docs/PRODUCT.md`, since every other document derives from it.
+Tell the user the tailored tree is ready, and offer to start filling the first applicable
+document with the **docslime-fill** skill. Begin with `docs/PRODUCT.md` only when project-level
+product context belongs in this repo; otherwise start with the most relevant experience,
+requirements, or architecture document.
 
 ## Verification
 
@@ -96,8 +115,9 @@ docslime list
 test -f docs/PRODUCT.md && test -f docs/DESIGN.md
 ```
 
-Confirm created/skipped/legacy output is clear and that the tree includes requirements,
-continuous discovery, the engineering lifecycle, observability, and ADRs.
+Confirm created/skipped/legacy output is clear and that the retained tree matches the
+project's real consumers. Missing template files are acceptable when their omission is
+intentional and `docs/README.md` reflects the final shape.
 
 ## Failure Handling
 

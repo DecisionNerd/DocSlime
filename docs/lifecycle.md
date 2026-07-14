@@ -14,10 +14,17 @@ trace honest: every important behavior should be followable from evidence to pro
 
 ## The closed loop
 
-```text
-strategy -> product/design -> discovery -> requirements -> architecture -> testing
-    ^                                                                          |
-    +---- observation <- publishing <- verified build <------------------------+
+```mermaid
+flowchart LR
+    Strategy["Strategy"] --> ProductDesign["Product / design"]
+    ProductDesign --> Discovery["Discovery"]
+    Discovery --> Requirements["Requirements"]
+    Requirements --> Architecture["Architecture"]
+    Architecture --> Testing["Testing"]
+    Testing --> Build["Verified build"]
+    Build --> Publishing["Publishing"]
+    Publishing --> Observation["Observation"]
+    Observation --> Strategy
 ```
 
 | Phase | Question | Primary docs | Methods |
@@ -44,6 +51,12 @@ npx skills add DecisionNerd/DocSlime     # once per agent environment
 `docslime init` creates the lifecycle-oriented `docs/` tree and skips anything you already
 wrote. Use `docslime list` to see what exists and `docslime add <name>` to add one missing
 document.
+
+Treat that tree as a starting template. Before filling it, identify the project type and its
+human and agent consumers, then remove or merge irrelevant files and update `docs/README.md`.
+For example, a backend API in a large organization may not own product strategy or visual
+design, but `experience/` can still capture developer experience, integration friction,
+operator journeys, and agent experience.
 
 ### 2. Fill durable context first
 
@@ -166,8 +179,13 @@ bounded contexts.
 
 DocSlime's development method treats docs and tests as one trace:
 
-```text
-evidence -> requirement (FR-12) -> BDD scenario -> automated test -> CI gate -> release
+```mermaid
+flowchart LR
+    Evidence["Evidence"] --> Requirement["Requirement (FR-12)"]
+    Requirement --> BDD["BDD scenario"]
+    BDD --> Test["Automated test"]
+    Test --> CI["CI gate"]
+    CI --> Release["Release"]
 ```
 
 **Requirements** (`REQUIREMENTS.md`) hold stable IDs and observable statements.

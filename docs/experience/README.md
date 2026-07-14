@@ -74,10 +74,15 @@ slice needs more evidence than this index can hold. Use only the sections the ev
 
 ## Learning loop
 
-```text
-evidence -> opportunity -> requirement -> architecture -> test -> release -> observation
-     ^                                                                    |
-     +--------------------------------------------------------------------+
+```mermaid
+flowchart LR
+    Evidence["Evidence"] --> Opportunity["Opportunity"]
+    Opportunity --> Requirement["Requirement"]
+    Requirement --> Architecture["Architecture"]
+    Architecture --> Test["Test"]
+    Test --> Release["Release"]
+    Release --> Observation["Observation"]
+    Observation --> Evidence
 ```
 
 ## Index

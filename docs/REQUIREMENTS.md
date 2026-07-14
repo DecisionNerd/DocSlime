@@ -29,6 +29,8 @@ discovery, delivery, publication, and production learning.
 | FR-17 | When a legacy numbered path exists, `init` and `list` shall recognize it as satisfying the corresponding current template and shall not create a duplicate renamed file unless `--force` is explicit. | Preserve existing documentation during upgrades |
 | FR-18 | Experience guidance shall define a continuous-discovery practice and connect evidence, journeys, opportunities, hypotheses, behavior scenarios, and success signals to requirements. | Learn from users continuously |
 | FR-19 | Observability guidance shall connect production system health and user-outcome signals to requirements and discovery while covering telemetry, SLOs, alerts, ownership, and privacy. | Close the product-learning loop |
+| FR-20 | Documentation guidance and first-party docs shall render flowcharts as Mermaid diagrams rather than ASCII art. | Keep diagrams readable and renderable |
+| FR-21 | The scaffold and bundled skills shall describe the docs tree as a project-specific starting template, permit intentional omission of irrelevant product, strategy, or design docs, and preserve experience documentation for developer and agent consumers when useful. | Fit the docs to the project |
 
 ## Non-functional requirements
 
