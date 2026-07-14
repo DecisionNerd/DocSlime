@@ -5,14 +5,12 @@ description: "How verified DocSlime CLI, skill, and documentation artifacts reac
 
 # Publishing
 
-DocSlime publishes three related surfaces: the Rust CLI, the reusable agent-skill pack, and
-the static documentation site. A build or deployment is not complete until its expected
-artifact and user-facing behavior are verified.
+DocSlime publishes three related surfaces: the Rust CLI, the reusable agent-skill pack, and the static documentation site. A build or deployment is not complete until its expected artifact and user-facing behavior are verified.
 
 ## Artifacts and destinations
 
 | Artifact | Destination | Version / identity |
-|---|---|---|
+| --- | --- | --- |
 | Rust CLI binaries and installer | GitHub Release | SemVer tag matching `Cargo.toml` |
 | Homebrew formula | `DecisionNerd/homebrew-tap` | Release version and artifact checksums |
 | Agent skills | GitHub repository via `npx skills add DecisionNerd/DocSlime` | Repository revision/release |
@@ -20,23 +18,16 @@ artifact and user-facing behavior are verified.
 
 ## Recommended conventions, not mandates
 
-DocSlime recommends considering two complementary standards when they fit a project's release
-model:
+DocSlime recommends considering two complementary standards when they fit a project's release model:
 
-- **Semantic Versioning** communicates compatibility through `MAJOR.MINOR.PATCH`. DocSlime
-  uses SemVer for CLI releases because the CLI has a public command and template contract.
-- **Conventional Commits** use `type(scope): description` to make change intent readable by
-  people and release tooling. `fix` commonly corresponds to a patch, `feat` to a minor change,
-  and a declared breaking change to a major change when SemVer applies.
+- **Semantic Versioning** communicates compatibility through `MAJOR.MINOR.PATCH`. DocSlime uses SemVer for CLI releases because the CLI has a public command and template contract.
+- **Conventional Commits** use `type(scope): description` to make change intent readable by people and release tooling. `fix` commonly corresponds to a patch, `feat` to a minor change, and a declared breaking change to a major change when SemVer applies.
 
-These are suggestions, not requirements. A project should document and preserve an existing
-convention that already works. DocSlime guidance must not introduce commit linting, rewrite
-history, or change version automation without explicit team agreement.
+These are suggestions, not requirements. A project should document and preserve an existing convention that already works. DocSlime guidance must not introduce commit linting, rewrite history, or change version automation without explicit team agreement.
 
 ## Continuous integration
 
-`.github/workflows/ci.yml` validates the CLI, site, agent skills, and branch policy. Only
-`staging` may open a pull request to `main`; feature branches target `staging`.
+`.github/workflows/ci.yml` validates the CLI, site, agent skills, and branch policy. Only `staging` may open a pull request to `main`; feature branches target `staging`.
 
 Before publishing, run:
 
@@ -50,9 +41,7 @@ npm run build
 
 ## CLI and Homebrew release
 
-Distribution is configured through `cargo-dist`. A SemVer tag runs
-`.github/workflows/release.yml`, builds macOS/Linux artifacts, creates the GitHub Release,
-publishes the installer, and updates the Homebrew tap.
+Distribution is configured through `cargo-dist`. A SemVer tag runs `.github/workflows/release.yml`, builds macOS/Linux artifacts, creates the GitHub Release, publishes the installer, and updates the Homebrew tap.
 
 Verify more than workflow completion:
 
@@ -63,9 +52,7 @@ Verify more than workflow completion:
 
 ## Skill distribution
 
-The `.agents/skills/docslime-*` directories are the canonical source. Validate them before
-release, then verify a fresh `npx skills add DecisionNerd/DocSlime` install contains the same
-skill set and instructions.
+The `.agents/skills/docslime-*` directories are the canonical source. Validate them before release, then verify a fresh `npx skills add DecisionNerd/DocSlime` install contains the same skill set and instructions.
 
 ## Documentation site
 
@@ -73,18 +60,13 @@ skill set and instructions.
 npm run build
 ```
 
-`docmd` reads `docs/` and writes the static site to `site/`. Deployment configuration is
-outside the CLI; current build and runtime status must be verified through the configured
-host rather than inferred from generated files alone.
+`docmd` reads `docs/` and writes the static site to `site/`. Deployment configuration is outside the CLI; current build and runtime status must be verified through the configured host rather than inferred from generated files alone.
 
 ## Rollback
 
-- Revert or supersede a bad documentation/site deployment from the last known-good source
-  commit and rebuild.
-- For a bad CLI release, stop promotion, document the impact, and issue a corrected version;
-  do not move an immutable published tag.
-- For a bad Homebrew formula, restore the last known-good formula or publish the corrected
-  release, then verify installation through Homebrew.
+- Revert or supersede a bad documentation/site deployment from the last known-good source commit and rebuild.
+- For a bad CLI release, stop promotion, document the impact, and issue a corrected version; do not move an immutable published tag.
+- For a bad Homebrew formula, restore the last known-good formula or publish the corrected release, then verify installation through Homebrew.
 
 ## Official references
 

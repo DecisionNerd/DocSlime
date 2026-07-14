@@ -1,8 +1,6 @@
 # Architecture Decision Records
 
-An **Architecture Decision Record (ADR)** captures one significant decision — the context,
-the choice made, and its consequences — so the reasoning lives in the repo alongside the
-code. Decisions are immutable once accepted: to change one, add a new ADR that supersedes it.
+An **Architecture Decision Record (ADR)** captures one significant decision — the context, the choice made, and its consequences — so the reasoning lives in the repo alongside the code. Decisions are immutable once accepted: to change one, add a new ADR that supersedes it.
 
 ## Creating an ADR
 
@@ -10,8 +8,7 @@ code. Decisions are immutable once accepted: to change one, add a new ADR that s
 docslime add adr <short-slug>
 ```
 
-This creates the next-numbered record, e.g. `0001-<short-slug>.md`. Fill it in (the file
-carries inline guidance), then add a row to the log below.
+This creates the next-numbered record, e.g. `0001-<short-slug>.md`. Fill it in (the file carries inline guidance), then add a row to the log below.
 
 ## Status values
 
@@ -23,5 +20,5 @@ carries inline guidance), then add a row to the log below.
 ## Decision log
 
 | ADR | Title | Status | Date |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | [0001](0001-embed-templates-in-binary.md) | Embed templates in the binary at compile time | Accepted | 2026-06-02 |

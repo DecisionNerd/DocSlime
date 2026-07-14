@@ -1,29 +1,19 @@
 # Documentation
 
-DocSlime dogfoods the documentation lifecycle it scaffolds. Product and design context feed
-continuous discovery, requirements translate that evidence into a build contract, and the
-engineering docs carry the contract through architecture, testing, publishing, and
-production observability.
+DocSlime dogfoods the documentation lifecycle it scaffolds. Product and design context feed continuous discovery, requirements translate that evidence into a build contract, and the engineering docs carry the contract through architecture, testing, publishing, and production observability.
 
-Start with the [lifecycle guide](lifecycle.md) for the full UX → DDD → TDD+BDD trace and
-day-to-day tool usage.
+Start with the [lifecycle guide](lifecycle.md) for the full UX → DDD → TDD+BDD trace and day-to-day tool usage.
 
 ## Adapt the scaffold
 
-The generated tree is a starting template, not a requirement to keep every file. Projects
-should retain only the docs that help their humans or agents make better decisions, link to
-authoritative organization-level context, and update the index when files are removed or
-merged.
+The generated tree is a starting template, not a requirement to keep every file. Projects should retain only the docs that help their humans or agents make better decisions, link to authoritative organization-level context, and update the index when files are removed or merged.
 
-For example, a backend API service in a large organization may omit local product strategy
-and visual design docs when those concerns are owned elsewhere. It can still keep
-`experience/` for developer experience (DX), operator and integration journeys, and agent
-experience for coding agents or automated consumers of the API.
+For example, a backend API service in a large organization may omit local product strategy and visual design docs when those concerns are owned elsewhere. It can still keep `experience/` for developer experience (DX), operator and integration journeys, and agent experience for coding agents or automated consumers of the API.
 
 ## Lifecycle
 
 | Document | Question it answers |
-|---|---|
+| --- | --- |
 | [`PRODUCT.md`](PRODUCT.md) | What is DocSlime, who is it for, and why does it exist? |
 | [`DESIGN.md`](DESIGN.md) | What should stay consistent across its CLI, templates, skills, and site? |
 | [`experience/`](experience/) | What user evidence, journeys, and behaviors inform the product? |
@@ -36,7 +26,7 @@ experience for coding agents or automated consumers of the API.
 Supporting detail lives in:
 
 | Folder | Contents |
-|---|---|
+| --- | --- |
 | [`strategy/`](strategy/) | Market, positioning, roadmap, and strategic bets beyond `PRODUCT.md`. |
 | [`experience/`](experience/) | Continuous-discovery practice and user-centered evidence. |
 | [`engineering/`](engineering/) | Technical lifecycle and operational documentation. |

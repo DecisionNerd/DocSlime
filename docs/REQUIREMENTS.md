@@ -1,15 +1,11 @@
 # Requirements
 
-DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add individual
-documents (including auto-numbered ADRs) on demand, and report what exists without
-destroying existing work. The templates must carry the inline guidance that lets an AI agent
-fill them in, while the tree stays plain Markdown for design-context loading, continuous
-discovery, delivery, publication, and production learning.
+DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add individual documents (including auto-numbered ADRs) on demand, and report what exists without destroying existing work. The templates must carry the inline guidance that lets an AI agent fill them in, while the tree stays plain Markdown for design-context loading, continuous discovery, delivery, publication, and production learning.
 
 ## Functional requirements
 
 | ID | Requirement | Traces to |
-|---|---|---|
+| --- | --- | --- |
 | FR-1 | The system shall create the full standardized `docs/` tree with `README.md`, `PRODUCT.md`, `DESIGN.md`, `REQUIREMENTS.md`, `strategy/`, `experience/`, and engineering architecture, testing, publishing, observability, and ADR docs via `docslime init`. | Scaffold the docs tree |
 | FR-2 | The system shall skip any file that already exists during `init` and `add`, and overwrite only when `--force` is given. | Non-destructive by default |
 | FR-3 | The system shall add a single named document via `docslime add <name>`, resolving the name leniently (case-insensitive, with or without the `.md` extension). | Add a single document |
@@ -36,7 +32,7 @@ discovery, delivery, publication, and production learning.
 ## Non-functional requirements
 
 | ID | Requirement | Target / constraint |
-|---|---|---|
+| --- | --- | --- |
 | NFR-1 | Portability | Runs on macOS (arm64, x86_64) and Linux (arm64, x86_64); no runtime dependencies. |
 | NFR-2 | Performance | Commands complete near-instantly (well under a second) on a typical repo. |
 | NFR-3 | Distribution | Installable via Homebrew tap, shell installer script, and `cargo install`. |
