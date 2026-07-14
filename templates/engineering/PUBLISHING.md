@@ -19,6 +19,22 @@ that do not apply. -->
 |---|---|---|---|
 | _Artifact_ | _Registry, environment, store, or host_ | _Tag, digest, release, or commit_ | _Role/team_ |
 
+## Suggested versioning and change history
+
+<!-- LLM: Treat these as optional recommendations, not requirements. First document the
+team's existing versioning, commit, and changelog practices. Suggest Semantic Versioning or
+Conventional Commits only when they would make compatibility and release intent clearer. Do
+not add enforcement, rewrite history, or change release automation without explicit team
+agreement. -->
+
+- Consider **Semantic Versioning** (`MAJOR.MINOR.PATCH`) when an artifact has a public API or
+  compatibility contract: incompatible changes may justify `MAJOR`, backward-compatible
+  features `MINOR`, and backward-compatible fixes `PATCH`.
+- Consider **Conventional Commits** (`type(scope): description`) when human- and
+  machine-readable change history would improve reviews, changelogs, or release automation.
+- Keep the workflow the team already uses when it serves them better. Document the chosen
+  convention and any exceptions; these suggestions do not require enforcement.
+
 ## Build and continuous delivery
 
 <!-- LLM: Add the exact commands and automation that build, sign, package, and publish.
@@ -54,4 +70,6 @@ _How is a harmful release stopped or reversed safely?_
 
 ## Official references
 
+- [Semantic Versioning 2.0.0](https://semver.org/)
+- [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
 - _CI/CD, registry, hosting, package, or documentation publishing reference._

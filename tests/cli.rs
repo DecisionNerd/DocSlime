@@ -100,6 +100,32 @@ fn scaffold_and_skills_explain_project_specific_scope() {
 }
 
 #[test]
+fn suggested_release_conventions_are_optional() {
+    let tmp = TempDir::new().unwrap();
+    docslime(tmp.path()).arg("init").assert().success();
+
+    let publishing = fs::read_to_string(tmp.path().join("docs/engineering/PUBLISHING.md")).unwrap();
+    for expected in [
+        "Semantic Versioning",
+        "Conventional Commits",
+        "optional recommendations",
+        "explicit team",
+    ] {
+        assert!(
+            publishing.contains(expected),
+            "engineering/PUBLISHING.md missing {expected}"
+        );
+    }
+
+    let fill_skill = fs::read_to_string(
+        Path::new(env!("CARGO_MANIFEST_DIR")).join(".agents/skills/docslime-fill/SKILL.md"),
+    )
+    .unwrap();
+    assert!(fill_skill.contains("optional publishing practices"));
+    assert!(fill_skill.contains("never impose enforcement"));
+}
+
+#[test]
 fn init_skips_existing_files() {
     let tmp = TempDir::new().unwrap();
     docslime(tmp.path()).arg("init").assert().success();
