@@ -85,9 +85,8 @@ contract instead of rotting in a backlog.
 ### DDD — domain language and decisions
 
 Architecture docs name the **domain concepts, boundaries, and invariants** that matter for
-the project. Significant, hard-to-reverse choices become ADRs in `engineering/adrs/`. DocSlime
-uses Domain Driven Design lightly — enough vocabulary to guide the next change, without
-forcing bounded-context diagrams on every repo.
+the project. Significant, hard-to-reverse choices become ADRs in `engineering/adrs/`.
+DocSlime uses Domain Driven Design lightly — enough vocabulary to guide the next change, without forcing bounded-context diagrams on every repo.
 
 ### TDD+BDD — proof before promotion
 
