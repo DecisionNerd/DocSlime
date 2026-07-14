@@ -18,6 +18,21 @@ artifact and user-facing behavior are verified.
 | Agent skills | GitHub repository via `npx skills add DecisionNerd/DocSlime` | Repository revision/release |
 | Documentation site | Static `site/` output and configured host | Source commit/deployment |
 
+## Recommended conventions, not mandates
+
+DocSlime recommends considering two complementary standards when they fit a project's release
+model:
+
+- **Semantic Versioning** communicates compatibility through `MAJOR.MINOR.PATCH`. DocSlime
+  uses SemVer for CLI releases because the CLI has a public command and template contract.
+- **Conventional Commits** use `type(scope): description` to make change intent readable by
+  people and release tooling. `fix` commonly corresponds to a patch, `feat` to a minor change,
+  and a declared breaking change to a major change when SemVer applies.
+
+These are suggestions, not requirements. A project should document and preserve an existing
+convention that already works. DocSlime guidance must not introduce commit linting, rewrite
+history, or change version automation without explicit team agreement.
+
 ## Continuous integration
 
 `.github/workflows/ci.yml` validates the CLI, site, agent skills, and branch policy. Only
@@ -73,6 +88,8 @@ host rather than inferred from generated files alone.
 
 ## Official references
 
+- [Semantic Versioning 2.0.0](https://semver.org/)
+- [Conventional Commits 1.0.0](https://www.conventionalcommits.org/en/v1.0.0/)
 - [cargo-dist documentation](https://opensource.axo.dev/cargo-dist/)
 - [docmd Quick Start](https://docs.docmd.io/getting-started/quick-start/)
 - [docmd Deployment Overview](https://docs.docmd.io/deployment/)

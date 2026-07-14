@@ -120,6 +120,11 @@ Fill `engineering/PUBLISHING.md` with the real promotion path: artifacts, versio
 gates, deployment verification, and rollback. DocSlime itself promotes `staging` → `main`
 for the site and uses tag-driven releases for the CLI.
 
+As optional defaults, consider Semantic Versioning when public compatibility needs a clear
+`MAJOR.MINOR.PATCH` contract and Conventional Commits when structured change intent would help
+reviews, changelogs, or release automation. Preserve an effective existing workflow; do not
+add enforcement or rewrite history without explicit team agreement.
+
 ### 7. Learn from production
 
 Fill `engineering/OBSERVABILITY.md` to connect system health and user-outcome signals back to
