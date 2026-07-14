@@ -1,0 +1,2 @@
+# Prettier does not understand Docmd container directives and collapses their boundaries.
+docs/index.md

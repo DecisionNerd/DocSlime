@@ -43,15 +43,25 @@ Create one focused lowercase-kebab-case file when an opportunity, study, journey
 # Opportunity or experience
 
 ## Observed need and evidence
+
 ## Desired user and business outcome
+
 ## Users and context
+
 ## Current journey
+
 ## Opportunity and hypothesis
+
 ## Intended behavior
+
 ## Given / When / Then scenarios
+
 ## Constraints and domain language
+
 ## Success signals and telemetry
+
 ## Open questions
+
 ## Related requirements, tests, architecture, and ADRs
 ```
 
