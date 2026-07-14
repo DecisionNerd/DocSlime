@@ -29,6 +29,55 @@ fn docslime(dir: &Path) -> Command {
     cmd
 }
 
+fn deprecated_methodology_term(contents: &str) -> Option<&'static str> {
+    let lower = contents.to_lowercase();
+    let has_ddd_token = lower
+        .split(|character: char| !character.is_alphanumeric())
+        .any(|word| word == concat!("d", "dd"));
+
+    if has_ddd_token {
+        return Some("deprecated acronym");
+    }
+
+    [
+        concat!("domain", "-driven design"),
+        concat!("domain", " driven design"),
+        concat!("light ", "d", "dd"),
+        concat!("bounded", " context"),
+        concat!("ubiquitous", " language"),
+        concat!("business-shaped", " software"),
+        concat!("user-driven", " design"),
+    ]
+    .into_iter()
+    .find(|term| lower.contains(term))
+}
+
+fn assert_normative_tree_uses_current_methodology(path: &Path) {
+    if path.is_dir() {
+        for entry in fs::read_dir(path).unwrap() {
+            assert_normative_tree_uses_current_methodology(&entry.unwrap().path());
+        }
+        return;
+    }
+
+    let should_scan = path
+        .extension()
+        .and_then(|extension| extension.to_str())
+        .is_some_and(|extension| {
+            matches!(extension, "md" | "rs" | "toml" | "json" | "yml" | "yaml")
+        });
+    if !should_scan {
+        return;
+    }
+
+    let contents = fs::read_to_string(path).unwrap();
+    assert!(
+        deprecated_methodology_term(&contents).is_none(),
+        "{} contains deprecated methodology terminology",
+        path.display()
+    );
+}
+
 #[test]
 fn init_creates_full_tree() {
     let tmp = TempDir::new().unwrap();
@@ -123,6 +172,51 @@ fn suggested_release_conventions_are_optional() {
     .unwrap();
     assert!(fill_skill.contains("optional publishing practices"));
     assert!(fill_skill.contains("never impose enforcement"));
+}
+
+#[test]
+fn domain_modeling_guidance_replaces_formal_methodology_framing() {
+    let tmp = TempDir::new().unwrap();
+    docslime(tmp.path()).arg("init").assert().success();
+
+    let generated = tmp.path().join("docs");
+    let readme = fs::read_to_string(generated.join("README.md")).unwrap();
+    assert!(readme.contains("uses domain modeling to bring the concepts"));
+    assert!(readme.contains("Real-world problem"));
+    assert!(readme.contains("Shared terminology and model"));
+    assert!(readme.contains("Product decisions"));
+    assert!(readme.contains("Implementation"));
+    assert!(readme.contains("Verification"));
+
+    let product = fs::read_to_string(generated.join("PRODUCT.md")).unwrap();
+    assert!(product.contains("models the real-world problem"));
+    assert!(product.contains("keeps terminology consistent"));
+
+    let architecture = fs::read_to_string(generated.join("engineering/ARCHITECTURE.md")).unwrap();
+    assert!(architecture.contains("## Problem model and terminology"));
+    assert!(architecture.contains("concepts, relationships, constraints, and workflows"));
+    assert!(architecture.contains("meaningful concepts, rules, and workflows"));
+    assert!(architecture.contains("lifecycle states"));
+
+    let testing = fs::read_to_string(generated.join("engineering/TESTING.md")).unwrap();
+    assert!(
+        testing.contains("real-world problem -> shared terminology and model -> product decision")
+    );
+    assert!(testing.contains("Given/When/Then scenario -> test"));
+
+    assert_normative_tree_uses_current_methodology(&generated);
+
+    let repo = Path::new(env!("CARGO_MANIFEST_DIR"));
+    for normative_root in [
+        "README.md",
+        "Cargo.toml",
+        "src",
+        "templates",
+        "docs",
+        ".agents",
+    ] {
+        assert_normative_tree_uses_current_methodology(&repo.join(normative_root));
+    }
 }
 
 #[test]

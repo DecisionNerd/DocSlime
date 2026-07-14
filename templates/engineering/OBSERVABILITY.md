@@ -22,7 +22,7 @@ _How do we know the system is healthy, users are succeeding, and our product hyp
 
 ## Telemetry design
 
-<!-- LLM: Document the event taxonomy and logs/metrics/traces needed to explain important journeys and failures. Link event names back to requirements and domain language. State sampling, retention, correlation, and cardinality rules where they matter. -->
+<!-- LLM: Document the event taxonomy and logs/metrics/traces needed to explain important journeys and failures. Use the same terminology as the project model and link event names back to requirements, workflows, and lifecycle states. State sampling, retention, correlation, and cardinality rules where they matter. -->
 
 - **Events:** _User-visible outcomes and product-learning signals._
 - **Logs:** _Structured diagnostic facts and correlation identifiers._

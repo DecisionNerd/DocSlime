@@ -45,7 +45,7 @@ _Where are we headed?_
 
 ## Quality stance
 
-<!-- LLM: Capture the project's quality method. Ask whether the project uses TDD, BDD, Domain Driven Design, ADRs, design critique, security review, or other quality gates. Keep this as product-level stance; put concrete test mappings in `engineering/TESTING.md`, production measures in `engineering/OBSERVABILITY.md`, and decisions in ADRs. -->
+<!-- LLM: Capture the project's quality method. Ask how the team models the real-world problem, keeps terminology consistent, verifies behavior, records durable decisions, and uses practices such as TDD, BDD, design critique, security review, or other quality gates. Keep this as product-level stance; put the concepts, relationships, constraints, rules, workflows, and lifecycle states that shape the software in `engineering/ARCHITECTURE.md`, concrete test mappings in `engineering/TESTING.md`, production measures in `engineering/OBSERVABILITY.md`, and decisions in ADRs. -->
 
 - _Quality method / gate - why it matters_
 

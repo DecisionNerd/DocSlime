@@ -26,7 +26,7 @@ _How do we know the system works?_
 
 ## Traceability contract
 
-<!-- LLM: Explain the quality trace this project uses. Keep it concrete: product goal -> experience -> requirement -> BDD scenario -> test, with architecture/ADR links where a domain boundary or durable decision matters. Remove or shorten if the project is tiny, but do not leave behavior untraceable. -->
+<!-- LLM: Explain the quality trace this project uses. Keep it concrete: real-world problem -> shared terminology and model -> product decision -> requirement -> interface or implementation -> Given/When/Then scenario -> test. Link architecture or ADRs where a modeled concept, relationship, rule, workflow, lifecycle state, or durable decision explains the expected behavior. Remove or shorten if the project is tiny, but do not leave important behavior untraceable. -->
 
 | Link | Evidence |
 | --- | --- |
@@ -34,7 +34,7 @@ _How do we know the system works?_
 | Experience -> requirement | _Requirement IDs from ../REQUIREMENTS.md_ |
 | Requirement -> BDD scenario | _Given/When/Then scenario_ |
 | Scenario -> test | _Test file, manual check, eval, or known gap_ |
-| Requirement -> architecture/ADR | _Architecture section or ADR link when applicable_ |
+| Model / requirement -> architecture or ADR | _Concept, rule, workflow, architecture section, or ADR link when applicable_ |
 
 ## Evaluation against product goals
 

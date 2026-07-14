@@ -30,13 +30,15 @@ flowchart LR
 
 _Key entities and relationships._
 
-## Domain language and boundaries
+## Problem model and terminology
 
-<!-- LLM: Use Domain Driven Design lightly. Ask: "What are the core domain nouns, what words must mean one thing here, and where are the boundaries between responsibilities?" Capture bounded contexts only when they clarify the system. If there is no meaningful domain split, say so and remove the table. -->
+Model the problem clearly, use the same terminology throughout the project, and ensure the software reflects the meaningful concepts, rules, and workflows of that problem.
 
-| Domain concept | Meaning in this project | Boundary / owner |
+<!-- LLM: DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle. Model the problem before prematurely designing the solution. Ask about the meaningful concepts, how they relate, rules and constraints that must hold, important workflows and lifecycle states, and the preferred terminology that should stay consistent across product docs, interfaces, code, and tests. Keep rules close to the concepts they govern and name responsibility boundaries only when they clarify ownership. Refine this model as understanding improves; do not invent ceremonial abstractions. -->
+
+| Concept | Meaning in this project | Relationships, states, rules, and owner |
 | --- | --- | --- |
-| _Concept_ | _Definition in project language_ | _Component, team, module, or external system_ |
+| _Concept_ | _Definition in project terminology_ | _Related concepts, lifecycle states, governing rules, and responsible component or team_ |
 
 ## Key flows
 

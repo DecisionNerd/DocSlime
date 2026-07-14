@@ -1,11 +1,11 @@
 ---
 title: "Documentation Lifecycle"
-description: "How DocSlime connects continuous discovery, Domain Driven Design, and TDD+BDD into one traceable docs body."
+description: "How DocSlime connects continuous discovery, domain modeling, and TDD+BDD into one traceable documentation lifecycle."
 ---
 
 # Documentation Lifecycle
 
-DocSlime is not just a folder generator. It encodes a full product-and-engineering loop: learn from users, write a testable contract, shape the domain, prove behavior, ship verified artifacts, and feed production evidence back into discovery.
+DocSlime is not just a folder generator. It encodes a full product-and-engineering loop: understand the real-world problem, establish shared terminology and a useful model, make product decisions, implement and verify behavior, ship validated artifacts, and feed production evidence back into understanding.
 
 The CLI scaffolds the tree. Agent skills do the judgment-heavy work. Your job is to keep the trace honest: every important behavior should be followable from evidence to proof.
 
@@ -30,7 +30,7 @@ flowchart LR
 | Product & design | What are we building and how should it feel? | `PRODUCT.md`, `DESIGN.md` | Product intent, design principles |
 | Continuous discovery (UX) | What do users actually need? | `experience/` | Evidence, journeys, hypotheses |
 | Requirements | What must the system demonstrably do? | `REQUIREMENTS.md` | Solution-neutral FR/NFR IDs |
-| Architecture (DDD) | How is the domain shaped? | `engineering/ARCHITECTURE.md`, `engineering/adrs/` | Domain language, boundaries, ADRs |
+| Architecture / domain modeling | Which concepts, relationships, rules, workflows, states, and responsibilities shape the solution? | `engineering/ARCHITECTURE.md`, `engineering/adrs/` | Shared model, terminology, responsibility boundaries, ADRs |
 | Testing (TDD+BDD) | How do we prove it before release? | `engineering/TESTING.md` | Given/When/Then, test mapping |
 | Publishing | How do verified artifacts reach users? | `engineering/PUBLISHING.md` | CI gates, promotion, rollback |
 | Observability | What does production teach us? | `engineering/OBSERVABILITY.md` | Signals, SLOs, learning loop |
@@ -70,14 +70,16 @@ Fill `REQUIREMENTS.md` after product, design, and discovery context exist. Requi
 
 When a finding in `experience/` identifies observable behavior the product must provide, it becomes a requirement. Implementation choices belong in architecture or an ADR.
 
-### 4. Shape the domain and record decisions (DDD)
+### 4. Model the problem and record decisions
 
-Fill `engineering/ARCHITECTURE.md` to name the components, data, and boundaries that satisfy the requirements. DocSlime uses Domain Driven Design **lightly**:
+Fill `engineering/ARCHITECTURE.md` to carry the team's understanding of the real-world problem into the system design. DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle.
 
-- Name the **domain concepts** that affect behavior (not abstract "document management")
-- Draw **boundaries** between CLI scaffold, agent skills, publishing, and observation
-- Keep **ubiquitous language** consistent across requirements, architecture, and ADRs
-- Stay light on small projects — say when a bounded context is not worth formalizing
+- Model the problem before prematurely designing the solution
+- Use the same preferred terminology across product docs, requirements, interfaces, code, and tests
+- Represent meaningful concepts, relationships, rules, workflows, and lifecycle states explicitly
+- Keep important rules close to the concepts they govern
+- Name responsibility boundaries when they clarify ownership, without inventing abstractions
+- Refine the model as evidence and implementation teach the team more
 
 When a choice is hard to reverse, record it:
 
@@ -138,20 +140,30 @@ The `experience/` folder is DocSlime's UX and product-discovery workspace. It is
 
 When evidence earns its own file, create a focused lowercase-kebab-case markdown file under `experience/` using the artifact shape documented on the [Experience](experience/) page.
 
-## DDD: domain language without ceremony
+## Domain modeling: problem understanding carried into software
 
-DocSlime does not force heavyweight Domain Driven Design. It asks architecture docs to make the system's nouns and boundaries explicit enough that the next human or agent can reason about change.
+Model the problem clearly, use the same terminology throughout the project, and ensure the software reflects the meaningful concepts, rules, and workflows of that problem. This is a practical development habit, not a requirement to adopt a formal methodology or add layers to the code.
 
-**Minimum useful DDD evidence:**
+```mermaid
+flowchart LR
+    Problem["Real-world problem"] --> Model["Shared terminology and model"]
+    Model --> Decisions["Product decisions"]
+    Decisions --> Implementation["Implementation"]
+    Implementation --> Verification["Verification"]
+    Verification -. "Refine understanding" .-> Problem
+```
 
-| Artifact | What to capture |
+**Minimum useful model:**
+
+| Area | What to capture |
 | --- | --- |
-| Domain concepts | The words the team actually uses (`docs tree`, `template`, `ADR`, `skill`) |
-| Boundaries | What the CLI owns vs. what agents, CI, or publishing own |
-| Aggregates / invariants | Rules that must stay true (e.g. "never overwrite without `--force`") |
-| ADRs | Durable decisions with consequences |
+| Concepts and relationships | The things the project acts on and how they connect, using real project terms such as target project, template catalog, docs tree, document lifecycle, write outcome, lifecycle trace, decision record, and publication artifact |
+| Constraints and rules | What must stay true, such as preserving existing documents unless `--force` is explicit |
+| Workflows and lifecycle states | How concepts change or move through parsing, validation, generation, publication, and verification |
+| Responsibility boundaries | What the CLI, agent skills, project docs, tests, and publishing systems each own |
+| Decisions | Product or technical choices whose rationale and consequences should remain durable |
 
-If a project has no meaningful domain split, say so in architecture instead of inventing bounded contexts.
+Keep the model only as detailed as the decisions and behavior require. Refine it when evidence, implementation, or verification reveals that a term, relationship, rule, or workflow was incomplete.
 
 ## TDD+BDD: from intent to proof
 
@@ -202,6 +214,6 @@ Dogfooding example: DocSlime's [`engineering/TESTING.md`](engineering/TESTING/) 
 
 - [Experience](experience/) — continuous discovery practice and artifact shape
 - [Requirements](REQUIREMENTS/) — the behavior contract
-- [Architecture](engineering/ARCHITECTURE/) — system shape and domain boundaries
+- [Architecture](engineering/ARCHITECTURE/) — problem model, system shape, and responsibility boundaries
 - [Testing](engineering/TESTING/) — BDD scenarios and test mapping
 - [Agent Skills](skills/) — skill invocation and quality bar

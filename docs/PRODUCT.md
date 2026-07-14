@@ -23,7 +23,7 @@ The system is playful in name but serious in method: it gathers the scattered pi
 - **Impeccable integration:** `docs/PRODUCT.md` and `docs/DESIGN.md` are discoverable product and design context files without needing root-level duplicates, so `impeccable` can critique and polish product surfaces from the same docs tree agents use.
 - **Lifecycle:** discovery evidence becomes requirements, architecture and tests implement the contract, publishing carries verified artifacts to users, and observability closes the learning loop.
 - **Publishing path:** the docs stay plain Markdown and can publish through `docmd.io`; the engineering publishing template also covers software artifacts, promotion, deployment, verification, and rollback.
-- **Quality stance:** requirements should trace to BDD scenarios and tests, architecture should use Domain Driven Design language where it clarifies the system, and significant choices should become ADRs.
+- **Quality stance:** requirements should trace to BDD scenarios and tests, architecture should carry a practical model of the problem into implementation, and significant choices should become ADRs.
 
 ## Quality Method
 
@@ -31,18 +31,15 @@ DocSlime's quality method is a trace, not a ceremony:
 
 ```mermaid
 flowchart LR
-    Strategy["Strategy"] --> ProductDesign["Product / design"]
-    ProductDesign --> Discovery["Discovery"]
-    Discovery --> Requirement["Requirement"]
-    Requirement --> Architecture["Architecture"]
-    Architecture --> Test["Test"]
-    Test --> Publish["Publish"]
-    Publish --> Observe["Observe"]
-    Observe --> Strategy
+    Problem["Real-world problem"] --> Model["Shared terminology and model"]
+    Model --> Decisions["Product decisions"]
+    Decisions --> Implementation["Implementation"]
+    Implementation --> Verification["Verification"]
+    Verification -. "Refine understanding" .-> Problem
 ```
 
 - **TDD+BDD:** requirements get stable IDs, behavior is written in Given/When/Then language, and tests prove observable behavior before the docs call it done.
-- **Domain Driven Design:** architecture docs name the domain concepts, boundaries, and language that matter for the project; small projects can stay light, but they should still know their core nouns and responsibilities.
+- **Domain modeling:** DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle. Model the problem clearly, use the same terminology throughout the project, and ensure the software reflects the meaningful concepts, rules, and workflows of that problem.
 - **ADRs:** durable choices live in `engineering/adrs/` so future humans and agents can see why the current shape exists.
 - **Observability:** production health and user-outcome signals trace back to requirements and discovery, so learning continues after release.
 

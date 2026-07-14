@@ -23,7 +23,7 @@ The `docs/` tree must exist (run **docslime-init** if not) and `docslime` must b
 
 - Record one decision per ADR. Do not use an ADR to relitigate the whole system.
 - Keep accepted ADRs immutable; create a new superseding ADR for changed decisions.
-- Tie context back to requirement IDs, domain boundaries, constraints, or forces when they are known.
+- Tie context back to requirement IDs, modeled concepts, relationships, rules, constraints, workflows, responsibility boundaries, or forces when they are known.
 - Ask the user what options were actually considered; do not invent alternatives for polish.
 
 ## Steps

@@ -2,7 +2,7 @@
 
 DocSlime is an opinionated CLI and agent-skill system for turning a repo into a living, agent-ready documentation workspace. It scaffolds a standardized docs tree that coding agents can fill in with you, then tighten through skills like `docslime-fill`, `docslime-adr`, and `docslime-kiss`.
 
-The point is to keep a complete product-and-engineering learning loop in the repo: strategy, product/design context, continuous discovery, requirements, architecture, TDD/BDD evidence, delivery, observability, and decisions. DocSlime is built for services and user-facing products with user-driven Domain Driven Design and explicit traceability from evidence to production learning.
+The point is to keep a complete product-and-engineering learning loop in the repo: strategy, product/design context, continuous discovery, requirements, architecture, TDD/BDD evidence, delivery, observability, and decisions. DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle, with explicit traceability from evidence to production learning.
 
 ## The tree it creates
 
@@ -18,7 +18,7 @@ docs/
 │   └── README.md          # continuous discovery and experience design
 └── engineering/
     ├── README.md          # engineering lifecycle index
-    ├── ARCHITECTURE.md    # domain and system design
+    ├── ARCHITECTURE.md    # problem model and system design
     ├── TESTING.md         # TDD/BDD strategy and CI evidence
     ├── PUBLISHING.md      # continuous delivery, verification, rollback
     ├── OBSERVABILITY.md   # production health and user-outcome learning

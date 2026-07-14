@@ -35,12 +35,13 @@ This is a menu and a common order, not a mandatory checklist. First identify whi
 
 ## Guardrails
 
+- Use practical domain modeling: understand the real-world problem before designing the solution, establish preferred terminology, and carry meaningful concepts, relationships, constraints, rules, workflows, and lifecycle states through product decisions, implementation, and verification.
 - Do not invent product facts, requirements, architecture, tests, decisions, users, or metrics.
 - Do not fill or preserve a document merely because the template created it. Recommend removing, merging, or replacing irrelevant docs with a link to the authoritative source.
 - Treat developers, operators, integrators, and coding agents as real users when they consume a service, library, SDK, CLI, or API; retain `experience/` when DX or agent experience matters.
 - Ask one focused question at a time when facts are missing.
 - Preserve existing user-written content unless it conflicts with a correction the user gives.
-- Keep requirements testable and solution-neutral, architecture grounded in real domain boundaries, and testing mapped to Given/When/Then behavior.
+- Keep requirements testable and solution-neutral, architecture grounded in the real-world concepts, relationships, constraints, rules, workflows, lifecycle states, responsibility boundaries, and preferred terminology that matter, and testing mapped to Given/When/Then behavior.
 - Keep publishing grounded in actual artifacts, gates, promotion, verification, and rollback.
 - Present Semantic Versioning and Conventional Commits as optional publishing practices. Read the existing workflow first; never impose enforcement, rewrite history, or change release automation without explicit team agreement.
 - Keep observability tied to user outcomes as well as system health; never invent telemetry.
@@ -60,7 +61,7 @@ Read all of them before asking anything, so you understand the whole document.
 
 Follow the guidance comments. Ask **one focused question at a time**, reflect the user's answer back in your own words, and confirm before writing. Don't dump every question at once and don't invent facts — if the user doesn't know something, note it and move on.
 
-Pull context from the applicable lifecycle: when filling `REQUIREMENTS.md`, ground it in the retained local docs, experience evidence, and linked organization-level sources. When filling observability, trace signals back to requirements and discovery hypotheses.
+Pull context from the applicable lifecycle: real-world problem -> shared terminology and model -> product decisions -> implementation -> verification. When filling `REQUIREMENTS.md`, ground it in the retained local docs, experience evidence, and linked organization-level sources. When filling observability, trace signals back to requirements and discovery hypotheses so new evidence can refine the model.
 
 ### 3 — Write each section
 

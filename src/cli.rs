@@ -2,7 +2,7 @@
 
 use clap::{Parser, Subcommand};
 
-/// Scaffold a standardized, BDD-oriented `docs/` tree into a repo.
+/// Scaffold a traceable documentation lifecycle into a repo.
 ///
 /// The templates are designed to be filled in by an AI coding agent in conversation with
 /// the user, keeping the project's product context, experiences, requirements, design guidance,
