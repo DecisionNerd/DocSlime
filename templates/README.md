@@ -58,3 +58,6 @@ Supporting detail lives in subfolders:
   in `docs/` so design and coding agents can load them without duplicate root files.
 - **Close the loop.** Observability should measure both system health and the user outcomes
   named in product, experience, and requirements docs.
+- **Choose release conventions intentionally.** Consider Semantic Versioning and Conventional
+  Commits when they clarify compatibility and change intent, but preserve a team's effective
+  existing workflow and add enforcement only with explicit agreement.

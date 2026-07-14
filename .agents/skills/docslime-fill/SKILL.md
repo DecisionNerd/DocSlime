@@ -50,6 +50,9 @@ and production learning. Revisit earlier docs when observation changes what the 
 - Keep requirements testable and solution-neutral, architecture grounded in real domain
   boundaries, and testing mapped to Given/When/Then behavior.
 - Keep publishing grounded in actual artifacts, gates, promotion, verification, and rollback.
+- Present Semantic Versioning and Conventional Commits as optional publishing practices. Read
+  the existing workflow first; never impose enforcement, rewrite history, or change release
+  automation without explicit team agreement.
 - Keep observability tied to user outcomes as well as system health; never invent telemetry.
 
 ## Steps
