@@ -1,26 +1,20 @@
 # Testing
 
-DocSlime is verified behavior-first: the things a user actually does — scaffold a tree, add a
-document, create an ADR, list templates — are exercised end-to-end by running the real
-compiled binary against throwaway directories and asserting on the files it produces. Small,
-fiddly logic (slug normalization, ADR numbering) is covered by fast unit tests. The bar for
-shippable is simple: the full suite is green, `impeccable` can discover docs context, and the
-binary's observable behavior matches the experiences and requirements.
+DocSlime is verified behavior-first: the things a user actually does — scaffold a tree, add a document, create an ADR, list templates — are exercised end-to-end by running the real compiled binary against throwaway directories and asserting on the files it produces. Small, fiddly logic (slug normalization, ADR numbering) is covered by fast unit tests. The bar for shippable is simple: the full suite is green, `impeccable` can discover docs context, and the binary's observable behavior matches the experiences and requirements.
 
 ## Strategy
 
 | Layer | What it verifies | Tools |
-|---|---|---|
+| --- | --- | --- |
 | Unit | Pure logic in isolation — slug normalization, next-ADR-number computation, filename prefix parsing. | Rust `#[test]` in `src/` |
 | End-to-end / behavior | User-visible CLI behavior from [`../experience/README.md`](../experience/README.md) — running the actual binary and asserting on exit codes, output, and files written. | `assert_cmd`, `predicates`, `tempfile` |
 
-There is no separate integration layer: the codebase is small and the components are best
-verified together through the CLI, so the black-box tests double as integration coverage.
+There is no separate integration layer: the codebase is small and the components are best verified together through the CLI, so the black-box tests double as integration coverage.
 
 ## Behavior coverage
 
 | Experience / Requirement | Scenario (Given/When/Then) | Test |
-|---|---|---|
+| --- | --- | --- |
 | Scaffold the docs tree / FR-1, FR-11, FR-15, FR-18, FR-19 | Given an empty dir, When `init`, Then the full 12-file lifecycle tree exists, including product/design context, requirements, publishing, and observability | `tests/cli.rs::init_creates_full_tree` |
 | Self-explaining templates | Given a scaffolded tree, When inspected, Then every template carries `<!-- LLM: -->` guidance | `tests/cli.rs::every_template_carries_llm_guidance` |
 | Mermaid flowcharts / FR-20 | Given a scaffolded tree, When diagram guidance and examples are inspected, Then flowcharts use Mermaid and reject ASCII-art guidance | `tests/cli.rs::flowcharts_use_mermaid_in_generated_docs` |
@@ -44,11 +38,10 @@ verified together through the CLI, so the black-box tests double as integration 
 
 ## Traceability contract
 
-DocSlime's TDD+BDD bar is that every important behavior can be followed from intent to
-proof:
+DocSlime's TDD+BDD bar is that every important behavior can be followed from intent to proof:
 
 | Link | Evidence |
-|---|---|
+| --- | --- |
 | Product goal -> experience | `../PRODUCT.md` explains why the docs tree exists; `../experience/README.md` captures the evidence and journeys. |
 | Experience -> requirement | `../REQUIREMENTS.md` gives each behavior a stable FR/NFR ID and names the evidence it serves. |
 | Requirement -> BDD scenario | This file records Given/When/Then coverage for the visible behavior. |
@@ -56,31 +49,19 @@ proof:
 | Requirement -> architecture/ADR | `ARCHITECTURE.md` names the domain boundary; durable choices link to `adrs/`. |
 | Release -> production evidence | `PUBLISHING.md` defines verification; `OBSERVABILITY.md` links production signals back to outcomes and discovery. |
 
-The DDD evidence is intentionally lightweight: docs should name the domain concepts and
-boundaries that affect behavior, then use ADRs for hard-to-reverse decisions. If a project
-has no meaningful domain split, the architecture doc should say that instead of inventing
-bounded contexts.
+The DDD evidence is intentionally lightweight: docs should name the domain concepts and boundaries that affect behavior, then use ADRs for hard-to-reverse decisions. If a project has no meaningful domain split, the architecture doc should say that instead of inventing bounded contexts.
 
 ## Evaluation against product goals
 
-Tests prove correctness; they don't prove the product is working. The product-level signals from
-[`../PRODUCT.md`](../PRODUCT.md) are evaluated qualitatively:
+Tests prove correctness; they don't prove the product is working. The product-level signals from [`../PRODUCT.md`](../PRODUCT.md) are evaluated qualitatively:
 
-- **Docs get filled** — judged by whether scaffolded docs in real repos end up complete (no
-  leftover `<!-- LLM: -->` guidance), rather than abandoned as templates. DocSlime dogfoods this
-  by filling in its own `docs/` tree.
-- **Low friction** — judged by the time and number of steps from `docslime init` to a first
-  useful, filled-in document.
-- **Agent context quality** — judged by whether agents working in a DocSlime-backed repo give less
-  speculative answers because product context, requirements, and ADRs are present.
-- **Impeccable context quality** — judged by whether `impeccable` resolves `docs/PRODUCT.md`
-  and `docs/DESIGN.md` without duplicate root files.
-- **Delivery quality** — judged by whether each CLI, skill, and site artifact is verified
-  through its user-facing distribution path rather than inferred from workflow completion.
-- **Production learning** — judged by whether release failures, feedback, and adoption
-  signals update discovery evidence or requirements when they reveal a material gap.
-- **Skill robustness** — judged by whether skill files validate structurally and give agents
-  enough setup, guardrails, verification, and failure handling to act without guessing.
+- **Docs get filled** — judged by whether scaffolded docs in real repos end up complete (no leftover `<!-- LLM: -->` guidance), rather than abandoned as templates. DocSlime dogfoods this by filling in its own `docs/` tree.
+- **Low friction** — judged by the time and number of steps from `docslime init` to a first useful, filled-in document.
+- **Agent context quality** — judged by whether agents working in a DocSlime-backed repo give less speculative answers because product context, requirements, and ADRs are present.
+- **Impeccable context quality** — judged by whether `impeccable` resolves `docs/PRODUCT.md` and `docs/DESIGN.md` without duplicate root files.
+- **Delivery quality** — judged by whether each CLI, skill, and site artifact is verified through its user-facing distribution path rather than inferred from workflow completion.
+- **Production learning** — judged by whether release failures, feedback, and adoption signals update discovery evidence or requirements when they reveal a material gap.
+- **Skill robustness** — judged by whether skill files validate structurally and give agents enough setup, guardrails, verification, and failure handling to act without guessing.
 - **Adoption** — tracked via Homebrew and `npx skills` installs and repos using the tree.
 
 ## Running the tests
@@ -96,24 +77,16 @@ npm run build               # docmd site build (expected: site/ output updates c
 DocSlime is now a monorepo with three CI-owned surfaces:
 
 | Workflow job | Surface | Gate |
-|---|---|---|
+| --- | --- | --- |
 | `Branch policy` | Release flow | Fails pull requests to `main` unless the source branch is `staging`; all feature work targets `staging`. |
 | `CLI` | Rust binary and embedded templates | `cargo fmt --check`, `cargo test`, and `cargo clippy --all-targets -- -D warnings`. |
 | `Site` | `docmd.io` documentation site | `npm ci` followed by `npm run build`. |
 | `Agent skills` | Bundled `.agents/skills/docslime-*` package | Frontmatter, OpenAI metadata, guardrail, verification, and failure-handling checks. |
 
-The daily CI workflow lives in `.github/workflows/ci.yml` and runs on pull requests to
-`staging` or `main`, pushes to those branches, and manual dispatches. The release workflow
-(`.github/workflows/release.yml`, generated by `cargo-dist`) remains tag-driven: it builds
-and packages the CLI for all target platforms, creates the GitHub Release, and publishes the
-Homebrew formula.
+The daily CI workflow lives in `.github/workflows/ci.yml` and runs on pull requests to `staging` or `main`, pushes to those branches, and manual dispatches. The release workflow (`.github/workflows/release.yml`, generated by `cargo-dist`) remains tag-driven: it builds and packages the CLI for all target platforms, creates the GitHub Release, and publishes the Homebrew formula.
 
-GitHub also has an active repository ruleset named "Protect main and staging from deletion".
-It targets `refs/heads/main` and `refs/heads/staging` with the `deletion` rule so the two
-release branches cannot be removed accidentally.
+GitHub also has an active repository ruleset named "Protect main and staging from deletion". It targets `refs/heads/main` and `refs/heads/staging` with the `deletion` rule so the two release branches cannot be removed accidentally.
 
 ## Test data & environments
 
-End-to-end tests run the real binary inside a fresh `tempfile::TempDir` per test, so each one
-gets an isolated throwaway directory that is cleaned up automatically — no shared state, no
-fixtures to seed, and no risk of touching the working repo.
+End-to-end tests run the real binary inside a fresh `tempfile::TempDir` per test, so each one gets an isolated throwaway directory that is cleaned up automatically — no shared state, no fixtures to seed, and no risk of touching the working repo.

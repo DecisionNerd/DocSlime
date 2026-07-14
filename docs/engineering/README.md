@@ -1,12 +1,11 @@
 # Engineering
 
-Engineering carries DocSlime's [`requirements contract`](../REQUIREMENTS.md) through system
-design, pre-release evidence, artifact delivery, and production learning.
+Engineering carries DocSlime's [`requirements contract`](../REQUIREMENTS.md) through system design, pre-release evidence, artifact delivery, and production learning.
 
 ## Lifecycle
 
 | Document | Responsibility |
-|---|---|
+| --- | --- |
 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | Rust CLI boundaries, embedded templates, skills, and site architecture. |
 | [`TESTING.md`](TESTING.md) | Unit, integration, skill, and site checks plus CI gates. |
 | [`PUBLISHING.md`](PUBLISHING.md) | CLI release, Homebrew publication, skill distribution, site build, deployment verification, and rollback. |
