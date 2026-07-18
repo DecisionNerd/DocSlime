@@ -56,7 +56,7 @@ Create one focused lowercase-kebab-case file when an opportunity, study, journey
 
 ## Given / When / Then scenarios
 
-## Constraints and domain language
+## Concepts, terminology, and constraints
 
 ## Success signals and telemetry
 

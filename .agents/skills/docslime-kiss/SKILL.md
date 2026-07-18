@@ -37,7 +37,7 @@ Answer with evidence from the files, not vibes.
 - Lead with concrete findings and file references.
 - Prefer deleting filler over rewriting it into prettier filler.
 - Distinguish current behavior from target architecture or future ideas.
-- Do not invent missing strategy, requirements, domain boundaries, tests, or ADRs.
+- Do not invent missing strategy, requirements, concepts, relationships, rules, workflows, responsibility boundaries, tests, or ADRs.
 - Do not penalize a project for intentionally removing irrelevant template files. Judge whether the retained tree serves its actual users, including developers and agents.
 - Do not rewrite accepted ADRs except for path/index maintenance; create a superseding ADR when a decision changes.
 
@@ -57,6 +57,7 @@ Good DocSlime docs are:
 - **Fit for purpose:** retain only docs that help this project's humans or agents make better decisions; omissions are explicit and authoritative external context is linked.
 - **Short enough to maintain:** no filler sections kept only because the template had them.
 - **Traceable:** requirements serve evidence; architecture serves requirements; tests prove behavior; publishing delivers verified artifacts; observability feeds production evidence back into discovery.
+- **Terminology-aligned:** the same preferred names for meaningful concepts, relationships, rules, workflows, and lifecycle states appear across product docs, requirements, interfaces, code, and tests unless a distinction is documented.
 - **Checkable:** requirements and testing claims can be verified.
 - **Current-state honest:** distinguish implemented behavior from target architecture or future ideas.
 - **Decision-light:** major durable choices live in ADRs; ordinary implementation detail does not.

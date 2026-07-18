@@ -46,10 +46,10 @@ DocSlime's TDD+BDD bar is that every important behavior can be followed from int
 | Experience -> requirement | `../REQUIREMENTS.md` gives each behavior a stable FR/NFR ID and names the evidence it serves. |
 | Requirement -> BDD scenario | This file records Given/When/Then coverage for the visible behavior. |
 | Scenario -> test | `tests/cli.rs` runs the compiled binary against throwaway directories and asserts on output files, exit codes, and help text. |
-| Requirement -> architecture/ADR | `ARCHITECTURE.md` names the domain boundary; durable choices link to `adrs/`. |
+| Model / requirement -> architecture or ADR | `ARCHITECTURE.md` names the affected concepts, rules, workflows, lifecycle states, and responsibility boundaries; durable choices link to `adrs/`. |
 | Release -> production evidence | `PUBLISHING.md` defines verification; `OBSERVABILITY.md` links production signals back to outcomes and discovery. |
 
-The DDD evidence is intentionally lightweight: docs should name the domain concepts and boundaries that affect behavior, then use ADRs for hard-to-reverse decisions. If a project has no meaningful domain split, the architecture doc should say that instead of inventing bounded contexts.
+Domain modeling connects problem understanding to verification: docs use consistent terminology for meaningful concepts, relationships, constraints, rules, workflows, and lifecycle states; product decisions and interfaces carry that model into implementation; Given/When/Then scenarios and tests prove the resulting behavior. The model should be refined when verification exposes a mistaken assumption or missing rule.
 
 ## Evaluation against product goals
 

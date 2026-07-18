@@ -2,7 +2,7 @@
 
 DocSlime dogfoods the documentation lifecycle it scaffolds. Product and design context feed continuous discovery, requirements translate that evidence into a build contract, and the engineering docs carry the contract through architecture, testing, publishing, and production observability.
 
-Start with the [lifecycle guide](lifecycle.md) for the full UX → DDD → TDD+BDD trace and day-to-day tool usage.
+Start with the [lifecycle guide](lifecycle.md) for the full problem → model → product decisions → implementation → verification trace and day-to-day tool usage.
 
 ## Adapt the scaffold
 

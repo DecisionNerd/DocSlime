@@ -44,7 +44,7 @@ _How does the team learn from users and decide what is worth building?_
 
 ## Given / When / Then scenarios
 
-## Constraints and domain language
+## Concepts, terminology, and constraints
 
 ## Success signals and telemetry
 

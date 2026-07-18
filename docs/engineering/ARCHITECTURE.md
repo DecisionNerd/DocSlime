@@ -41,27 +41,30 @@ DocSlime is essentially stateless — it stores nothing of its own. The only per
 
 The one piece of derived state computed at runtime is the **next ADR number**, obtained by scanning the ADR directory for the highest `NNNN-*` prefix.
 
-## Domain language and boundaries
+## Problem model and terminology
 
-DocSlime uses Domain Driven Design language lightly. The useful domain is not "documents" in the abstract; it is the lifecycle of turning repo knowledge into agent-readable, testable context.
+DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle. Model the problem clearly, use the same terminology throughout the project, and ensure the software reflects the meaningful concepts, rules, and workflows of that problem.
 
-| Domain concept | Meaning in DocSlime | Boundary |
+| Concept | Meaning in DocSlime | Relationships, states, and rules |
 | --- | --- | --- |
-| Docs tree | The fixed `docs/` structure written into the target repo. | CLI scaffold |
-| Template catalog | The embedded Markdown files and ADR template that define the default tree. | CLI scaffold |
-| Filled document | A scaffolded file after an agent removes `LLM:` guidance and writes project facts. | Agent skill lifecycle |
-| Lifecycle trace | Links from discovery evidence through requirements, architecture, tests, publishing, observability, and back to discovery. | Docs content |
-| Design context | `docs/PRODUCT.md` and `docs/DESIGN.md` loaded by tools like `impeccable`. | External tool integration |
-| Publishing | Promotion of verified CLI, skill, and documentation artifacts to users. | Engineering delivery boundary |
-| Observability | Release verification plus system-health and user-outcome evidence that feeds discovery. | Engineering/product feedback boundary |
+| Target project | The repository where DocSlime writes documentation. | Owns one generated docs tree; existing files are preserved unless `--force` is explicit. |
+| Template catalog | The embedded Markdown tree and ADR template available to scaffold. | Supplies initial documents; it is read-only at runtime and changes only when the binary is rebuilt. |
+| Docs tree | The project-specific documentation workspace under `docs/`. | Begins as a template, may omit irrelevant areas, and connects product context, experience evidence, requirements, architecture, verification, decisions, publication, and production learning. |
+| Document lifecycle | The progression from scaffold guidance to project-specific content and later maintenance. | A document is scaffolded, filled, reviewed, published when applicable, and refined as understanding changes; existing user files remain untouched by default. |
+| Write outcome | The result of attempting to write a template or ADR. | `Created`, `Skipped`, and `Overwritten` are explicit outcomes; overwrite requires `--force`. |
+| Lifecycle trace | The connection from a real-world problem through a shared model, product decisions, implementation, and verification. | Preferred terminology, rules, workflows, requirements, interfaces, tests, decisions, and production evidence should remain linked and consistent. |
+| Decision record | A numbered ADR explaining a significant product or technical choice. | Created from the next available number, linked to affected requirements or concepts, and retained as durable rationale. |
+| Publication artifact | A verified CLI release, skill package, or rendered documentation site delivered to users. | Must pass its gates, follow the applicable promotion path, and be verified through a user-facing path. |
 
-The main bounded contexts are:
+The CLI does not persist a runtime model or lifecycle database. These concepts clarify the files, states, rules, and workflows already present in the product.
 
-- **CLI scaffold context:** create, add, list, and write files safely.
-- **Agent skill context:** interview, fill, critique, and record decisions with human input.
-- **Publishing context:** build, version, promote, verify, and recover the CLI, skill, and documentation artifacts through their external distribution systems.
-- **Observation context:** verify artifacts through user-facing paths and turn failures, feedback, and adoption signals into discovery evidence.
-- **Site context:** render this repository's docs and homepage from the same Markdown source users receive from the CLI templates.
+### Responsibility boundaries
+
+- **CLI scaffold:** resolve templates, create or list documents, and report non-destructive write outcomes.
+- **Agent skills:** interview people, turn project knowledge into documentation, review quality, and record decisions with human input.
+- **Project documentation:** hold the shared terminology, model, product decisions, requirements, implementation guidance, verification evidence, and learning trace.
+- **Publishing systems:** build, version, promote, verify, and recover CLI, skill, and documentation artifacts through their distribution paths.
+- **Observation practice:** turn verification failures, feedback, health signals, and outcomes into evidence that refines the problem model and future decisions.
 
 ## Key flows
 

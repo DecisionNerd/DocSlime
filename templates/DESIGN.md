@@ -20,7 +20,7 @@ _How should design critique or UI iteration use PRODUCT.md and DESIGN.md?_
 
 ## Brand And Voice
 
-<!-- LLM: Document naming, tone, writing style, terminology, and visible personality. Include words to use/avoid when that matters. -->
+<!-- LLM: Document naming, tone, writing style, terminology, and visible personality. Keep names for meaningful concepts and lifecycle states aligned with product docs, requirements, interfaces, code, and tests; document any intentional distinction. Include words to use/avoid when that matters. -->
 
 - **Tone:** _how the product should sound._
 - **Terminology:** _preferred words and names._

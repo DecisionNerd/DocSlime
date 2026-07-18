@@ -19,7 +19,7 @@ DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add i
 | FR-11 | The generated tree shall include `docs/PRODUCT.md` and `docs/DESIGN.md` so `impeccable` can discover product and design context from the docs directory without duplicate root files. | Integrate with impeccable |
 | FR-12 | KISS review shall remain an agent skill rather than a `docslime` CLI subcommand. | Tighten docs after filling |
 | FR-13 | Documentation guidance shall make the lifecycle trace explicit: strategy -> product/design -> discovery -> requirement -> architecture -> test -> publish -> observe -> discovery, with ADRs linked when a durable decision explains the design. | Trace intent through production |
-| FR-14 | Architecture guidance shall ask for domain language and boundaries when useful, without forcing heavyweight Domain Driven Design ceremony on small projects. | Domain Driven Design |
+| FR-14 | Architecture guidance shall ask teams to model the real-world problem through its meaningful concepts, relationships, constraints, rules, workflows, lifecycle states, preferred terminology, and responsibility boundaries without requiring ceremonial abstractions. | Domain modeling |
 | FR-15 | Publishing guidance shall cover artifacts, versioning, CI gates, promotion, deployment verification, rollback, and official platform references without copying volatile provider instructions. | Publish verified artifacts |
 | FR-16 | Each bundled DocSlime skill shall include clear prerequisites, steps, guardrails, verification, and failure handling. | Robust agent skills |
 | FR-17 | When a legacy numbered path exists, `init` and `list` shall recognize it as satisfying the corresponding current template and shall not create a duplicate renamed file unless `--force` is explicit. | Preserve existing documentation during upgrades |
@@ -40,7 +40,7 @@ DocSlime must scaffold a fixed, standardized `docs/` tree into a git repo, add i
 | NFR-5 | Maintainability | Templates are plain Markdown files in the repo, editable without touching Rust logic (rebuild required). |
 | NFR-6 | Toolchain | Builds with Rust 1.74+ (2021 edition). |
 | NFR-7 | Publication | Generated docs remain plain Markdown suitable for the `docmd.io` publishing system. |
-| NFR-8 | Quality stance | Docs support TDD+BDD traceability, Domain Driven Design framing where useful, and ADR-backed decisions. |
+| NFR-8 | Quality stance | Docs connect the real-world problem and shared model to product decisions, implementation, TDD+BDD verification, and ADR-backed decisions. |
 | NFR-9 | Skill maintainability | Skill instructions stay compact enough for agents to follow while still naming setup, verification, and blocked-state behavior. |
 | NFR-10 | Design context | `impeccable` context loading should be verified from `docs/PRODUCT.md` and `docs/DESIGN.md` whenever homepage or design docs change. |
 | NFR-11 | Privacy | The default observability guidance must not normalize collecting sensitive repository or user data without an explicit decision, consent, and controls. |

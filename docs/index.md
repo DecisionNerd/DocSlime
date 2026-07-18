@@ -56,13 +56,13 @@ Then fill `docs/PRODUCT.md` with `docslime-fill` and work through the tree in li
 1. `PRODUCT.md` and `DESIGN.md` — durable product and design context
 2. `experience/` — user evidence, journeys, and hypotheses
 3. `REQUIREMENTS.md` — testable build contract derived from evidence
-4. `engineering/ARCHITECTURE.md` and `engineering/adrs/` — domain shape and decisions
+4. `engineering/ARCHITECTURE.md` and `engineering/adrs/` — problem model, system design, and decisions
 5. `engineering/TESTING.md` — Given/When/Then scenarios mapped to tests
 6. `engineering/PUBLISHING.md` and `engineering/OBSERVABILITY.md` — delivery and learning loop
 
 Each template includes `<!-- LLM: ... -->` guidance. Skills follow those prompts, ask one focused question at a time, and remove scaffolding when a section is complete.
 
-## UX, DDD, and TDD+BDD in One Trace
+## UX, Domain Modeling, and TDD+BDD in One Trace
 
 DocSlime encodes three practices as **links in one chain**, not separate ceremonies.
 
@@ -70,9 +70,9 @@ DocSlime encodes three practices as **links in one chain**, not separate ceremon
 
 The `experience/` folder captures **evidence before solutions**: observed needs, journeys, opportunities, and hypotheses. Findings become requirements only when they describe observable behavior the product must provide. This keeps UX research connected to the build contract instead of rotting in a backlog.
 
-### DDD — domain language and decisions
+### Domain modeling — concepts, rules, and workflows
 
-Architecture docs name the **domain concepts, boundaries, and invariants** that matter for the project. Significant, hard-to-reverse choices become ADRs in `engineering/adrs/`. DocSlime uses Domain Driven Design lightly — enough vocabulary to guide the next change, without forcing bounded-context diagrams on every repo.
+DocSlime uses domain modeling to bring the concepts, relationships, constraints, and workflows of the real-world problem into the development cycle. Model the problem clearly, use the same terminology throughout the project, and ensure the software reflects the meaningful concepts, rules, and workflows of that problem. Significant, hard-to-reverse choices become ADRs in `engineering/adrs/`.
 
 ### TDD+BDD — proof before promotion
 
@@ -82,12 +82,11 @@ Requirements get stable IDs. Behavior is written as **Given/When/Then** scenario
 
 ```mermaid
 flowchart LR
-    Evidence["Evidence"] --> Requirement["Requirement"]
-    Requirement --> BDD["BDD scenario"]
-    BDD --> Test["Test"]
-    Test --> Release["Release"]
-    Release --> Observation["Observation"]
-    Observation --> Evidence
+    Problem["Real-world problem"] --> Model["Shared terminology and model"]
+    Model --> Decisions["Product decisions"]
+    Decisions --> Implementation["Implementation"]
+    Implementation --> Verification["Verification"]
+    Verification -. "Refine understanding" .-> Problem
 ```
 
 When production contradicts an assumption, update `experience/` or `REQUIREMENTS.md` — the loop only works if docs stay as honest as the code.
@@ -110,7 +109,7 @@ flowchart LR
 - **Product and design context** flows into `PRODUCT.md` and `DESIGN.md`, so agents stop guessing what the code is for.
 - **Continuous discovery** lives in `experience/`, where evidence and journeys become solution-neutral requirements rather than an untraceable feature backlog.
 - **Requirements and behavior** flow into `REQUIREMENTS.md` and `engineering/TESTING.md`, so TDD+BDD work can trace back to evidence.
-- **Domain shape and tradeoffs** flow into `engineering/ARCHITECTURE.md` and `engineering/adrs/`, so Domain Driven Design language stays close to decisions.
+- **Concepts, relationships, rules, workflows, and tradeoffs** flow into `engineering/ARCHITECTURE.md` and `engineering/adrs/`, so the shared model stays connected to product decisions and implementation.
 - **Human judgment** flows through `docslime-fill`, `docslime-adr`, and `docslime-kiss`, so docs get filled, decisions get recorded, and bloat gets cut.
 - **Delivery and observation close the loop**: `engineering/PUBLISHING.md` defines promotion, verification, and rollback; `engineering/OBSERVABILITY.md` connects production health and user outcomes back to discovery.
 
@@ -210,7 +209,7 @@ This is a starting template, not a compliance checklist. Tailor it to the projec
 
 - **Product + design:** `PRODUCT.md`, `DESIGN.md`, and `strategy/` capture purpose, voice, principles, and success measures.
 - **Experience + requirements:** `experience/` captures evidence, opportunities, journeys, and hypotheses; `REQUIREMENTS.md` translates them into a testable build contract.
-- **Architecture + ADRs:** `engineering/ARCHITECTURE.md` and `engineering/adrs/` keep domain boundaries and decisions explicit.
+- **Architecture + ADRs:** `engineering/ARCHITECTURE.md` and `engineering/adrs/` keep the shared problem model, responsibility boundaries, and decisions explicit.
 - **Testing:** `engineering/TESTING.md` ties TDD and BDD coverage back to requirements and journeys.
 - **Publishing + observability:** [`engineering/PUBLISHING.md`](engineering/PUBLISHING/) and [`engineering/OBSERVABILITY.md`](engineering/OBSERVABILITY/) carry verified artifacts to users and feed production evidence back into discovery.
 
@@ -228,7 +227,7 @@ DocSlime keeps judgment-heavy work in skills instead of pretending every review 
 ::: grids
 ::: grid
 ::: card "Lifecycle" icon:workflow
-[How UX, DDD, and TDD+BDD connect](lifecycle/){.docmd-button .docmd-button-secondary}
+[How UX, domain modeling, and TDD+BDD connect](lifecycle/){.docmd-button .docmd-button-secondary}
 :::
 :::
 

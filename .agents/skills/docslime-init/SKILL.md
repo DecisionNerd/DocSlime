@@ -54,7 +54,7 @@ docs/
 ├── experience/         # continuous discovery and experience design
 └── engineering/
     ├── README.md       # engineering lifecycle index
-    ├── ARCHITECTURE.md # domain and system design
+    ├── ARCHITECTURE.md # problem model and system design
     ├── TESTING.md      # testing strategy and CI evidence
     ├── PUBLISHING.md   # continuous delivery and rollback
     ├── OBSERVABILITY.md # production health and product learning
@@ -81,7 +81,7 @@ docslime list
 
 ### 5 — Orient and hand off
 
-The docs form a lifecycle: strategy -> product/design -> discovery -> requirements -> architecture -> testing -> publishing -> observability -> discovery. Each template contains inline `<!-- LLM: ... -->` guidance for interviewing the user and filling the sections.
+The docs connect real-world problem -> shared terminology and model -> product decisions -> implementation -> verification, within the broader strategy -> product/design -> discovery -> requirements -> architecture -> testing -> publishing -> observability -> discovery lifecycle. Each template contains inline `<!-- LLM: ... -->` guidance for interviewing the user and filling the sections.
 
 Tell the user the tailored tree is ready, and offer to start filling the first applicable document with the **docslime-fill** skill. Begin with `docs/PRODUCT.md` only when project-level product context belongs in this repo; otherwise start with the most relevant experience, requirements, or architecture document.
 

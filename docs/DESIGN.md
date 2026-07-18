@@ -16,7 +16,7 @@ DocSlime has no graphical app today, but it still has a product experience: the 
 - **Product name:** use `DocSlime` for the product and `docslime` for the binary/command.
 - **Tone:** practical, direct, and lightly playful when the name earns it. The product can carry the integrated "slime" idea without turning docs into a joke.
 - **Mascot:** use the blue anime slime as a product signal. It can appear in the homepage hero and brand surfaces, but it should support the repo/docs artifact rather than replacing developer credibility.
-- **Terminology:** use "docs tree," "product context," "design context," "requirements," "BDD," "Domain Driven Design," "ADR," "template," "skill," and "agent" consistently.
+- **Terminology:** use "docs tree," "product context," "design context," "requirements," "domain modeling," "BDD," "ADR," "template," "skill," and "agent" consistently across docs, interfaces, code, and tests.
 - **Writing rules:** generated guidance should be specific and interview-driven. Prefer "ask the user," "trace this to a requirement," and "record the decision" over vague advice.
 
 ## Impeccable Workflow
@@ -52,7 +52,7 @@ For the homepage, the desired direction is:
 
 - Requirements should be testable and carry stable IDs.
 - Testing docs should map requirements and experiences to Given/When/Then behavior coverage.
-- Architecture docs should describe domain concepts and boundaries when the project has them.
+- Architecture docs should model the real-world concepts, relationships, constraints, rules, workflows, lifecycle states, and responsibility boundaries that matter to the project.
 - Publishing docs should distinguish built, deployed, and verified artifacts and include a safe rollback path.
 - Observability should cover user outcomes as well as logs, metrics, traces, SLOs, and alerts.
 - Significant product or technical decisions should be captured as ADRs.
